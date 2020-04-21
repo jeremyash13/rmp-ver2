@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap');
+
+#art-management {
+    font-family: 'Sorts Mill Goudy', serif;
+    background-color: #312d2d;
+    max-width: 1248px;
+    margin: 0 auto;
+}
+
+.item__wrapper {
+    display: flex;
+    flex-direction: row;
+    border: solid 2px black;
+}
+
+.item {
+    width: 200px;
+    border-right: solid 2px gray;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+.item__button {
+    width: 100px;
+    border-radius: 4px;
+    cursor: pointer;
+}

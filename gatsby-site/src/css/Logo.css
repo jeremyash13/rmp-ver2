@@ -1,0 +1,15 @@
+.logo__wrapper {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  width: 225px;
+  display: grid;
+  margin-bottom: 10px;
+}
+.logo__wrapper svg {
+  max-height: 100%;
+  justify-self: center;
+}
+
+.elk {
+  fill: rgba(171, 138, 88, 0.75);
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap');
+
+.text-carousel__wrapper {
+    font-family: 'Sorts Mill Goudy', serif;
+    font-size: .85rem;
+    text-align: center;
+    line-height: 1.7rem;
+    letter-spacing: .035rem;
+    grid-column: 2 / 4;
+    grid-row: 1;
+    place-self: center;
+    padding: 0 50px;
+    z-index: -1;
+}

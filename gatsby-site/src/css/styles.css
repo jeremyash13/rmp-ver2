@@ -1,0 +1,57 @@
+html {
+  background: url("../images/bg-mtns-gradient-3.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+main {
+  color: #ab8a58;
+}
+
+a {
+  color: #ab8a58;
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+.art-page__wrapper {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 50px;
+  display: grid;
+  max-width: 1268px;
+  margin: 0 auto;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 190px 1fr;
+  grid-auto-rows: auto;
+  height: auto;
+}
+
+.about-us-page__wrapper {
+  height: 100vh;
+  max-width: 1268px;
+  margin: 0 auto;
+  font-family: roboto;
+}
+
+.main__wrapper--img {
+  width: 200px;
+  text-align: center;
+  background-color: #414141;
+  padding-bottom: 7px;
+}
+
+.main__img--MitchKelly {
+  width: 100%;
+}
+
+.img__span--caption {
+  font-size: 0.65rem;
+  font-family: roboto;
+  letter-spacing: 1px;
+}

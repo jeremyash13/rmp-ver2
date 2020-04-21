@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap');
+.main-nav {
+    /* font-family: nunito; */
+    font-family: 'Cinzel', serif;
+    letter-spacing: 5px;
+    justify-content: center;
+    height: 55px;
+    width: 100%;
+    background-color: #3f3434;
+    text-transform: lowercase;
+    /* background-color: #414141; */
+}
+
+.main-nav a {
+    text-decoration: none;
+}
+.main-nav a:hover {
+    text-decoration: underline;
+}
+    
+.main-nav__ul {
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 1268px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.main-nav li {
+    margin: auto 0;
+}
+.nav__link--home {
+    font-size: 24px;
+    flex-grow: 6;
+}
+.nav__link--art,
+.nav__link--about,
+.nav__link--contact,
+.nav__link--login {
+    font-size: 14px;
+    flex-grow: 1;
+    text-align: right;
+}
+.button--login,
+.button--logout
+ {
+    border: none;
+    color: #ab8a58;
+    padding: 4px 15px;
+    background-color: #312d2d;
+    width: 140px;
+}
+.button--login:hover,
+.button--logout:hover {
+    background-color: #534545;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+}

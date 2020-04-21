@@ -1,0 +1,14 @@
+.drop-down-menu__wrapper {
+  z-index: 100;
+  background-color: #3f3434;
+}
+#drop-down-menu {
+  color: #ab8a58;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+}
+#drop-down-menu li:hover {
+    background-color: #534545;
+    cursor: pointer;
+}
