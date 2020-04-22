@@ -3,6 +3,7 @@ import { navigate } from "gatsby"
 import ArtContainer from "./src/components/state/ArtContainer"
 
 import { AuthProvider } from "react-use-auth"
+
 export const wrapRootElement = ({ element }) => (
   <AuthProvider
     navigate={navigate}

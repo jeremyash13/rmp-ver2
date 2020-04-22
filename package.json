@@ -16,7 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "install-client-dependancies":"cd ./gatsby-site && npm i",
+    "install-client-dependancies": "cd ./gatsby-site && npm i",
     "build-prod": "cd ./gatsby-site && npm run build",
     "start-dev": "nodemon server.js"
   },

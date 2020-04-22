@@ -4,20 +4,27 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
+import "typeface-roboto";
 import React from "react"
 import PropTypes from "prop-types"
 
 import "./layout.css"
-import "../css/styles.css"
 import Navbar from "./Navbar"
-import { Footer } from "./Footer"
+import { jsx, css } from "@emotion/core"
+
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+const style = css`
+  background-color: var(--bg-off-white);
+  font-family: "Roboto";
+`
 
 const Layout = ({ children }) => {
   return (
     <>
       <Navbar className="main-nav" />
-      <main>{children}</main>
-      <Footer />
+      <main css={style}>{children}</main>
+      {/* <Footer /> */}
     </>
   )
 }
