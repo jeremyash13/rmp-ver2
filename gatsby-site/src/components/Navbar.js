@@ -15,7 +15,7 @@ const style = css`
   font-size: 14px;
   background-color: white;
   .logo__wrapper {
-    height: 75px;
+    width: 150px;
   }
   a {
     color: var(--text-light-gray);
