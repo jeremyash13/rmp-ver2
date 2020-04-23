@@ -1,8 +1,6 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Logo from "./Logo"
-import ResponsiveMenu from "react-responsive-navbar"
-import "../css/ResponsiveMenu.css"
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 // import CSS from "../css/Navbar.css"
@@ -19,35 +17,75 @@ const style = css`
   .logo__wrapper {
     height: 50px;
   }
-  .nav__link--logo {
-    height: 100%;
-  }
   a {
     color: var(--text-light-gray);
     text-decoration: none;
   }
-  ul {
+  .mobile-menu__ul {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 25px;
+    & li {
+      margin: 15px 0;
+      & a:hover {
+        color: var(--text-black);
+      }
+    }
+  }
+  .desktop-menu__ul {
     height: 100%;
+    font-size: .6rem;
+    font-family: Roboto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 25px;
+    & li {
+      margin: 0 5px;
+      & a:hover {
+        color: var(--text-black);
+      }
+    }
   }
-  svg {
-    height: 100%;
+  .menu-button {
+    position: absolute;
+    font-size: 45px;
+    transform: translate(-50%, -50%);
+    top: 35px;
+    left: 35px;
+    &:hover {
+      cursor: pointer;
+      color:red;
+    }
   }
+  @media(max-width: 600px) {
+    .menu-button: {
+      display: none;
+    }
+  }
+  @media(min-width: 800px) {
+    .desktop-menu__ul {
+      font-size: .8rem;
+    }
+  }
+  
 `
 export const Navbar = props => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth, window.innerWidth || 0))
+  window.addEventListener('resize', () => {
+    setVw(Math.max(document.documentElement.clientWidth, window.innerWidth || 0))
+  })
+
   return (
-    <ResponsiveMenu
-      menuOpenButton={<FaBars/>}
-      menuCloseButton={<FaTimes/>}
-      changeMenuOn="600px"
-      largeMenuClassName="large-menu"
-      smallMenuClassName="small-menu"
-      menu={
-        <ul className="main-nav__ul">
+    <nav css={style} className={props.className}>
+      <div className="menu-button" onClick={() => { setIsMenuOpen(!isMenuOpen) }}>{isMenuOpen ? ('×') : ('☰')}</div>
+      {isMenuOpen ? (
+        <ul className="mobile-menu__ul">
           <li className="nav__link--home">
             <Link to="/">HOME</Link>
           </li>
@@ -56,9 +94,6 @@ export const Navbar = props => {
           </li>
           <li className="nav__link--exclusive-artists">
             <Link to="/about/">EXCLUSIVE ARTISTS</Link>
-          </li>
-          <li className="nav__link--logo">
-            <Logo />
           </li>
           <li className="nav__link--framing">
             <Link to="/about/">FRAMING</Link>
@@ -70,34 +105,34 @@ export const Navbar = props => {
             <Link to="/contact/">ABOUT US</Link>
           </li>
         </ul>
-      }
-    />
+      ) : (
+          <ul className="desktop-menu__ul">
+            <li className="nav__link--home">
+              <Link to="/">HOME</Link>
+            </li>
+            <li className="nav__link--art">
+              <Link to="/art/">GALLERY</Link>
+            </li>
+            <li className="nav__link--exclusive-artists">
+              <Link to="/about/">EXCLUSIVE ARTISTS</Link>
+            </li>
+            <li className="nav__link--logo">
+              <Logo />
+            </li>
+            <li className="nav__link--framing">
+              <Link to="/about/">FRAMING</Link>
+            </li>
+            <li className="nav__link--contact">
+              <Link to="/contact/">CONTACT/SHIPPING</Link>
+            </li>
+            <li className="nav__link--about-us">
+              <Link to="/contact/">ABOUT US</Link>
+            </li>
+          </ul>
+        )}
+    </nav>
+
   )
 }
-// <nav css={style} className={props.className}>
-//   <ul className="main-nav__ul">
-//     <li className="nav__link--home">
-//       <Link to="/">HOME</Link>
-//     </li>
-//     <li className="nav__link--art">
-//       <Link to="/art/">GALLERY</Link>
-//     </li>
-//     <li className="nav__link--exclusive-artists">
-//       <Link to="/about/">EXCLUSIVE ARTISTS</Link>
-//     </li>
-//     <li className="nav__link--logo">
-//       <Logo />
-//     </li>
-//     <li className="nav__link--framing">
-//       <Link to="/about/">FRAMING</Link>
-//     </li>
-//     <li className="nav__link--contact">
-//       <Link to="/contact/">CONTACT/SHIPPING</Link>
-//     </li>
-//     <li className="nav__link--about-us">
-//       <Link to="/contact/">ABOUT US</Link>
-//     </li>
-//   </ul>
-// </nav>
 
 export default Navbar
