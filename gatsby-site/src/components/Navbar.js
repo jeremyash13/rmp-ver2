@@ -15,7 +15,7 @@ const style = css`
   font-size: 14px;
   background-color: white;
   .logo__wrapper {
-    height: 50px;
+    height: 75px;
   }
   a {
     color: var(--text-light-gray);
@@ -75,7 +75,7 @@ const style = css`
   }
 `
 export const Navbar = props => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(true)
   const [vw, setVw] = useState(
     Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
   )
