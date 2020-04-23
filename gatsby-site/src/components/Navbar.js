@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Logo from "./Logo"
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes } from "react-icons/fa"
 
 // import CSS from "../css/Navbar.css"
 
@@ -23,6 +23,7 @@ const style = css`
   }
   .mobile-menu__ul {
     height: 100vh;
+    font-family: roboto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -37,7 +38,7 @@ const style = css`
   }
   .desktop-menu__ul {
     height: 100%;
-    font-size: .6rem;
+    font-size: 0.6rem;
     font-family: Roboto;
     display: flex;
     flex-direction: row;
@@ -59,54 +60,35 @@ const style = css`
     left: 35px;
     &:hover {
       cursor: pointer;
-      color:red;
+      color: red;
     }
   }
-  @media(max-width: 600px) {
+  @media (max-width: 600px) {
     .menu-button: {
       display: none;
     }
   }
-  @media(min-width: 800px) {
+  @media (min-width: 800px) {
     .desktop-menu__ul {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
-  
 `
 export const Navbar = props => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [vw, setVw] = useState(Math.max(document.documentElement.clientWidth, window.innerWidth || 0))
-  window.addEventListener('resize', () => {
-    setVw(Math.max(document.documentElement.clientWidth, window.innerWidth || 0))
+  const [vw, setVw] = useState(
+    Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+  )
+  window.addEventListener("resize", () => {
+    setVw(
+      Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+    )
   })
-
-  return (
-    <nav css={style} className={props.className}>
-      <div className="menu-button" onClick={() => { setIsMenuOpen(!isMenuOpen) }}>{isMenuOpen ? ('×') : ('☰')}</div>
-      {isMenuOpen ? (
-        <ul className="mobile-menu__ul">
-          <li className="nav__link--home">
-            <Link to="/">HOME</Link>
-          </li>
-          <li className="nav__link--art">
-            <Link to="/art/">GALLERY</Link>
-          </li>
-          <li className="nav__link--exclusive-artists">
-            <Link to="/about/">EXCLUSIVE ARTISTS</Link>
-          </li>
-          <li className="nav__link--framing">
-            <Link to="/about/">FRAMING</Link>
-          </li>
-          <li className="nav__link--contact">
-            <Link to="/contact/">CONTACT/SHIPPING</Link>
-          </li>
-          <li className="nav__link--about-us">
-            <Link to="/contact/">ABOUT US</Link>
-          </li>
-        </ul>
-      ) : (
-          <ul className="desktop-menu__ul">
+  const Menu = () => {
+    if (vw < 601) {
+      return (
+        <>
+          <ul className="mobile-menu__ul">
             <li className="nav__link--home">
               <Link to="/">HOME</Link>
             </li>
@@ -115,9 +97,6 @@ export const Navbar = props => {
             </li>
             <li className="nav__link--exclusive-artists">
               <Link to="/about/">EXCLUSIVE ARTISTS</Link>
-            </li>
-            <li className="nav__link--logo">
-              <Logo />
             </li>
             <li className="nav__link--framing">
               <Link to="/about/">FRAMING</Link>
@@ -129,9 +108,52 @@ export const Navbar = props => {
               <Link to="/contact/">ABOUT US</Link>
             </li>
           </ul>
-        )}
-    </nav>
+        </>
+      )
+    } else if (vw > 599) {
+      setIsMenuOpen(true)
+      return (
+        <ul className="desktop-menu__ul">
+          <li className="nav__link--home">
+            <Link to="/">HOME</Link>
+          </li>
+          <li className="nav__link--art">
+            <Link to="/art/">GALLERY</Link>
+          </li>
+          <li className="nav__link--exclusive-artists">
+            <Link to="/about/">EXCLUSIVE ARTISTS</Link>
+          </li>
+          <li className="nav__link--logo">
+            <Logo />
+          </li>
+          <li className="nav__link--framing">
+            <Link to="/about/">FRAMING</Link>
+          </li>
+          <li className="nav__link--contact">
+            <Link to="/contact/">CONTACT/SHIPPING</Link>
+          </li>
+          <li className="nav__link--about-us">
+            <Link to="/contact/">ABOUT US</Link>
+          </li>
+        </ul>
+      )
+    }
+  }
 
+  return (
+    <nav css={style} className={props.className}>
+      {vw < 601 && (
+        <div
+          className="menu-button"
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen)
+          }}
+        >
+          {isMenuOpen ? "×" : "☰"}
+        </div>
+      )}
+      {isMenuOpen ? <Menu /> : null}
+    </nav>
   )
 }
 
