@@ -118,7 +118,7 @@ export const Navbar = props => {
             <Link to="/">HOME</Link>
           </li>
           <li className="nav__link--art">
-            <Link to="/art/">GALLERY</Link>
+            <Link to="/gallery/">GALLERY</Link>
           </li>
           <li className="nav__link--exclusive-artists">
             <Link to="/about/">EXCLUSIVE ARTISTS</Link>
