@@ -8,19 +8,25 @@ export const DropDownMenuSortBy = props => {
   const [value, setValue] = useState("Sort By: Recently Added")
   const style = css`
     width: 100%;
-    height: auto;
-    background-color: #eae9e9;
+    height: 43px;
     font-family: Roboto;
-    font-size: 0.8rem;
     font-weight: 300;
     color: #393939;
+    .mySelect {
+      font-size: 1rem;
+    }
+    div {
+      background-color: #eae9e9;
+    }
   `
 
   return (
     <Rfdd
+      selectClassName="mySelect"
       css={style}
       value={value}
       onChange={optionValue => setValue("Sort By: " + optionValue)}
+      listStyle="max-height: 200px"
     >
       <RfddOption value="Recently Added">Recently Added</RfddOption>
       <RfddOption value="Artist">Artist</RfddOption>

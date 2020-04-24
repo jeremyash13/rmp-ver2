@@ -10,32 +10,27 @@ import { DropDownMenuSortBy } from "../components/DropDownMenuSortBy"
 import { css, jsx } from "@emotion/core"
 import { DropDownMenuType } from "../components/DropDownMenuType"
 import { DropDownMenuArtist } from "../components/DropDownMenuArtist"
+import ArtSearch from "../components/ArtSearch"
 
 const artPage = () => {
-  const style = css``
+  const style = css`
+    @media (min-width: 600px) {
+      .query-ui {
+        display:flex;
+      }
+    }
+  `
 
   return (
     <Layout>
       <SEO title="Gallery" />
-      <div className="art-page__wrapper">
-        <DropDownMenuSortBy />
-        <DropDownMenuType />
-        <DropDownMenuArtist />
-
-        {/* 
-        <Dropdown
-          options={[
-            "All",
-            "Clark Kelley Price",
-            "Dallen Lambson",
-            "Hayden Lambson",
-            "Manuel Mansanarez",
-            "Mitchell Mansanarez",
-            "Travis Sylvester",
-          ]}
-          value={"Artist:"}
-          placeholder="Artist: All"
-        /> */}
+      <div css={style} className="art-page__wrapper">
+        <div className="query-ui">
+          <ArtSearch />
+          <DropDownMenuSortBy />
+          <DropDownMenuType />
+          <DropDownMenuArtist />
+        </div>
         {/* <ArtNavigation /> */}
         {/* <ArtView /> */}
       </div>

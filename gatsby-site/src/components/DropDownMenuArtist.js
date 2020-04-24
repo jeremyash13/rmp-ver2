@@ -8,19 +8,25 @@ export const DropDownMenuArtist = props => {
   const [value, setValue] = useState("Artist: ALL")
   const style = css`
     width: 100%;
-    height: auto;
-    background-color: #eae9e9;
+    height: 43px;
     font-family: Roboto;
-    font-size: 0.8rem;
     font-weight: 300;
     color: #393939;
+    .mySelect {
+      font-size: 1rem;
+    }
+    div {
+      background-color: #eae9e9;
+    }
   `
 
   return (
     <Rfdd
+      selectClassName="mySelect"
       css={style}
       value={value}
       onChange={optionValue => setValue("Artist: " + optionValue)}
+      listStyle="max-height: 200px"
     >
       <RfddOption value="Clark Kelley Price">Clark Kelley Price</RfddOption>
       <RfddOption value="Dallen Lambson">Dallen Lambson</RfddOption>

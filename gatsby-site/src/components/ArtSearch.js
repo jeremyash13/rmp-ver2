@@ -1,33 +1,62 @@
 import React, { useRef } from "react"
-import CSS from "../css/ArtSearch.css"
+
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core"
 
 export default function ArtSearch(props) {
   const inputRef = useRef()
+  const style = css`
+    font-family: Roboto;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #393939;
+    max-width: 500px;
+    position: relative;
+    border: none;
+    input {
+      width: 100%;
+      padding-left: 40px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #eae9e9;
+      border: none;
+    }
+    svg {
+      width: 15px;
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      left: 15px;
+    }
+  `
   return (
-    <div className={props.className}>
+    <div css={style} className={props.className}>
       <input
         className="art-navigation__input--search"
         type="text"
         ref={inputRef}
-        placeholder="Search..."
+        placeholder="Search Item No, Title, Artist, Keyword"
       ></input>
       <svg
-        id="search-icon"
-        viewBox="0 0 14 15"
+        width="23"
+        height="24"
+        viewBox="0 0 23 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <line
-          x1="6.1869"
-          y1="8.52022"
-          x2="0.353563"
-          y2="14.3536"
-          stroke="#AB8A58"
+          y1="-1.5"
+          x2="11.1409"
+          y2="-1.5"
+          transform="matrix(0.702103 0.712076 -0.702103 0.712076 12.6036 15.109)"
+          stroke="#393939"
+          stroke-width="3"
         />
-        <circle cx="9.04168" cy="4.95833" r="4.45833" stroke="#AB8A58" />
         <path
-          d="M7.15493 3.67777C7.36984 3.03535 8.27296 1.93605 10.1661 2.67822"
-          stroke="#AB8A58"
+          d="M15.7729 9.10545C15.7729 13.0663 12.6106 16.2531 8.73937 16.2531C4.86813 16.2531 1.70587 13.0663 1.70587 9.10545C1.70587 5.14459 4.86813 1.95784 8.73937 1.95784C12.6106 1.95784 15.7729 5.14459 15.7729 9.10545Z"
+          stroke="#393939"
+          stroke-width="2"
         />
       </svg>
     </div>

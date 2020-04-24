@@ -1,6 +1,7 @@
 :root {
   --text-light-gray: #848484;
   --bg-off-white: #f5f5f5;
+  --break-small: 600px;
 }
 
 html {
