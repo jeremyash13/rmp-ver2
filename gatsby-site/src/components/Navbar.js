@@ -10,7 +10,6 @@ import { jsx, css } from "@emotion/core"
 /** @jsx jsx */
 
 const style = css`
-  height: 100px;
   margin-top: 0.5rem;
   font-size: 14px;
   background-color: white;
@@ -37,7 +36,7 @@ const style = css`
     }
   }
   .desktop-menu__ul {
-    height: 100%;
+    height: 100px;
     font-size: 0.6rem;
     font-family: Roboto;
     display: flex;
@@ -93,7 +92,7 @@ export const Navbar = props => {
               <Link to="/">HOME</Link>
             </li>
             <li className="nav__link--art">
-              <Link to="/art/">GALLERY</Link>
+              <Link to="/gallery/">GALLERY</Link>
             </li>
             <li className="nav__link--exclusive-artists">
               <Link to="/about/">EXCLUSIVE ARTISTS</Link>

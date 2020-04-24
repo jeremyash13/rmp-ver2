@@ -12,7 +12,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <ImageCarousel />
     <CTA>
-      <Link to="/art/">View Our Collection</Link>
+      <Link to="/gallery/">View Our Collection</Link>
     </CTA>
   </Layout>
 )

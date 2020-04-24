@@ -16,7 +16,7 @@ const artPage = () => {
 
   return (
     <Layout>
-      <SEO title="gallery" />
+      <SEO title="Gallery" />
       <div className="art-page__wrapper">
         <DropDownMenuSortBy />
         <DropDownMenuType />
@@ -36,7 +36,6 @@ const artPage = () => {
           value={"Artist:"}
           placeholder="Artist: All"
         /> */}
-        {/* <FilterSortBy /> */}
         {/* <ArtNavigation /> */}
         {/* <ArtView /> */}
       </div>
