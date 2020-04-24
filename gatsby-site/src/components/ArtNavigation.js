@@ -1,25 +1,22 @@
 import React from "react"
 import InputCheckbox from "./InputCheckbox"
-import ProductFilter from "./ProductFilter"
-import CSS from "../css/ArtNavigation.css"
 import ArtSearch from "./ArtSearch"
-import Logo from "./Logo"
 
 import ArtContainer from "./state/ArtContainer"
+
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 
 export default function ArtNavigation() {
   const ArtState = ArtContainer.useContainer()
 
+  const style = css`
+  
+  `
   return (
     <div className="art-navigation__wrapper">
-      <Logo />
       <ArtSearch className="art-navigation__wrapper--search" />
       <div className="art-navigation__wrapper--filters">
-        <ProductFilter
-          text="Type"
-          expandByDefault={true}
-          className="art-navigation__list--type"
-        >
           <InputCheckbox
             text="All"
             name="type-all"
@@ -40,13 +37,7 @@ export default function ArtNavigation() {
             checked={ArtState.type.standard}
             name="type-standard"
           />
-        </ProductFilter>
 
-        <ProductFilter
-          text="Categories"
-          expandByDefault={true}
-          className="art-navigation__list--categories"
-        >
           <InputCheckbox
             text="All"
             checked={ArtState.category.all}
@@ -72,13 +63,7 @@ export default function ArtNavigation() {
             checked={ArtState.category.wildlife}
             name="category-wildlife"
           />
-        </ProductFilter>
 
-        <ProductFilter
-          text="Sort By"
-          expandByDefault={true}
-          className="art-navigation__list--sort-by"
-        >
           <InputCheckbox
             text="Recently Added"
             checked={ArtState.sortBy.recentlyAdded}
@@ -89,7 +74,6 @@ export default function ArtNavigation() {
             checked={ArtState.sortBy.az}
             name="sort-by-a-z"
           />
-        </ProductFilter>
       </div>
     </div>
   )

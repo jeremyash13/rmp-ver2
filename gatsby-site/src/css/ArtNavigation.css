@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap');
-
 .art-navigation__wrapper {
-    font-family: 'Sorts Mill Goudy', serif;
-    letter-spacing: .05rem;
     font-size: .7rem;
     user-select: none;
     width: 250px;
@@ -72,15 +68,4 @@
 .art-navigation__wrapper input[type="checkbox"]:checked ~ .customCheckbox::after {
     /* set display state of checkmark when checked = true */
     display: block;
-}
-
-.customCheckbox {
-    /* checkbox styling */
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    top: 7px;
-    left: -15px;
-    border: solid 1px #ab8a58;
-    border-radius: 2px;
 }
