@@ -14,6 +14,11 @@ import ArtView from "../components/ArtView"
 
 const artPage = () => {
   const style = css`
+  .query-ui {
+    & ul div {
+      font-size: 1rem;
+    }
+  }
     .drop-down-wrapper {
       width: 100%;
       font-family: Roboto;
