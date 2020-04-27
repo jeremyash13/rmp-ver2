@@ -28,7 +28,8 @@ export default function QuickView(props) {
       position: absolute;
       max-width: 1200px;
       width: 100%;
-      height: 800px;
+      height: 100%;
+      max-height: 800px;
       z-index: 100;
       background-color: white;
       transform: translate(-50%, -50%);
@@ -40,11 +41,13 @@ export default function QuickView(props) {
     }
     .quick-view-details {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       margin: auto 0;
     }
     .quick-view-img-wrapper {
       margin: auto;
+      margin-bottom: 25px;
+      max-width: 400px;
     }
     .info-wrapper {
       margin: auto;
@@ -54,16 +57,17 @@ export default function QuickView(props) {
       flex-direction: column;
     }
     .title {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
     .by,
     .artist {
-      font-size: .9rem;
+      font-size: .8rem;
     }
     .options-wrapper {
       display: flex;
       flex-direction: column;
       color: var(--text-dark);
+      font-size: .8rem;
     }
     .option {
       display: flex;
@@ -84,6 +88,7 @@ export default function QuickView(props) {
       margin-bottom: 25px;
     }
     .quick-view-img {
+      width: 100%;
       box-shadow: 0 40px 20px -30px rgba(0, 0, 0, 0.8);
     }
     .quick-view-close-wrapper {
@@ -96,6 +101,12 @@ export default function QuickView(props) {
       }
       &:hover svg path {
         stroke: var(--text-dark);
+      }
+    }
+
+    @media (min-width: 600px) {
+      .quick-view-details {
+        flex-direction: row;
       }
     }
   `

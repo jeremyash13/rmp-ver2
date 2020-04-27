@@ -64,8 +64,9 @@ export default function ArtView() {
   const style = css`
     padding: 35px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(100px, 500px));
+    grid-gap: 25px;
     .art-view-wrapper {
       position: relative;
     }
