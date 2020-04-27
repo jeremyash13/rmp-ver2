@@ -30,7 +30,9 @@ const artPage = () => {
     }
     .search-wrapper {
       font-size: 1rem;
-      border: solid 1px rgba(0,0,0,.1);
+      & input:focus {
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+      }
       & input::placeholder {
         font-style: italic;
         font-weight: 200;
