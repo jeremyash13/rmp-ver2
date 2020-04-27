@@ -17,7 +17,7 @@ const style = css`
     width: 100%;
   }
   .dark-overlay {
-    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.75));
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
     position: absolute;
     width: 100%;
     height: 100%;
@@ -38,10 +38,10 @@ const style = css`
     }
   }
   .active {
-    background-color: red;
+    background-color: white;
   }
   .inactive {
-    background-color: #c4c4c4;
+    background-color: var(--text-light-gray);
   }
   .indicators {
     position: absolute;
@@ -119,9 +119,9 @@ const slideThree = () => {
           Rocky Mountain Publishing has been a great asset to use here at Ashley
           Furniture HomeStore in Idaho Falls. When the trend of gallery wrapped
           art started ramping up we worked closely with Rocky Mountain
-          Publishing to have them print us some of their art on canvas. Mitch
-          was willing to take the risk by investing in new equipment to print on
-          the canvas, and it has been phenomenal for our art sales especially
+          Publishing to have them print us some of their art on canvas. They
+          were willing to take the risk by investing in new equipment to print
+          on the canvas, and it has been phenomenal for our art sales especially
           the larger 36x72 prints as well as the 29x72's. We highly recommend
           Rocky Mountain Publishing for their excellent quality and service.
         </div>

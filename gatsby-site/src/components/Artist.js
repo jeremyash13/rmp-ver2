@@ -9,6 +9,7 @@ export default function Artist(props) {
     color: var(--text-black);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     img {
       width: 100%;
     }
@@ -45,13 +46,13 @@ export default function Artist(props) {
       z-index: 10;
       transition: background-color 250ms ease-out;
     }
-    .artist-name {
+    .artist-footer {
+      text-align: center;
       margin: 0 auto;
     }
     .artist-category {
       font-weight: 300;
       font-style: italic;
-      margin: 0 auto;
     }
   `
   return (
@@ -63,8 +64,10 @@ export default function Artist(props) {
           <img src={props.img} alt={`Photo of ${props.name}`}></img>
         </Link>
       </div>
-      <div className="artist-name">{props.name}</div>
-      <div className="artist-category">{props.category}</div>
+      <div className="artist-footer">
+        <div className="artist-name">{props.name}</div>
+        <div className="artist-category">{props.category}</div>
+      </div>
     </div>
   )
 }
