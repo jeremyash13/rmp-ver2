@@ -115,11 +115,13 @@ export default function ArtView() {
       margin-right: auto;
     }
     .by {
+      font-weight: 300;
       color: var(--text-light-gray);
       margin-left: auto;
       margin-right: auto;
     }
     .artist {
+      font-weight: 300;
       color: var(--text-light-gray);
       margin-left: auto;
       margin-right: auto;

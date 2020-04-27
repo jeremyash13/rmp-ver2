@@ -17,7 +17,7 @@ import Artist from "../components/Artist"
 
 const style = css`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(100px, 500px));
   grid-gap: 25px;
 `

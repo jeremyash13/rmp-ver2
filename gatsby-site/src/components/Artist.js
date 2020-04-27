@@ -32,6 +32,7 @@ export default function Artist(props) {
       position: absolute;
       background-color: white;
       transform: translate(-50%, -50%);
+      font-weight: 300;
       top: 50%;
       left: 50%;
       padding: 10px;

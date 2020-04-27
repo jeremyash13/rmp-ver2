@@ -6,7 +6,6 @@ import { FaBars, FaTimes } from "react-icons/fa"
 // import CSS from "../css/Navbar.css"
 
 import { jsx, css } from "@emotion/core"
-// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 
 const style = css`

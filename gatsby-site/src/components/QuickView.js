@@ -26,10 +26,8 @@ export default function QuickView(props) {
     right: 0;
     .quick-view-inner {
       position: absolute;
-      max-width: 1200px;
       width: 100%;
       height: 100%;
-      max-height: 800px;
       z-index: 100;
       background-color: white;
       transform: translate(-50%, -50%);
@@ -42,7 +40,8 @@ export default function QuickView(props) {
     .quick-view-details {
       display: flex;
       flex-direction: column;
-      margin: auto 0;
+      margin: auto;
+      max-width: 400px;
     }
     .quick-view-img-wrapper {
       margin: auto;
@@ -51,6 +50,7 @@ export default function QuickView(props) {
     }
     .info-wrapper {
       margin: auto;
+      width: 70%;
     }
     .heading-wrapper {
       display: flex;
@@ -61,13 +61,14 @@ export default function QuickView(props) {
     }
     .by,
     .artist {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
     .options-wrapper {
       display: flex;
       flex-direction: column;
       color: var(--text-dark);
-      font-size: .8rem;
+      font-size: 0.8rem;
+      width: 100%;
     }
     .option {
       display: flex;
@@ -107,6 +108,15 @@ export default function QuickView(props) {
     @media (min-width: 600px) {
       .quick-view-details {
         flex-direction: row;
+        ${'' /* width: 80%; */}
+        max-width: 80%;
+      }
+      .quick-view-inner {
+        max-width: 800px;
+        max-height: 550px;
+      }
+      .quick-view-img-wrapper {
+        margin-right: 25px;
       }
     }
   `
