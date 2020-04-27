@@ -119,19 +119,19 @@ export const Navbar = props => {
             <Link to="/gallery/">GALLERY</Link>
           </li>
           <li className="nav__link--exclusive-artists">
-            <Link to="/about/">EXCLUSIVE ARTISTS</Link>
+            <Link to="/artists/">EXCLUSIVE ARTISTS</Link>
           </li>
           <li className="nav__link--logo">
             <Logo />
           </li>
           <li className="nav__link--framing">
-            <Link to="/about/">FRAMING</Link>
+            <Link to="/frames/">FRAMING</Link>
           </li>
           <li className="nav__link--contact">
             <Link to="/contact/">CONTACT/SHIPPING</Link>
           </li>
           <li className="nav__link--about-us">
-            <Link to="/contact/">ABOUT US</Link>
+            <Link to="/about/">ABOUT US</Link>
           </li>
         </ul>
       )
