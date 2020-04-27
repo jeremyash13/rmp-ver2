@@ -76,8 +76,10 @@ export default function ArtView() {
     }
     .img-hover-element {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      top: 0;
+      bottom: 7px;
+      left: 0;
+      right: 0;
       transition: background-color 350ms ease-out;
       &:hover {
         cursor: pointer;
