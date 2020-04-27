@@ -22,6 +22,16 @@ const useArtGlobal = () => {
     recentlyAdded: true,
     az: false,
   })
+  const [artist, setArtist] = useState({
+    // init state
+    all: true,
+    clarkKelleyPrice: false,
+    dallenLambson: false,
+    haydenLambson: false,
+    manuelMansanarez: false,
+    mitchellMansanarez: false,
+    travisSylvester: false,
+  })
   const [fetchedArt, setFetchedArt] = useState([])
   const [showingQuickView, setShowingQuickView] = useState(false)
 
@@ -88,7 +98,7 @@ const useArtGlobal = () => {
         break
     }
   }
-  return { type, category, sortBy, handleInput, fetchedArt, setFetchedArt, showingQuickView, setShowingQuickView}
+  return { type, category, sortBy, artist, handleInput, fetchedArt, setFetchedArt, showingQuickView, setShowingQuickView}
 }
 
 const ArtContainer = createContainer(useArtGlobal)

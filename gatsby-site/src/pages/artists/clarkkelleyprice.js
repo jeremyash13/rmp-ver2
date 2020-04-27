@@ -27,7 +27,7 @@ const style = css`
   }
 
   & .body-wrapper {
-    max-width: 1248px;
+    max-width: 1268px;
     margin: 0 auto;
   }
 `

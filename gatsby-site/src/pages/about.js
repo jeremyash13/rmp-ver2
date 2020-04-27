@@ -2,21 +2,43 @@ import React from "react"
 import { Link } from "gatsby"
 import MitchKellyPhoto from "../images/About2.jpg"
 
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+const style = css`
+  padding: 25px;
+  max-width: 1268px;
+  margin: 0 auto;
+  color: var(--text-black);
+  font-weight: 300;
+  letter-spacing: 0.075rem;
+  line-height: 1.75rem;
+  & img {
+    box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (min-width: 600px) {
+    & .img-wrapper {
+      float: right;
+      margin-right: 50px;
+    }
+  }
+`
 
 const aboutPage = () => (
   <Layout>
     <SEO title="About Us" />
-    <div className="about-us-page__wrapper">
+    <div css={style} className="about-page-wrapper">
+      <div className="img-wrapper">
+        <img src={MitchKellyPhoto}></img>
+      </div>
       <p>
         Rocky Mountain Publishing is located in Blackfoot, Idaho and was started
         by wildlife artist Mitch Mansanarez and his wife, Kelly, in 1994.
       </p>
-      <div className="main__wrapper--img">
-        <img className="main__img--MitchKelly" src={MitchKellyPhoto}></img>
-        <span className="img__span--caption">Mitch and Kelly Mansanarez</span>
-      </div>
       <p>
         We publish several outstanding artists. Many of which are exclusive to
         our company such as Clark Kelley Price, Hayden Lambson, Greg Beecham,
