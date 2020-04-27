@@ -57,15 +57,13 @@ const style = css`
     transform: translate(-50%, -50%);
     top: 35px;
     left: 35px;
+    z-index: 1;
     &:hover {
       cursor: pointer;
       color: red;
     }
   }
-  @media (max-width: 600px) {
-    .menu-button: {
-      display: none;
-    }
+  @media (min-width: 600px) {
   }
   @media (min-width: 800px) {
     .desktop-menu__ul {
@@ -109,7 +107,8 @@ export const Navbar = props => {
           </ul>
         </>
       )
-    } else if (vw > 599) {
+    }
+    if (vw > 599) {
       setIsMenuOpen(true)
       return (
         <ul className="desktop-menu__ul">

@@ -23,6 +23,7 @@ const useArtGlobal = () => {
     az: false,
   })
   const [fetchedArt, setFetchedArt] = useState([])
+  const [showingQuickView, setShowingQuickView] = useState(false)
 
   const handleInput = e => {
     // decides which is the appropriate state to update based off what list item was clicked (event bubbling)
@@ -87,7 +88,7 @@ const useArtGlobal = () => {
         break
     }
   }
-  return { type, category, sortBy, handleInput, fetchedArt, setFetchedArt}
+  return { type, category, sortBy, handleInput, fetchedArt, setFetchedArt, showingQuickView, setShowingQuickView}
 }
 
 const ArtContainer = createContainer(useArtGlobal)

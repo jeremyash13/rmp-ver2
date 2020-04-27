@@ -7,21 +7,15 @@ import { css, jsx } from "@emotion/core"
 export const DropDownMenuSortBy = props => {
   const [value, setValue] = useState("Sort By: Recently Added")
   const style = css`
-    width: 100%;
-    height: 43px;
-    font-family: Roboto;
-    font-weight: 300;
-    color: #393939;
-    .mySelect {
-      font-size: 1rem;
-    }
-    div {
-      background-color: #eae9e9;
+    
+    @media (min-width: 600px) {
+      margin-left: auto;
     }
   `
 
   return (
     <Rfdd
+      className={props.className}
       selectClassName="mySelect"
       css={style}
       value={value}

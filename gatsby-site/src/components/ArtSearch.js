@@ -8,12 +8,15 @@ export default function ArtSearch(props) {
   const inputRef = useRef()
   const style = css`
     font-family: Roboto;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 1rem;
     color: #393939;
-    max-width: 500px;
+    width: 100%;
     position: relative;
     border: none;
+    @media (min-width: 600px) {
+      
+    }
     input {
       width: 100%;
       padding-left: 40px;

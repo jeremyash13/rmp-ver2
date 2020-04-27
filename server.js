@@ -24,7 +24,7 @@ client.connect(err => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
-  app.post("/art", async (req, res) => {
+  app.post("/gallery", async (req, res) => {
     console.log(req.body);
     try {
       const artCollection = client.db("rmp").collection("art");

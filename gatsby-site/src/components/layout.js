@@ -5,6 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 import "typeface-roboto";
+import "typeface-sorts-mill-goudy";
 import React from "react"
 import PropTypes from "prop-types"
 
