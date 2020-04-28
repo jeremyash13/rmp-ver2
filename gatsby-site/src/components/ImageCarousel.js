@@ -8,7 +8,8 @@ import PlaceOfRest from "../images/place of rest.jpg"
 
 const style = css`
   display: flex;
-  max-height: 80vh;
+  max-height: calc(100vh - 200px);
+  ${'' /* max-height: 80vh; */}
   position: relative;
   img {
     margin: 0 auto;
