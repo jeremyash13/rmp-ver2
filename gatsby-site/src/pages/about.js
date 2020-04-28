@@ -24,6 +24,7 @@ const style = css`
     & .img-wrapper {
       float: right;
       margin-right: 50px;
+      margin-left: 50px;
     }
   }
 `
@@ -36,28 +37,23 @@ const aboutPage = () => (
         <img src={MitchKellyPhoto}></img>
       </div>
       <p>
-        Rocky Mountain Publishing is located in Blackfoot, Idaho and was started
-        by wildlife artist Mitch Mansanarez and his wife, Kelly, in 1994.
-      </p>
-      <p>
-        We publish several outstanding artists. Many of which are exclusive to
-        our company such as Clark Kelley Price, Hayden Lambson, Greg Beecham,
-        Manuel Mansanarez, Mitchell Mansanarez, and Dan Ballard. With our
-        exclusive artists and beautiful mats and frames, we are one of the
+        We currently publish the works of many outstanding artists. Many of
+        which are exclusive to our company such as Clark Kelley Price, Hayden
+        Lambson, Dallen Lambson, Manuel Mansanarez, Mitchell Mansanarez, Dan
+        Ballard and Travis Sylvester. Due to our nationally renowned team of
+        exclusive artists and beautiful framing options, we are one of the
         strongest suppliers of Western, Wildlife and Photography art in the
         industry.
       </p>
       <p>
-        To compliment our Standard Frame and Mat Line, we have expanded into the
-        furniture industry’s home and wall décor therefore adding two new frame
-        lines; Décor and Excel. With the higher quality and boldness of these
-        product lines, we have established ourselves as a strong competitor in
-        the furniture industry. With the addition of our on site Giclee printer
-        we are able to offer beautiful, long lasting canvas as well as paper
-        images.
+        We currently have 3 large format printers that allow us to keep our
+        entire production process in house. From printing, to framing, to
+        assembly it all happens in our Idaho Warehouse. This allows us to
+        control the quality of every print that leaves the door and ensures that
+        we can offer gallery quality artwork for production prices.
       </p>
       <p>
-        With our wide range of artists and complete selection of art styles we
+        With our wide range of artists and complete selection of art styles, we
         offer our customers extensive choices which allows us to meet your
         individual needs. However, if there is an image you like but do not see
         as you browse this site, please call us and we can help.

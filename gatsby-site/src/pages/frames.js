@@ -125,6 +125,8 @@ const style = css`
   padding: 25px;
   max-width: 1268px;
   margin: 0 auto;
+  font-family: Roboto;
+  color: var(--text-black);
 
   & h1 {
     font-size: 1.2rem;
@@ -201,8 +203,8 @@ const FramesPage = () => (
         <p>
           Our Décor line is designed to provide an elegant art piece that will
           enhance any room. Our Décor line offers many unique ornate frame
-          choices. Our décor line consists of polystyrene moldings that have a
-          4” profile. All frame corners are both glued and v-nailed to ensure
+          choices. Our décor line consists of the polystyrene moldings that have
+          a 4” profile. All frame corners are both glued and v-nailed to ensure
           durability. All artwork comes with hanging system installed.
         </p>
         <div className="frames">

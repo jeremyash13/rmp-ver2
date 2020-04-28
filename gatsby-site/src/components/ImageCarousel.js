@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react"
 import { jsx, css } from "@emotion/core"
-import SunriseSerenity from "../images/sunrise-serenity.jpg"
-import BoardMeeting from "../images/board meeting.jpg"
-import PlaceOfRest from "../images/place of rest.jpg"
+import SunriseSerenity from "../images/webp/sunrise-serenity.webp"
+import BoardMeeting from "../images/webp/board meeting.webp"
+import PlaceOfRest from "../images/webp/place of rest.webp"
 
 /** @jsx jsx */
 
 const style = css`
   display: flex;
   max-height: calc(100vh - 200px);
-  ${'' /* max-height: 80vh; */}
   position: relative;
   img {
     margin: 0 auto;

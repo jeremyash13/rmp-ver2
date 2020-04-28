@@ -15,7 +15,6 @@ export default function QuickView(props) {
       return item.type
     }
   }
-  console.log(item)
   const style = css`
     position: fixed;
     background-color: rgba(0, 0, 0, 0.5);
@@ -124,6 +123,13 @@ export default function QuickView(props) {
         flex-direction: row;
         max-height: 80%;
         max-width: 80%;
+      }
+      .info-wrapper {
+        margin: auto;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        height: 200px;
       }
     }
   `
