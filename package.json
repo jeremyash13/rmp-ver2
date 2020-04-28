@@ -18,7 +18,8 @@
     "start": "node server.js",
     "install-client-dependancies": "cd ./gatsby-site && npm i",
     "build-prod": "cd ./gatsby-site && npm run build",
-    "start-dev": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "cd ./gatsby-site && gatsby develop"
   },
   "author": "",
   "license": "ISC"

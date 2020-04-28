@@ -65,7 +65,7 @@ export default function ArtView() {
     padding: 35px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(100px, 600px));
+    ${'' /* grid-template-rows: repeat(auto-fit, minmax(100px, 600px)); */}
     grid-gap: 25px;
     .art-view-wrapper {
       position: relative;
@@ -133,7 +133,7 @@ export default function ArtView() {
     }
 
     @media (min-width: 600px) {
-      grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       .img-wrapper {
         max-width: 600px;
       }

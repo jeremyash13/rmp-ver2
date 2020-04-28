@@ -26,6 +26,7 @@ export default function QuickView(props) {
     right: 0;
     .quick-view-inner {
       position: absolute;
+      padding-top: 25px;
       width: 100%;
       height: 100%;
       z-index: 100;
@@ -108,18 +109,23 @@ export default function QuickView(props) {
     }
 
     @media (min-width: 600px) {
-      .quick-view-details {
-        flex-direction: row;
-        ${'' /* width: 80%; */}
-        max-width: 80%;
-      }
       .quick-view-inner {
-        max-width: 800px;
-        max-height: 550px;
+        max-width: 1000px;
+        max-height: 600px;
       }
       .quick-view-img-wrapper {
         margin-right: 25px;
+        width: 100%;
+        max-width: initial;
       }
+    }
+    @media (min-width: 794px) {
+      .quick-view-details {
+        flex-direction: row;
+        max-height: 80%;
+        max-width: 80%;
+      }
+
     }
   `
   return (
