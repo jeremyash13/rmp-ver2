@@ -55,6 +55,7 @@ export default function QuickView(props) {
     .heading-wrapper {
       display: flex;
       flex-direction: column;
+      text-align: center;
     }
     .title {
       font-size: 1.5rem;
@@ -81,6 +82,7 @@ export default function QuickView(props) {
     }
     .type-age-wrapper {
       color: var(--text-dark);
+      font-size: .8rem;
       display: flex;
       flex-direction: row;
       justify-content: space-between;

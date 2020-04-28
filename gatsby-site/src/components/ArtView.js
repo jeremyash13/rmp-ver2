@@ -64,8 +64,8 @@ export default function ArtView() {
   const style = css`
     padding: 35px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(100px, 500px));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(100px, 600px));
     grid-gap: 25px;
     .art-view-wrapper {
       position: relative;
@@ -73,6 +73,7 @@ export default function ArtView() {
     .art-entry {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
     .img-hover-element {
       position: absolute;
@@ -108,32 +109,33 @@ export default function ArtView() {
     .img {
       box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.8);
     }
+    .art-view__img-details {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .title {
       font-family: Sorts Mill Goudy;
       font-size: 1.5rem;
       text-transform: capitalize;
       color: var(--text-dark);
-      margin-left: auto;
-      margin-right: auto;
     }
     .by {
       font-weight: 300;
       color: var(--text-light-gray);
-      margin-left: auto;
-      margin-right: auto;
     }
     .artist {
       font-weight: 300;
       color: var(--text-light-gray);
-      margin-left: auto;
-      margin-right: auto;
       text-transform: capitalize;
-      margin-bottom: 25px;
     }
 
     @media (min-width: 600px) {
+      grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
       .img-wrapper {
-        max-width: 400px;
+        max-width: 600px;
       }
     }
   `
@@ -164,9 +166,11 @@ export default function ArtView() {
               </div>
               <img src={item.src} className="img"></img>
             </div>
-            <span className="title">{item.title}</span>
-            <span className="by">by</span>
-            <span className="artist">{item.artist}</span>
+            <div className="art-view__img-details">
+              <span className="title">{item.title}</span>
+              <span className="by">by</span>
+              <span className="artist">{item.artist}</span>
+            </div>
           </div>
         )
       })}

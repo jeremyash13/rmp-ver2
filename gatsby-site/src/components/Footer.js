@@ -8,12 +8,13 @@ import InstagramLogo from "./InstagramLogo"
 export const Footer = () => {
   const style = css`
     .footer-wrapper {
-      padding: 0 25px;
+      padding: 50px 50px;
     }
     ul {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
     }
 
     li {

@@ -8,7 +8,7 @@ import PlaceOfRest from "../images/place of rest.jpg"
 
 const style = css`
   display: flex;
-  height: 500px;
+  max-height: 80vh;
   position: relative;
   img {
     margin: 0 auto;
@@ -32,7 +32,7 @@ const style = css`
     color: white;
     font-weight: 300;
     border-left: solid 1px white;
-    max-width: 600px;
+    max-width: 1268px;
     & .testimonial-footer {
       margin-top: 25px;
     }
