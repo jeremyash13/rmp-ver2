@@ -4,7 +4,7 @@ import { jsx, css } from "@emotion/core"
 import { Link } from "gatsby"
 /** @jsx jsx */
 
-export default function ArtistBioNav() {
+export default function ArtistBioNav(props) {
   const style = css`
     font-weight: 300;
     color: var(--text-light-gray);
@@ -32,7 +32,7 @@ export default function ArtistBioNav() {
   `
   return (
     <div css={style}>
-      <div>EXCLUSIVE ARTISTS > CLARK KELLEY PRICE</div>
+      <div>{`Exclusive Artists > ${props.artist}`}</div>
       <div className="back-wrapper">
         <svg
           width="15"

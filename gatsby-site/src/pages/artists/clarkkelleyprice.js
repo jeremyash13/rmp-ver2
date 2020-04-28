@@ -20,10 +20,15 @@ const style = css`
     line-height: 1.75rem;
   }
 
-  & img {
+  & .img-wrapper {
     float: left;
     margin-right: 50px;
+    width: 400px;
+    height: 400px;
+  }
+  & img {
     box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.6);
+    width: 100%;
   }
 
   & .body-wrapper {
@@ -35,9 +40,11 @@ const ClarkKelleyPricePage = () => (
   <Layout>
     <SEO title="Clark Kelley Price" />
     <div css={style} className="artist-page-wrapper">
-      <ArtistBioNav />
+      <ArtistBioNav artist="Clark Kelley Price"/>
       <div className="body-wrapper">
-        <img src={ClarkKelleyPrice}></img>
+        <div className="img-wrapper">
+          <img src={ClarkKelleyPrice} alt="photo of Clark Kelley Price"></img>
+        </div>
         <p>
           Clark Kelley Price was born in Idaho Falls, Idaho in 1945. As a child
           he loved to draw and even his earliest artistic efforts told stories.
