@@ -83,7 +83,7 @@ export default function QuickView(props) {
     }
     .type-age-wrapper {
       color: var(--text-dark);
-      font-size: .8rem;
+      font-size: 0.8rem;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -125,7 +125,6 @@ export default function QuickView(props) {
         max-height: 80%;
         max-width: 80%;
       }
-
     }
   `
   return (

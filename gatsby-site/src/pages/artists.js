@@ -18,9 +18,11 @@ import Artist from "../components/Artist"
 const style = css`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(100px, 500px));
   grid-gap: 25px;
   padding: 25px;
+  max-width: 1268px;
+  margin: 0 auto;
+  padding-top: 50px;
 `
 const ArtistsPage = () => (
   <Layout>

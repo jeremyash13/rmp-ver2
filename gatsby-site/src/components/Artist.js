@@ -18,6 +18,8 @@ export default function Artist(props) {
     }
     .artist-image-wrapper {
       position: relative;
+      width: 80%;
+      margin: 0 auto;
       &:hover {
         cursor: pointer;
       }
