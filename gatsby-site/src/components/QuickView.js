@@ -35,7 +35,7 @@ export default function QuickView(props) {
       left: 50%;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 35px 40px -25px rgba(0, 0, 0, .6);
     }
     .quick-view-details {
       display: flex;

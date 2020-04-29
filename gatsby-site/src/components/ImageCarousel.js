@@ -10,6 +10,7 @@ const style = css`
   display: flex;
   max-height: calc(100vh - 200px);
   position: relative;
+
   img {
     margin: 0 auto;
     object-fit: cover;
@@ -150,7 +151,7 @@ export default function ImageCarousel() {
       } else {
         setI(i + 1)
       }
-    }, 7000)
+    }, 10000)
   })
 
   return (

@@ -4,15 +4,15 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-import "typeface-roboto";
-import "typeface-sorts-mill-goudy";
+import "typeface-roboto"
+import "typeface-sorts-mill-goudy"
 import React from "react"
 import PropTypes from "prop-types"
 
 import "./layout.css"
 import Navbar from "./Navbar"
 import { jsx, css } from "@emotion/core"
-import { Footer } from "./Footer";
+import { Footer } from "./Footer"
 
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
