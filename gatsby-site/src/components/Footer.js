@@ -1,11 +1,15 @@
 import React from "react"
+import { useAuth } from "react-use-auth"
 
+/** @jsx jsx */
 import { jsx, css } from "@emotion/core"
+
 import FacebookLogo from "./FacebookLogo"
 import InstagramLogo from "./InstagramLogo"
-// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
-/** @jsx jsx */
+import { Link } from "gatsby"
+
 export const Footer = () => {
+  const { isAuthenticated, login, logout } = useAuth()
   const style = css`
     .footer-wrapper {
       padding: 50px 50px;
@@ -22,6 +26,10 @@ export const Footer = () => {
       font-weight: 300;
       font-size: 14px;
       flex-grow: 1;
+    }
+    a {
+      text-decoration: none;
+      color: var(--text-light-gray);
     }
     .copyright {
       flex-grow: 50;
@@ -53,7 +61,21 @@ export const Footer = () => {
             © Rocky Mountain Publishing, inc. All rights reserved.
           </li>
           <li>
-            <a className="admin-login">Admin</a>
+            {!isAuthenticated() && (
+              <span className="admin-login" onClick={login}>
+                Admin Login
+              </span>
+            )}
+            {isAuthenticated() && (
+              <>
+                <Link to="/admin/dashboard" className="admin-login">
+                  Admin Dashboard
+                </Link>
+                <span style={{marginLeft: '15px'}} className="admin-login" onClick={logout}>
+                  LOGOUT (dev-only)
+                </span>
+              </>
+            )}
           </li>
           <li className="facebook-logo">
             <a>

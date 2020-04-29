@@ -19,6 +19,7 @@ import { Footer } from "./Footer"
 const style = css`
   background-color: var(--bg-off-white);
   font-family: "Roboto";
+  min-height: calc(100vh - 100px);
 `
 
 const Layout = ({ children }) => {

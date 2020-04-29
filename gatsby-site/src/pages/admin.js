@@ -5,7 +5,7 @@ import Dashboard from "../components/modules/Dashboard"
 
 const App = () => {
   return (
-    <Router basepath="/app">
+    <Router basepath="/admin">
       <PrivateRoute path="/dashboard" component={Dashboard} />
     </Router>
   )

@@ -17,18 +17,46 @@ const style = css`
   & h1 {
     font-size: 1.5rem;
     font-weight: 400;
+    max-width: 300px;
+    margin-top: 50px;
   }
   & h2 {
     font-size: 1.2rem;
     font-weight: 400;
+    margin-top: 50px;
   }
 
   & p {
     font-size: 1rem;
     font-weight: 300;
   }
+  .contact-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    & h1 {
+      width: 250px;
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 25px;
+    }
+    & p {
+      max-width: 400px;
+      text-align: center;
+    }
+  }
+  & .subtext {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+  }
   & .dealer-text {
     text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    & h1 {
+      margin-top: 0;
+    }
   }
   & .zone-map {
     margin: 0 auto;
@@ -40,6 +68,7 @@ const style = css`
     display: grid;
     grid-gap: 25px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: 25px;
   }
 
   & .zone-1-wrapper,
@@ -52,6 +81,7 @@ const style = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 
     & span {
       margin: 0 auto;
@@ -88,15 +118,24 @@ const contactPage = () => (
       <div className="dealer-text">
         <h1>CONTACT US TO FIND A DEALER NEAR YOU</h1>
       </div>
-      <div>
+      <div className="contact-section">
         <div>
           <h1>CUSTOMER SERVICE & SALES</h1>
+          <p>Office - (208) 785-6291</p>
+          <p>Toll Free - (800) 987-7782</p>
+          <p>Fax - (208) 785-1287</p>
+          <p>Email - rmpublishing@qwestoffice.net</p>
         </div>
         <div>
           <h1>HOURS OF OPERATION</h1>
+          <p>
+            Monday - Friday 8:00 a.m. to 5:00 p.m. (Mountain Standard Time)
+            (Excluding Holidays)
+          </p>
         </div>
         <div>
           <h1>ADDRESS</h1>
+          <p>Rocky Mountain Publishing<br/>479 Emerald Ave. Blackfoot, ID 83221</p>
         </div>
       </div>
       <div>
@@ -129,10 +168,10 @@ const contactPage = () => (
             <span className="text-main">$27.00</span>
           </div>
         </div>
-        <div>
+        <p className="subtext">
           Price includes up to 3 pieces per box; Charges start over after 3
           pieces.
-        </div>
+        </p>
       </div>
       <div>
         <h2>10x20's & 11x15's</h2>
@@ -154,10 +193,10 @@ const contactPage = () => (
             <span className="text-main">$31.50</span>
           </div>
         </div>
-        <div>
+        <p className="subtext">
           Price includes up to 3 pieces per box; Charges start over after 3
           pieces.
-        </div>
+        </p>
       </div>
       <div>
         <h2>16x20's & UP TO 20x24's</h2>
@@ -187,10 +226,10 @@ const contactPage = () => (
             <span className="text-secondary">+ $5.00 (3rd piece)</span>
           </div>
         </div>
-        <div>
+        <p className="subtext">
           Larger sized pieces fit three to a box; after three, the charges start
           over.
-        </div>
+        </p>
       </div>
       <div>
         <h2>ANYTHING OVER 20x24</h2>
@@ -220,10 +259,10 @@ const contactPage = () => (
             <span className="text-secondary">+ $10.00 (3rd piece)</span>
           </div>
         </div>
-        <div>
+        <p className="subtext">
           Larger sized pieces fit three to a box; after three, the charges start
           over. **Some DÉCOR pieces can only ship TWO to a box**
-        </div>
+        </p>
       </div>
       <div>
         <h1>WHOLESALE ORDERS</h1>

@@ -7,7 +7,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const client = new MongoClient(process.env.MONGODB_URI, {
-  // useNewUrlParser: true,
+  useNewUrlParser: true,
   useUnifiedTopology: true
 });
 client.connect(err => {
