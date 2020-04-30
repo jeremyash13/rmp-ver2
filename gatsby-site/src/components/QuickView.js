@@ -109,8 +109,8 @@ export default function QuickView(props) {
 
     @media (min-width: 600px) {
       .quick-view-inner {
-        max-width: 1000px;
-        max-height: 600px;
+        max-width: 60vw;
+        max-height: 70vh;
       }
       .quick-view-img-wrapper {
         margin-right: 25px;
