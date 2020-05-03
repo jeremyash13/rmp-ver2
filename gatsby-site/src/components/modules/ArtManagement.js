@@ -3,6 +3,7 @@ import ArtContainer from "../state/ArtContainer"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
+import EditHover from "../EditHover"
 
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
@@ -39,31 +40,39 @@ export const ArtManagement = () => {
     margin: 0 auto;
     background-color: #eae9e9;
     color: var(--text-black);
+    .entry-wrapper {
+      position: relative;
+    }
     .entry-wrapper:hover {
       cursor: pointer;
-      border: solid 1px var(--text-light-gray);
-      transform: scale(1.02);
+      & .edit-hover-element {
+        display: block;
+      }
     }
-    ${'' /* .entry-wrapper:nth-child(2n) {
+    .entry-wrapper:nth-child(2n) {
       background-color: #dddddd;
-    } */}
+    }
     thead tr {
       height: 78px;
+      & .skus {
+        padding-left: 30px;
+      }
     }
     th {
       background-color: #dddddd;
       border: none;
       font-weight: 400;
       padding: 0;
+      padding-left: 15px;
     }
     td {
       border: none;
       font-weight: 300;
       font-size: 0.9rem;
       padding: 0;
+      padding-left: 15px;
     }
     .sku-item {
-      padding-right: 15px;
     }
     .title,
     .artist,
@@ -78,7 +87,7 @@ export const ArtManagement = () => {
         <tr>
           <th>Title</th>
           <th>Artist</th>
-          <th>SKU's</th>
+          <th className="skus">SKU's</th>
           <th>Type</th>
         </tr>
       </thead>
@@ -86,7 +95,10 @@ export const ArtManagement = () => {
         {GlobalState.fetchedArt.map(item => {
           return (
             <tr className="entry-wrapper" data-item-id={item._id}>
-              <td className="title">{item.title}</td>
+              <td className="title">
+                {item.title}
+                <EditHover />
+              </td>
               <td className="artist">{item.artist}</td>
               <td className="sku-wrapper">
                 {item.options.map(i => (
