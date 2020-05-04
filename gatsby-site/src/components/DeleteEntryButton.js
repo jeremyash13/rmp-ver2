@@ -3,7 +3,7 @@ import React from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
-export default function DeleteEntryButton() {
+export default function DeleteEntryButton(props) {
   const style = css`
     background-color: #974545;
     color: white;
@@ -21,7 +21,7 @@ export default function DeleteEntryButton() {
     }
   `
   return (
-    <button css={style}>
+    <button css={style} onClick={props.clickHandler}>
       <svg viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M1 1L12 11.5M23 22L12 11.5M12 11.5L23 1L1 22"

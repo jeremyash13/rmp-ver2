@@ -5,7 +5,7 @@ import ArtContainer from "../state/ArtContainer"
 import { jsx, css } from "@emotion/core"
 
 import EditHover from "../EditHover"
-import EditView from "../EditView"
+import EditView from "./EditView"
 import DeleteEntryButton from "../DeleteEntryButton"
 import SaveAndCloseButton from "../SaveAndCloseButton"
 import QuickViewClose from "../QuickViewClose"
@@ -300,92 +300,7 @@ export const ArtManagement = () => {
         </tbody>
       </table>
       {showEditView && (
-        <div
-          css={editStyle}
-          className="overlay"
-          onClick={e => {
-            if (e.target.classList.contains("overlay")) {
-              setShowEditView(false)
-            }
-          }}
-        >
-          <div className="inner-container">
-            <div>
-              <DeleteEntryButton />
-              <SaveAndCloseButton />
-            </div>
-            <div className="quick-view-details">
-              <QuickViewClose
-                className="quick-view-close-wrapper"
-                clickHandler={() => {
-                  setShowEditView(false)
-                }}
-              />
-              <div className="quick-view-img-wrapper">
-                <label id="change-photo-input-wrapper">
-                  Change Photo
-                  <input
-                    type="file"
-                    id="change-photo-input"
-                    accept=".jpg, .jpeg"
-                  ></input>
-                </label>
-                <img
-                  src={GlobalState.fetchedArt[editItem].src}
-                  className="quick-view-img"
-                ></img>
-              </div>
-
-              <div className="info-wrapper">
-                <div className="heading-wrapper">
-                  <input
-                    type="text"
-                    className="title"
-                    value={GlobalState.fetchedArt[editItem].title}
-                  ></input>
-                  <span className="by">by</span>
-                  <input
-                    className="artist"
-                    value={GlobalState.fetchedArt[editItem].artist}
-                  ></input>
-                </div>
-
-                <div className="options-wrapper">
-                  {GlobalState.fetchedArt[editItem].options.map(option => (
-                    <div className="option">
-                      <input
-                        type="text"
-                        className="option-sku"
-                        value={option.sku}
-                      ></input>
-                      <input
-                        type="text"
-                        className="option-size"
-                        value={option.size}
-                      ></input>
-                      <input
-                        type="text"
-                        className="option-price"
-                        value={`$${option.price}`}
-                      ></input>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="type-age-wrapper">
-              <div className="type">
-                {modifiedTypeForDisplay(GlobalState.fetchedArt[editItem])}
-              </div>
-              <div className="age">
-                {new Date(
-                  GlobalState.fetchedArt[editItem].age
-                ).toLocaleDateString()}
-              </div>
-            </div>
-          </div>
-        </div>
+        <EditView idx={editItem} closeHandler={() => setShowEditView(false)} />
       )}
     </>
   )
