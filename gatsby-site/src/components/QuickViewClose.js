@@ -4,7 +4,9 @@ import ArtContainer from "./state/ArtContainer"
 export default function QuickViewClose(props) {
   const GlobalState = ArtContainer.useContainer()
   return (
-    <div className={props.className} onClick={() => {GlobalState.setShowingQuickView(false)}}>
+    <div className={props.className} 
+    onClick={props.clickHandler}
+    >
       <svg
         width="46"
         height="45"

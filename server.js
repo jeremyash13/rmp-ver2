@@ -33,7 +33,7 @@ client.connect(err => {
       let querySortBy = [];
 
       if (req.body.type[0] === "all") {
-        queryType = ["giclee", "wrap", "standard"];
+        queryType = ["Canvas Giclee", "Gallery Wrap", "Paper Giclee"];
       } else {
         queryType = [...req.body.type];
       }

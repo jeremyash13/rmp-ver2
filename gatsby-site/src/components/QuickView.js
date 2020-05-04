@@ -35,7 +35,7 @@ export default function QuickView(props) {
       left: 50%;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 35px 40px -25px rgba(0, 0, 0, .6);
+      box-shadow: 0 35px 40px -25px rgba(0, 0, 0, 0.6);
     }
     .quick-view-details {
       display: flex;
@@ -145,7 +145,12 @@ export default function QuickView(props) {
     >
       <div className="quick-view-inner">
         <div className="quick-view-details">
-          <QuickViewClose className="quick-view-close-wrapper" />
+          <QuickViewClose
+            className="quick-view-close-wrapper"
+            clickHandler={() => {
+              GlobalState.setShowingQuickView(false)
+            }}
+          />
           <div className="quick-view-img-wrapper">
             <img src={item.src} className="quick-view-img"></img>
           </div>

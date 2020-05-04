@@ -118,7 +118,6 @@ export default function ArtView() {
     .title {
       font-family: Sorts Mill Goudy;
       font-size: 1.5rem;
-      text-transform: capitalize;
       color: var(--text-dark);
     }
     .by {
@@ -128,7 +127,6 @@ export default function ArtView() {
     .artist {
       font-weight: 300;
       color: var(--text-light-gray);
-      text-transform: capitalize;
     }
 
     @media (min-width: 600px) {
