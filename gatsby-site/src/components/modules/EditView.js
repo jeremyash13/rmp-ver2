@@ -8,6 +8,7 @@ import QuickViewClose from "../QuickViewClose"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 import EditableTextInput from "../EditableTextInput"
+import EditableImage from "../EditableImage"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
@@ -267,17 +268,8 @@ export default function EditView(props) {
               props.closeHandler()
             }}
           />
-          <div className="quick-view-img-wrapper">
-            <label id="change-photo-input-wrapper">
-              Change Photo
-              <input
-                type="file"
-                id="change-photo-input"
-                accept=".jpg, .jpeg"
-              ></input>
-            </label>
-            <img src={imgSrc} className="quick-view-img"></img>
-          </div>
+
+          <EditableImage className="quick-view-img-wrapper" editItem={editItem}/>
 
           <div className="info-wrapper">
             <div className="heading-wrapper">

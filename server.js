@@ -140,7 +140,7 @@ client.connect((err) => {
         }
         console.log("success");
         console.log(data);
-        res.json({ msg: "image successfully uploaded to AWS S3" });
+        res.json({ msg: "image successfully uploaded to AWS S3", location: data.Location });
       });
     } catch (err) {
       res.json({ msg: err });
