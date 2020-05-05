@@ -34,7 +34,6 @@ client.connect((err) => {
   app.use(bodyParser.json());
 
   app.post("/gallery", async (req, res) => {
-    console.log(req.body);
     try {
       const artCollection = client.db("rmp").collection("art");
       let queryType = [];
@@ -121,6 +120,7 @@ client.connect((err) => {
   });
   app.post("/s3", upload.single("file"), async (req, res) => {
     console.log("POST request made at /s3");
+    console.log(req.file)
     try {
       let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,

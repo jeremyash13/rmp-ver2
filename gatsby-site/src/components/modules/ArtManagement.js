@@ -10,38 +10,43 @@ import DeleteEntryButton from "../DeleteEntryButton"
 import SaveAndCloseButton from "../SaveAndCloseButton"
 import QuickViewClose from "../QuickViewClose"
 
+let editItem = undefined
+
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
-  // useEffect(() => {
-  //   let query = {
-  //     type: ["all"],
-  //     category: ["all"],
-  //   }
+  const [localFetchedArt, setLocalFetchedArt] = useState(GlobalState.fetchedArt)
+  const [shouldRefreshFetchedArt, setShouldRefreshFetchedArt] = useState(0)
 
-  //   const fetchArt = new Promise(async (resolve, reject) => {
-  //     try {
-  //       // const url = "https://rmpdemo-backend.herokuapp.com/art"
-  //       const url = "http://localhost:3000/art"
-  //       const result = await fetch(url, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(query),
-  //       })
-  //       resolve(result)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   })
-  //     .then(data => data.json())
-  //     .then(json => {
-  //       GlobalState.setFetchedArt(json)
-  //     })
-  // }, [])
+  useEffect(() => {
+    let query = {
+      type: ["all"],
+      category: ["all"],
+      sortBy: [],
+    }
+
+    const fetchArt = new Promise(async (resolve, reject) => {
+      try {
+        // const url = "https://rmpdemo-backend.herokuapp.com/art"
+        const url = "http://localhost:3000/gallery"
+        const result = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(query),
+        })
+        resolve(result)
+      } catch (err) {
+        console.log(err)
+      }
+    })
+      .then(data => data.json())
+      .then(json => {
+        setLocalFetchedArt(json)
+      })
+  }, [shouldRefreshFetchedArt])
 
   const [showEditView, setShowEditView] = useState(false)
-  const [editItem, setEditItem] = useState(null)
 
   const style = css`
     max-width: 1268px;
@@ -251,7 +256,7 @@ export const ArtManagement = () => {
       }
     }
   `
-  
+
   return (
     <>
       <table css={style} id="art-management">
@@ -264,13 +269,13 @@ export const ArtManagement = () => {
           </tr>
         </thead>
         <tbody>
-          {GlobalState.fetchedArt.map(item => {
+          {localFetchedArt.map(item => {
             return (
               <tr
                 className="entry-wrapper"
                 onClick={() => {
                   setShowEditView(true)
-                  setEditItem(GlobalState.fetchedArt.indexOf(item))
+                  editItem = localFetchedArt.indexOf(item)
                 }}
               >
                 <td className="title">
@@ -294,7 +299,11 @@ export const ArtManagement = () => {
         </tbody>
       </table>
       {showEditView && (
-        <EditView idx={editItem} closeHandler={() => setShowEditView(false)} />
+        <EditView
+          editItem={localFetchedArt[editItem]}
+          closeHandler={() => setShowEditView(false)}
+          refreshFetchedArtHandler={() => {setShouldRefreshFetchedArt(shouldRefreshFetchedArt + 1)}}
+        />
       )}
     </>
   )

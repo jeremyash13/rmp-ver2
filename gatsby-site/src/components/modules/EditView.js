@@ -12,22 +12,18 @@ import EditableImage from "../EditableImage"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
-  const editItem = props.idx
-  const [objId, setObjId] = useState(GlobalState.fetchedArt[editItem]._id)
-  const [title, setTitle] = useState(GlobalState.fetchedArt[editItem].title)
-  const [artist, setArtist] = useState(GlobalState.fetchedArt[editItem].artist)
-  const [imgSrc, setImgSrc] = useState(GlobalState.fetchedArt[editItem].src)
-  const [category, setCategory] = useState(
-    GlobalState.fetchedArt[editItem].category
-  )
-  const [type, setType] = useState(GlobalState.fetchedArt[editItem].type)
-  const [options, setOptions] = useState(
-    GlobalState.fetchedArt[editItem].options
-  )
-  const [tags, setTags] = useState(GlobalState.fetchedArt[editItem].tags)
-  const [age, setAge] = useState(
-    new Date(GlobalState.fetchedArt[editItem].age).toLocaleDateString()
-  )
+  const editItem = props.editItem
+  const [objId, setObjId] = useState(editItem._id)
+  const [title, setTitle] = useState(editItem.title)
+  const [artist, setArtist] = useState(editItem.artist)
+  const [imgSrc, setImgSrc] = useState(editItem.src)
+  const [category, setCategory] = useState(editItem.category)
+  const [type, setType] = useState(editItem.type)
+  const [options, setOptions] = useState(editItem.options)
+  const [tags, setTags] = useState(editItem.tags)
+  const [age, setAge] = useState(new Date(editItem.age).toLocaleDateString())
+
+  const [loading, setLoading] = useState(false)
 
   const tempOptions = [...options]
 
@@ -65,6 +61,8 @@ export default function EditView(props) {
       body: JSON.stringify(data),
     })
     response.json().then(d => {
+      props.refreshFetchedArtHandler()
+      props.closeHandler()
       window.alert(d.msg)
     })
   }
@@ -251,25 +249,48 @@ export default function EditView(props) {
       css={editStyle}
       className="overlay"
       onClick={e => {
-        if (e.target.classList.contains("overlay")) {
+        if (e.target.classList.contains("overlay") && loading === false) {
           props.closeHandler()
         }
       }}
     >
       <div className="inner-container">
         <div>
-          <DeleteEntryButton clickHandler={() => deleteHandler()} />
-          <SaveAndCloseButton clickHandler={() => saveHandler()} />
+          <DeleteEntryButton
+            clickHandler={() => {
+              if (!loading) {
+                deleteHandler()
+              }
+            }}
+          />
+          <SaveAndCloseButton
+            clickHandler={() => {
+              if (!loading) {
+                saveHandler()
+              }
+            }}
+          />
         </div>
         <div className="quick-view-details">
           <QuickViewClose
             className="quick-view-close-wrapper"
             clickHandler={() => {
-              props.closeHandler()
+              if (!loading) {
+                props.closeHandler()
+              }
             }}
           />
 
-          <EditableImage className="quick-view-img-wrapper" editItem={editItem}/>
+          <EditableImage
+            className="quick-view-img-wrapper"
+            editItem={editItem}
+            imgSrc={imgSrc}
+            loadingHandler={(val) => {setLoading(val)}}
+            loading={loading}
+            stateHandler={val => {
+              setImgSrc(val)
+            }}
+          />
 
           <div className="info-wrapper">
             <div className="heading-wrapper">
