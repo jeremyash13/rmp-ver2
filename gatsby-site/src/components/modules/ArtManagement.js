@@ -12,33 +12,33 @@ import QuickViewClose from "../QuickViewClose"
 
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
-  useEffect(() => {
-    let query = {
-      type: ["all"],
-      category: ["all"],
-    }
+  // useEffect(() => {
+  //   let query = {
+  //     type: ["all"],
+  //     category: ["all"],
+  //   }
 
-    const fetchArt = new Promise(async (resolve, reject) => {
-      try {
-        // const url = "https://rmpdemo-backend.herokuapp.com/art"
-        const url = "http://localhost:3000/art"
-        const result = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(query),
-        })
-        resolve(result)
-      } catch (err) {
-        console.log(err)
-      }
-    })
-      .then(data => data.json())
-      .then(json => {
-        GlobalState.setFetchedArt(json)
-      })
-  }, [])
+  //   const fetchArt = new Promise(async (resolve, reject) => {
+  //     try {
+  //       // const url = "https://rmpdemo-backend.herokuapp.com/art"
+  //       const url = "http://localhost:3000/art"
+  //       const result = await fetch(url, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(query),
+  //       })
+  //       resolve(result)
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   })
+  //     .then(data => data.json())
+  //     .then(json => {
+  //       GlobalState.setFetchedArt(json)
+  //     })
+  // }, [])
 
   const [showEditView, setShowEditView] = useState(false)
   const [editItem, setEditItem] = useState(null)
@@ -251,13 +251,7 @@ export const ArtManagement = () => {
       }
     }
   `
-  const modifiedTypeForDisplay = item => {
-    if (item.type === "giclee" || item.type === "Giclee") {
-      return "Giclée"
-    } else {
-      return item.type
-    }
-  }
+  
   return (
     <>
       <table css={style} id="art-management">

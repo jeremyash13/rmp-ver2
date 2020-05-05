@@ -3,7 +3,7 @@ import React from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
-export default function SaveAndCloseButton() {
+export default function SaveAndCloseButton(props) {
   const style = css`
     background-color: #459770;
     color: white;
@@ -21,7 +21,7 @@ export default function SaveAndCloseButton() {
     }
   `
   return (
-    <button css={style}>
+    <button css={style} onClick={props.clickHandler}>
       <svg viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 9.5L11.5 20L30 1.5" stroke="white" stroke-width="3" />
       </svg>

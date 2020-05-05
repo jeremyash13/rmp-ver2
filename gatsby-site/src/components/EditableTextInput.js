@@ -10,14 +10,17 @@ export default function EditableTextInput(props) {
   `
 
   return (
-    <input
-      css={style}
-      type="text"
-      className={props.className}
-      value={props.value}
-      onChange={e => {
-        props.changeHandler(e.target.value)
-      }}
-    ></input>
+    <>
+      {props.children}
+      <input
+        css={style}
+        type="text"
+        className={props.className}
+        value={props.value}
+        onChange={e => {
+          props.changeHandler(e.target.value)
+        }}
+      ></input>
+    </>
   )
 }

@@ -24,7 +24,11 @@ export default function EditView(props) {
     GlobalState.fetchedArt[editItem].options
   )
   const [tags, setTags] = useState(GlobalState.fetchedArt[editItem].tags)
-  const [age, setAge] = useState(new Date(GlobalState.fetchedArt[editItem].age).toLocaleDateString())
+  const [age, setAge] = useState(
+    new Date(GlobalState.fetchedArt[editItem].age).toLocaleDateString()
+  )
+
+  const tempOptions = [...options]
 
   const deleteHandler = async () => {
     const data = { _id: objId }
@@ -254,7 +258,7 @@ export default function EditView(props) {
       <div className="inner-container">
         <div>
           <DeleteEntryButton clickHandler={() => deleteHandler()} />
-          <SaveAndCloseButton />
+          <SaveAndCloseButton clickHandler={() => saveHandler()} />
         </div>
         <div className="quick-view-details">
           <QuickViewClose
@@ -300,16 +304,29 @@ export default function EditView(props) {
                   <EditableTextInput
                     className="option-sku"
                     value={option.sku}
-                    changeHandler={(val) => {setOptions(val)}}
+                    changeHandler={val => {
+                      tempOptions[options.indexOf(option)].sku = val
+                      setOptions([...tempOptions])
+                    }}
                   />
                   <EditableTextInput
                     className="option-size"
                     value={option.size}
+                    changeHandler={val => {
+                      tempOptions[options.indexOf(option)].size = val
+                      setOptions([...tempOptions])
+                    }}
                   />
                   <EditableTextInput
                     className="option-price"
-                    value={`$${option.price}`}
-                  />
+                    value={option.price}
+                    changeHandler={val => {
+                      tempOptions[options.indexOf(option)].price = val
+                      setOptions([...tempOptions])
+                    }}
+                  >
+                    <span>$</span>
+                  </EditableTextInput>
                 </div>
               ))}
             </div>
