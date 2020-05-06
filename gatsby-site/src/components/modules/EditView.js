@@ -14,7 +14,17 @@ import EditableTextArea from "../EditableTextArea"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
-  const editItem = props.editItem
+  const editItem = props.editItem || {
+    _id: "",
+    title: "",
+    artist: "",
+    src: "",
+    category: "",
+    type: "",
+    options: [{}],
+    tags: [""],
+    age: "0/00/0000",
+  }
 
   const [objId, setObjId] = useState(editItem._id)
   const [title, setTitle] = useState(editItem.title)
@@ -122,6 +132,7 @@ export default function EditView(props) {
       left: 50%;
       box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
       visibility: hidden;
+      z-index: 1;
       &:hover {
         cursor: pointer;
         & img {
@@ -177,6 +188,7 @@ export default function EditView(props) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      margin-bottom: 15px;
       &-sku,
       &-size,
       &-price {
@@ -228,6 +240,7 @@ export default function EditView(props) {
       border: solid 2px rgba(17, 153, 229, 0);
       text-align: center;
       border-radius: 4px;
+      background-color: #eae9e9;
 
       &:focus {
         box-shadow: inset 0 0 15px rgba(17, 153, 229, 0.25);
@@ -251,6 +264,7 @@ export default function EditView(props) {
       }
       .editable-image-wrapper {
         width: 600px;
+        margin-right: 25px;
       }
       .quick-view-details {
         flex-direction: row;

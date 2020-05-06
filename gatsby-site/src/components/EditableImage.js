@@ -40,10 +40,17 @@ export default function EditableImage(props) {
 
   const override = css`
     position: absolute;
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    z-index: 0;
   `
-  const style = css``
+  const style = css`
+    .quick-view-img {
+      position: relative;
+    }
+  `
+  // #FF0000
   return (
     <div className="editable-image-wrapper">
       {!props.loading && (
@@ -59,12 +66,9 @@ export default function EditableImage(props) {
           ></input>
         </label>
       )}
-      <ClipLoader
-        css={override}
-        color={"#FF0000"}
-        size={25}
-        loading={props.loading}
-      />
+      <div css={override} className="loader-wrapper">
+        <ClipLoader color={"rgba(0,0,0,.75)"} size={75} loading={props.loading} />
+      </div>
       <img src={props.imgSrc} className="quick-view-img"></img>
     </div>
   )

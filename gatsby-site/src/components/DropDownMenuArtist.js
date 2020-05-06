@@ -7,7 +7,9 @@ import { css, jsx } from "@emotion/core"
 export const DropDownMenuArtist = props => {
   const [value, setValue] = useState("Artist: ALL")
   const style = css`
-    
+    & div {
+      background-color: #dddddd;
+    }
   `
 
   return (

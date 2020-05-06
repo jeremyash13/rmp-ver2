@@ -49,12 +49,10 @@ export const ArtManagement = () => {
       })
   }, [shouldRefreshFetchedArt])
 
-
   const style = css`
-    max-width: 1268px;
-    margin: 0 auto;
     background-color: #eae9e9;
     color: var(--text-black);
+    margin-top: 25px;
     .entry-wrapper {
       position: relative;
     }
@@ -264,9 +262,7 @@ export const ArtManagement = () => {
 
   return (
     <>
-    {GlobalState.showToast && (
-      <Toast message="Update Successful"/>
-    )}
+      {GlobalState.showToast && <Toast message="Update Successful" />}
       <table css={style} id="art-management">
         <thead>
           <tr>

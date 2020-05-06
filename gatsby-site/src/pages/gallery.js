@@ -27,21 +27,8 @@ const artPage = () => {
       color: #393939;
       & .mySelect {
         font-size: 1rem;
-        padding: 0.5em;
+        padding: 0.7em;
         width: 100%;
-      }
-      & div {
-        background-color: #eae9e9;
-      }
-    }
-    .search-wrapper {
-      font-size: 1rem;
-      & input:focus {
-        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
-      }
-      & input::placeholder {
-        font-style: italic;
-        font-weight: 200;
       }
     }
     .art-categories-wrapper {

@@ -11,26 +11,38 @@ export default function ArtSearch(props) {
     font-weight: 300;
     font-size: 1rem;
     color: #393939;
-    width: 100%;
+    width: 600px;
     position: relative;
     border: none;
-    @media (min-width: 600px) {
-      
+    font-size: 1rem;
+    height: min-content;
+
+    & input:focus {
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
     }
+    & input::placeholder {
+      font-style: italic;
+      font-weight: 200;
+    }
+
     input {
       width: 100%;
       padding-left: 40px;
       padding-top: 10px;
       padding-bottom: 10px;
-      background-color: #eae9e9;
+      background-color: #dddddd;
       border: none;
+      height: 50px;
     }
     svg {
       width: 15px;
       position: absolute;
+      ${"" /* top: 0; */}
       transform: translateY(-50%);
       top: 50%;
       left: 15px;
+    }
+    @media (min-width: 600px) {
     }
   `
   return (
@@ -41,13 +53,7 @@ export default function ArtSearch(props) {
         ref={inputRef}
         placeholder="Search Item No, Title, Artist, Keyword"
       ></input>
-      <svg
-        width="23"
-        height="24"
-        viewBox="0 0 23 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line
           y1="-1.5"
           x2="11.1409"
