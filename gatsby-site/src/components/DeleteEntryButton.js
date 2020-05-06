@@ -26,7 +26,7 @@ export default function DeleteEntryButton(props) {
         <path
           d="M1 1L12 11.5M23 22L12 11.5M12 11.5L23 1L1 22"
           stroke="white"
-          stroke-width="3"
+          strokeWidth="3"
         />
       </svg>
       Delete Entry

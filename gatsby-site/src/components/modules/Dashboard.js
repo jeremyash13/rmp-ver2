@@ -8,8 +8,11 @@ import ArtSearch from "../ArtSearch"
 import { jsx, css } from "@emotion/core"
 import AddNewEntryButton from "../AddNewEntryButton"
 import EditView from "./EditView"
+import ArtContainer from "../state/ArtContainer"
 
 const Dashboard = () => {
+  const GlobalState = ArtContainer.useContainer()
+
   const [showingNewEntryView, setShowingNewEntryView] = useState(false)
 
   const style = css`
@@ -39,9 +42,7 @@ const Dashboard = () => {
         <div className="page-header">
           <h1>Art Database</h1>
           <AddNewEntryButton
-            clickHandler={() => {
-              setShowingNewEntryView(true)
-            }}
+            clickHandler={() => setShowingNewEntryView(true)}
           />
           <ArtSearch />
         </div>
@@ -50,8 +51,9 @@ const Dashboard = () => {
       {showingNewEntryView && (
         <EditView
           editItem={null}
-          closeHandler={() => {
-            setShowingNewEntryView(false)
+          closeHandler={() => setShowingNewEntryView(false)}
+          refreshFetchedArtHandler={() => {
+            GlobalState.setRefreshFetchedArt(GlobalState.refreshFetchedArt + 1)
           }}
         />
       )}

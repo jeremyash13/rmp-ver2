@@ -16,7 +16,6 @@ let editItem = undefined
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
   const [localFetchedArt, setLocalFetchedArt] = useState(GlobalState.fetchedArt)
-  const [shouldRefreshFetchedArt, setShouldRefreshFetchedArt] = useState(0)
 
   const [showEditView, setShowEditView] = useState(false)
 
@@ -47,7 +46,7 @@ export const ArtManagement = () => {
       .then(json => {
         setLocalFetchedArt(json)
       })
-  }, [shouldRefreshFetchedArt])
+  }, [GlobalState.refreshFetchedArt])
 
   const style = css`
     background-color: #eae9e9;
@@ -307,7 +306,7 @@ export const ArtManagement = () => {
           editItem={localFetchedArt[editItem]}
           closeHandler={() => setShowEditView(false)}
           refreshFetchedArtHandler={() => {
-            setShouldRefreshFetchedArt(shouldRefreshFetchedArt + 1)
+            GlobalState.setRefreshFetchedArt(GlobalState.refreshFetchedArt + 1)
           }}
         />
       )}

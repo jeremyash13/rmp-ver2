@@ -92,27 +92,45 @@ client.connect((err) => {
         tags,
         age,
       } = req.body;
-
-      artCollection
-        .updateOne(
-          { _id: ObjectId(_id.toString()) },
-          {
-            $set: {
-              title: title,
-              artist: artist,
-              src: src,
-              category: category,
-              type: type,
-              options: options,
-              tags: tags,
-              age: new Date(age),
-            },
-          }
-        )
-        .then(() => {
-          console.log("POST request made at /edit");
-          res.json({ msg: "entry successfully updated" });
-        });
+      if (_id) {
+        // if objectId is truthy -> update respective document, else -> create new document
+        artCollection
+          .updateOne(
+            { _id: ObjectId(_id.toString()) },
+            {
+              $set: {
+                title: title,
+                artist: artist,
+                src: src,
+                category: category,
+                type: type,
+                options: options,
+                tags: tags,
+                age: new Date(age),
+              },
+            }
+          )
+          .then(() => {
+            console.log("POST request made at /edit");
+            res.json({ msg: "entry successfully updated" });
+          });
+      } else {
+        artCollection
+          .insertOne({
+            title: title,
+            artist: artist,
+            src: src,
+            category: category,
+            type: type,
+            options: options,
+            tags: tags,
+            age: new Date(age),
+          })
+          .then(() => {
+            console.log("POST request made at /edit");
+            res.json({ msg: "entry successfully added" });
+          });
+      }
     } catch (err) {
       res.json({ msg: err });
       console.log(err);
@@ -120,7 +138,7 @@ client.connect((err) => {
   });
   app.post("/s3", upload.single("file"), async (req, res) => {
     console.log("POST request made at /s3");
-    console.log(req.file)
+    console.log(req.file);
     try {
       let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,
@@ -131,7 +149,7 @@ client.connect((err) => {
         Bucket: BUCKET_NAME,
         Body: req.file.buffer,
         Key: req.body.name,
-        ContentType: 'image/jpeg'
+        ContentType: "image/jpeg",
       };
       s3bucket.upload(params, function (err, data) {
         if (err) {
@@ -140,7 +158,10 @@ client.connect((err) => {
         }
         console.log("success");
         console.log(data);
-        res.json({ msg: "image successfully uploaded to AWS S3", location: data.Location });
+        res.json({
+          msg: "image successfully uploaded to AWS S3",
+          location: data.Location,
+        });
       });
     } catch (err) {
       res.json({ msg: err });

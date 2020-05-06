@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import ArtContainer from "../state/ArtContainer"
 
 import DeleteEntryButton from "../DeleteEntryButton"
@@ -11,19 +11,20 @@ import EditableTextInput from "../EditableTextInput"
 import EditableImage from "../EditableImage"
 import AddOption from "../AddOption"
 import EditableTextArea from "../EditableTextArea"
+import ImagePlaceholder from "../../images/img-placeholder.jpg"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
   const editItem = props.editItem || {
-    _id: "",
+    _id: null,
     title: "",
     artist: "",
-    src: "",
-    category: "",
+    src: ImagePlaceholder,
+    category: ["wildlife"],
     type: "",
     options: [{}],
-    tags: [""],
-    age: "0/00/0000",
+    tags: [],
+    age: "",
   }
 
   const [objId, setObjId] = useState(editItem._id)
@@ -34,11 +35,29 @@ export default function EditView(props) {
   const [type, setType] = useState(editItem.type)
   const [options, setOptions] = useState(editItem.options)
   const [tags, setTags] = useState(editItem.tags)
-  const [age, setAge] = useState(new Date(editItem.age).toLocaleDateString())
+  const [age, setAge] = useState(editItem.age)
+  useEffect(() => {
+    if (editItem.age !== "") {
+      setAge(new Date(editItem.age).toLocaleDateString())
+    }
+    if (editItem.tags.length > 0) {
+      const tagsWithSpaces = editItem.tags.map(item => {
+        const spaceAdded = " " + item
+        return spaceAdded
+      })
+      setTags(tagsWithSpaces)
+    }
+  }, [])
 
   const [loading, setLoading] = useState(false)
 
   const tempOptions = [...options]
+
+  const removeSpaces = str => {
+    if (typeof str === "string") {
+      return str.split(",").map(str => str.replace(/\s/g, ""))
+    }
+  }
 
   const deleteHandler = async () => {
     const data = { _id: objId }
@@ -50,13 +69,13 @@ export default function EditView(props) {
       body: JSON.stringify(data),
     })
     response.json().then(d => {
-      props.refreshFetchedArtHandler()
       props.closeHandler()
       GlobalState.setShowToast(true)
+      props.refreshFetchedArtHandler()
     })
   }
 
-  const saveHandler = async () => {
+  const saveHandler = () => {
     const data = {
       _id: objId,
       title: title,
@@ -65,21 +84,24 @@ export default function EditView(props) {
       category: category,
       type: type,
       options: options,
-      tags: tags,
+      tags: removeSpaces(tags),
       age: age,
     }
-    const response = await fetch("http://localhost:3000/edit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-    response.json().then(d => {
-      props.refreshFetchedArtHandler()
-      props.closeHandler()
-      GlobalState.setShowToast(true)
-    })
+    const makePostRequest = async () => {
+      const response = await fetch("http://localhost:3000/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      response.json().then(() => {
+        props.closeHandler()
+        GlobalState.setShowToast(true)
+        props.refreshFetchedArtHandler()
+      })
+    }
+    makePostRequest()
   }
 
   const editStyle = css`
@@ -112,11 +134,12 @@ export default function EditView(props) {
     .quick-view-details {
       display: flex;
       flex-direction: column;
-      margin: auto;
+      margin: 0 auto;
       max-width: 400px;
     }
     .editable-image-wrapper {
       position: relative;
+      margin-bottom: 25px;
       &:hover #change-photo-input-wrapper {
         visibility: visible;
       }
@@ -149,7 +172,7 @@ export default function EditView(props) {
       border: none;
     }
     .info-wrapper {
-      margin: auto;
+      margin-bottom: auto;
     }
     .heading-wrapper {
       display: flex;
@@ -180,7 +203,7 @@ export default function EditView(props) {
         width: 100%;
         text-align: center;
         color: var(--text-dark);
-        font-weight: 500;
+        font-weight: 400;
         font-size: 0.9rem;
       }
     }
@@ -210,12 +233,13 @@ export default function EditView(props) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-left: 25px;
-      margin-right: 25px;
+      margin-left: 50px;
+      margin-right: 50px;
       margin-bottom: 25px;
     }
     .tags-wrapper {
       margin: 0 50px;
+      margin-bottom: 25px;
       color: var(--text-dark);
     }
     .quick-view-img {
@@ -251,11 +275,12 @@ export default function EditView(props) {
     @media (min-width: 794px) {
       .inner-container {
         width: 80%;
-        height: 80%;
+        max-height: 800px;
+        height: 100%;
       }
       .buttons-wrapper {
         width: 300px;
-        margin-top: auto;
+        margin-top: 25px;
         justify-content: space-between;
         margin-left: 50px;
       }
@@ -263,7 +288,7 @@ export default function EditView(props) {
         width: 100%;
       }
       .editable-image-wrapper {
-        width: 600px;
+        max-width: 600px;
         margin-right: 25px;
       }
       .quick-view-details {
@@ -275,11 +300,9 @@ export default function EditView(props) {
         padding: 0 50px;
       }
       .info-wrapper {
-        margin: auto;
         justify-content: space-between;
         display: flex;
         flex-direction: column;
-        height: 200px;
       }
     }
   `
@@ -339,6 +362,7 @@ export default function EditView(props) {
               <EditableTextInput
                 className="title"
                 value={title}
+                placeholder="Title"
                 changeHandler={val => {
                   setTitle(val)
                 }}
@@ -347,6 +371,7 @@ export default function EditView(props) {
               <EditableTextInput
                 className="artist"
                 value={artist}
+                placeholder="Artist"
                 changeHandler={val => {
                   setArtist(val)
                 }}
@@ -412,6 +437,7 @@ export default function EditView(props) {
             <EditableTextInput
               className="type"
               value={type}
+              placeholder="Art Type"
               changeHandler={val => {
                 setType(val)
               }}
@@ -421,6 +447,7 @@ export default function EditView(props) {
             <EditableTextInput
               className="age"
               value={age}
+              placeholder="MM/DD/YYYY"
               changeHandler={val => {
                 setAge(val)
               }}

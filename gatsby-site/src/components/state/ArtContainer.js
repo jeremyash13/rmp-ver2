@@ -33,6 +33,7 @@ const useArtGlobal = () => {
     travisSylvester: false,
   })
   const [fetchedArt, setFetchedArt] = useState([])
+  const [refreshFetchedArt, setRefreshFetchedArt] = useState(0)
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
@@ -99,7 +100,21 @@ const useArtGlobal = () => {
         break
     }
   }
-  return { type, category, sortBy, artist, handleInput, fetchedArt, setFetchedArt, showingQuickView, setShowingQuickView, showToast, setShowToast}
+  return {
+    type,
+    category,
+    sortBy,
+    artist,
+    handleInput,
+    fetchedArt,
+    setFetchedArt,
+    showingQuickView,
+    setShowingQuickView,
+    showToast,
+    setShowToast,
+    refreshFetchedArt,
+    setRefreshFetchedArt,
+  }
 }
 
 const ArtContainer = createContainer(useArtGlobal)
