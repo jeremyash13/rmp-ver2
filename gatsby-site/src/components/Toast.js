@@ -33,7 +33,7 @@ export default function Toast(props) {
     animation: fade 7s ease-out;
 
     & .checkmark-wrapper {
-      width: 20px;
+      width: 15px;
       margin: auto 0;
       margin-left: auto;
     }
@@ -42,7 +42,7 @@ export default function Toast(props) {
       font-weight: 300;
       margin: auto 0;
       margin-right: auto;
-      margin-left: 10px;
+      margin-left: 5px;
     }
 
     @keyframes fade {
