@@ -265,7 +265,7 @@ export const ArtManagement = () => {
   return (
     <>
     {GlobalState.showToast && (
-      <Toast message="Update Successfull"/>
+      <Toast message="Update Successful"/>
     )}
       <table css={style} id="art-management">
         <thead>
@@ -318,9 +318,3 @@ export const ArtManagement = () => {
     </>
   )
 }
-
-{/* <td className="sku-item">
-  <tr className="sku-code">{i.sku}</tr>
-  <tr className="size">{i.size}</tr>
-  <tr className="price">{i.price}</tr>
-</td> */}

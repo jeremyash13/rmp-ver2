@@ -145,13 +145,16 @@ export default function ImageCarousel() {
   const [i, setI] = useState(0)
 
   useEffect(() => {
-    setTimeout(() => {
+    const myInterval = setInterval(() => {
       if (i === 2) {
         setI(0)
       } else {
         setI(i + 1)
       }
     }, 10000)
+    return () => {
+      clearInterval(myInterval)
+    }
   })
 
   return (

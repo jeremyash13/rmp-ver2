@@ -105,10 +105,7 @@ export default function EditView(props) {
       margin: auto;
       max-width: 400px;
     }
-    .quick-view-img-wrapper {
-      margin: auto;
-      margin-bottom: 25px;
-      max-width: 400px;
+    .editable-image-wrapper {
       position: relative;
       &:hover #change-photo-input-wrapper {
         visibility: visible;
@@ -173,7 +170,7 @@ export default function EditView(props) {
         text-align: center;
         color: var(--text-dark);
         font-weight: 500;
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
     }
     .option {
@@ -206,8 +203,7 @@ export default function EditView(props) {
       margin-bottom: 25px;
     }
     .tags-wrapper {
-      width: 90%;
-      margin: 0 auto;
+      margin: 0 50px;
       color: var(--text-dark);
     }
     .quick-view-img {
@@ -239,22 +235,30 @@ export default function EditView(props) {
       }
     }
 
-    @media (min-width: 600px) {
-      .quick-view-inner {
-        max-width: 60vw;
-        max-height: 70vh;
-      }
-      .quick-view-img-wrapper {
-        margin-right: 25px;
-        width: 100%;
-        max-width: initial;
-      }
-    }
     @media (min-width: 794px) {
+      .inner-container {
+        width: 80%;
+        height: 80%;
+      }
+      .buttons-wrapper {
+        width: 300px;
+        margin-top: auto;
+        justify-content: space-between;
+        margin-left: 50px;
+      }
+      .quick-view-img {
+        width: 100%;
+      }
+      .editable-image-wrapper {
+        width: 600px;
+      }
       .quick-view-details {
         flex-direction: row;
         max-height: 80%;
-        max-width: 80%;
+        width: 100%;
+        max-width: initial;
+        margin-top: 0;
+        padding: 0 50px;
       }
       .info-wrapper {
         margin: auto;

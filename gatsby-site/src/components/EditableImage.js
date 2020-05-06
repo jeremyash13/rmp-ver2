@@ -43,11 +43,9 @@ export default function EditableImage(props) {
     top: 50%;
     left: 50%;
   `
-const style = css`
-
-`
+  const style = css``
   return (
-    <div css={style} className={props.className}>
+    <div className="editable-image-wrapper">
       {!props.loading && (
         <label id="change-photo-input-wrapper">
           Change Photo
@@ -61,15 +59,13 @@ const style = css`
           ></input>
         </label>
       )}
-      <div className="editable-image-wrapper">
-        <ClipLoader
-          css={override}
-          color={"#FF0000"}
-          size={25}
-          loading={props.loading}
-        />
-        <img src={props.imgSrc} className="quick-view-img"></img>
-      </div>
+      <ClipLoader
+        css={override}
+        color={"#FF0000"}
+        size={25}
+        loading={props.loading}
+      />
+      <img src={props.imgSrc} className="quick-view-img"></img>
     </div>
   )
 }
