@@ -9,6 +9,7 @@ import EditView from "./EditView"
 import DeleteEntryButton from "../DeleteEntryButton"
 import SaveAndCloseButton from "../SaveAndCloseButton"
 import QuickViewClose from "../QuickViewClose"
+import Toast from "../Toast"
 
 let editItem = undefined
 
@@ -16,6 +17,8 @@ export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
   const [localFetchedArt, setLocalFetchedArt] = useState(GlobalState.fetchedArt)
   const [shouldRefreshFetchedArt, setShouldRefreshFetchedArt] = useState(0)
+
+  const [showEditView, setShowEditView] = useState(false)
 
   useEffect(() => {
     let query = {
@@ -46,7 +49,6 @@ export const ArtManagement = () => {
       })
   }, [shouldRefreshFetchedArt])
 
-  const [showEditView, setShowEditView] = useState(false)
 
   const style = css`
     max-width: 1268px;
@@ -62,14 +64,19 @@ export const ArtManagement = () => {
         display: block;
       }
     }
-    .entry-wrapper:nth-child(2n) {
-      background-color: #dddddd;
+    .sku-wrapper {
+      display: flex;
+    }
+    .sku-item {
+      margin-right: 25px;
+    }
+    tbody {
+      & .entry-wrapper:nth-of-type(2n) {
+        background-color: #dddddd;
+      }
     }
     thead tr {
       height: 78px;
-      & .skus {
-        padding-left: 30px;
-      }
     }
     th {
       background-color: #dddddd;
@@ -84,8 +91,6 @@ export const ArtManagement = () => {
       font-size: 0.9rem;
       padding: 0;
       padding-left: 15px;
-    }
-    .sku-item {
     }
   `
 
@@ -259,12 +264,15 @@ export const ArtManagement = () => {
 
   return (
     <>
+    {GlobalState.showToast && (
+      <Toast message="Update Successfull"/>
+    )}
       <table css={style} id="art-management">
         <thead>
           <tr>
             <th>Title</th>
             <th>Artist</th>
-            <th className="skus">SKU's</th>
+            <th>SKU's</th>
             <th>Type</th>
           </tr>
         </thead>
@@ -285,11 +293,11 @@ export const ArtManagement = () => {
                 <td className="artist">{item.artist}</td>
                 <td className="sku-wrapper">
                   {item.options.map(i => (
-                    <td className="sku-item">
-                      <tr className="sku-code">{i.sku}</tr>
-                      <tr className="size">{i.size}</tr>
-                      <tr className="price">{i.price}</tr>
-                    </td>
+                    <div className="sku-item">
+                      <div className="sku-code">{i.sku}</div>
+                      <div className="size">{i.size}</div>
+                      <div className="price">{i.price}</div>
+                    </div>
                   ))}
                 </td>
                 <td className="type">{item.type}</td>
@@ -302,9 +310,17 @@ export const ArtManagement = () => {
         <EditView
           editItem={localFetchedArt[editItem]}
           closeHandler={() => setShowEditView(false)}
-          refreshFetchedArtHandler={() => {setShouldRefreshFetchedArt(shouldRefreshFetchedArt + 1)}}
+          refreshFetchedArtHandler={() => {
+            setShouldRefreshFetchedArt(shouldRefreshFetchedArt + 1)
+          }}
         />
       )}
     </>
   )
 }
+
+{/* <td className="sku-item">
+  <tr className="sku-code">{i.sku}</tr>
+  <tr className="size">{i.size}</tr>
+  <tr className="price">{i.price}</tr>
+</td> */}

@@ -9,10 +9,13 @@ import QuickViewClose from "../QuickViewClose"
 import { jsx, css } from "@emotion/core"
 import EditableTextInput from "../EditableTextInput"
 import EditableImage from "../EditableImage"
+import AddOption from "../AddOption"
+import EditableTextArea from "../EditableTextArea"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
   const editItem = props.editItem
+
   const [objId, setObjId] = useState(editItem._id)
   const [title, setTitle] = useState(editItem.title)
   const [artist, setArtist] = useState(editItem.artist)
@@ -37,7 +40,9 @@ export default function EditView(props) {
       body: JSON.stringify(data),
     })
     response.json().then(d => {
-      window.alert(d.msg)
+      props.refreshFetchedArtHandler()
+      props.closeHandler()
+      GlobalState.setShowToast(true)
     })
   }
 
@@ -63,7 +68,7 @@ export default function EditView(props) {
     response.json().then(d => {
       props.refreshFetchedArtHandler()
       props.closeHandler()
-      window.alert(d.msg)
+      GlobalState.setShowToast(true)
     })
   }
 
@@ -76,8 +81,8 @@ export default function EditView(props) {
     left: 0;
     font-family: Roboto;
     .inner-container {
-      width: 80vw;
-      height: 80vh;
+      width: 100%;
+      height: 100%;
       background-color: white;
       position: absolute;
       transform: translate(-50%, -50%);
@@ -87,6 +92,12 @@ export default function EditView(props) {
       display: flex;
       flex-direction: column;
       padding-top: 25px;
+    }
+    .buttons-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-bottom: 25px;
     }
     .quick-view-details {
       display: flex;
@@ -131,7 +142,6 @@ export default function EditView(props) {
     }
     .info-wrapper {
       margin: auto;
-      width: 70%;
     }
     .heading-wrapper {
       display: flex;
@@ -155,6 +165,17 @@ export default function EditView(props) {
       color: var(--text-light-gray);
       width: 100%;
     }
+    #options-label-wrapper {
+      margin: 0 auto;
+      width: 100%;
+      & .label {
+        width: 100%;
+        text-align: center;
+        color: var(--text-dark);
+        font-weight: 500;
+        font-size: .9rem;
+      }
+    }
     .option {
       display: flex;
       flex-direction: row;
@@ -163,6 +184,7 @@ export default function EditView(props) {
       &-size,
       &-price {
         color: var(--text-dark);
+        max-width: 30%;
       }
 
       &-sku,
@@ -184,10 +206,9 @@ export default function EditView(props) {
       margin-bottom: 25px;
     }
     .tags-wrapper {
-      & input {
-        font-weight: 300;
-        color: var(--text-dark);
-      }
+      width: 90%;
+      margin: 0 auto;
+      color: var(--text-dark);
     }
     .quick-view-img {
       width: 100%;
@@ -210,10 +231,11 @@ export default function EditView(props) {
       padding: 4px;
       border: solid 2px rgba(17, 153, 229, 0);
       text-align: center;
+      border-radius: 4px;
+
       &:focus {
         box-shadow: inset 0 0 15px rgba(17, 153, 229, 0.25);
         border: solid 2px rgba(17, 153, 229, 0.5);
-        border-radius: 4px;
       }
     }
 
@@ -255,7 +277,7 @@ export default function EditView(props) {
       }}
     >
       <div className="inner-container">
-        <div>
+        <div className="buttons-wrapper">
           <DeleteEntryButton
             clickHandler={() => {
               if (!loading) {
@@ -285,7 +307,9 @@ export default function EditView(props) {
             className="quick-view-img-wrapper"
             editItem={editItem}
             imgSrc={imgSrc}
-            loadingHandler={(val) => {setLoading(val)}}
+            loadingHandler={val => {
+              setLoading(val)
+            }}
             loading={loading}
             stateHandler={val => {
               setImgSrc(val)
@@ -312,6 +336,11 @@ export default function EditView(props) {
             </div>
 
             <div className="options-wrapper">
+              <div className="option" id="options-label-wrapper">
+                <span className="label">SKU</span>
+                <span className="label">Size</span>
+                <span className="label">Price</span>
+              </div>
               {options.map(option => (
                 <div className="option">
                   <EditableTextInput
@@ -337,17 +366,22 @@ export default function EditView(props) {
                       tempOptions[options.indexOf(option)].price = val
                       setOptions([...tempOptions])
                     }}
-                  >
-                    <span>$</span>
-                  </EditableTextInput>
+                  />
                 </div>
               ))}
+              <AddOption
+                clickHandler={() => {
+                  tempOptions.push({ sku: "", size: "", price: "" })
+                  setOptions([...tempOptions])
+                }}
+              />
             </div>
           </div>
         </div>
 
         <div className="tags-wrapper">
-          <EditableTextInput
+          <span>Tags</span>
+          <EditableTextArea
             value={tags}
             changeHandler={val => {
               setTags(val)

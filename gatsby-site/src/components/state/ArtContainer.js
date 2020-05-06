@@ -34,6 +34,7 @@ const useArtGlobal = () => {
   })
   const [fetchedArt, setFetchedArt] = useState([])
   const [showingQuickView, setShowingQuickView] = useState(false)
+  const [showToast, setShowToast] = useState(false)
 
   const handleInput = e => {
     // decides which is the appropriate state to update based off what list item was clicked (event bubbling)
@@ -98,7 +99,7 @@ const useArtGlobal = () => {
         break
     }
   }
-  return { type, category, sortBy, artist, handleInput, fetchedArt, setFetchedArt, showingQuickView, setShowingQuickView}
+  return { type, category, sortBy, artist, handleInput, fetchedArt, setFetchedArt, showingQuickView, setShowingQuickView, showToast, setShowToast}
 }
 
 const ArtContainer = createContainer(useArtGlobal)
