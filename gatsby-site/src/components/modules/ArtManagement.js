@@ -25,27 +25,24 @@ export const ArtManagement = () => {
       category: ["all"],
       sortBy: [],
     }
-
-    const fetchArt = new Promise(async (resolve, reject) => {
+    const fetchArt = async () => {
       try {
         // const url = "https://rmpdemo-backend.herokuapp.com/art"
         const url = "http://localhost:3000/gallery"
-        const result = await fetch(url, {
+        const response = await fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(query),
         })
-        resolve(result)
+        return response.json()
       } catch (err) {
         console.log(err)
       }
-    })
-      .then(data => data.json())
-      .then(json => {
-        setLocalFetchedArt(json)
-      })
+    }
+
+    fetchArt().then(json => GlobalState.setFetchedArt(json))
   }, [GlobalState.refreshFetchedArt])
 
   const style = css`
@@ -272,13 +269,13 @@ export const ArtManagement = () => {
           </tr>
         </thead>
         <tbody>
-          {localFetchedArt.map(item => {
+          {GlobalState.fetchedArt.map(item => {
             return (
               <tr
                 className="entry-wrapper"
                 onClick={() => {
                   setShowEditView(true)
-                  editItem = localFetchedArt.indexOf(item)
+                  editItem = GlobalState.fetchedArt.indexOf(item)
                 }}
               >
                 <td className="title">
@@ -303,7 +300,7 @@ export const ArtManagement = () => {
       </table>
       {showEditView && (
         <EditView
-          editItem={localFetchedArt[editItem]}
+          editItem={GlobalState.fetchedArt[editItem]}
           closeHandler={() => setShowEditView(false)}
           refreshFetchedArtHandler={() => {
             GlobalState.setRefreshFetchedArt(GlobalState.refreshFetchedArt + 1)

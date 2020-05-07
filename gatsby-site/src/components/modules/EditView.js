@@ -15,6 +15,8 @@ import ImagePlaceholder from "../../images/img-placeholder.jpg"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
+
+  // if "Add New Entry" is clicked:
   const editItem = props.editItem || {
     _id: null,
     title: "",
@@ -34,30 +36,18 @@ export default function EditView(props) {
   const [category, setCategory] = useState(editItem.category)
   const [type, setType] = useState(editItem.type)
   const [options, setOptions] = useState(editItem.options)
-  const [tags, setTags] = useState(editItem.tags)
+  const [tags, setTags] = useState(editItem.tags.join(", "))
   const [age, setAge] = useState(editItem.age)
+
   useEffect(() => {
     if (editItem.age !== "") {
       setAge(new Date(editItem.age).toLocaleDateString())
-    }
-    if (editItem.tags.length > 0) {
-      const tagsWithSpaces = editItem.tags.map(item => {
-        const spaceAdded = " " + item
-        return spaceAdded
-      })
-      setTags(tagsWithSpaces)
     }
   }, [])
 
   const [loading, setLoading] = useState(false)
 
   const tempOptions = [...options]
-
-  const removeSpaces = str => {
-    if (typeof str === "string") {
-      return str.split(",").map(str => str.replace(/\s/g, ""))
-    }
-  }
 
   const deleteHandler = async () => {
     const data = { _id: objId }
@@ -84,7 +74,7 @@ export default function EditView(props) {
       category: category,
       type: type,
       options: options,
-      tags: removeSpaces(tags),
+      tags: tags.split(", "),
       age: age,
     }
     const makePostRequest = async () => {
@@ -95,13 +85,13 @@ export default function EditView(props) {
         },
         body: JSON.stringify(data),
       })
-      response.json().then(() => {
-        props.closeHandler()
-        GlobalState.setShowToast(true)
-        props.refreshFetchedArtHandler()
-      })
+      return response.json()
     }
-    makePostRequest()
+    makePostRequest().then(() => {
+      props.closeHandler()
+      GlobalState.setShowToast(true)
+      props.refreshFetchedArtHandler()
+    })
   }
 
   const editStyle = css`

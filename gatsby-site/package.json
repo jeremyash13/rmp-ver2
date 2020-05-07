@@ -6,7 +6,6 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.28",
-    "bson": "^4.0.4",
     "formik": "^2.1.4",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
