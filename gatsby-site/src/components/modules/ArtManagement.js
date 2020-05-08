@@ -41,7 +41,7 @@ export const ArtManagement = () => {
         console.log(err)
       }
     }
-
+    
     fetchArt().then(json => GlobalState.setFetchedArt(json))
   }, [GlobalState.refreshFetchedArt])
 
