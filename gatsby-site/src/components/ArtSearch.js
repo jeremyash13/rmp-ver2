@@ -1,11 +1,14 @@
-import React, { useRef } from "react"
+import React, { useState } from "react"
 
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
+import ArtContainer from "./state/ArtContainer"
+
 export default function ArtSearch(props) {
-  const inputRef = useRef()
+  const GlobalState = ArtContainer.useContainer()
+  const [value, setValue] = useState("")
   const style = css`
     font-family: Roboto;
     font-weight: 300;
@@ -48,10 +51,14 @@ export default function ArtSearch(props) {
   return (
     <div css={style} className={props.className}>
       <input
+        value={value}
         className="art-navigation__input--search"
         type="text"
-        ref={inputRef}
         placeholder="Search Item No, Title, Artist, Keyword"
+        onChange={e => {
+          setValue(e.target.value)
+          GlobalState.handleArtSearch(e.target.value)
+        }}
       ></input>
       <svg viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line

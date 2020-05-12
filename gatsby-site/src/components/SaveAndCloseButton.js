@@ -5,7 +5,7 @@ import { jsx, css } from "@emotion/core"
 
 export default function SaveAndCloseButton(props) {
   const style = css`
-    background-color: #459770;
+    background-color: #59C9A0;
     color: white;
     font-weight: 300;
     border: none;

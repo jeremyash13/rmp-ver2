@@ -41,6 +41,7 @@ client.connect((err) => {
       let queryCategory = [];
       let querySortBy = [];
       let queryArtist = [];
+      let search = "";
 
       if (req.body.type === "all") {
         queryType = ["Canvas Giclee", "Gallery Wrap", "Paper Giclee"];
@@ -63,20 +64,33 @@ client.connect((err) => {
       } else if (req.body.sortBy === "artist") {
         querySortBy = { artist: 1 };
       }
+      if (req.body.search !== "") {
+        search = req.body.search;
+      }
 
       const cursor = new Promise((resolve, reject) => {
-        console.log(querySortBy);
+        if (search !== "") {
+          const searchResults = artCollection
+            .find({
+              $text: { $search: search },
+            })
+            .sort(querySortBy)
+            .toArray();
+          resolve(searchResults);
+        }
         if (queryArtist === null) {
           //if all artists is selected
           const data = artCollection
             .find({
               type: { $in: [...queryType] },
               category: { $in: [...queryCategory] },
+              // $text: { $search: search },
             })
             .sort(querySortBy)
             .toArray();
           resolve(data);
         } else {
+          //if one artist is selected
           const data = artCollection
             .find({
               type: { $in: [...queryType] },

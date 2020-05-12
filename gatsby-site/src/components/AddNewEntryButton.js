@@ -24,7 +24,15 @@ export default function AddNewEntryButton(props) {
       margin-left: 15px;
     }
     &:hover {
+      transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
       cursor: pointer;
+      color: white;
+      background-color: #59C9A0;
+      & svg path{
+        stroke: white;
+        transition: stroke 250ms ease-in-out;
+
+      }
     }
   `
   return (

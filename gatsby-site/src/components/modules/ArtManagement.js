@@ -21,9 +21,11 @@ export const ArtManagement = () => {
 
   useEffect(() => {
     let query = {
-      type: ["all"],
-      category: ["all"],
-      sortBy: [],
+      type: GlobalState.type,
+      category: GlobalState.category,
+      sortBy: GlobalState.sortBy,
+      artist: GlobalState.artist,
+      search: GlobalState.artSearch
     }
     const fetchArt = async () => {
       try {

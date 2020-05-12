@@ -5,7 +5,7 @@ import { jsx, css } from "@emotion/core"
 
 export default function DeleteEntryButton(props) {
   const style = css`
-    background-color: #974545;
+    background-color: #DF5656;
     color: white;
     font-weight: 300;
     border: none;

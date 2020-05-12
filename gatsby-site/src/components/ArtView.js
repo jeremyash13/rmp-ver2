@@ -15,7 +15,8 @@ export default function ArtView() {
       type: GlobalState.type,
       category: GlobalState.category,
       sortBy: GlobalState.sortBy,
-      artist: GlobalState.artist
+      artist: GlobalState.artist,
+      search: GlobalState.artSearch
     }
     const fetchArt = new Promise(async (resolve, reject) => {
       try {
@@ -37,7 +38,11 @@ export default function ArtView() {
       .then(json => {
         GlobalState.setFetchedArt(json)
       })
-  }, [GlobalState.type, GlobalState.category, GlobalState.sortBy, GlobalState.artist])
+  }, [GlobalState.type, GlobalState.category, GlobalState.sortBy, GlobalState.artist, GlobalState.artSearch])
+
+  // useEffect(() => {
+  //   effect
+  // }, [GlobalState.artSearch])
 
   const handleQuickView = e => {
     GlobalState.setShowingQuickView(true)
@@ -77,6 +82,7 @@ export default function ArtView() {
     }
     .quick-view-button {
       display: none;
+      border: solid 1px var(--text-light-gray);
       background-color: white;
       padding: 10px;
       font-weight: 300;

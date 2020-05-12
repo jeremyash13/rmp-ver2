@@ -6,12 +6,18 @@ const useArtGlobal = () => {
   const [sortBy, setSortBy] = useState("recentlyAdded")
   const [artist, setArtist] = useState("all")
   const [category, setCategory] = useState("all")
+  const [artSearch, setArtSearch] = useState("")
 
   const [fetchedArt, setFetchedArt] = useState([])
   const [refreshFetchedArt, setRefreshFetchedArt] = useState(0)
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
+
+
+  const handleArtSearch = (value) => {
+    setArtSearch(value)
+  }
   const handleType = value => {
     //controls state for "type"
     switch (value) {
@@ -91,6 +97,8 @@ const useArtGlobal = () => {
     category,
     sortBy,
     artist,
+    artSearch,
+    handleArtSearch,
     handleSortBy,
     handleType,
     handleCategory,
