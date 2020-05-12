@@ -35,37 +35,58 @@ client.connect((err) => {
 
   app.post("/gallery", async (req, res) => {
     try {
+      console.log(req.body);
       const artCollection = client.db("rmp").collection("art");
       let queryType = [];
       let queryCategory = [];
       let querySortBy = [];
+      let queryArtist = [];
 
-      if (req.body.type[0] === "all") {
+      if (req.body.type === "all") {
         queryType = ["Canvas Giclee", "Gallery Wrap", "Paper Giclee"];
       } else {
-        queryType = [...req.body.type];
+        queryType = [req.body.type];
+      }
+      if (req.body.artist === "all") {
+        queryArtist = null;
+      } else {
+        queryArtist = [req.body.artist];
       }
 
-      if (req.body.category[0] === "all") {
-        queryCategory = ["western", "landscape", "patriotic", "wildlife"];
+      if (req.body.category === "all") {
+        queryCategory = ["landscape", "western", "wildlife", "patriotic"];
       } else {
-        queryCategory = [...req.body.category];
+        queryCategory = [req.body.category];
       }
-      if (req.body.sortBy[0] === "recentlyAdded") {
+      if (req.body.sortBy === "recentlyAdded") {
         querySortBy = { age: -1 };
-      } else if (req.body.sortBy[0] === "az") {
-        querySortBy = { title: 1 };
+      } else if (req.body.sortBy === "artist") {
+        querySortBy = { artist: 1 };
       }
 
       const cursor = new Promise((resolve, reject) => {
-        const data = artCollection
-          .find({
-            type: { $in: [...queryType] },
-            category: { $in: [...queryCategory] },
-          })
-          .sort(querySortBy)
-          .toArray();
-        resolve(data);
+        console.log(querySortBy);
+        if (queryArtist === null) {
+          //if all artists is selected
+          const data = artCollection
+            .find({
+              type: { $in: [...queryType] },
+              category: { $in: [...queryCategory] },
+            })
+            .sort(querySortBy)
+            .toArray();
+          resolve(data);
+        } else {
+          const data = artCollection
+            .find({
+              type: { $in: [...queryType] },
+              category: { $in: [...queryCategory] },
+              artist: { $in: [...queryArtist] },
+            })
+            .sort(querySortBy)
+            .toArray();
+          resolve(data);
+        }
       });
       cursor.then((data) => {
         res.header({

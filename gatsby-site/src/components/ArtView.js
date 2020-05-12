@@ -4,7 +4,7 @@ import nanoid from "nanoid"
 import ArtContainer from "./state/ArtContainer"
 
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core"
+import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
 
 export default function ArtView() {
@@ -12,24 +12,10 @@ export default function ArtView() {
   const [idQuickView, setIdQuickView] = useState(null)
   useEffect(() => {
     let query = {
-      type: [],
-      category: [],
-      sortBy: [],
-    }
-    for (const property in GlobalState.type) {
-      if (GlobalState.type[property] === true) {
-        query.type = [...query.type, property]
-      }
-    }
-    for (const property in GlobalState.category) {
-      if (GlobalState.category[property] === true) {
-        query.category = [...query.category, property]
-      }
-    }
-    for (const property in GlobalState.sortBy) {
-      if (GlobalState.sortBy[property] === true) {
-        query.sortBy = [...query.sortBy, property]
-      }
+      type: GlobalState.type,
+      category: GlobalState.category,
+      sortBy: GlobalState.sortBy,
+      artist: GlobalState.artist
     }
     const fetchArt = new Promise(async (resolve, reject) => {
       try {
@@ -51,7 +37,7 @@ export default function ArtView() {
       .then(json => {
         GlobalState.setFetchedArt(json)
       })
-  }, [GlobalState.type, GlobalState.category, GlobalState.sortBy])
+  }, [GlobalState.type, GlobalState.category, GlobalState.sortBy, GlobalState.artist])
 
   const handleQuickView = e => {
     GlobalState.setShowingQuickView(true)

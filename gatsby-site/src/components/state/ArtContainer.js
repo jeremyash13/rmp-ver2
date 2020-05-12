@@ -2,101 +2,87 @@ import { useState } from "react"
 import { createContainer } from "unstated-next"
 
 const useArtGlobal = () => {
-  const [type, setType] = useState({
-    // init state
-    all: true,
-    giclee: false,
-    wrap: false,
-    standard: false,
-  })
-  const [category, setCategory] = useState({
-    // init state
-    all: true,
-    western: false,
-    landscape: false,
-    patriotic: false,
-    wildlife: false,
-  })
-  const [sortBy, setSortBy] = useState({
-    // init state
-    recentlyAdded: true,
-    az: false,
-  })
-  const [artist, setArtist] = useState({
-    // init state
-    all: true,
-    clarkKelleyPrice: false,
-    dallenLambson: false,
-    haydenLambson: false,
-    manuelMansanarez: false,
-    mitchellMansanarez: false,
-    travisSylvester: false,
-  })
+  const [type, setType] = useState("all")
+  const [sortBy, setSortBy] = useState("recentlyAdded")
+  const [artist, setArtist] = useState("all")
+  const [category, setCategory] = useState("all")
+
   const [fetchedArt, setFetchedArt] = useState([])
   const [refreshFetchedArt, setRefreshFetchedArt] = useState(0)
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const handleInput = e => {
-    // decides which is the appropriate state to update based off what list item was clicked (event bubbling)
-    const name = e.target.htmlFor.toLowerCase()
-    if (name.includes("type")) {
-      handleType(e)
-    } else if (name.includes("category")) {
-      handleCategory(e)
-    } else if (name.includes("sort-by")) {
-      handleSortBy(e)
-    }
-  }
-
-  const handleType = e => {
+  const handleType = value => {
     //controls state for "type"
-    const name = e.target.htmlFor
-    switch (name) {
-      case "type-all":
-        setType({ all: !type.all })
+    switch (value) {
+      case "ALL":
+        setType("all")
         break
-      case "type-giclee":
-        setType({ ...type, giclee: !type.giclee, all: false })
+      case "Canvas Giclee":
+        setType("Canvas Giclee")
         break
-      case "type-wrap":
-        setType({ ...type, wrap: !type.wrap, all: false })
+      case "Gallery Wrap":
+        setType("Gallery Wrap")
         break
-      case "type-standard":
-        setType({ ...type, standard: !type.standard, all: false })
+      case "Paper Giclee":
+        setType("Paper Giclee")
         break
     }
   }
-  const handleCategory = e => {
+  const handleCategory = value => {
     //controls state for "category"
-    const name = e.target.htmlFor
-    switch (name) {
-      case "category-all":
-        setCategory({ all: !category.all })
+    switch (value) {
+      case "all":
+        setCategory("all")
         break
-      case "category-western":
-        setCategory({ ...category, western: !category.western, all: false })
+      case "landscape":
+        setCategory("landscape")
         break
-      case "category-landscape":
-        setCategory({ ...category, landscape: !category.landscape, all: false })
+      case "western":
+        setCategory("western")
         break
-      case "category-patriotic":
-        setCategory({ ...category, patriotic: !category.patriotic, all: false })
+      case "wildlife":
+        setCategory("wildlife")
         break
-      case "category-wildlife":
-        setCategory({ ...category, wildlife: !category.wildlife, all: false })
+      case "patriotic":
+        setCategory("patriotic")
         break
     }
   }
-  const handleSortBy = e => {
-    //controls state for "sort by"
-    const name = e.target.htmlFor
-    switch (name) {
-      case "sort-by-recently-added":
-        setSortBy({ recentlyAdded: true })
+  const handleArtist = value => {
+    //controls state for "category"
+    switch (value) {
+      case "ALL":
+        setArtist("all")
         break
-      case "sort-by-a-z":
-        setSortBy({ az: true })
+      case "Clark Kelley Price":
+        setArtist("Clark Kelley Price")
+        break
+      case "Dallen Lambson":
+        setArtist("Dallen Lambson")
+        break
+      case "Hayden Lambson":
+        setArtist("Hayden Lambson")
+        break
+      case "Manuel Mansanarez":
+        setArtist("Manuel Mansanarez")
+        break
+      case "Mitchell Mansanarez":
+        setArtist("Mitchell Mansanarez")
+        break
+      case "Travis Sylvester":
+        setArtist("Travis Sylvester")
+        break
+    }
+  }
+  const handleSortBy = value => {
+    //controls state for "sort by"
+    switch (value) {
+      case "Recently Added":
+        setSortBy("recentlyAdded")
+        break
+      case "Artist":
+        setSortBy("artist")
         break
     }
   }
@@ -105,7 +91,10 @@ const useArtGlobal = () => {
     category,
     sortBy,
     artist,
-    handleInput,
+    handleSortBy,
+    handleType,
+    handleCategory,
+    handleArtist,
     fetchedArt,
     setFetchedArt,
     showingQuickView,

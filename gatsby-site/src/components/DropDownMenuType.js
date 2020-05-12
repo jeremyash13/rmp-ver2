@@ -4,7 +4,10 @@ import { Rfdd, RfddOption } from "react-free-dropdown"
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 
+import ArtContainer from "./state/ArtContainer"
+
 export const DropDownMenuType = props => {
+  const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("Type: ALL")
   const style = css`
     & div {
@@ -18,7 +21,9 @@ export const DropDownMenuType = props => {
       selectClassName="mySelect"
       css={style}
       value={value}
-      onChange={optionValue => setValue("Type: " + optionValue)}
+      onChange={optionValue => {
+        setValue("Type: " + optionValue)
+        GlobalState.handleType(optionValue)}}
       listStyle="max-height: 200px"
     >
       <RfddOption value="ALL">ALL</RfddOption>
