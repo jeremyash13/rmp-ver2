@@ -81,12 +81,13 @@ client.connect((err) => {
         if (queryArtist === null) {
           //if all artists is selected
           const data = artCollection
-            .find({
-              type: { $in: [...queryType] },
-              category: { $in: [...queryCategory] },
-              // $text: { $search: search },
-            })
-            .sort(querySortBy)
+            // .find({
+            //   type: { $in: [...queryType] },
+            //   category: { $in: [...queryCategory] },
+            //   // $text: { $search: search },
+            // })
+            .find({})
+            // .sort(querySortBy)
             .toArray();
           resolve(data);
         } else {
@@ -107,6 +108,7 @@ client.connect((err) => {
           "Access-Control-Allow-Origin": "*",
         });
         console.log("POST request made at /art");
+        console.log(data)
         res.json(data);
       });
     } catch (err) {

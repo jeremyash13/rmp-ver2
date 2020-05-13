@@ -50,7 +50,7 @@ export default function EditableImage(props) {
       position: relative;
     }
   `
-  // #FF0000
+
   return (
     <div className="editable-image-wrapper">
       {!props.loading && (

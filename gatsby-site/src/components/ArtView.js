@@ -16,7 +16,7 @@ export default function ArtView() {
       category: GlobalState.category,
       sortBy: GlobalState.sortBy,
       artist: GlobalState.artist,
-      search: GlobalState.artSearch
+      search: GlobalState.artSearch,
     }
     const fetchArt = new Promise(async (resolve, reject) => {
       try {
@@ -38,7 +38,13 @@ export default function ArtView() {
       .then(json => {
         GlobalState.setFetchedArt(json)
       })
-  }, [GlobalState.type, GlobalState.category, GlobalState.sortBy, GlobalState.artist, GlobalState.artSearch])
+  }, [
+    GlobalState.type,
+    GlobalState.category,
+    GlobalState.sortBy,
+    GlobalState.artist,
+    GlobalState.artSearch,
+  ])
 
   // useEffect(() => {
   //   effect

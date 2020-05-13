@@ -378,9 +378,9 @@ export default function EditView(props) {
                 <div className="option">
                   <EditableTextInput
                     className="option-sku"
-                    value={option.sku}
+                    value={option.code}
                     changeHandler={val => {
-                      tempOptions[options.indexOf(option)].sku = val
+                      tempOptions[options.indexOf(option)].code = val
                       setOptions([...tempOptions])
                     }}
                   />

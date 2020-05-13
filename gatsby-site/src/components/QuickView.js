@@ -165,7 +165,7 @@ export default function QuickView(props) {
             <div className="options-wrapper">
               {item.options.map(option => (
                 <div className="option">
-                  <span className="option-sku">{option.sku}</span>
+                  <span className="option-sku">{option.code}</span>
                   <span className="option-size">{option.size}</span>
                   <span className="option-price">{`$${option.price}`}</span>
                 </div>

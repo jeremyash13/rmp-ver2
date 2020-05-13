@@ -288,7 +288,7 @@ export const ArtManagement = () => {
                 <td className="sku-wrapper">
                   {item.options.map(i => (
                     <div className="sku-item">
-                      <div className="sku-code">{i.sku}</div>
+                      <div className="sku-code">{i.code}</div>
                       <div className="size">{i.size}</div>
                       <div className="price">{i.price}</div>
                     </div>
