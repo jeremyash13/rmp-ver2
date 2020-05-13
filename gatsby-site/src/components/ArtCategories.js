@@ -7,14 +7,24 @@ import { css, jsx, Global } from "@emotion/core"
 
 export default function ArtCategories(props) {
   const GlobalState = ArtContainer.useContainer()
+  
   const [allActive, setAllActive] = useState(true)
   const [landscapeActive, setLandscapeActive] = useState(false)
   const [westernActive, setWesternActive] = useState(false)
   const [wildlifeActive, setWildlifeActive] = useState(false)
   const [patrioticActive, setPatrioticActive] = useState(false)
+
+  const clearActive = () => {
+    setAllActive(false)
+    setLandscapeActive(false)
+    setWesternActive(false)
+    setWildlifeActive(false)
+    setPatrioticActive(false)
+  }
+
   const style = css`
     & .active {
-        color: red;
+        color: var(--text-black);
     }
   `
 
@@ -25,6 +35,7 @@ export default function ArtCategories(props) {
           className={allActive ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("all")
+            clearActive()
             setAllActive(true)
           }}
         >
@@ -34,6 +45,7 @@ export default function ArtCategories(props) {
           className={landscapeActive ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("landscape")
+            clearActive()
             setLandscapeActive(true)
           }}
         >
@@ -43,6 +55,7 @@ export default function ArtCategories(props) {
           className={westernActive ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("western")
+            clearActive()
             setWesternActive(true)
           }}
         >
@@ -52,6 +65,7 @@ export default function ArtCategories(props) {
           className={wildlifeActive ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("wildlife")
+            clearActive()
             setWildlifeActive(true)
           }}
         >
@@ -61,6 +75,7 @@ export default function ArtCategories(props) {
           className={patrioticActive ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("patriotic")
+            clearActive()
             setPatrioticActive(true)
           }}
         >
