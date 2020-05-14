@@ -5,18 +5,28 @@ import { jsx, css } from "@emotion/core"
 
 export default function SaveAndCloseButton(props) {
   const style = css`
-    background-color: #59C9A0;
-    color: white;
+    background-color: #dddddd;
+    color: var(--text-black);
     font-weight: 300;
     border: none;
-    box-shadow: 0 7px 5px -5px rgba(0, 0, 0, 0.5);
     padding: 10px;
     svg {
       margin-right: 5px;
       width: 15px;
+      & path {
+        stroke: var(--text-black);
+      }
     }
     &:hover {
       cursor: pointer;
+      background-color: #59c9a0;
+      color: white;
+      transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+      & svg path {
+          stroke: white;
+          transition: stroke 250ms ease-in-out;
+        }
+      }
     }
   `
   return (

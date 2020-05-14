@@ -27,11 +27,10 @@ export default function AddNewEntryButton(props) {
       transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
       cursor: pointer;
       color: white;
-      background-color: #59C9A0;
-      & svg path{
+      background-color: #59c9a0;
+      & svg path {
         stroke: white;
         transition: stroke 250ms ease-in-out;
-
       }
     }
   `

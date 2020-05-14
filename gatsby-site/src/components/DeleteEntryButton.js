@@ -5,18 +5,27 @@ import { jsx, css } from "@emotion/core"
 
 export default function DeleteEntryButton(props) {
   const style = css`
-    background-color: #DF5656;
-    color: white;
+    color: var(--text-black);
+    background-color: #dddddd;
     font-weight: 300;
     border: none;
-    box-shadow: 0 7px 5px -5px rgba(0, 0, 0, 0.5);
     padding: 10px;
     svg {
       margin-right: 5px;
       width: 12px;
+      & path {
+        stroke: var(--text-black);
+      }
     }
     &:hover {
       cursor: pointer;
+      background-color: #df5656;
+      color: white;
+      transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+      & svg path {
+        stroke: white;
+        transition: stroke 250ms ease-in-out;
+      }
     }
   `
   return (
