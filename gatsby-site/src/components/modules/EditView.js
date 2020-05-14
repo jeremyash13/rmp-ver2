@@ -12,6 +12,7 @@ import EditableImage from "../EditableImage"
 import AddOption from "../AddOption"
 import EditableTextArea from "../EditableTextArea"
 import ImagePlaceholder from "../../images/img-placeholder.jpg"
+import TypeDropDown from "../TypeDropDown"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
@@ -139,7 +140,6 @@ export default function EditView(props) {
       font-weight: 300;
       position: absolute;
       padding: 10px;
-      border-radius: 4px;
       transform: translate(-50%, -50%);
       top: 50%;
       left: 50%;
@@ -201,7 +201,7 @@ export default function EditView(props) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       &-sku,
       &-size,
       &-price {
@@ -233,8 +233,9 @@ export default function EditView(props) {
       color: var(--text-dark);
     }
     .quick-view-img {
-      width: 100%;
+      max-width: 100%;
       box-shadow: 0 40px 20px -30px rgba(0, 0, 0, 0.8);
+      max-height: 100%;
     }
     .quick-view-close-wrapper {
       position: absolute;
@@ -253,7 +254,6 @@ export default function EditView(props) {
       padding: 4px;
       border: solid 2px rgba(17, 153, 229, 0);
       text-align: center;
-      border-radius: 4px;
       background-color: #eae9e9;
 
       &:focus {
@@ -265,7 +265,7 @@ export default function EditView(props) {
     @media (min-width: 794px) {
       .inner-container {
         width: 80%;
-        max-height: 800px;
+        max-height: 600px;
         height: 100%;
       }
       .buttons-wrapper {
@@ -275,10 +275,9 @@ export default function EditView(props) {
         margin-left: 50px;
       }
       .quick-view-img {
-        width: 100%;
       }
       .editable-image-wrapper {
-        max-width: 600px;
+        max-height: 300px;
         margin-right: 25px;
       }
       .quick-view-details {
@@ -424,14 +423,20 @@ export default function EditView(props) {
 
         <div className="type-age-wrapper">
           <div className="type-wrapper">
-            <EditableTextInput
+            <TypeDropDown
+              value={type}
+              changeHandler={val => {
+                setType(val)
+              }}
+            />
+            {/* <EditableTextInput
               className="type"
               value={type}
               placeholder="Art Type"
               changeHandler={val => {
                 setType(val)
               }}
-            />
+            /> */}
           </div>
           <div className="age-wrapper">
             <EditableTextInput

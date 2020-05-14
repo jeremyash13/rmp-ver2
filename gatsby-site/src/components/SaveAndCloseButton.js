@@ -9,7 +9,6 @@ export default function SaveAndCloseButton(props) {
     color: white;
     font-weight: 300;
     border: none;
-    border-radius: 4px;
     box-shadow: 0 7px 5px -5px rgba(0, 0, 0, 0.5);
     padding: 10px;
     svg {

@@ -13,7 +13,6 @@ export default function EditableTextArea(props) {
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 4px;
       background-color: #eae9e9;
       padding: 5px 10px;
       resize: none;
