@@ -88,7 +88,7 @@ export default function ArtView() {
     }
     .quick-view-button {
       display: none;
-      border: solid 1px var(--text-light-gray);
+      box-shadow: 0 10px 10px -7px rgba(0, 0, 0, 0.8);
       background-color: white;
       padding: 10px;
       font-weight: 300;
