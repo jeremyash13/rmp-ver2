@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import nanoid from "nanoid"
 
 import ArtContainer from "./state/ArtContainer"
 
@@ -62,7 +61,8 @@ export default function ArtView() {
     padding: 35px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-gap: 25px;
+    grid-column-gap: 25px;
+    grid-row-gap: 100px;
     .art-view-wrapper {
       position: relative;
     }
@@ -74,7 +74,7 @@ export default function ArtView() {
     .img-hover-element {
       position: absolute;
       top: 0;
-      bottom: 7px;
+      bottom: 0;
       left: 0;
       right: 0;
       transition: background-color 350ms ease-out;
@@ -128,9 +128,11 @@ export default function ArtView() {
     }
 
     @media (min-width: 600px) {
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
       .img-wrapper {
-        max-width: 600px;
+        display: flex;
+        max-height: 350px;
+        justify-content: center;
       }
     }
   `
@@ -138,9 +140,8 @@ export default function ArtView() {
   return (
     <div css={style} className="art-view-wrapper">
       {GlobalState.fetchedArt.map(item => {
-        const keyId = nanoid()
         return (
-          <div key={keyId} className="art-entry">
+          <div key={item._id} className="art-entry">
             <div className="img-wrapper">
               <div
                 className="img-hover-element"

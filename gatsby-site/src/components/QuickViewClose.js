@@ -17,7 +17,7 @@ export default function QuickViewClose(props) {
         <path
           d="M2 2L23 22.5M44 43L23 22.5M23 22.5L44 2L2 43"
           stroke="#858585"
-          stroke-width="5"
+          strokeWidth="5"
         />
       </svg>
     </div>

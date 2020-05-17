@@ -15,17 +15,17 @@ let editItem = undefined
 
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
-  const [localFetchedArt, setLocalFetchedArt] = useState(GlobalState.fetchedArt)
+  // const [localFetchedArt, setLocalFetchedArt] = useState(GlobalState.fetchedArt)
 
   const [showEditView, setShowEditView] = useState(false)
 
   useEffect(() => {
     let query = {
-      type: GlobalState.type,
-      category: GlobalState.category,
-      sortBy: GlobalState.sortBy,
-      artist: GlobalState.artist,
-      search: GlobalState.artSearch
+      type: "all",
+      category: "all",
+      sortBy: "artist",
+      artist: "all",
+      search: "",
     }
     const fetchArt = async () => {
       try {
@@ -43,7 +43,7 @@ export const ArtManagement = () => {
         console.log(err)
       }
     }
-    
+
     fetchArt().then(json => GlobalState.setFetchedArt(json))
   }, [GlobalState.refreshFetchedArt])
 
@@ -274,6 +274,7 @@ export const ArtManagement = () => {
           {GlobalState.fetchedArt.map(item => {
             return (
               <tr
+                key={item._id}
                 className="entry-wrapper"
                 onClick={() => {
                   setShowEditView(true)
@@ -287,7 +288,7 @@ export const ArtManagement = () => {
                 <td className="artist">{item.artist}</td>
                 <td className="sku-wrapper">
                   {item.options.map(i => (
-                    <div className="sku-item">
+                    <div className="sku-item" key={i.code}>
                       <div className="sku-code">{i.code}</div>
                       <div className="size">{i.size}</div>
                       <div className="price">{i.price}</div>

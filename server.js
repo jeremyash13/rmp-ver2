@@ -81,13 +81,11 @@ client.connect((err) => {
         if (queryArtist === null) {
           //if all artists is selected
           const data = artCollection
-            // .find({
-            //   type: { $in: [...queryType] },
-            //   category: { $in: [...queryCategory] },
-            //   // $text: { $search: search },
-            // })
-            .find({})
-            // .sort(querySortBy)
+            .find({
+              type: { $in: [...queryType] },
+              tags: { $in: [...queryCategory] },
+            })
+            .sort(querySortBy)
             .toArray();
           resolve(data);
         } else {
@@ -95,7 +93,7 @@ client.connect((err) => {
           const data = artCollection
             .find({
               type: { $in: [...queryType] },
-              category: { $in: [...queryCategory] },
+              tags: { $in: [...queryCategory] },
               artist: { $in: [...queryArtist] },
             })
             .sort(querySortBy)
