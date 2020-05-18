@@ -16,6 +16,7 @@ export default function ArtView() {
       sortBy: GlobalState.sortBy,
       artist: GlobalState.artist,
       search: GlobalState.artSearch,
+      last_id: GlobalState.last_id
     }
 
     const fetchArt = new Promise(async (resolve, reject) => {
@@ -40,6 +41,7 @@ export default function ArtView() {
       .then(data => data.json())
       .then(json => {
         GlobalState.setFetchedArt(json)
+        GlobalState.setLast_id(json[json.length - 1]._id)
       })
   }, [
     GlobalState.type,
@@ -48,10 +50,6 @@ export default function ArtView() {
     GlobalState.artist,
     GlobalState.artSearch,
   ])
-
-  // useEffect(() => {
-  //   effect
-  // }, [GlobalState.artSearch])
 
   const handleQuickView = e => {
     GlobalState.setShowingQuickView(true)

@@ -7,6 +7,7 @@ const useArtGlobal = () => {
   const [artist, setArtist] = useState("all")
   const [category, setCategory] = useState("all")
   const [artSearch, setArtSearch] = useState("")
+  const [last_id, setLast_id] = useState("5ebc683871f8f2349ae1f87d")
 
   const [fetchedArt, setFetchedArt] = useState([])
   const [refreshFetchedArt, setRefreshFetchedArt] = useState(0)
@@ -105,6 +106,8 @@ const useArtGlobal = () => {
     handleArtist,
     fetchedArt,
     setFetchedArt,
+    last_id,
+    setLast_id,
     showingQuickView,
     setShowingQuickView,
     showToast,
