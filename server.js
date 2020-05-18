@@ -80,26 +80,50 @@ client.connect((err) => {
         }
         if (queryArtist === null) {
           //if all artists is selected
-          const data = artCollection
-            // .find({
-            //   type: { $in: [...queryType] },
-            //   tags: { $in: [...queryCategory] },
-            // })
-            // .sort(querySortBy)
-            .find({})
-            .toArray();
-          resolve(data);
+          if (req.body.category === "all") {
+            // if all categories is selected
+            const data = artCollection
+              .find({
+                type: { $in: [...queryType] },
+              })
+              .sort(querySortBy)
+              .toArray();
+            resolve(data);
+          } else {
+            // if a particular category is selected
+            const data = artCollection
+              .find({
+                type: { $in: [...queryType] },
+                tags: { $in: [...queryCategory] },
+              })
+              .sort(querySortBy)
+              .toArray();
+            resolve(data);
+          }
         } else {
           //if one artist is selected
-          const data = artCollection
-            .find({
-              type: { $in: [...queryType] },
-              tags: { $in: [...queryCategory] },
-              artist: { $in: [...queryArtist] },
-            })
-            .sort(querySortBy)
-            .toArray();
-          resolve(data);
+          if (req.body.category === "all") {
+            // if all cateorgies is selected
+            const data = artCollection
+              .find({
+                type: { $in: [...queryType] },
+                artist: { $in: [...queryArtist] },
+              })
+              .sort(querySortBy)
+              .toArray();
+            resolve(data);
+          } else {
+            //if one particular category is selected
+            const data = artCollection
+              .find({
+                type: { $in: [...queryType] },
+                tags: { $in: [...queryCategory] },
+                artist: { $in: [...queryArtist] },
+              })
+              .sort(querySortBy)
+              .toArray();
+            resolve(data);
+          }
         }
       });
       cursor.then((data) => {
@@ -107,7 +131,7 @@ client.connect((err) => {
           "Access-Control-Allow-Origin": "*",
         });
         console.log("POST request made at /art");
-        console.log(data)
+        console.log(data);
         res.json(data);
       });
     } catch (err) {

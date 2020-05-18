@@ -25,10 +25,13 @@ export const ArtManagement = () => {
       category: "all",
       sortBy: "artist",
       artist: "all",
-      search: "",
+      search: GlobalState.artSearch,
     }
     const fetchArt = async () => {
+      const controller = new AbortController()
+      const signal = controller.signal
       try {
+        controller.abort()
         // const url = "https://rmpdemo-backend.herokuapp.com/art"
         const url = "http://localhost:3000/gallery"
         const response = await fetch(url, {
@@ -45,7 +48,7 @@ export const ArtManagement = () => {
     }
 
     fetchArt().then(json => GlobalState.setFetchedArt(json))
-  }, [GlobalState.refreshFetchedArt])
+  }, [GlobalState.refreshFetchedArt, GlobalState.artSearch])
 
   const style = css`
     background-color: #eae9e9;

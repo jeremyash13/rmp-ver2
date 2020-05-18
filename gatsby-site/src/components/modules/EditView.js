@@ -13,6 +13,7 @@ import AddOption from "../AddOption"
 import EditableTextArea from "../EditableTextArea"
 import ImagePlaceholder from "../../images/img-placeholder.jpg"
 import TypeDropDown from "../TypeDropDown"
+import RemoveOption from "../RemoveOption"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
@@ -72,7 +73,6 @@ export default function EditView(props) {
       title: title,
       artist: artist,
       src: imgSrc,
-      category: category,
       type: type,
       options: options,
       tags: tags.split(", "),
@@ -131,6 +131,9 @@ export default function EditView(props) {
     .editable-image-wrapper {
       position: relative;
       margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+      max-height: 250px;
       &:hover #change-photo-input-wrapper {
         visibility: visible;
       }
@@ -214,6 +217,10 @@ export default function EditView(props) {
         margin-right: 10px;
       }
     }
+    .options-buttons-wrapper {
+      display: flex;
+      flex-direction: row;
+    }
     .type-age-wrapper {
       & input {
         font-weight: 300;
@@ -265,8 +272,7 @@ export default function EditView(props) {
     @media (min-width: 794px) {
       .inner-container {
         width: 80%;
-        max-height: 600px;
-        height: 100%;
+        height: auto;
       }
       .buttons-wrapper {
         width: 300px;
@@ -401,12 +407,20 @@ export default function EditView(props) {
                   />
                 </div>
               ))}
-              <AddOption
-                clickHandler={() => {
-                  tempOptions.push({ sku: "", size: "", price: "" })
-                  setOptions([...tempOptions])
-                }}
-              />
+              <div className="options-buttons-wrapper">
+                <AddOption
+                  clickHandler={() => {
+                    tempOptions.push({ sku: "", size: "", price: "" })
+                    setOptions([...tempOptions])
+                  }}
+                />
+                <RemoveOption
+                  clickHandler={() => {
+                    tempOptions.pop()
+                    setOptions([...tempOptions])
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -40,7 +40,8 @@ export default function Artist(props) {
       top: 50%;
       left: 50%;
       padding: 10px;
-      z-index: 15;
+      z-index: 11;
+      text-align: center;
     }
     .artist-hover-element {
       position: absolute;

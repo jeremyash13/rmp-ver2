@@ -19,6 +19,7 @@ export default function ArtSearch(props) {
     border: none;
     font-size: 1rem;
     height: min-content;
+    margin-bottom: 15px;
 
     & input:focus {
       box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
@@ -40,12 +41,12 @@ export default function ArtSearch(props) {
     svg {
       width: 15px;
       position: absolute;
-      ${"" /* top: 0; */}
       transform: translateY(-50%);
       top: 50%;
       left: 15px;
     }
     @media (min-width: 600px) {
+      margin: 0;
     }
   `
   return (

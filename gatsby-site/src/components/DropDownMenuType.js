@@ -10,8 +10,12 @@ export const DropDownMenuType = props => {
   const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("Type: ALL")
   const style = css`
+    margin-bottom: 15px;
     & div {
       background-color: #dddddd;
+    }
+    @media (min-width: 600px) {
+      margin: 0;
     }
   `
 
@@ -23,7 +27,8 @@ export const DropDownMenuType = props => {
       value={value}
       onChange={optionValue => {
         setValue("Type: " + optionValue)
-        GlobalState.handleType(optionValue)}}
+        GlobalState.handleType(optionValue)
+      }}
       listStyle="max-height: 200px"
     >
       <RfddOption value="ALL">ALL</RfddOption>

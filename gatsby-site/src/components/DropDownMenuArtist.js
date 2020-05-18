@@ -10,8 +10,12 @@ export const DropDownMenuArtist = props => {
   const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("Artist: ALL")
   const style = css`
+    margin-bottom: 15px;
     & div {
       background-color: #dddddd;
+    }
+    @media (min-width: 600px) {
+      margin: 0;
     }
   `
 

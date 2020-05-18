@@ -3,14 +3,13 @@ import React from "react"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
-export default function AddOption(props) {
+export default function RemoveOption(props) {
   const style = css`
     width: 25px;
-    margin-right: 10px;
     &:hover {
       cursor: pointer;
       & svg rect {
-        fill: #59c9a0;
+        fill: #df5656;
         transition: fill 250ms ease-in-out;
       }
       & svg path {
@@ -23,16 +22,16 @@ export default function AddOption(props) {
   return (
     <div
       css={style}
-      className="add-option-wrapper"
+      className="remove-option-wrapper"
       onClick={props.clickHandler}
     >
-      <svg viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 43 43"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <rect width="43" height="43" fill="#C4C4C4" />
-        <path
-          d="M22.5667 8L22.5667 34M10 20.5667H36"
-          stroke="#565656"
-          strokeWidth="3"
-        />
+        <path d="M8 22H35.5" stroke="#565656" stroke-width="4" />
       </svg>
     </div>
   )

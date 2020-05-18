@@ -10,11 +10,13 @@ export const DropDownMenuSortBy = props => {
   const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("Sort By: Recently Added")
   const style = css`
+    margin-bottom: 15px;
     & div {
       background-color: #dddddd;
     }
     @media (min-width: 600px) {
       margin-left: auto;
+      margin-bottom: 0;
     }
   `
 
@@ -24,10 +26,10 @@ export const DropDownMenuSortBy = props => {
       selectClassName="mySelect"
       css={style}
       value={value}
-      onChange={(optionValue) => {
+      onChange={optionValue => {
         setValue("Sort By: " + optionValue)
         GlobalState.handleSortBy(optionValue)
-        }}
+      }}
       listStyle="max-height: 200px"
     >
       <RfddOption value="Recently Added">Recently Added</RfddOption>

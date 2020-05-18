@@ -17,8 +17,12 @@ export default function ArtView() {
       artist: GlobalState.artist,
       search: GlobalState.artSearch,
     }
+
     const fetchArt = new Promise(async (resolve, reject) => {
       try {
+        const controller = new AbortController()
+        const signal = controller.signal
+        controller.abort()
         // const url = "https://rmpdemo-backend.herokuapp.com/art"
         const url = "http://localhost:3000/gallery"
         const result = await fetch(url, {
@@ -96,8 +100,11 @@ export default function ArtView() {
       transform: translate(-50%, -50%);
       top: 50%;
       left: 50%;
+      min-width: 107px;
+      text-align: center;
     }
     .img-wrapper {
+      max-height: 300px;
       margin-bottom: 25px;
       margin-left: auto;
       margin-right: auto;
@@ -105,6 +112,7 @@ export default function ArtView() {
     }
     .img {
       box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.8);
+      max-height: 300px;
     }
     .art-view__img-details {
       display: flex;
@@ -128,10 +136,10 @@ export default function ArtView() {
     }
 
     @media (min-width: 600px) {
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       .img-wrapper {
         display: flex;
-        max-height: 350px;
+        max-height: initial;
         justify-content: center;
       }
     }
