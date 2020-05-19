@@ -5,18 +5,22 @@ import ArtContainer from "./state/ArtContainer"
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
+import ClipLoader from "react-spinners/ClipLoader"
 
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
   const [idQuickView, setIdQuickView] = useState(null)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
+    setLoading(true)
+
     let query = {
       type: GlobalState.type,
       category: GlobalState.category,
       sortBy: GlobalState.sortBy,
       artist: GlobalState.artist,
       search: GlobalState.artSearch,
-      last_id: GlobalState.last_id
+      last_id: GlobalState.last_id,
     }
 
     const fetchArt = new Promise(async (resolve, reject) => {
@@ -42,6 +46,7 @@ export default function ArtView() {
       .then(json => {
         GlobalState.setFetchedArt(json)
         GlobalState.setLast_id(json[json.length - 1]._id)
+        setLoading(false)
       })
   }, [
     GlobalState.type,
@@ -65,6 +70,7 @@ export default function ArtView() {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-column-gap: 25px;
     grid-row-gap: 100px;
+
     .art-view-wrapper {
       position: relative;
     }
@@ -142,40 +148,48 @@ export default function ArtView() {
       }
     }
   `
-
+  const loaderStyle = css`
+    margin: 0 auto;
+  `
   return (
     <div css={style} className="art-view-wrapper">
-      {GlobalState.fetchedArt.map(item => {
-        return (
-          <div key={item._id} className="art-entry">
-            <div className="img-wrapper">
-              <div
-                className="img-hover-element"
-                id={GlobalState.fetchedArt.indexOf(item)}
-                onClick={e => {
-                  handleQuickView(e)
-                }}
-              >
+      {loading ? (
+        <div css={loaderStyle}>
+          <ClipLoader loading={true} />
+        </div>
+      ) : (
+        GlobalState.fetchedArt.map(item => {
+          return (
+            <div key={item._id} className="art-entry">
+              <div className="img-wrapper">
                 <div
-                  className="quick-view-button"
+                  className="img-hover-element"
                   id={GlobalState.fetchedArt.indexOf(item)}
                   onClick={e => {
                     handleQuickView(e)
                   }}
                 >
-                  Quick View
+                  <div
+                    className="quick-view-button"
+                    id={GlobalState.fetchedArt.indexOf(item)}
+                    onClick={e => {
+                      handleQuickView(e)
+                    }}
+                  >
+                    Quick View
+                  </div>
                 </div>
+                <img src={item.src} className="img"></img>
               </div>
-              <img src={item.src} className="img"></img>
+              <div className="art-view__img-details">
+                <span className="title">{item.title}</span>
+                <span className="by">by</span>
+                <span className="artist">{item.artist}</span>
+              </div>
             </div>
-            <div className="art-view__img-details">
-              <span className="title">{item.title}</span>
-              <span className="by">by</span>
-              <span className="artist">{item.artist}</span>
-            </div>
-          </div>
-        )
-      })}
+          )
+        })
+      )}
       {GlobalState.showingQuickView && renderQuickView(idQuickView)}
     </div>
   )
