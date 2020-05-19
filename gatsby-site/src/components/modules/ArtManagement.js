@@ -35,8 +35,7 @@ export const ArtManagement = () => {
       const signal = controller.signal
       try {
         controller.abort()
-        // const url = "https://rmpdemo-backend.herokuapp.com/art"
-        const url = "http://localhost:3000/gallery"
+        const url = GlobalState.galleryUrl
         const response = await fetch(url, {
           method: "POST",
           headers: {

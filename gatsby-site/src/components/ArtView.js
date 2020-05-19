@@ -29,8 +29,7 @@ export default function ArtView() {
         const controller = new AbortController()
         const signal = controller.signal
         controller.abort()
-        // const url = "https://rmpdemo-backend.herokuapp.com/art"
-        const url = "http://localhost:3000/gallery"
+        const url = GlobalState.galleryUrl
         const result = await fetch(url, {
           method: "POST",
           headers: {

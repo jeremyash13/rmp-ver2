@@ -53,7 +53,8 @@ export default function EditView(props) {
 
   const deleteHandler = async () => {
     const data = { _id: objId }
-    const response = await fetch("http://localhost:3000/delete", {
+    const url = GlobalState.deleteUrl
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +80,8 @@ export default function EditView(props) {
       age: age,
     }
     const makePostRequest = async () => {
-      const response = await fetch("http://localhost:3000/edit", {
+      const url = GlobalState.editUrl
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,8 @@ export default function EditableImage(props) {
   let fileName = null
 
   const uploadHandler = async formData => {
-    const response = await fetch("http://localhost:3000/s3", {
+    const url = GlobalState.s3Url
+    const response = await fetch(url, {
       method: "POST",
       body: formData,
     })
