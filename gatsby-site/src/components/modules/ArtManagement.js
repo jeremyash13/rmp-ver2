@@ -10,16 +10,19 @@ import DeleteEntryButton from "../DeleteEntryButton"
 import SaveAndCloseButton from "../SaveAndCloseButton"
 import QuickViewClose from "../QuickViewClose"
 import Toast from "../Toast"
+import ClipLoader from "react-spinners/ClipLoader"
 
 let editItem = undefined
 
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
-  // const [localFetchedArt, setLocalFetchedArt] = useState(GlobalState.fetchedArt)
+  const [localFetchedArt, setLocalFetchedArt] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const [showEditView, setShowEditView] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     let query = {
       type: "all",
       category: "all",
@@ -47,10 +50,13 @@ export const ArtManagement = () => {
       }
     }
 
-    fetchArt().then(json => GlobalState.setFetchedArt(json))
+    fetchArt().then(json => {
+      setLoading(false)
+      return setLocalFetchedArt(json)
+    })
   }, [GlobalState.refreshFetchedArt, GlobalState.artSearch])
 
-  const style = css`
+  const mainStyle = css`
     background-color: #eae9e9;
     color: var(--text-black);
     margin-top: 25px;
@@ -68,6 +74,9 @@ export const ArtManagement = () => {
     }
     .sku-item {
       margin-right: 25px;
+    }
+    .th-artist {
+      min-width: 200px;
     }
     tbody {
       & .entry-wrapper:nth-of-type(2n) {
@@ -92,7 +101,9 @@ export const ArtManagement = () => {
       padding-left: 15px;
     }
   `
-
+  const wrapperStyle = css`
+    min-height: 100vh;
+  `
   const editStyle = css`
     width: 100%;
     height: 100%;
@@ -260,59 +271,70 @@ export const ArtManagement = () => {
       }
     }
   `
-
+  const loaderStyle = css`
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    left: 50%;
+    top: 50%;
+  `
   return (
-    <>
+    <div css={wrapperStyle} className="art-management-wrapper">
       {GlobalState.showToast && <Toast message="Update Successful" />}
-      <table css={style} id="art-management">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>SKU's</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {GlobalState.fetchedArt.map(item => {
-            return (
-              <tr
-                key={item._id}
-                className="entry-wrapper"
-                onClick={() => {
-                  setShowEditView(true)
-                  editItem = GlobalState.fetchedArt.indexOf(item)
-                }}
-              >
-                <td className="title">
-                  {item.title}
-                  <EditHover />
-                </td>
-                <td className="artist">{item.artist}</td>
-                <td className="sku-wrapper">
-                  {item.options.map(i => (
-                    <div className="sku-item" key={i.code}>
-                      <div className="sku-code">{i.code}</div>
-                      <div className="size">{i.size}</div>
-                      <div className="price">{i.price}</div>
-                    </div>
-                  ))}
-                </td>
-                <td className="type">{item.type}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+      {loading ? (
+        <div css={loaderStyle}>
+          <ClipLoader loading={true} />
+        </div>
+      ) : (
+        <table css={mainStyle} id="art-management">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th className="th-artist">Artist</th>
+              <th>SKU's</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {localFetchedArt.map(item => {
+              return (
+                <tr
+                  key={item._id}
+                  className="entry-wrapper"
+                  onClick={() => {
+                    setShowEditView(true)
+                    editItem = localFetchedArt.indexOf(item)
+                  }}
+                >
+                  <td className="title">
+                    {item.title}
+                    <EditHover />
+                  </td>
+                  <td className="artist">{item.artist}</td>
+                  <td className="sku-wrapper">
+                    {item.options.map(i => (
+                      <div className="sku-item" key={i.code}>
+                        <div className="sku-code">{i.code}</div>
+                        <div className="size">{i.size}</div>
+                        <div className="price">{i.price}</div>
+                      </div>
+                    ))}
+                  </td>
+                  <td className="type">{item.type}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      )}
       {showEditView && (
         <EditView
-          editItem={GlobalState.fetchedArt[editItem]}
+          editItem={localFetchedArt[editItem]}
           closeHandler={() => setShowEditView(false)}
           refreshFetchedArtHandler={() => {
-            GlobalState.setRefreshFetchedArt(GlobalState.refreshFetchedArt + 1)
+            GlobalState.setRefreshFetchedArt(prevState => prevState + 1)
           }}
         />
       )}
-    </>
+    </div>
   )
 }

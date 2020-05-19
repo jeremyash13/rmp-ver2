@@ -42,8 +42,7 @@ client.connect((err) => {
       let querySortBy = [];
       let queryArtist = [];
       let search = "";
-      // let last_id = 'ObjectId("5ebc683871f8f2349ae1f879")';
-      let last_id = ObjectId(req.body.last_id);
+      let pageNumber = req.body.pageNumber;
 
       if (req.body.type === "all") {
         queryType = ["Canvas Giclee", "Gallery Wrap", "Paper Giclee"];
@@ -76,6 +75,8 @@ client.connect((err) => {
             .find({
               $text: { $search: search },
             })
+            // .limit(25 * pageNumber)
+            // .skip(25 * pageNumber - 25)
             .sort(querySortBy)
             .toArray();
           resolve(searchResults);
@@ -84,26 +85,15 @@ client.connect((err) => {
           //if all artists is selected
           if (req.body.category === "all") {
             // if all categories is selected
-            if (last_id === null) {
-              const data = artCollection
-                .find({
-                  type: { $in: [...queryType] },
-                })
-                .limit(25)
-                .sort(querySortBy)
-                .toArray();
-              resolve(data);
-            } else {
-              const data = artCollection
-                .find({
-                  type: { $in: [...queryType] },
-                  _id: { $gt: last_id }
-                })
-                .limit(25)
-                .sort(querySortBy)
-                .toArray();
-              resolve(data);
-            }
+            const data = artCollection
+              .find({
+                type: { $in: [...queryType] },
+              })
+              // .limit(25 * pageNumber)
+              // .skip(25 * pageNumber - 25)
+              .sort(querySortBy)
+              .toArray();
+            resolve(data);
           } else {
             // if a particular category is selected
             const data = artCollection
@@ -111,6 +101,8 @@ client.connect((err) => {
                 type: { $in: [...queryType] },
                 tags: { $in: [...queryCategory] },
               })
+              // .limit(25 * pageNumber)
+              // .skip(25 * pageNumber - 25)
               .sort(querySortBy)
               .toArray();
             resolve(data);
@@ -124,6 +116,8 @@ client.connect((err) => {
                 type: { $in: [...queryType] },
                 artist: { $in: [...queryArtist] },
               })
+              // .limit(25 * pageNumber)
+              // .skip(25 * pageNumber - 25)
               .sort(querySortBy)
               .toArray();
             resolve(data);
@@ -135,6 +129,8 @@ client.connect((err) => {
                 tags: { $in: [...queryCategory] },
                 artist: { $in: [...queryArtist] },
               })
+              // .limit(25 * pageNumber)
+              // .skip(25 * pageNumber - 25)
               .sort(querySortBy)
               .toArray();
             resolve(data);

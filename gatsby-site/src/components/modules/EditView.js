@@ -230,12 +230,12 @@ export default function EditView(props) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-left: 50px;
-      margin-right: 50px;
+      margin-left: 25px;
+      margin-right: 25px;
       margin-bottom: 25px;
     }
     .tags-wrapper {
-      margin: 0 50px;
+      margin: 0 25px;
       margin-bottom: 25px;
       color: var(--text-dark);
     }
@@ -276,9 +276,8 @@ export default function EditView(props) {
       }
       .buttons-wrapper {
         width: 300px;
-        margin-top: 25px;
         justify-content: space-between;
-        margin-left: 50px;
+        margin-left: 25px;
       }
       .quick-view-img {
       }
@@ -292,7 +291,7 @@ export default function EditView(props) {
         width: 100%;
         max-width: initial;
         margin-top: 0;
-        padding: 0 50px;
+        padding: 0 25px;
       }
       .info-wrapper {
         justify-content: space-between;

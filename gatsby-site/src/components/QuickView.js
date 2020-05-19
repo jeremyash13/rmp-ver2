@@ -92,6 +92,7 @@ export default function QuickView(props) {
     }
     .quick-view-img {
       width: 100%;
+      max-height: 400px;
       box-shadow: 0 40px 20px -30px rgba(0, 0, 0, 0.8);
     }
     .quick-view-close-wrapper {

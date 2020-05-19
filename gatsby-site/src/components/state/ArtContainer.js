@@ -7,9 +7,19 @@ const useArtGlobal = () => {
   const [artist, setArtist] = useState("all")
   const [category, setCategory] = useState("all")
   const [artSearch, setArtSearch] = useState("")
-  const [last_id, setLast_id] = useState("5ebc683871f8f2349ae1f87d")
+  const [pageNumber, setPageNumber] = useState(1)
 
-  const [fetchedArt, setFetchedArt] = useState([])
+  const [fetchedArt, setFetchedArt] = useState()
+  // const [fetchedArt, setFetchedArt] = useState([{
+  //   _id: "",
+  //   type: "",
+  //   title: "",
+  //   artist: "",
+  //   src: "",
+  //   options: [{code: '', size: '', price: ''}],
+  //   tags: [''],
+  //   age: ""
+  // }])
   const [refreshFetchedArt, setRefreshFetchedArt] = useState(0)
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
@@ -106,8 +116,8 @@ const useArtGlobal = () => {
     handleArtist,
     fetchedArt,
     setFetchedArt,
-    last_id,
-    setLast_id,
+    pageNumber,
+    setPageNumber,
     showingQuickView,
     setShowingQuickView,
     showToast,

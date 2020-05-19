@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useInView } from "react-intersection-observer"
 
 import ArtContainer from "./state/ArtContainer"
 
@@ -20,7 +21,7 @@ export default function ArtView() {
       sortBy: GlobalState.sortBy,
       artist: GlobalState.artist,
       search: GlobalState.artSearch,
-      last_id: GlobalState.last_id,
+      pageNumber: GlobalState.pageNumber,
     }
 
     const fetchArt = new Promise(async (resolve, reject) => {
@@ -44,8 +45,14 @@ export default function ArtView() {
     })
       .then(data => data.json())
       .then(json => {
-        GlobalState.setFetchedArt(json)
-        GlobalState.setLast_id(json[json.length - 1]._id)
+        if (query.pageNumber > 1) {
+          GlobalState.setFetchedArt(prevState => {
+            let newState = [...prevState, ...json]
+            return newState
+          })
+        } else {
+          GlobalState.setFetchedArt(json)
+        }
         setLoading(false)
       })
   }, [
@@ -54,7 +61,26 @@ export default function ArtView() {
     GlobalState.sortBy,
     GlobalState.artist,
     GlobalState.artSearch,
+    GlobalState.pageNumber,
   ])
+
+  // useEffect(() => {
+  //   //reset pageNumber if query params change
+  //   GlobalState.setFetchedArt([])
+  //   GlobalState.setPageNumber(1)
+  // }, [
+  //   GlobalState.category,
+  //   GlobalState.type,
+  //   GlobalState.artist,
+  //   GlobalState.sortBy,
+  // ])
+
+  const [ref, inView, entry] = useInView()
+  // useEffect(() => {
+  //   if (inView) {
+  //     GlobalState.setPageNumber(prevState => prevState + 1)
+  //   }
+  // }, [inView])
 
   const handleQuickView = e => {
     GlobalState.setShowingQuickView(true)
@@ -153,41 +179,84 @@ export default function ArtView() {
   `
   return (
     <div css={style} className="art-view-wrapper">
+      {/* <span
+        style={{
+          position: "fixed",
+          padding: "10px",
+          color: "white",
+          top: "0",
+          right: "0",
+          backgroundColor: "#59c9a0",
+          zIndex: "50",
+        }}
+      >{`PAGENUMBER: ${GlobalState.pageNumber}`}</span> */}
       {loading ? (
         <div css={loaderStyle}>
           <ClipLoader loading={true} />
         </div>
       ) : (
-        GlobalState.fetchedArt.map(item => {
-          return (
-            <div key={item._id} className="art-entry">
-              <div className="img-wrapper">
-                <div
-                  className="img-hover-element"
-                  id={GlobalState.fetchedArt.indexOf(item)}
-                  onClick={e => {
-                    handleQuickView(e)
-                  }}
-                >
+        GlobalState.fetchedArt.map((item, idx) => {
+          if (idx === GlobalState.fetchedArt.length - 1) {
+            return (
+              <div ref={ref} key={item._id} className="art-entry">
+                <div className="img-wrapper">
                   <div
-                    className="quick-view-button"
+                    className="img-hover-element"
                     id={GlobalState.fetchedArt.indexOf(item)}
                     onClick={e => {
                       handleQuickView(e)
                     }}
                   >
-                    Quick View
+                    <div
+                      className="quick-view-button"
+                      id={GlobalState.fetchedArt.indexOf(item)}
+                      onClick={e => {
+                        handleQuickView(e)
+                      }}
+                    >
+                      Quick View
+                    </div>
                   </div>
+                  <img src={item.src} className="img"></img>
                 </div>
-                <img src={item.src} className="img"></img>
+                <div className="art-view__img-details">
+                  <span className="title">{item.title}</span>
+                  <span className="by">by</span>
+                  <span className="artist">{item.artist}</span>
+                </div>
               </div>
-              <div className="art-view__img-details">
-                <span className="title">{item.title}</span>
-                <span className="by">by</span>
-                <span className="artist">{item.artist}</span>
+            )
+          } else {
+            return (
+              <div key={item._id} className="art-entry">
+                <div className="img-wrapper">
+                  <div
+                    className="img-hover-element"
+                    id={GlobalState.fetchedArt.indexOf(item)}
+                    onClick={e => {
+                      handleQuickView(e)
+                    }}
+                  >
+                    <div
+                      className="quick-view-button"
+                      id={GlobalState.fetchedArt.indexOf(item)}
+                      onClick={e => {
+                        handleQuickView(e)
+                      }}
+                    >
+                      Quick View
+                    </div>
+                  </div>
+                  <img src={item.src} className="img"></img>
+                </div>
+                <div className="art-view__img-details">
+                  <span className="title">{item.title}</span>
+                  <span className="by">by</span>
+                  <span className="artist">{item.artist}</span>
+                </div>
               </div>
-            </div>
-          )
+            )
+          }
         })
       )}
       {GlobalState.showingQuickView && renderQuickView(idQuickView)}
