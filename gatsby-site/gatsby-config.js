@@ -5,16 +5,18 @@ module.exports = {
     author: `Jeremy Ashcraft`,
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-plugin-s3`,
-    //   options: {
-    //     bucketName: "rocky-mountain-publishing-bucket",
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "rmp-gatsby-site",
+        protocol: "https",
+        hostname: "www.rockymountainpublishing.net",
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-canonical-urls`,
     //   options: {
-    //     siteUrl: `https://www.rmpdemo.com`,
+    //     siteUrl: `https://www.rockymountainpublishing.net`,
     //   },
     // },
     `gatsby-plugin-react-helmet`,

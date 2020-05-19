@@ -115,7 +115,6 @@ export default function QuickView(props) {
       }
       .quick-view-img-wrapper {
         margin-right: 25px;
-        width: 100%;
         max-width: initial;
       }
     }
