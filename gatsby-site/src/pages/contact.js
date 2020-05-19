@@ -32,7 +32,7 @@ const style = css`
   }
   .contact-section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     & h1 {
       width: 250px;
@@ -43,6 +43,11 @@ const style = css`
     & p {
       max-width: 400px;
       text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    & div {
+      margin-top: 50px;
     }
   }
   & .subtext {
@@ -109,6 +114,18 @@ const style = css`
   .zone-4-wrapper {
     background-color: var(--zone-4);
   }
+  @media (min-width: 800px) {
+    .contact-section {
+      flex-direction: row;
+      & p {
+        margin-left: initial;
+        margin-right: initial;
+      }
+      & div {
+        margin-top: initial;
+      }
+    }
+  }
 `
 
 const contactPage = () => (
@@ -135,7 +152,11 @@ const contactPage = () => (
         </div>
         <div>
           <h1>ADDRESS</h1>
-          <p>Rocky Mountain Publishing<br/>479 Emerald Ave. Blackfoot, ID 83221</p>
+          <p>
+            Rocky Mountain Publishing
+            <br />
+            479 Emerald Ave. Blackfoot, ID 83221
+          </p>
         </div>
       </div>
       <div>

@@ -24,6 +24,8 @@ const style = css`
     height: 100%;
   }
   .testimonial-wrapper {
+    font-size: 0.9rem;
+    line-height: 15px;
     position: absolute;
     padding-left: 25px;
     margin-bottom: 25px;
@@ -34,6 +36,7 @@ const style = css`
     font-weight: 300;
     border-left: solid 1px white;
     max-width: 1268px;
+    min-width: 380px;
     & .testimonial-footer {
       margin-top: 25px;
     }
@@ -55,6 +58,13 @@ const style = css`
       width: 7px;
       height: 7px;
       border-radius: 50%;
+    }
+  }
+  @media (min-width: 700px) {
+    .testimonial-wrapper {
+      font-size: 1rem;
+      line-height: 25px;
+      min-width: 600px;
     }
   }
 `

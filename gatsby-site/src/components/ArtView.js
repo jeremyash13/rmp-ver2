@@ -96,6 +96,7 @@ export default function ArtView() {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-column-gap: 25px;
     grid-row-gap: 100px;
+    min-height: 100vh;
 
     .art-view-wrapper {
       position: relative;
