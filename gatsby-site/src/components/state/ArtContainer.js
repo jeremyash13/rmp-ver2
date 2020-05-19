@@ -26,15 +26,15 @@ const useArtGlobal = () => {
 
 
   
-  const [deleteUrl, setDeleteUrl] = useState("http://localhost:3000/delete")
-  const [galleryUrl, setGalleryUrl] = useState("http://localhost:3000/gallery")
-  const [editUrl, setEditUrl] = useState("http://localhost:3000/edit")
-  const [s3Url, setS3Url] = useState("http://localhost:3000/s3")
+  // const [deleteUrl, setDeleteUrl] = useState("http://localhost:3000/delete")
+  // const [galleryUrl, setGalleryUrl] = useState("http://localhost:3000/gallery")
+  // const [editUrl, setEditUrl] = useState("http://localhost:3000/edit")
+  // const [s3Url, setS3Url] = useState("http://localhost:3000/s3")
 
-  // const [deleteUrl, setDeleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
-  // const [galleryUrl, setGalleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
-  // const [editUrl, setEditUrl] = useState("https://rmp-server.herokuapp.com/edit")
-  // const [s3Url, setS3Url] = useState("https://rmp-server.herokuapp.com/s3")
+  const [deleteUrl, setDeleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
+  const [galleryUrl, setGalleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
+  const [editUrl, setEditUrl] = useState("https://rmp-server.herokuapp.com/edit")
+  const [s3Url, setS3Url] = useState("https://rmp-server.herokuapp.com/s3")
 
 
 
