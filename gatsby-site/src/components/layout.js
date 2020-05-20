@@ -16,8 +16,32 @@ import { Footer } from "./Footer"
 import MobileNavMenu from "./MobileNavMenu"
 import { FaBars, FaTimes } from "react-icons/fa"
 
+import BrowserDetection from "react-browser-detection"
+
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
+const browserMessageStyle = css`
+  height: 100px;
+  width: 100%;
+  background-color: #df5656;
+  color: white;
+  font-size: 2rem;
+  padding: 25px;
+  text-align: center;
+`
+const browserHandler = {
+  ie: () => (
+    <div css={browserMessageStyle}>
+      Internet Explorer is unsupported. Please download{" "}
+      <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge,</a>{" "}
+      <a href="https://www.google.com/chrome/">Google Chrome, </a> or{" "}
+      <a href="https://www.mozilla.org/en-US/exp/firefox/new/">
+        Mozilla Firefox
+      </a>{" "}
+      to view this site properly
+    </div>
+  )
+}
 
 const Layout = ({ children }) => {
   const [mobileMenu, setMobileMenu] = useState(false)
@@ -54,12 +78,15 @@ const Layout = ({ children }) => {
         onClick={() => {
           setMobileMenu(!mobileMenu)
         }}
-      >{mobileMenu ? ('×'): ('≡')}
-        
+      >
+        {mobileMenu ? "×" : "≡"}
       </button>
       {mobileMenu && <MobileNavMenu />}
       <Navbar />
-      <main css={mainStyle}>{children}</main>
+      <main css={mainStyle}>
+        <BrowserDetection>{browserHandler}</BrowserDetection>
+        {children}
+      </main>
       <Footer />
     </>
   )
