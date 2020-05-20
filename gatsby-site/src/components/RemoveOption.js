@@ -31,7 +31,7 @@ export default function RemoveOption(props) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect width="43" height="43" fill="#C4C4C4" />
-        <path d="M8 22H35.5" stroke="#565656" stroke-width="4" />
+        <path d="M8 22H35.5" stroke="#565656" strokeWidth="4" />
       </svg>
     </div>
   )

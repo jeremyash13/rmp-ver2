@@ -381,7 +381,7 @@ export default function EditView(props) {
                 <span className="label">Price</span>
               </div>
               {options.map(option => (
-                <div className="option">
+                <div className="option" key={option.code}>
                   <EditableTextInput
                     className="option-sku"
                     value={option.code}
@@ -444,14 +444,6 @@ export default function EditView(props) {
                 setType(val)
               }}
             />
-            {/* <EditableTextInput
-              className="type"
-              value={type}
-              placeholder="Art Type"
-              changeHandler={val => {
-                setType(val)
-              }}
-            /> */}
           </div>
           <div className="age-wrapper">
             <EditableTextInput
