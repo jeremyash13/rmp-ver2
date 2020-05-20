@@ -72,7 +72,7 @@ export const Footer = () => {
                   Admin Dashboard
                 </Link>
                 <span style={{marginLeft: '15px'}} className="admin-login" onClick={logout}>
-                  LOGOUT (dev-only)
+                  Logout
                 </span>
               </>
             )}

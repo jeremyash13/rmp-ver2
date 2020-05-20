@@ -27,8 +27,9 @@ export default function MobileNavMenu(props) {
     a {
       padding: 25px;
       text-decoration: none;
+      color: var(--text-black);
       &:visited {
-          color: var(--text-black);
+        color: var(--text-black);
       }
     }
     @media (min-width: 700px) {

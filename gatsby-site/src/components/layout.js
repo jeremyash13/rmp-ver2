@@ -40,7 +40,19 @@ const browserHandler = {
       </a>{" "}
       to view this site properly
     </div>
-  )
+  ),
+  safari: () => (
+    <div css={browserMessageStyle}>
+      Safari is unsupported. You may experience problems using the Safari
+      browser. Please download{" "}
+      <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge,</a>{" "}
+      <a href="https://www.google.com/chrome/">Google Chrome, </a> or{" "}
+      <a href="https://www.mozilla.org/en-US/exp/firefox/new/">
+        Mozilla Firefox
+      </a>{" "}
+      to view this site properly
+    </div>
+  ),
 }
 
 const Layout = ({ children }) => {
