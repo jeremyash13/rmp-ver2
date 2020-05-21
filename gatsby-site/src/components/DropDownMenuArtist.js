@@ -14,7 +14,7 @@ export const DropDownMenuArtist = props => {
     & div {
       background-color: #dddddd;
     }
-    @media (min-width: 600px) {
+    @media (min-width: 700px) {
       margin: 0;
     }
   `

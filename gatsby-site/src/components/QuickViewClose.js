@@ -2,12 +2,8 @@ import React from "react"
 
 export default function QuickViewClose(props) {
   return (
-    <div className={props.className} 
-    onClick={props.clickHandler}
-    >
+    <div className={props.className} onClick={props.clickHandler}>
       <svg
-        width="46"
-        height="45"
         viewBox="0 0 46 45"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

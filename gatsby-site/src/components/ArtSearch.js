@@ -14,7 +14,7 @@ export default function ArtSearch(props) {
     font-weight: 300;
     font-size: 1rem;
     color: #393939;
-    width: 600px;
+    width: 100%;
     position: relative;
     border: none;
     font-size: 1rem;
@@ -45,8 +45,9 @@ export default function ArtSearch(props) {
       top: 50%;
       left: 15px;
     }
-    @media (min-width: 600px) {
+    @media (min-width: 700px) {
       margin: 0;
+      max-width: 600px; 
     }
   `
   return (

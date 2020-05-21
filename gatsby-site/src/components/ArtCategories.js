@@ -7,7 +7,7 @@ import { css, jsx, Global } from "@emotion/core"
 
 export default function ArtCategories(props) {
   const GlobalState = ArtContainer.useContainer()
-  
+
   const [allActive, setAllActive] = useState(true)
   const [landscapeActive, setLandscapeActive] = useState(false)
   const [westernActive, setWesternActive] = useState(false)
@@ -23,8 +23,12 @@ export default function ArtCategories(props) {
   }
 
   const style = css`
+    & ul {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
     & .active {
-        color: var(--text-black);
+      color: var(--text-black);
     }
   `
 

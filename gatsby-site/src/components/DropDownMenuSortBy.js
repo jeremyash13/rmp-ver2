@@ -14,7 +14,7 @@ export const DropDownMenuSortBy = props => {
     & div {
       background-color: #dddddd;
     }
-    @media (min-width: 600px) {
+    @media (min-width: 700px) {
       margin-left: auto;
       margin-bottom: 0;
     }

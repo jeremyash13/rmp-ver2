@@ -91,14 +91,14 @@ export default function QuickView(props) {
     }
     .quick-view-img {
       width: 100%;
-      max-height: 400px;
+      max-height: 200px;
       box-shadow: 0 40px 20px -30px rgba(0, 0, 0, 0.8);
     }
     .quick-view-close-wrapper {
       position: absolute;
-      width: 25px;
-      top: 0;
-      right: 10px;
+      width: 35px;
+      top: 25px;
+      right: 25px;
       &:hover {
         cursor: pointer;
       }
@@ -107,7 +107,7 @@ export default function QuickView(props) {
       }
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 700px) {
       .quick-view-inner {
         max-width: 60vw;
         max-height: 70vh;
@@ -116,8 +116,13 @@ export default function QuickView(props) {
         margin-right: 25px;
         max-width: initial;
       }
+      .quick-view-close-wrapper {
+        width: 25px;
+        top: 15px;
+        right: 15px;
+      }
     }
-    @media (min-width: 794px) {
+    @media (min-width: 1000px) {
       .quick-view-details {
         flex-direction: row;
         max-height: 80%;
@@ -129,6 +134,9 @@ export default function QuickView(props) {
         display: flex;
         flex-direction: column;
         height: 200px;
+      }
+      .quick-view-img {
+        max-height: 400px;
       }
     }
   `
@@ -151,7 +159,11 @@ export default function QuickView(props) {
             }}
           />
           <div className="quick-view-img-wrapper">
-            <img src={item.src} alt={`${item.title}`} className="quick-view-img"></img>
+            <img
+              src={item.src}
+              alt={`${item.title}`}
+              className="quick-view-img"
+            ></img>
           </div>
 
           <div className="info-wrapper">
