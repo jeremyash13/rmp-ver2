@@ -1,4 +1,3 @@
-import React from "react"
 import ArtContainer from "./state/ArtContainer"
 
 /** @jsx jsx */
@@ -152,7 +151,7 @@ export default function QuickView(props) {
             }}
           />
           <div className="quick-view-img-wrapper">
-            <img src={item.src} className="quick-view-img"></img>
+            <img src={item.src} alt={`${item.title}`} className="quick-view-img"></img>
           </div>
 
           <div className="info-wrapper">

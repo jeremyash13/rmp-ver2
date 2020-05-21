@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
@@ -35,89 +33,89 @@ import EightTwoZeroSeven from "../images/frames/8207-web-600x300px.png"
 const standardFrames = [
   {
     name: "#991",
-    element: <img src={NineNineOne}></img>,
+    element: <img src={NineNineOne} alt=""></img>,
   },
   {
     name: "#8233",
-    element: <img src={EightTwoThreeThree}></img>,
+    element: <img src={EightTwoThreeThree} alt=""></img>,
   },
   // {
   //   name: "#419",
-  //   element: <img src={FourOneNine}></img>,
+  //   element: <img src={FourOneNine} alt=""></img>,
   // },
   {
     name: "#600",
-    element: <img src={SixHundred}></img>,
+    element: <img src={SixHundred} alt=""></img>,
   },
   {
     name: "#Barnwood",
-    element: <img src={Barnwood}></img>,
+    element: <img src={Barnwood} alt=""></img>,
   },
   {
     name: "#Brown Barnwood",
-    element: <img src={BrownBarnwood}></img>,
+    element: <img src={BrownBarnwood} alt=""></img>,
   },
   {
     name: "#8235",
-    element: <img src={EightTwoThreeFive}></img>,
+    element: <img src={EightTwoThreeFive} alt=""></img>,
   },
   {
     name: "#180",
-    element: <img src={OneEighty}></img>,
+    element: <img src={OneEighty} alt=""></img>,
   },
   {
     name: "#900",
-    element: <img src={NineHundred}></img>,
+    element: <img src={NineHundred} alt=""></img>,
   },
   {
     name: "#8234",
-    element: <img src={EightTwoThreeFour}></img>,
+    element: <img src={EightTwoThreeFour} alt=""></img>,
   },
   {
     name: "#901",
-    element: <img src={NineZeroOne}></img>,
+    element: <img src={NineZeroOne} alt=""></img>,
   },
   {
     name: "#700",
-    element: <img src={SevenHundred}></img>,
+    element: <img src={SevenHundred} alt=""></img>,
   },
   {
     name: "#425",
-    element: <img src={FourTwoFive}></img>,
+    element: <img src={FourTwoFive} alt=""></img>,
   },
 ]
 const decorFrames = [
   // {
   //   name: "#1010",
-  //   element: <img src={TenTen}></img>,
+  //   element: <img src={TenTen} alt=""></img>,
   // },
   {
     name: "#8206",
-    element: <img src={EightTwoZeroSix}></img>,
+    element: <img src={EightTwoZeroSix} alt=""></img>,
   },
   {
     name: "#3025",
-    element: <img src={ThreeZeroTwoFive}></img>,
+    element: <img src={ThreeZeroTwoFive} alt=""></img>,
   },
   {
     name: "#8274",
-    element: <img src={EightTwoSevenFour}></img>,
+    element: <img src={EightTwoSevenFour} alt=""></img>,
   },
   {
     name: "#8205",
-    element: <img src={EightTwoZeroFive}></img>,
+    element: <img src={EightTwoZeroFive} alt=""></img>,
   },
   // {
   //   name: "#984",
-  //   element: <img src={NineEightFour}></img>,
+  //   element: <img src={NineEightFour} alt=""></img>,
   // },
   {
     name: "#8207",
-    element: <img src={EightTwoZeroSeven}></img>,
+    element: <img src={EightTwoZeroSeven} alt=""></img>,
   },
   // {
   //   name: "#8407",
-  //   element: <img src={EightFourZeroSeven}></img>,
+  //   element: <img src={EightFourZeroSeven} alt=""></img>,
   // }
 ]
 

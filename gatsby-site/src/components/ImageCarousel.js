@@ -73,7 +73,7 @@ const slideOne = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <img src={SunriseSerenity}></img>
+      <img src={SunriseSerenity} alt="Sunrise Serenity by Mitchell Mansanarez"></img>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           I have had the pleasure of working with Rocky Mountain Publishing for
@@ -98,7 +98,7 @@ const slideTwo = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <img src={BoardMeeting}></img>
+      <img src={BoardMeeting} alt="Board Meeting by Mitchell Mansanarez"></img>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           We couldn't imagine C-A-L Ranch Stores without Rocky Mountain
@@ -124,7 +124,7 @@ const slideThree = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <img src={PlaceOfRest}></img>
+      <img src={PlaceOfRest} alt="Place of Rest by Dallen Lambson"></img>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           Rocky Mountain Publishing has been a great asset to use here at Ashley

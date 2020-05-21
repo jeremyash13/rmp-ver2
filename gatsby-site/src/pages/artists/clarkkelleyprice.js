@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -43,7 +41,7 @@ const ClarkKelleyPricePage = () => (
       <ArtistBioNav artist="Clark Kelley Price"/>
       <div className="body-wrapper">
         <div className="img-wrapper">
-          <img src={ClarkKelleyPrice} alt="photo of Clark Kelley Price"></img>
+          <img src={ClarkKelleyPrice} alt="Clark Kelley Price"></img>
         </div>
         <p>
           Clark Kelley Price was born in Idaho Falls, Idaho in 1945. As a child

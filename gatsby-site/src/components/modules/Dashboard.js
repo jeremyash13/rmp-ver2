@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import Layout from "../layout"
 import { ArtManagement } from "./ArtManagement"
 import SEO from "../../components/seo"

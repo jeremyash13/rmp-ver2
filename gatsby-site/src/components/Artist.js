@@ -65,7 +65,7 @@ export default function Artist(props) {
         <Link to={`/artists/${props.id}`}>
           <div className="view-bio-button">View Biography</div>
           <div className="artist-hover-element"></div>
-          <img src={props.img} alt={`Photo of ${props.name}`}></img>
+          <img src={props.img} alt={`${props.name}`}></img>
         </Link>
       </div>
       <div className="artist-footer">

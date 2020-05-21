@@ -6,7 +6,7 @@
  */
 import "typeface-roboto"
 import "typeface-sorts-mill-goudy"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 
 import "./layout.css"
@@ -56,6 +56,19 @@ const Layout = ({ children }) => {
       display: none;
     }
   `
+  const BrowserNotSupported = () => {
+    return (
+      <div css={browserDetectStyle}>
+        Your browser is unsupported. Please download{" "}
+        <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge,</a>{" "}
+        <a href="https://www.google.com/chrome/">Google Chrome, </a> or{" "}
+        <a href="https://www.mozilla.org/en-US/exp/firefox/new/">
+          Mozilla Firefox
+        </a>{" "}
+        to view this site properly
+      </div>
+    )
+  }
   return (
     <>
       <button
@@ -69,17 +82,9 @@ const Layout = ({ children }) => {
       {mobileMenu && <MobileNavMenu />}
       <Navbar />
       <main css={mainStyle}>
-        {isIE || isSafari || isMobileSafari && (
-          <div css={browserDetectStyle}>
-            Your browser is unsupported. Please download{" "}
-            <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge,</a>{" "}
-            <a href="https://www.google.com/chrome/">Google Chrome, </a> or{" "}
-            <a href="https://www.mozilla.org/en-US/exp/firefox/new/">
-              Mozilla Firefox
-            </a>{" "}
-            to view this site properly
-          </div>
-        )}
+        {isIE && <BrowserNotSupported />}
+        {isSafari && <BrowserNotSupported />}
+        {isMobileSafari && <BrowserNotSupported />}
         {children}
       </main>
       <Footer />

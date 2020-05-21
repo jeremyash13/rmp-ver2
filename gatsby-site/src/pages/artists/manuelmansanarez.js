@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -43,7 +41,7 @@ const ManuelMansanarezPage = () => (
       <ArtistBioNav artist="Manuel Mansanarez" />
       <div className="body-wrapper">
         <div className="img-wrapper">
-          <img src={ManuelMansanarez} alt="photo of Manuel Manzanarez"></img>
+          <img src={ManuelMansanarez} alt="Manuel Manzanarez"></img>
         </div>
         <p>
           Manuel Mansanarez was born June 4, 1937 in the small mining town of

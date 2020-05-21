@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import ArtContainer from "./state/ArtContainer"
 
 /** @jsx jsx */
@@ -11,10 +11,8 @@ export default function Toast(props) {
     setTimeout(() => {
       GlobalState.setShowToast(false)
     }, 7000)
-    return () => {
-      //   cleanup
-    }
   }, [])
+
   const style = css`
     color: #52a650;
     background-color: #bdffc8;

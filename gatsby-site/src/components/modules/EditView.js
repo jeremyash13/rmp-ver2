@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import ArtContainer from "../state/ArtContainer"
 
 import DeleteEntryButton from "../DeleteEntryButton"

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
-import Logo from "./Logo"
 
 import { jsx, css } from "@emotion/core"
 /** @jsx jsx */

@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
@@ -167,7 +165,7 @@ const contactPage = () => (
           We bill you, not the customer. The following chart outlines these
           rates by zone:
         </p>
-        <img src={ZoneMap} className="zone-map"></img>
+        <img src={ZoneMap} className="zone-map" alt=""></img>
       </div>
       <div>
         <h2>7x10's & 8x10's</h2>

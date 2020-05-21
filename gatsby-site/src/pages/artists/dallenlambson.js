@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 
 import DallenLambson from "../../images/artists/DallenLambson.jpeg"
 
@@ -43,7 +41,7 @@ const DallenLambsonPage = () => (
       <ArtistBioNav artist="Dallen Lambson"/>
       <div className="body-wrapper">
         <div className="img-wrapper">
-          <img src={DallenLambson} alt="photo of Dallen Lambson"></img>
+          <img src={DallenLambson} alt="Dallen Lambson"></img>
         </div>
         <p>
           Dallen Lambson was born March 4, 1977 to Hayden and Cheryl Lambson in

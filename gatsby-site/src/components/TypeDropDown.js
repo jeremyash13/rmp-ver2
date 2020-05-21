@@ -1,4 +1,3 @@
-import React from "react"
 import { Rfdd, RfddOption } from "react-free-dropdown"
 
 /** @jsx jsx */

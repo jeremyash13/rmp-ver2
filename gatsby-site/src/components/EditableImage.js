@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 
 import ArtContainer from "./state/ArtContainer"
 import ClipLoader from "react-spinners/ClipLoader"
@@ -8,9 +8,6 @@ import { jsx, css } from "@emotion/core"
 
 export default function EditableImage(props) {
   const GlobalState = ArtContainer.useContainer()
-
-  const [imgSrc, setImgSrc] = useState(props.editItem.src)
-  // const [loading, setLoading] = useState(false)
 
   let file = null
   let fileName = null

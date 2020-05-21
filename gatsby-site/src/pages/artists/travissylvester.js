@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -43,7 +41,7 @@ const TravisSylvesterPage = () => (
       <ArtistBioNav artist="Travis Sylvester" />
       <div className="body-wrapper">
         <div className="img-wrapper">
-          <img src={TravisSylvester} alt="photo of Travis Sylvester"></img>
+          <img src={TravisSylvester} alt="Travis Sylvester"></img>
         </div>
         <p>
           Travis Sylvester is an artist out of the Salt Lake City area. His love

@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Navbar from "../components/Navbar"
 import ImageCarousel from "../components/ImageCarousel"
 import CTA from "../components/CTA"
 

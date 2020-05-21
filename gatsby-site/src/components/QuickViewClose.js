@@ -1,8 +1,6 @@
 import React from "react"
-import ArtContainer from "./state/ArtContainer"
 
 export default function QuickViewClose(props) {
-  const GlobalState = ArtContainer.useContainer()
   return (
     <div className={props.className} 
     onClick={props.clickHandler}

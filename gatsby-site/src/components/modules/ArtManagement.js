@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import ArtContainer from "../state/ArtContainer"
 
 /** @jsx jsx */
@@ -6,9 +6,6 @@ import { jsx, css } from "@emotion/core"
 
 import EditHover from "../EditHover"
 import EditView from "./EditView"
-import DeleteEntryButton from "../DeleteEntryButton"
-import SaveAndCloseButton from "../SaveAndCloseButton"
-import QuickViewClose from "../QuickViewClose"
 import Toast from "../Toast"
 import ClipLoader from "react-spinners/ClipLoader"
 

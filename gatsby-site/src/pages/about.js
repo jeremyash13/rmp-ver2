@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 import MitchKellyPhoto from "../images/About2.jpg"
 
 /** @jsx jsx */
@@ -34,7 +32,7 @@ const aboutPage = () => (
     <SEO title="About Us" />
     <div css={style} className="about-page-wrapper">
       <div className="img-wrapper">
-        <img src={MitchKellyPhoto}></img>
+        <img src={MitchKellyPhoto} alt="Mitch and Kelley Mansanarez"></img>
       </div>
       <p>
         We currently publish the works of many outstanding artists. Many of

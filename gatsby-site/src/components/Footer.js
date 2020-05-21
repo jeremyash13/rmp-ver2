@@ -1,6 +1,5 @@
 import React from "react"
 import { useAuth } from "react-use-auth"
-
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
@@ -71,7 +70,11 @@ export const Footer = () => {
                 <Link to="/admin/dashboard" className="admin-login">
                   Admin Dashboard
                 </Link>
-                <span style={{marginLeft: '15px'}} className="admin-login" onClick={logout}>
+                <span
+                  style={{ marginLeft: "15px" }}
+                  className="admin-login"
+                  onClick={logout}
+                >
                   Logout
                 </span>
               </>

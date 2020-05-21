@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Rfdd, RfddOption } from "react-free-dropdown"
 
 /** @jsx jsx */

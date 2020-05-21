@@ -1,5 +1,3 @@
-import React from "react"
-import { Link } from "gatsby"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -43,7 +41,7 @@ const HaydenLambsonPage = () => (
       <ArtistBioNav artist="Hayden Lambson" />
       <div className="body-wrapper">
         <div className="img-wrapper">
-          <img src={HaydenLambson} alt="photo of Hayden Lambson"></img>
+          <img src={HaydenLambson} alt="Hayden Lambson"></img>
         </div>
         <p>
           On August 27, 1948 Hayden was born in the small town of Ramah, New
