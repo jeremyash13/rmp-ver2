@@ -21,15 +21,6 @@ import { isIE, isSafari, isMobileSafari } from "react-device-detect"
 
 const Layout = ({ children }) => {
   const [mobileMenu, setMobileMenu] = useState(false)
-  const browserDetectStyle = css`
-    height: 100px;
-    width: 100%;
-    background-color: #df5656;
-    color: white;
-    font-size: 2rem;
-    padding: 25px;
-    text-align: center;
-  `
 
   const mainStyle = css`
     background-color: var(--bg-off-white);
@@ -58,7 +49,17 @@ const Layout = ({ children }) => {
   `
   const BrowserNotSupported = () => {
     return (
-      <div css={browserDetectStyle}>
+      <div
+        style={{
+          height: "100px",
+          width: "100%",
+          backgroundColor: "#df5656",
+          color: "white",
+          fontSize: "2rem",
+          padding: "25px",
+          textAlign: "center",
+        }}
+      >
         Your browser is unsupported. Please download{" "}
         <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge,</a>{" "}
         <a href="https://www.google.com/chrome/">Google Chrome, </a> or{" "}
