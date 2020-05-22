@@ -60,6 +60,14 @@ const style = css`
       border-radius: 50%;
     }
   }
+  .slide-title-text {
+    color: var(----text-light-gray);
+    font-size: .9rem;
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: -25px;
+    left: 50%;
+  }
   @media (min-width: 700px) {
     .testimonial-wrapper {
       font-size: 1rem;
@@ -91,6 +99,7 @@ const slideOne = () => {
         <div className="inactive"></div>
         <div className="inactive"></div>
       </div>
+      {/* <span className="slide-title-text">"Sunrise Serenity" by Mitchell Mansanarez</span> */}
     </>
   )
 }
@@ -117,6 +126,7 @@ const slideTwo = () => {
         <div className="active"></div>
         <div className="inactive"></div>
       </div>
+      {/* <span className="slide-title-text">"Board Meeting" by Mitchell Mansanarez</span> */}
     </>
   )
 }
@@ -145,6 +155,7 @@ const slideThree = () => {
         <div className="inactive"></div>
         <div className="active"></div>
       </div>
+      {/* <span className="slide-title-text">"Place of Rest" by Dallen Lambson</span> */}
     </>
   )
 }

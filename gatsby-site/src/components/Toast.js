@@ -62,7 +62,7 @@ export default function Toast(props) {
     <div css={style}>
       <div className="checkmark-wrapper">
         <svg viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 9.5L11.5 20L30 1.5" stroke="#52a650" stroke-width="2" />
+          <path d="M1 9.5L11.5 20L30 1.5" stroke="#52a650" strokeWidth="2" />
         </svg>
       </div>
       <span>{props.message}</span>

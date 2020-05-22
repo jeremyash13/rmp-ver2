@@ -24,21 +24,17 @@ const useArtGlobal = () => {
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
+  // const [deleteUrl] = useState("http://localhost:3000/delete")
+  // const [galleryUrl] = useState("http://localhost:3000/gallery")
+  // const [editUrl] = useState("http://localhost:3000/edit")
+  // const [s3Url] = useState("http://localhost:3000/s3")
 
-  
-  // const [deleteUrl, setDeleteUrl] = useState("http://localhost:3000/delete")
-  // const [galleryUrl, setGalleryUrl] = useState("http://localhost:3000/gallery")
-  // const [editUrl, setEditUrl] = useState("http://localhost:3000/edit")
-  // const [s3Url, setS3Url] = useState("http://localhost:3000/s3")
+  const [deleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
+  const [galleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
+  const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
+  const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
 
-  const [deleteUrl, setDeleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
-  const [galleryUrl, setGalleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
-  const [editUrl, setEditUrl] = useState("https://rmp-server.herokuapp.com/edit")
-  const [s3Url, setS3Url] = useState("https://rmp-server.herokuapp.com/s3")
-
-
-
-  const handleArtSearch = (value) => {
+  const handleArtSearch = value => {
     setArtSearch(value)
   }
   const handleType = value => {
@@ -120,24 +116,31 @@ const useArtGlobal = () => {
     galleryUrl,
     editUrl,
     s3Url,
+    /////////////////////////
     type,
     category,
     sortBy,
     artist,
     artSearch,
+    /////////////////////////
     handleArtSearch,
     handleSortBy,
     handleType,
     handleCategory,
     handleArtist,
+    /////////////////////////
     fetchedArt,
     setFetchedArt,
+    /////////////////////////
     pageNumber,
     setPageNumber,
+    /////////////////////////
     showingQuickView,
     setShowingQuickView,
+    /////////////////////////
     showToast,
     setShowToast,
+    /////////////////////////
     refreshFetchedArt,
     setRefreshFetchedArt,
   }
