@@ -31,12 +31,12 @@ export default function ArtView() {
         // controller.abort()
         const url = GlobalState.galleryUrl
         const result = await fetch(url, {
-          // signal: signal,
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(query),
+          signal,
         })
         resolve(result)
       } catch (err) {
