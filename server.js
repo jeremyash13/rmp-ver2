@@ -75,9 +75,10 @@ client.connect((err) => {
             .find({
               $text: { $search: search },
             })
+            .project({score: {$meta: "textScore"}})
             // .limit(25 * pageNumber)
             // .skip(25 * pageNumber - 25)
-            .sort(querySortBy)
+            .sort({ score: { $meta: "textScore" } })
             .toArray();
           resolve(searchResults);
         }
