@@ -45,11 +45,11 @@ export default function QuickView(props) {
     .quick-view-img-wrapper {
       margin: auto;
       margin-bottom: 25px;
-      max-width: 400px;
+      width: auto;
+      ${'' /* max-width: 400px; */}
     }
     .info-wrapper {
       margin: auto;
-      width: 70%;
     }
     .heading-wrapper {
       display: flex;
@@ -90,7 +90,6 @@ export default function QuickView(props) {
       margin-bottom: 25px;
     }
     .quick-view-img {
-      width: 100%;
       max-height: 200px;
       box-shadow: 0 40px 20px -30px rgba(0, 0, 0, 0.8);
     }
@@ -112,10 +111,6 @@ export default function QuickView(props) {
         max-width: 60vw;
         max-height: 70vh;
       }
-      .quick-view-img-wrapper {
-        margin-right: 25px;
-        max-width: initial;
-      }
       .quick-view-close-wrapper {
         width: 25px;
         top: 15px;
@@ -123,6 +118,9 @@ export default function QuickView(props) {
       }
     }
     @media (min-width: 1000px) {
+      .quick-view-img-wrapper {
+        margin-right: 25px;
+      }
       .quick-view-details {
         flex-direction: row;
         max-height: 80%;

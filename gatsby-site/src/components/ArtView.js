@@ -23,14 +23,15 @@ export default function ArtView() {
       search: GlobalState.artSearch,
       pageNumber: GlobalState.pageNumber,
     }
+    // const controller = new AbortController()
+    // const signal = controller.signal
 
     const fetchArt = new Promise(async (resolve, reject) => {
       try {
-        const controller = new AbortController()
-        const signal = controller.signal
-        controller.abort()
+        // controller.abort()
         const url = GlobalState.galleryUrl
         const result = await fetch(url, {
+          // signal: signal,
           method: "POST",
           headers: {
             "Content-Type": "application/json",
