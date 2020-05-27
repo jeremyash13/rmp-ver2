@@ -24,7 +24,6 @@ export default function useSearchArt() {
       data: query,
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(json => {
-      console.log(json)
       if (query.pageNumber > 1) {
         GlobalState.setFetchedArt(prevState => {
           let newState = [...prevState, ...json.data]
