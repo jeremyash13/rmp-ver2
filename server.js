@@ -35,7 +35,6 @@ client.connect((err) => {
 
   app.post("/gallery", async (req, res) => {
     try {
-      console.log(req.body);
       const artCollection = client.db("rmp").collection("art");
       let queryType = [];
       let queryCategory = [];

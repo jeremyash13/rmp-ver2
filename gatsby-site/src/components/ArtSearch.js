@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
@@ -9,6 +9,7 @@ import ArtContainer from "./state/ArtContainer"
 export default function ArtSearch(props) {
   const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("")
+  
   const style = css`
     font-family: Roboto;
     font-weight: 300;

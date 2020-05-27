@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
       display: none;
     }
   `
-  const BrowserNotSupported = () => {
+  const BrowserNotSupportedDesktop = () => {
     return (
       <div
         style={{
@@ -60,10 +60,32 @@ const Layout = ({ children }) => {
           textAlign: "center",
         }}
       >
-        Your browser is unsupported. Please download{" "}
+        Your browser is not supported. Please download{" "}
         <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge,</a>{" "}
         <a href="https://www.google.com/chrome/">Google Chrome, </a> or{" "}
         <a href="https://www.mozilla.org/en-US/exp/firefox/new/">
+          Mozilla Firefox
+        </a>{" "}
+        to view this site properly
+      </div>
+    )
+  }
+  const BrowserNotSupportedMobile = () => {
+    return (
+      <div
+        style={{
+          height: "100px",
+          width: "100%",
+          backgroundColor: "#df5656",
+          color: "white",
+          fontSize: "2rem",
+          padding: "25px",
+          textAlign: "center",
+        }}
+      >
+        Your browser is not supported. Please download{" "}
+        <a href="https://apps.apple.com/us/app/google-chrome/id535886823">Google Chrome, </a> or{" "}
+        <a href="https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926">
           Mozilla Firefox
         </a>{" "}
         to view this site properly
@@ -83,9 +105,9 @@ const Layout = ({ children }) => {
       {mobileMenu && <MobileNavMenu />}
       <Navbar />
       <main css={mainStyle}>
-        {isIE && <BrowserNotSupported />}
-        {isSafari && <BrowserNotSupported />}
-        {isMobileSafari && <BrowserNotSupported />}
+        {isIE && <BrowserNotSupportedDesktop />}
+        {isSafari && <BrowserNotSupportedDesktop />}
+        {isMobileSafari && <BrowserNotSupportedMobile />}
         {children}
       </main>
       <Footer />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 
 import ArtContainer from "./state/ArtContainer"
+import useSearchArt from "./hooks/useSearchArt"
 
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/core"
@@ -11,58 +12,55 @@ import ClipLoader from "react-spinners/ClipLoader"
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
   const [idQuickView, setIdQuickView] = useState(null)
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    setLoading(true)
+  useSearchArt()
+  // useEffect(() => {
+  // GlobalState.setLoading(true)
 
-    let query = {
-      type: GlobalState.type,
-      category: GlobalState.category,
-      sortBy: GlobalState.sortBy,
-      artist: GlobalState.artist,
-      search: GlobalState.artSearch,
-      pageNumber: GlobalState.pageNumber,
-    }
-    // const controller = new AbortController()
-    // const signal = controller.signal
+    // let query = {
+    //   type: GlobalState.type,
+    //   category: GlobalState.category,
+    //   sortBy: GlobalState.sortBy,
+    //   artist: GlobalState.artist,
+    //   search: GlobalState.artSearch,
+    //   pageNumber: GlobalState.pageNumber,
+    // }
 
-    const fetchArt = new Promise(async (resolve, reject) => {
-      try {
-        // controller.abort()
-        const url = GlobalState.galleryUrl
-        const result = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(query),
-          signal,
-        })
-        resolve(result)
-      } catch (err) {
-        console.log(err)
-      }
-    })
-      .then(data => data.json())
-      .then(json => {
-        if (query.pageNumber > 1) {
-          GlobalState.setFetchedArt(prevState => {
-            let newState = [...prevState, ...json]
-            return newState
-          })
-        } else {
-          GlobalState.setFetchedArt(json)
-        }
-        setLoading(false)
-      })
-  }, [
-    GlobalState.type,
-    GlobalState.category,
-    GlobalState.sortBy,
-    GlobalState.artist,
-    GlobalState.artSearch,
-    GlobalState.pageNumber,
-  ])
+    // const fetchArt = new Promise(async (resolve, reject) => {
+    //   try {
+    //     const url = GlobalState.galleryUrl
+    //     const result = await fetch(url, {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(query),
+    //       signal,
+    //     })
+    //     resolve(result)
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // })
+    //   .then(data => data.json())
+    //   .then(json => {
+    //     if (query.pageNumber > 1) {
+    //       GlobalState.setFetchedArt(prevState => {
+    //         let newState = [...prevState, ...json]
+    //         return newState
+    //       })
+    //     } else {
+    //       GlobalState.setFetchedArt(json)
+    //     }
+    //     setLoading(false)
+    //   })
+  // }, [
+    // GlobalState.type,
+    // GlobalState.category,
+    // GlobalState.sortBy,
+    // GlobalState.artist,
+    // GlobalState.artSearch,
+    // GlobalState.pageNumber,
+  // ])
 
   // useEffect(() => {
   //   //reset pageNumber if query params change
@@ -98,6 +96,10 @@ export default function ArtView() {
     grid-row-gap: 100px;
     min-height: 100vh;
 
+    .no-results {
+      margin: 0 auto;
+      font-size: 2rem;
+    }
     .art-view-wrapper {
       position: relative;
     }
@@ -191,7 +193,8 @@ export default function ArtView() {
           zIndex: "50",
         }}
       >{`PAGENUMBER: ${GlobalState.pageNumber}`}</span> */}
-      {loading ? (
+      {(GlobalState.fetchedArt.length === 0 && GlobalState.loading === false) && <div className="no-results">NO RESULTS...</div>}
+      {GlobalState.loading ? (
         <div css={loaderStyle}>
           <ClipLoader loading={true} />
         </div>
