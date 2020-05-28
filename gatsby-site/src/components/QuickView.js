@@ -18,30 +18,30 @@ export default function QuickView(props) {
       }}
     >
       <div className="quick-view-inner absolute w-full h-full z-20 bg-white top-1/2 left-1/2 transform 
-      -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between pt-12 pb-8 px-8 sm:w-11/12 xl:h-11/12">
-        <div className="quick-view-details max-h-xs xl:flex xl:my-auto xl:max-w-screen-xl">
+      -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between pt-20 pb-8 px-8 md:w-11/12 md:h-11/12 xl:pt-8">
+        <div className="quick-view-details md:max-h-xs md:flex md:my-auto xl:my-auto xl:max-w-screen-xl">
           <QuickViewClose
-            className="quick-view-close-wrapper w-6 absolute right-0 top-0 transform -translate-x-1/2 translate-y-1/2"
+            className="quick-view-close-wrapper w-6 absolute right-0 top-0 transform -translate-x-1/2 translate-y-1/2 cursor-pointer"
             clickHandler={() => {
               GlobalState.setShowingQuickView(false)
             }}
           />
-          <div className="quick-view-img-wrapper mx-auto mb-8 h-full max-w-xs xl:max-w-lg">
+          <div className="quick-view-img-wrapper mx-auto mb-8 h-auto max-w-xs md:mr-8 md:max-w-md md:mt-auto xl:max-w-lg xl:mr-12">
             <img
               src={item.src}
               alt={`${item.title}`}
-              className="quick-view-img mx-auto"
+              className="quick-view-img mx-auto max-h-xs"
             ></img>
           </div>
 
-          <div className="info-wrapper w-full max-w-sm mx-auto xl:w-2/6 xl:pt-12">
+          <div className="info-wrapper w-full max-w-sm mx-auto md:w-9/12 md:pt-12 xl:w-1/2 xl:ml-0">
             <div className="heading-wrapper flex flex-col text-center mb-6">
-              <span className="title">{item.title}</span>
-              <span className="by">by</span>
-              <span className="artist">{item.artist}</span>
+              <span className="font-sorts-mill text-4xl text-blackish tracking-wide leading-8">{item.title}</span>
+              <span className="text-light-gray font-light">by</span>
+              <span className="text-light-gray font-light">{item.artist}</span>
             </div>
 
-            <div className="options-wrapper w-full space-y-1">
+            <div className="options-wrapper w-full space-y-1 text-blackish">
               {item.options.map(option => (
                 <div className="option flex justify-between" key={option.code}>
                   <span className="option-sku">{option.code}</span>
