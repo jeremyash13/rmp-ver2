@@ -70,15 +70,31 @@ client.connect((err) => {
 
       const cursor = new Promise((resolve, reject) => {
         if (search !== "") {
-          const searchResults = artCollection
-            .find({
-              $text: { $search: search },
-            })
-            .project({score: {$meta: "textScore"}})
-            // .limit(25 * pageNumber)
-            // .skip(25 * pageNumber - 25)
-            .sort({ score: { $meta: "textScore" } })
-            .toArray();
+          let searchResults;
+          if (queryArtist !== null) {
+            searchResults = artCollection
+              .find({
+                type: { $in: [...queryType] },
+                artist: { $in: [...queryArtist] },
+                $text: { $search: search },
+              })
+              .project({ score: { $meta: "textScore" } })
+              // .limit(25 * pageNumber)
+              // .skip(25 * pageNumber - 25)
+              .sort({ score: { $meta: "textScore" } })
+              .toArray();
+          } else {
+            searchResults = artCollection
+              .find({
+                type: { $in: [...queryType] },
+                $text: { $search: search },
+              })
+              .project({ score: { $meta: "textScore" } })
+              // .limit(25 * pageNumber)
+              // .skip(25 * pageNumber - 25)
+              .sort({ score: { $meta: "textScore" } })
+              .toArray();
+          }
           resolve(searchResults);
         }
         if (queryArtist === null) {

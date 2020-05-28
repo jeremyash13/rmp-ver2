@@ -12,7 +12,7 @@ export const Footer = () => {
   const style = css`
     margin-top: auto;
     .footer-wrapper {
-      padding: 0 25px 25px 25px;
+      padding: 25px;
     }
     ul {
       display: flex;
