@@ -29,7 +29,7 @@ export default function DeleteEntryButton(props) {
     }
   `
   return (
-    <button css={style} onClick={props.clickHandler}>
+    <button css={style} onClick={props.clickHandler} className="flex items-center">
       <svg viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M1 1L12 11.5M23 22L12 11.5M12 11.5L23 1L1 22"
@@ -37,7 +37,7 @@ export default function DeleteEntryButton(props) {
           strokeWidth="3"
         />
       </svg>
-      Delete Entry
+      <span>Delete Entry</span>
     </button>
   )
 }

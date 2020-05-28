@@ -249,7 +249,7 @@ export default function EditView(props) {
     .quick-view-close-wrapper {
       position: absolute;
       width: 25px;
-      top: 0;
+      top: 10px;
       right: 10px;
       &:hover {
         cursor: pointer;

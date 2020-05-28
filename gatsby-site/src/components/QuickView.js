@@ -30,7 +30,7 @@ export default function QuickView(props) {
             <img
               src={item.src}
               alt={`${item.title}`}
-              className="quick-view-img mx-auto max-h-xs"
+              className="quick-view-img mx-auto max-h-xs shadow-md-dark"
             ></img>
           </div>
 
