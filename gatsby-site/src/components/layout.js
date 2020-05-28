@@ -14,6 +14,7 @@ import Navbar from "./Navbar"
 import { jsx, css } from "@emotion/core"
 import { Footer } from "./Footer"
 import MobileNavMenu from "./MobileNavMenu"
+import Logo from "./Logo"
 
 import { isIE, isSafari, isMobileSafari } from "react-device-detect"
 
@@ -47,6 +48,14 @@ const Layout = ({ children }) => {
       display: none;
     }
   `
+  const mobileLogoStyle = css`
+    max-width: 125px;
+    margin: 15px auto 0 auto;
+    @media (min-width: 700px) {
+      display: none;
+    }
+  `
+
   const BrowserNotSupportedDesktop = () => {
     return (
       <div
@@ -84,7 +93,10 @@ const Layout = ({ children }) => {
         }}
       >
         Your browser is not supported. Please download{" "}
-        <a href="https://apps.apple.com/us/app/google-chrome/id535886823">Google Chrome, </a> or{" "}
+        <a href="https://apps.apple.com/us/app/google-chrome/id535886823">
+          Google Chrome,{" "}
+        </a>{" "}
+        or{" "}
         <a href="https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926">
           Mozilla Firefox
         </a>{" "}
@@ -102,6 +114,9 @@ const Layout = ({ children }) => {
       >
         {mobileMenu ? "×" : "≡"}
       </button>
+      <div css={mobileLogoStyle}>
+        <Logo />
+      </div>
       {mobileMenu && <MobileNavMenu />}
       <Navbar />
       <main css={mainStyle}>

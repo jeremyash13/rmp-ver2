@@ -30,6 +30,11 @@ export default function ArtCategories(props) {
     & .active {
       color: var(--text-black);
     }
+    @media (min-width: 700px) {
+      & ul {
+        font-size: 1.1rem;
+      }
+    }
   `
 
   return (

@@ -10,8 +10,9 @@ import { Link } from "gatsby"
 export const Footer = () => {
   const { isAuthenticated, login, logout } = useAuth()
   const style = css`
+    margin-top: auto;
     .footer-wrapper {
-      padding: 50px 50px;
+      padding: 0 25px 25px 25px;
     }
     ul {
       display: flex;

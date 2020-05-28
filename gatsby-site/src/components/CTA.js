@@ -5,24 +5,38 @@ import { jsx, css } from "@emotion/core"
 /** @jsx jsx */
 
 export default function CTA({ children }) {
-  const style = css`
+  const wrapperStyle = css`
+    background-color: white;
+    padding-top: 25px;
+  `
+
+  const mainStyle = css`
     display: flex;
     border: solid 1px #2e2e2e;
     width: 200px;
     padding: 15px 0;
     background-color: #ffffff;
-    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
-    &:hover {
-      cursor: pointer;
-    }
+    transition: background-color 250ms ease-in-out;
     & a {
       margin: auto;
       text-decoration: none;
       color: var(--text-black);
+      transition: color 250ms ease-in-out;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: var(--text-black);
+      & a {
+        color: white;
+      }
     }
   `
 
-  return <div css={style}>{children}</div>
+  return (
+    <div css={wrapperStyle}>
+      <div css={mainStyle}>{children}</div>
+    </div>
+  )
 }
