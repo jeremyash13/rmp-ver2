@@ -5,6 +5,7 @@ module.exports = {
     author: `Jeremy Ashcraft`,
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-s3`,
       options: {

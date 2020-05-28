@@ -13,6 +13,7 @@
     "gatsby-plugin-canonical-urls": "^2.3.2",
     "gatsby-plugin-manifest": "^2.2.31",
     "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-postcss": "^2.3.2",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-s3": "^0.3.3",
     "gatsby-plugin-sharp": "^2.3.5",
@@ -38,7 +39,8 @@
   },
   "devDependencies": {
     "babel-plugin-emotion": "^10.0.33",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "tailwindcss": "^1.4.6"
   },
   "keywords": [
     "gatsby"

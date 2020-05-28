@@ -20,7 +20,9 @@ export default function CTA({ children }) {
     margin-right: auto;
     transition: background-color 250ms ease-in-out;
     & a {
-      margin: auto;
+      height:100%;
+      width: 100%;
+      text-align: center;
       text-decoration: none;
       color: var(--text-black);
       transition: color 250ms ease-in-out;
