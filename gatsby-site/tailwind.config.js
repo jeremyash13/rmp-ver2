@@ -16,6 +16,9 @@ module.exports = {
         "max-content": "max-content",
         "min-content": "min-content",
       },
+      maxWidth: {
+        "600": "600px",
+      },
       height: {
         "11/12": "91.666667%",
       },

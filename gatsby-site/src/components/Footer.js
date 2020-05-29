@@ -82,12 +82,12 @@ export const Footer = () => {
             )}
           </li>
           <li className="facebook-logo">
-            <a>
+            <a href="https://www.facebook.com/rockymountainpublishing">
               <FacebookLogo />
             </a>
           </li>
           <li className="instagram-logo">
-            <a>
+            <a href="https://www.instagram.com/rocky_mountain_publishing">
               <InstagramLogo />
             </a>
           </li>
