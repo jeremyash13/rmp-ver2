@@ -10,6 +10,8 @@ const useArtGlobal = () => {
   const [pageNumber, setPageNumber] = useState(1)
   const [loading, setLoading] = useState(true)
 
+  const [quickViewItem, setQuickViewItem] = useState({})
+
   // const [fetchedArt, setFetchedArt] = useState()
   const [fetchedArt, setFetchedArt] = useState([{
     _id: "",
@@ -113,6 +115,9 @@ const useArtGlobal = () => {
     }
   }
   return {
+    quickViewItem,
+    setQuickViewItem,
+    /////////////////////////
     deleteUrl,
     galleryUrl,
     editUrl,

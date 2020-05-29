@@ -67,7 +67,7 @@ export default function EditableImage(props) {
       <div css={override} className="loader-wrapper">
         <ClipLoader color={"rgba(0,0,0,.75)"} size={75} loading={props.loading} />
       </div>
-      <img src={props.imgSrc} className="quick-view-img shadow-lg-dark"></img>
+      <img src={props.imgSrc} className="quick-view-img" style={{filter: 'drop-shadow(1px 5px 5px #000000c7)'}}></img>
     </div>
   )
 }

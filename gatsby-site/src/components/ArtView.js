@@ -18,7 +18,7 @@ export default function ArtView() {
 
   useEffect(() => {
     //clear search on componentDidMount
-    GlobalState.setArtSearch('')
+    GlobalState.setArtSearch("")
   }, [])
 
   useEffect(() => {
@@ -31,20 +31,15 @@ export default function ArtView() {
     GlobalState.artSearch,
   ])
 
-
   useEffect(() => {
     if (inView && hasMore) {
       setPageNumber(prevState => prevState + 1)
     }
   }, [inView])
 
-  const handleQuickView = e => {
-    GlobalState.setShowingQuickView(true)
-    setIdQuickView(e.target.id)
-  }
-  const renderQuickView = i => {
-    return <QuickView index={i} />
-  }
+  // const renderQuickView = i => {
+  //   return <QuickView item={art[i]} /> 
+  // }
 
   const style = css`
     padding: 35px;
@@ -69,6 +64,7 @@ export default function ArtView() {
     }
     .img-hover-element {
       position: absolute;
+      z-index: 20;
       top: 0;
       bottom: 0;
       left: 0;
@@ -103,7 +99,8 @@ export default function ArtView() {
       position: relative;
     }
     .img {
-      box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.8);
+      ${"" /* box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.8); */}
+      filter: drop-shadow(1px 5px 5px #000000c7);
       max-height: 300px;
     }
     .art-view__img-details {
@@ -141,15 +138,18 @@ export default function ArtView() {
   `
   return (
     <div css={style} className="art-view-wrapper">
-    <span style={{
-      position: 'fixed',
-      backgroundColor: 'tan',
-      top: '0',
-      left: '0',
-      zIndex: '100'
-    }}>
-    {`PAGENUM: ${pageNumber}`}
-    </span>
+      {GlobalState.showingQuickView && <QuickView /> }
+      <span
+        style={{
+          position: "fixed",
+          backgroundColor: "tan",
+          top: "0",
+          left: "0",
+          zIndex: "100",
+        }}
+      >
+        {`PAGENUM: ${pageNumber}`}
+      </span>
       {art.length === 0 && loading === false && (
         <div className="no-results">NO RESULTS...</div>
       )}
@@ -169,14 +169,16 @@ export default function ArtView() {
                   className="img-hover-element"
                   id={art.indexOf(item)}
                   onClick={e => {
-                    handleQuickView(e)
+                    GlobalState.setQuickViewItem(art[e.target.id])
+                    GlobalState.setShowingQuickView(true)
                   }}
                 >
                   <div
                     className="quick-view-button"
                     id={art.indexOf(item)}
                     onClick={e => {
-                      handleQuickView(e)
+                      GlobalState.setQuickViewItem(art[e.target.id])
+                      GlobalState.setShowingQuickView(true)
                     }}
                   >
                     Quick View
@@ -199,14 +201,16 @@ export default function ArtView() {
                   className="img-hover-element"
                   id={art.indexOf(item)}
                   onClick={e => {
-                    handleQuickView(e)
+                    GlobalState.setQuickViewItem(art[e.target.id])
+                    GlobalState.setShowingQuickView(true)
                   }}
                 >
                   <div
                     className="quick-view-button"
                     id={art.indexOf(item)}
                     onClick={e => {
-                      handleQuickView(e)
+                      GlobalState.setQuickViewItem(art[e.target.id])
+                      GlobalState.setShowingQuickView(true)
                     }}
                   >
                     Quick View
@@ -230,7 +234,6 @@ export default function ArtView() {
           </div>
         </div>
       )}
-      {GlobalState.showingQuickView && renderQuickView(idQuickView)}
     </div>
   )
 }
