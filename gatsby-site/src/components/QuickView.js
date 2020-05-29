@@ -6,19 +6,18 @@ import { css, jsx } from "@emotion/core"
 
 export default function QuickView(props) {
   const GlobalState = ArtContainer.useContainer()
-  // const item = props.index
   const item = GlobalState.quickViewItem
   
   return (
     <div
-      className="quick-view-outer fixed inset-0 z-10 bg-black bg-opacity-75"
+      className="quick-view-outer fixed inset-0 z-30 bg-black bg-opacity-75"
       onClick={e => {
         if (e.target.classList.contains("quick-view-outer")) {
           GlobalState.setShowingQuickView(false)
         }
       }}
     >
-      <div className="quick-view-inner absolute w-full h-full z-30 bg-white top-1/2 left-1/2 transform 
+      <div className="quick-view-inner absolute w-full h-full bg-white top-1/2 left-1/2 transform 
       -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between pt-20 pb-8 px-8 md:w-11/12 md:h-11/12 xl:pt-8">
         <div className="quick-view-details mx-auto md:max-h-xs md:flex md:my-auto xl:my-auto xl:max-w-screen-xl xxl:w-full">
           <QuickViewClose

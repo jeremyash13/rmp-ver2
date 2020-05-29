@@ -12,7 +12,6 @@ const useArtGlobal = () => {
 
   const [quickViewItem, setQuickViewItem] = useState({})
 
-  // const [fetchedArt, setFetchedArt] = useState()
   const [fetchedArt, setFetchedArt] = useState([{
     _id: "",
     type: "",

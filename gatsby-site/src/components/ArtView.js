@@ -37,10 +37,6 @@ export default function ArtView() {
     }
   }, [inView])
 
-  // const renderQuickView = i => {
-  //   return <QuickView item={art[i]} /> 
-  // }
-
   const style = css`
     padding: 35px;
     display: grid;
