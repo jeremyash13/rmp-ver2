@@ -21,6 +21,7 @@ export default function EditableTextArea(props) {
   return (
     <div css={style}>
       <textarea
+      className="shadow-md"
         value={props.value}
         onChange={e => {
           props.changeHandler(e.target.value)

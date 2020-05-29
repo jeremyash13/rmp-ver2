@@ -2,6 +2,9 @@ module.exports = {
   purge: ["./src/**/*.js", "./src/**/*.html"],
   theme: {
     extend: {
+      screens: {
+        'xxl': '1496px'
+      },
       fontFamily : {
         'roboto': ['Roboto'],
         'sorts-mill': ['Sorts Mill Goudy'],
@@ -24,9 +27,9 @@ module.exports = {
         "xl": "36rem",
       },
       boxShadow: {
-        "md-dark": "0 4px 6px -1px rgba(0, 0, 0, .5), 0 2px 4px -1px rgba(0, 0, 0, .25)",
-        "lg-dark": "0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)",
-        "xl-dark": "0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04)",
+        "md-dark": "0 4px 6px -1px rgba(0, 0, 0, .65), 0 2px 4px -1px rgba(0, 0, 0, .25)",
+        "lg-dark": "0 10px 15px -3px rgba(0, 0, 0, .65), 0 4px 6px -2px rgba(0, 0, 0, .25)",
+        "xl-dark": "0 20px 25px -5px rgba(0, 0, 0, .65), 0 10px 10px -5px rgba(0, 0, 0, .25)",
       },
       colors: {
         'blackish': '#2E2E2E',

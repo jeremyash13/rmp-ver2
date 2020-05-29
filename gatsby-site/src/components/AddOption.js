@@ -23,11 +23,11 @@ export default function AddOption(props) {
   return (
     <div
       css={style}
-      className="add-option-wrapper"
+      className="add-option-wrapper shadow-md"
       onClick={props.clickHandler}
     >
       <svg viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="43" height="43" fill="#C4C4C4" />
+        <rect width="43" height="43" fill="#e7e6e6" />
         <path
           d="M22.5667 8L22.5667 34M10 20.5667H36"
           stroke="#565656"

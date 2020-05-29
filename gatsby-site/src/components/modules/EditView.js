@@ -48,7 +48,6 @@ export default function EditView(props) {
   }, [])
 
   const [loading, setLoading] = useState(false)
-
   const tempOptions = [...options]
 
   const deleteHandler = async () => {
@@ -243,7 +242,6 @@ export default function EditView(props) {
     }
     .quick-view-img {
       max-width: 100%;
-      box-shadow: 0 40px 20px -30px rgba(0, 0, 0, 0.8);
       max-height: 100%;
     }
     .quick-view-close-wrapper {
@@ -356,7 +354,7 @@ export default function EditView(props) {
           <div className="info-wrapper">
             <div className="heading-wrapper">
               <EditableTextInput
-                className="title"
+                className="title shadow-md"
                 value={title}
                 placeholder="Title"
                 changeHandler={val => {
@@ -365,7 +363,7 @@ export default function EditView(props) {
               />
               <span className="by">by</span>
               <EditableTextInput
-                className="artist"
+                className="artist shadow-md"
                 value={artist}
                 placeholder="Artist"
                 changeHandler={val => {
@@ -381,9 +379,9 @@ export default function EditView(props) {
                 <span className="label">Price</span>
               </div>
               {options.map(option => (
-                <div className="option" key={option.code}>
+                <div className="option" key={options.indexOf(option)}>
                   <EditableTextInput
-                    className="option-sku"
+                    className="option-sku shadow-md"
                     value={option.code}
                     changeHandler={val => {
                       tempOptions[options.indexOf(option)].code = val
@@ -391,7 +389,7 @@ export default function EditView(props) {
                     }}
                   />
                   <EditableTextInput
-                    className="option-size"
+                    className="option-size shadow-md"
                     value={option.size}
                     changeHandler={val => {
                       tempOptions[options.indexOf(option)].size = val
@@ -399,7 +397,7 @@ export default function EditView(props) {
                     }}
                   />
                   <EditableTextInput
-                    className="option-price"
+                    className="option-price shadow-md"
                     value={option.price}
                     changeHandler={val => {
                       tempOptions[options.indexOf(option)].price = val
@@ -439,6 +437,7 @@ export default function EditView(props) {
         <div className="type-age-wrapper">
           <div className="type-wrapper">
             <TypeDropDown
+              className="shadow-md"
               value={type}
               changeHandler={val => {
                 setType(val)
@@ -447,7 +446,7 @@ export default function EditView(props) {
           </div>
           <div className="age-wrapper">
             <EditableTextInput
-              className="age"
+              className="age shadow-md"
               value={age}
               placeholder="MM/DD/YYYY"
               changeHandler={val => {
