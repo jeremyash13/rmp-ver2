@@ -72,6 +72,7 @@ client.connect((err) => {
         if (search !== "") {
           let searchResults;
           if (queryArtist !== null) {
+            // if one artist is selected
             searchResults = artCollection
               .find({
                 type: { $in: [...queryType] },
@@ -79,19 +80,21 @@ client.connect((err) => {
                 $text: { $search: search },
               })
               .project({ score: { $meta: "textScore" } })
-              // .limit(25 * pageNumber)
-              // .skip(25 * pageNumber - 25)
+              .limit(25 * pageNumber)
+              .skip(25 * pageNumber - 25)
               .sort({ score: { $meta: "textScore" } })
               .toArray();
           } else {
+            // if all artists is selected
             searchResults = artCollection
               .find({
                 type: { $in: [...queryType] },
+                // artist: { $in: [...queryArtist] },
                 $text: { $search: search },
               })
               .project({ score: { $meta: "textScore" } })
-              // .limit(25 * pageNumber)
-              // .skip(25 * pageNumber - 25)
+              .limit(25 * pageNumber)
+              .skip(25 * pageNumber - 25)
               .sort({ score: { $meta: "textScore" } })
               .toArray();
           }
@@ -105,8 +108,8 @@ client.connect((err) => {
               .find({
                 type: { $in: [...queryType] },
               })
-              // .limit(25 * pageNumber)
-              // .skip(25 * pageNumber - 25)
+              .limit(25 * pageNumber)
+              .skip(25 * pageNumber - 25)
               .sort(querySortBy)
               .toArray();
             resolve(data);
@@ -117,10 +120,22 @@ client.connect((err) => {
                 type: { $in: [...queryType] },
                 tags: { $in: [...queryCategory] },
               })
-              // .limit(25 * pageNumber)
-              // .skip(25 * pageNumber - 25)
-              .sort(querySortBy)
-              .toArray();
+              // .batchSize(25);
+            // const getData = async () => {
+            //   let arr = [];
+            //   if (cursor.hasNext()) {
+            //     for (let i = 0; i < pageNumber * 25; i++) {
+            //       arr.push(cursor.next());
+            //     }
+            //   } else {
+            //     return arr;
+            //   }
+            // };
+            // const data = await getData()
+            .limit(25 * pageNumber)
+            .sort(querySortBy)
+            .skip(25 * pageNumber - 25)
+            .toArray();
             resolve(data);
           }
         } else {
@@ -132,8 +147,8 @@ client.connect((err) => {
                 type: { $in: [...queryType] },
                 artist: { $in: [...queryArtist] },
               })
-              // .limit(25 * pageNumber)
-              // .skip(25 * pageNumber - 25)
+              .limit(25 * pageNumber)
+              .skip(25 * pageNumber - 25)
               .sort(querySortBy)
               .toArray();
             resolve(data);
@@ -145,8 +160,8 @@ client.connect((err) => {
                 tags: { $in: [...queryCategory] },
                 artist: { $in: [...queryArtist] },
               })
-              // .limit(25 * pageNumber)
-              // .skip(25 * pageNumber - 25)
+              .limit(25 * pageNumber)
+              .skip(25 * pageNumber - 25)
               .sort(querySortBy)
               .toArray();
             resolve(data);
@@ -158,7 +173,7 @@ client.connect((err) => {
           "Access-Control-Allow-Origin": "*",
         });
         console.log("POST request made at /art");
-        console.log(data);
+        // console.log(data);
         res.json(data);
       });
     } catch (err) {

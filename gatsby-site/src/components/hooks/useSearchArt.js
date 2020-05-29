@@ -2,11 +2,17 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import ArtContainer from "../state/ArtContainer"
 
-export default function useSearchArt() {
+export default function useSearchArt(pageNumber) {
   const GlobalState = ArtContainer.useContainer()
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+  const [art, setArt] = useState([])
+  const [hasMore, setHasMore] = useState(false)
+  const [previousLength, setPreviousLength] = useState()
 
   useEffect(() => {
-    GlobalState.setLoading(true)
+    setLoading(true)
+    setError(false)
     let url = GlobalState.galleryUrl
     let query = {
       type: GlobalState.type,
@@ -14,28 +20,34 @@ export default function useSearchArt() {
       sortBy: GlobalState.sortBy,
       artist: GlobalState.artist,
       search: GlobalState.artSearch,
-      pageNumber: GlobalState.pageNumber,
+      pageNumber: pageNumber,
     }
 
-    let cancel;
+    let cancel
     axios({
       method: "POST",
       url: url,
       data: query,
-      cancelToken: new axios.CancelToken(c => cancel = c)
-    }).then(json => {
-      if (query.pageNumber > 1) {
-        GlobalState.setFetchedArt(prevState => {
-          let newState = [...prevState, ...json.data]
-          return newState
-        })
-      } else {
-        GlobalState.setFetchedArt(json.data)
-      }
-      GlobalState.setLoading(false)
-    }).catch(err => {
-      if (axios.isCancel(err)) return
+      cancelToken: new axios.CancelToken(c => (cancel = c)),
     })
+      .then(json => {
+        let finalResults = [...new Set([...art, ...json.data])]
+        if (pageNumber > 1) {
+          setArt(prevState => {
+            let uniqueData = [...new Set([...prevState, ...json.data])]
+            return uniqueData
+          })
+        } else {
+          setArt(json.data)
+        }
+        setHasMore(!(previousLength === finalResults.length))
+        setPreviousLength(finalResults.length)
+        setLoading(false)
+      })
+      .catch(err => {
+        if (axios.isCancel(err)) return
+        setError(true)
+      })
 
     return () => cancel()
   }, [
@@ -44,7 +56,12 @@ export default function useSearchArt() {
     GlobalState.sortBy,
     GlobalState.artist,
     GlobalState.artSearch,
-    GlobalState.pageNumber,
+    pageNumber,
   ])
-  return null
+  return {
+    loading,
+    art,
+    error,
+    hasMore,
+  }
 }

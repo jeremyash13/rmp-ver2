@@ -57,7 +57,7 @@ export default function EditableImage(props) {
           <input
             type="file"
             id="change-photo-input"
-            accept=".jpg, .jpeg"
+            accept=".jpg, .jpeg, .png"
             onChange={e => {
               inputChange(e)
             }}

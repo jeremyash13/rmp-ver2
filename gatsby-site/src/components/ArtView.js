@@ -12,73 +12,31 @@ import ClipLoader from "react-spinners/ClipLoader"
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
   const [idQuickView, setIdQuickView] = useState(null)
-  useSearchArt()
-  // useEffect(() => {
-  // GlobalState.setLoading(true)
+  const [pageNumber, setPageNumber] = useState(1)
+  const { loading, art, error, hasMore } = useSearchArt(pageNumber)
+  const [ref, inView] = useInView()
 
-    // let query = {
-    //   type: GlobalState.type,
-    //   category: GlobalState.category,
-    //   sortBy: GlobalState.sortBy,
-    //   artist: GlobalState.artist,
-    //   search: GlobalState.artSearch,
-    //   pageNumber: GlobalState.pageNumber,
-    // }
+  useEffect(() => {
+    //clear search on componentDidMount
+    GlobalState.setArtSearch('')
+  }, [])
 
-    // const fetchArt = new Promise(async (resolve, reject) => {
-    //   try {
-    //     const url = GlobalState.galleryUrl
-    //     const result = await fetch(url, {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(query),
-    //       signal,
-    //     })
-    //     resolve(result)
-    //   } catch (err) {
-    //     console.log(err)
-    //   }
-    // })
-    //   .then(data => data.json())
-    //   .then(json => {
-    //     if (query.pageNumber > 1) {
-    //       GlobalState.setFetchedArt(prevState => {
-    //         let newState = [...prevState, ...json]
-    //         return newState
-    //       })
-    //     } else {
-    //       GlobalState.setFetchedArt(json)
-    //     }
-    //     setLoading(false)
-    //   })
-  // }, [
-    // GlobalState.type,
-    // GlobalState.category,
-    // GlobalState.sortBy,
-    // GlobalState.artist,
-    // GlobalState.artSearch,
-    // GlobalState.pageNumber,
-  // ])
+  useEffect(() => {
+    setPageNumber(1)
+  }, [
+    GlobalState.type,
+    GlobalState.category,
+    GlobalState.sortBy,
+    GlobalState.artist,
+    GlobalState.artSearch,
+  ])
 
-  // useEffect(() => {
-  //   //reset pageNumber if query params change
-  //   GlobalState.setFetchedArt([])
-  //   GlobalState.setPageNumber(1)
-  // }, [
-  //   GlobalState.category,
-  //   GlobalState.type,
-  //   GlobalState.artist,
-  //   GlobalState.sortBy,
-  // ])
 
-  const [ref, inView, entry] = useInView()
-  // useEffect(() => {
-  //   if (inView) {
-  //     GlobalState.setPageNumber(prevState => prevState + 1)
-  //   }
-  // }, [inView])
+  useEffect(() => {
+    if (inView && hasMore) {
+      setPageNumber(prevState => prevState + 1)
+    }
+  }, [inView])
 
   const handleQuickView = e => {
     GlobalState.setShowingQuickView(true)
@@ -183,86 +141,94 @@ export default function ArtView() {
   `
   return (
     <div css={style} className="art-view-wrapper">
-      {/* <span
-        style={{
-          position: "fixed",
-          padding: "10px",
-          color: "white",
-          top: "0",
-          right: "0",
-          backgroundColor: "#59c9a0",
-          zIndex: "50",
-        }}
-      >{`PAGENUMBER: ${GlobalState.pageNumber}`}</span> */}
-      {(GlobalState.fetchedArt.length === 0 && GlobalState.loading === false) && <div className="no-results">NO RESULTS...</div>}
-      {GlobalState.loading ? (
-        <div css={loaderStyle}>
-          <ClipLoader loading={true} />
+    <span style={{
+      position: 'fixed',
+      backgroundColor: 'tan',
+      top: '0',
+      left: '0',
+      zIndex: '100'
+    }}>
+    {`PAGENUM: ${pageNumber}`}
+    </span>
+      {art.length === 0 && loading === false && (
+        <div className="no-results">NO RESULTS...</div>
+      )}
+      {loading && art.length === 0 && (
+        <div css={loaderStyle} className="w-full relative">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
+            <ClipLoader loading={true} />
+          </div>
         </div>
-      ) : (
-        GlobalState.fetchedArt.map((item, idx) => {
-          if (idx === GlobalState.fetchedArt.length - 1) {
-            return (
-              <div ref={ref} key={item._id} className="art-entry">
-                <div className="img-wrapper">
+      )}
+      {art.map((item, idx) => {
+        if (idx === art.length - 1) {
+          return (
+            <div ref={ref} key={item._id} className="art-entry">
+              <div className="img-wrapper">
+                <div
+                  className="img-hover-element"
+                  id={art.indexOf(item)}
+                  onClick={e => {
+                    handleQuickView(e)
+                  }}
+                >
                   <div
-                    className="img-hover-element"
-                    id={GlobalState.fetchedArt.indexOf(item)}
+                    className="quick-view-button"
+                    id={art.indexOf(item)}
                     onClick={e => {
                       handleQuickView(e)
                     }}
                   >
-                    <div
-                      className="quick-view-button"
-                      id={GlobalState.fetchedArt.indexOf(item)}
-                      onClick={e => {
-                        handleQuickView(e)
-                      }}
-                    >
-                      Quick View
-                    </div>
+                    Quick View
                   </div>
-                  <img src={item.src} className="img"></img>
                 </div>
-                <div className="art-view__img-details">
-                  <span className="title">{item.title}</span>
-                  <span className="by">by</span>
-                  <span className="artist">{item.artist}</span>
-                </div>
+                <img src={item.src} className="img"></img>
               </div>
-            )
-          } else {
-            return (
-              <div key={item._id} className="art-entry">
-                <div className="img-wrapper">
+              <div className="art-view__img-details">
+                <span className="title">{item.title}</span>
+                <span className="by">by</span>
+                <span className="artist">{item.artist}</span>
+              </div>
+            </div>
+          )
+        } else {
+          return (
+            <div key={item._id} className="art-entry">
+              <div className="img-wrapper">
+                <div
+                  className="img-hover-element"
+                  id={art.indexOf(item)}
+                  onClick={e => {
+                    handleQuickView(e)
+                  }}
+                >
                   <div
-                    className="img-hover-element"
-                    id={GlobalState.fetchedArt.indexOf(item)}
+                    className="quick-view-button"
+                    id={art.indexOf(item)}
                     onClick={e => {
                       handleQuickView(e)
                     }}
                   >
-                    <div
-                      className="quick-view-button"
-                      id={GlobalState.fetchedArt.indexOf(item)}
-                      onClick={e => {
-                        handleQuickView(e)
-                      }}
-                    >
-                      Quick View
-                    </div>
+                    Quick View
                   </div>
-                  <img src={item.src} className="img"></img>
                 </div>
-                <div className="art-view__img-details">
-                  <span className="title">{item.title}</span>
-                  <span className="by">by</span>
-                  <span className="artist">{item.artist}</span>
-                </div>
+                <img src={item.src} className="img"></img>
               </div>
-            )
-          }
-        })
+              <div className="art-view__img-details">
+                <span className="title">{item.title}</span>
+                <span className="by">by</span>
+                <span className="artist">{item.artist}</span>
+              </div>
+            </div>
+          )
+        }
+      })}
+      {loading && art.length > 1 && (
+        <div css={loaderStyle} className="w-full h-full relative">
+          <div className="absolute top-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <ClipLoader loading={true} />
+          </div>
+        </div>
       )}
       {GlobalState.showingQuickView && renderQuickView(idQuickView)}
     </div>
