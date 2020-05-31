@@ -10,14 +10,13 @@ export const DropDownMenuArtist = props => {
   const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("Artist: ALL")
   const style = css`
-    margin-bottom: 15px;
     & div {
       background-color: #dddddd;
     }
-    @media (min-width: 700px) {
-      margin: 0;
-    }
   `
+  const optionStyle = {
+    fontSize: "1rem",
+  }
 
   return (
     <Rfdd
@@ -29,15 +28,15 @@ export const DropDownMenuArtist = props => {
         setValue("Artist: " + optionValue)
         GlobalState.handleArtist(optionValue)
       }}
-      listStyle="max-height: 200px"
+      listStyle="max-height: 300px"
     >
-      <RfddOption value="ALL">ALL</RfddOption>
-      <RfddOption value="Clark Kelley Price">Clark Kelley Price</RfddOption>
-      <RfddOption value="Dallen Lambson">Dallen Lambson</RfddOption>
-      <RfddOption value="Hayden Lambson">Hayden Lambson</RfddOption>
-      <RfddOption value="Manuel Mansanarez">Manuel Mansanarez</RfddOption>
-      <RfddOption value="Mitchell Mansanarez">Mitchell Mansanarez</RfddOption>
-      <RfddOption value="Travis Sylvester">Travis Sylvester</RfddOption>
+      <RfddOption value="ALL" style={optionStyle}>All</RfddOption>
+      <RfddOption value="Clark Kelley Price" style={optionStyle}>Clark Kelley Price</RfddOption>
+      <RfddOption value="Dallen Lambson" style={optionStyle}>Dallen Lambson</RfddOption>
+      <RfddOption value="Hayden Lambson" style={optionStyle}>Hayden Lambson</RfddOption>
+      <RfddOption value="Manuel Mansanarez" style={optionStyle}>Manuel Mansanarez</RfddOption>
+      <RfddOption value="Mitchell Mansanarez" style={optionStyle}>Mitchell Mansanarez</RfddOption>
+      <RfddOption value="Travis Sylvester" style={optionStyle}>Travis Sylvester</RfddOption>
     </Rfdd>
   )
 }

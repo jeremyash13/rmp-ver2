@@ -37,22 +37,22 @@ export default function MobileNavMenu(props) {
   return (
       <nav css={style} className={props.className}>
         <ul className="menu__ul">
-          <li className="nav__link--home">
+          <li className="">
             <Link to="/">HOME</Link>
           </li>
-          <li className="nav__link--art">
+          <li className="">
             <Link to="/gallery/">GALLERY</Link>
           </li>
-          <li className="nav__link--exclusive-artists">
+          <li className="">
             <Link to="/artists/">EXCLUSIVE ARTISTS</Link>
           </li>
-          <li className="nav__link--framing">
+          <li className="">
             <Link to="/frames/">FRAMING</Link>
           </li>
-          <li className="nav__link--contact">
+          <li className="">
             <Link to="/contact/">CONTACT/SHIPPING</Link>
           </li>
-          <li className="nav__link--about-us">
+          <li className="">
             <Link to="/about/">ABOUT US</Link>
           </li>
         </ul>

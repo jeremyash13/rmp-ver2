@@ -12,8 +12,6 @@ import ClipLoader from "react-spinners/ClipLoader"
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
   const [idQuickView, setIdQuickView] = useState(null)
-  const [pageNumber, setPageNumber] = useState(1)
-  const { loading, art, error, hasMore } = useSearchArt(pageNumber)
   const [ref, inView] = useInView()
 
   useEffect(() => {
@@ -22,7 +20,7 @@ export default function ArtView() {
   }, [])
 
   useEffect(() => {
-    setPageNumber(1)
+    GlobalState.setPageNumber(1)
   }, [
     GlobalState.type,
     GlobalState.category,
@@ -33,14 +31,16 @@ export default function ArtView() {
 
   useEffect(() => {
     if (inView && hasMore) {
-      setPageNumber(prevState => prevState + 1)
+      GlobalState.setPageNumber(prevState => prevState + 1)
     }
   }, [inView])
+
+  const { loading, art, error, hasMore } = useSearchArt()
 
   const style = css`
     padding: 35px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(273px, 1fr));
     grid-auto-rows: max-content;
     grid-column-gap: 25px;
     grid-row-gap: 100px;
@@ -65,10 +65,8 @@ export default function ArtView() {
       bottom: 0;
       left: 0;
       right: 0;
-      transition: background-color 350ms ease-out;
       &:hover {
         cursor: pointer;
-        background-color: rgba(255, 255, 255, 0.25);
         & .quick-view-button {
           display: block;
         }
@@ -93,9 +91,15 @@ export default function ArtView() {
       margin-left: auto;
       margin-right: auto;
       position: relative;
+      &:hover {
+        & .img {
+          filter: drop-shadow(1px 5px 5px #000000c7) brightness(1.1)
+            opacity(0.7);
+        }
+      }
     }
     .img {
-      ${"" /* box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.8); */}
+      transition: filter 250ms ease-out;
       filter: drop-shadow(1px 5px 5px #000000c7);
       max-height: 300px;
     }
@@ -120,7 +124,7 @@ export default function ArtView() {
       color: var(--text-light-gray);
     }
 
-    @media (min-width: 600px) {
+    @media (max-width: 600px) {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       .img-wrapper {
         display: flex;
@@ -134,18 +138,7 @@ export default function ArtView() {
   `
   return (
     <div css={style} className="art-view-wrapper">
-      {GlobalState.showingQuickView && <QuickView /> }
-      <span
-        style={{
-          position: "fixed",
-          backgroundColor: "tan",
-          top: "0",
-          left: "0",
-          zIndex: "100",
-        }}
-      >
-        {`PAGENUM: ${pageNumber}`}
-      </span>
+      {GlobalState.showingQuickView && <QuickView />}
       {art.length === 0 && loading === false && (
         <div className="no-results">NO RESULTS...</div>
       )}

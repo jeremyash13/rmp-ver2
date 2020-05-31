@@ -2,13 +2,12 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import ArtContainer from "../state/ArtContainer"
 
-export default function useSearchArt(pageNumber) {
+export default function useSearchArt() {
   const GlobalState = ArtContainer.useContainer()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [art, setArt] = useState([])
-  const [hasMore, setHasMore] = useState(false)
-  const [previousLength, setPreviousLength] = useState()
+  const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
     setLoading(true)
@@ -20,7 +19,7 @@ export default function useSearchArt(pageNumber) {
       sortBy: GlobalState.sortBy,
       artist: GlobalState.artist,
       search: GlobalState.artSearch,
-      pageNumber: pageNumber,
+      pageNumber: GlobalState.pageNumber,
     }
 
     let cancel
@@ -31,21 +30,17 @@ export default function useSearchArt(pageNumber) {
       cancelToken: new axios.CancelToken(c => (cancel = c)),
     })
       .then(json => {
-        let finalResults = [...new Set([...art, ...json.data])]
-        if (pageNumber > 1) {
-          setArt(prevState => {
-            let uniqueData = [...new Set([...prevState, ...json.data])]
-            return uniqueData
-          })
+        if (GlobalState.pageNumber > 1) {
+          setArt(prevState => [...prevState, ...json.data])
         } else {
           setArt(json.data)
         }
-        setHasMore(!(previousLength === finalResults.length))
-        setPreviousLength(finalResults.length)
+        setHasMore(json.data.length > 0)
         setLoading(false)
       })
       .catch(err => {
         if (axios.isCancel(err)) return
+        console.log(err)
         setError(true)
       })
 
@@ -56,7 +51,7 @@ export default function useSearchArt(pageNumber) {
     GlobalState.sortBy,
     GlobalState.artist,
     GlobalState.artSearch,
-    pageNumber,
+    GlobalState.pageNumber,
   ])
   return {
     loading,

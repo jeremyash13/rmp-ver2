@@ -6,19 +6,16 @@ import { jsx, css } from "@emotion/core"
 
 const style = css`
   display: none;
-  margin-top: 0.5rem;
-  font-size: 14px;
   background-color: white;
-  .logo__wrapper {
-    width: 150px;
+  .logo-wrapper {
+    max-width: 150px;
   }
   a {
     color: var(--text-light-gray);
     text-decoration: none;
   }
-  .desktop-menu__ul {
+  & ul {
     height: 100px;
-    font-size: 0.6rem;
     font-family: Roboto;
     display: flex;
     flex-direction: row;
@@ -35,35 +32,30 @@ const style = css`
   @media (min-width: 700px) {
     display: block;
   }
-  @media (min-width: 800px) {
-    .desktop-menu__ul {
-      font-size: 0.8rem;
-    }
-  }
 `
 export const Navbar = props => {
   return (
     <nav css={style} className={props.className}>
-      <ul className="desktop-menu__ul">
-        <li className="nav__link--home">
+      <ul className="text-xs lg:text-sm">
+        <li className="flex-shrink-0">
           <Link to="/">HOME</Link>
         </li>
-        <li className="nav__link--art">
+        <li className="flex-shrink-0">
           <Link to="/gallery/">GALLERY</Link>
         </li>
-        <li className="nav__link--exclusive-artists">
+        <li className="nav__link--exclusive-artists flex-shrink-0">
           <Link to="/artists/">EXCLUSIVE ARTISTS</Link>
         </li>
-        <li className="nav__link--logo">
+        <li className="logo-wrapper">
           <Logo />
         </li>
-        <li className="nav__link--framing">
+        <li className="flex-shrink-0">
           <Link to="/frames/">FRAMING</Link>
         </li>
-        <li className="nav__link--contact">
+        <li className="flex-shrink-0">
           <Link to="/contact/">CONTACT/SHIPPING</Link>
         </li>
-        <li className="nav__link--about-us">
+        <li className="flex-shrink-0">
           <Link to="/about/">ABOUT US</Link>
         </li>
       </ul>

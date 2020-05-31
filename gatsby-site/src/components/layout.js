@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
   const mainStyle = css`
     background-color: var(--bg-off-white);
     font-family: "Roboto";
-    margin-top: 50px;
+    margin-top: 15px;
     @media (min-width: 700px) {
       margin-top: 0;
     }
@@ -38,8 +38,8 @@ const Layout = ({ children }) => {
     font-size: 3rem;
     color: var(--text-black);
     position: fixed;
-    top: 10px;
-    left: 0;
+    top: 25px;
+    left: 15px;
     z-index: 25;
     &:hover {
       cursor: pointer;

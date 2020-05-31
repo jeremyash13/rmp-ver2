@@ -7,7 +7,7 @@ const useArtGlobal = () => {
   const [artist, setArtist] = useState("all")
   const [category, setCategory] = useState("all")
   const [artSearch, setArtSearch] = useState("")
-  const [pageNumber, setPageNumber] = useState(1)
+  const [pageNumber, setPageNumber] = useState(0)
   const [loading, setLoading] = useState(true)
 
   const [quickViewItem, setQuickViewItem] = useState({})
@@ -36,9 +36,6 @@ const useArtGlobal = () => {
   // const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
   // const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
 
-  const handleArtSearch = value => {
-    setArtSearch(value)
-  }
   const handleType = value => {
     //controls state for "type"
     switch (value) {
@@ -129,7 +126,6 @@ const useArtGlobal = () => {
     artSearch,
     setArtSearch,
     /////////////////////////
-    handleArtSearch,
     handleSortBy,
     handleType,
     handleCategory,

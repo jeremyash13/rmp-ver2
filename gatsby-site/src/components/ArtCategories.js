@@ -3,9 +3,9 @@ import React, { useState } from "react"
 import ArtContainer from "./state/ArtContainer"
 
 /** @jsx jsx */
-import { css, jsx, Global } from "@emotion/core"
+import { css, jsx } from "@emotion/core"
 
-export default function ArtCategories(props) {
+export default function ArtCategories() {
   const GlobalState = ArtContainer.useContainer()
 
   const [allActive, setAllActive] = useState(true)
@@ -23,23 +23,17 @@ export default function ArtCategories(props) {
   }
 
   const style = css`
-    & ul {
-      padding-left: 25px;
-      padding-right: 25px;
-    }
     & .active {
       color: var(--text-black);
     }
-    @media (min-width: 700px) {
-      & ul {
-        font-size: 1.1rem;
-      }
+    & li:hover {
+      cursor: pointer;
     }
   `
 
   return (
-    <div css={style} className={props.className}>
-      <ul>
+    <div css={style} className="text-2xl text-light-gray">
+      <div className="flex space-x-10 w-max-content mx-auto mb-6">
         <li
           className={allActive ? "active" : ""}
           onClick={() => {
@@ -70,6 +64,8 @@ export default function ArtCategories(props) {
         >
           WESTERN
         </li>
+      </div>
+      <div className="flex space-x-10 w-max-content mx-auto">
         <li
           className={wildlifeActive ? "active" : ""}
           onClick={() => {
@@ -90,7 +86,7 @@ export default function ArtCategories(props) {
         >
           PATRIOTIC
         </li>
-      </ul>
+      </div>
     </div>
   )
 }

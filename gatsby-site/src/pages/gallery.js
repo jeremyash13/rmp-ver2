@@ -4,7 +4,6 @@ import SEO from "../components/seo"
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 
-import { DropDownMenuSortBy } from "../components/DropDownMenuSortBy"
 import { DropDownMenuType } from "../components/DropDownMenuType"
 import { DropDownMenuArtist } from "../components/DropDownMenuArtist"
 import ArtSearch from "../components/ArtSearch"
@@ -13,79 +12,11 @@ import ArtView from "../components/ArtView"
 
 const artPage = () => {
   const style = css`
-    .query-ui {
-      & ul div {
-        font-size: 1rem;
-      }
-    }
-    .drop-down-wrapper {
+    padding-top: 25px;
+    .mySelect {
+      font-size: 1rem;
+      padding: 0.7em;
       width: 100%;
-      font-family: Roboto;
-      font-weight: 300;
-      color: #393939;
-      & .mySelect {
-        font-size: 1rem;
-        padding: 0.7em;
-        width: 100%;
-      }
-    }
-    .art-categories-wrapper {
-      font-size: 0.9rem;
-      padding-left: 10px;
-      padding-right: 10px;
-      color: var(--text-light-gray);
-      & ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      & li:hover {
-        color: var(--text-dark);
-        cursor: pointer;
-      }
-    }
-
-    @media (min-width: 700px) {
-      padding-top: 25px;
-
-      .art-categories-wrapper {
-        margin: 0 auto;
-        padding-left: 25px;
-        padding-right: 25px;
-        max-width: 600px;
-        margin-bottom: 25px;
-      }
-
-      .query-ui {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
-
-        & .mySelect {
-          font-size: 1rem;
-        }
-        & .drop-down-wrapper {
-          max-width: 250px;
-          margin-right: 25px;
-        }
-        & .search-wrapper {
-          font-size: 1rem;
-          max-width: 600px;
-          margin-right: 25px;
-          margin-left: 25px;
-          min-width: 300px;
-        }
-      }
-    }
-
-    @media (min-width: 800px) {
-      .query-ui {
-        & .mySelect {
-          font-size: 1rem;
-        }
-        & .search-wrapper {
-          font-size: 1rem;
-        }
-      }
     }
   `
 
@@ -93,13 +24,14 @@ const artPage = () => {
     <Layout>
       <SEO title="Gallery" />
       <div css={style} className="art-page__wrapper">
-        <div className="query-ui">
-          <ArtSearch className="search-wrapper" />
-          <DropDownMenuSortBy className="drop-down-wrapper" />
-          <DropDownMenuType className="drop-down-wrapper" />
-          <DropDownMenuArtist className="drop-down-wrapper" />
+        <div className="query-ui mb-6 flex flex-col lg:flex-row">
+          <ArtSearch className="search-wrapper h-53 mb-4 sm:max-w-lg sm:mx-auto lg:mr-auto lg:mb-0 lg:ml-6 lg:max-w-screen-sm" />
+          <div className="flex flex-col sm:flex-row sm:max-w-md sm:mx-auto lg:ml-auto lg:mr-6">
+            <DropDownMenuType className="drop-down-wrapper ml-0 mb-4 sm:w-48 sm:mr-2 lg:ml-6 sm:mb-0 lg:mr-6" />
+            <DropDownMenuArtist className="drop-down-wrapper sm:w-48 sm:ml-2" />
+          </div>
         </div>
-        <ArtCategories className="art-categories-wrapper" />
+        <ArtCategories />
         <ArtView />
       </div>
     </Layout>

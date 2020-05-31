@@ -25,7 +25,9 @@ export default function EditableTextInput(props) {
         value={props.value}
         placeholder={props.placeholder}
         onChange={e => {
-          props.changeHandler(e.target.value)
+          if (!props.isReadOnly) {
+            props.changeHandler(e.target.value)
+          }
         }}
       ></input>
     </>

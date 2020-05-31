@@ -14,12 +14,13 @@ import EditableTextArea from "../EditableTextArea"
 import ImagePlaceholder from "../../images/img-placeholder.jpg"
 import TypeDropDown from "../TypeDropDown"
 import RemoveOption from "../RemoveOption"
+import { object } from "prop-types"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
 
   // if "Add New Entry" is clicked:
-  const editItem = props.editItem || {
+  let editItem = props.editItem || {
     _id: null,
     title: "",
     artist: "",
@@ -27,10 +28,12 @@ export default function EditView(props) {
     category: ["wildlife"],
     type: "",
     options: [{}],
+    category: "",
     tags: [],
-    age: "",
+    age: new Date(),
   }
-
+  editItem.age = new Date(editItem.age)
+  
   const [objId, setObjId] = useState(editItem._id)
   const [title, setTitle] = useState(editItem.title)
   const [artist, setArtist] = useState(editItem.artist)
@@ -41,11 +44,6 @@ export default function EditView(props) {
   const [tags, setTags] = useState(editItem.tags.join(", "))
   const [age, setAge] = useState(editItem.age)
 
-  useEffect(() => {
-    if (editItem.age !== "") {
-      setAge(new Date(editItem.age).toLocaleDateString())
-    }
-  }, [])
 
   const [loading, setLoading] = useState(false)
   const tempOptions = [...options]
@@ -75,6 +73,7 @@ export default function EditView(props) {
       src: imgSrc,
       type: type,
       options: options,
+      category: category,
       tags: tags.split(", "),
       age: age,
     }
@@ -446,8 +445,9 @@ export default function EditView(props) {
           </div>
           <div className="age-wrapper">
             <EditableTextInput
+              isReadOnly={true}
               className="age shadow-md"
-              value={age}
+              value={age.toLocaleDateString()}
               placeholder="MM/DD/YYYY"
               changeHandler={val => {
                 setAge(val)

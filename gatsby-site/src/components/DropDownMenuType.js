@@ -10,14 +10,13 @@ export const DropDownMenuType = props => {
   const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("Type: ALL")
   const style = css`
-    margin-bottom: 15px;
     & div {
       background-color: #dddddd;
     }
-    @media (min-width: 700px) {
-      margin: 0;
-    }
   `
+  const optionStyle = {
+    fontSize: "1rem",
+  }
 
   return (
     <Rfdd
@@ -29,12 +28,16 @@ export const DropDownMenuType = props => {
         setValue("Type: " + optionValue)
         GlobalState.handleType(optionValue)
       }}
-      listStyle="max-height: 200px"
+      listStyle="max-height: 300px"
     >
-      <RfddOption value="ALL">ALL</RfddOption>
-      <RfddOption value="Canvas Giclee">Canvas Giclee</RfddOption>
-      <RfddOption value="Paper Giclee">Paper Giclee</RfddOption>
-      <RfddOption value="Gallery Wrap">Gallery Wrap</RfddOption>
+      <RfddOption value="ALL" style={optionStyle}>All</RfddOption>
+      <RfddOption value="Canvas Giclee" style={optionStyle}>
+        Canvas Giclee
+      </RfddOption>
+      <RfddOption value="Paper Giclee" style={optionStyle}>
+        Paper Giclee
+      </RfddOption>
+      <RfddOption value="Gallery Wrap" style={optionStyle}>Gallery Wrap</RfddOption>
     </Rfdd>
   )
 }

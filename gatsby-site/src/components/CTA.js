@@ -14,13 +14,12 @@ export default function CTA({ children }) {
     display: flex;
     border: solid 1px #2e2e2e;
     width: 200px;
-    padding: 15px 0;
     background-color: #ffffff;
     margin-left: auto;
     margin-right: auto;
     transition: background-color 250ms ease-in-out;
     & a {
-      height:100%;
+      padding: 15px 0;
       width: 100%;
       text-align: center;
       text-decoration: none;

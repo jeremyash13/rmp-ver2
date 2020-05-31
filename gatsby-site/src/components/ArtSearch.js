@@ -8,7 +8,6 @@ import ArtContainer from "./state/ArtContainer"
 
 export default function ArtSearch(props) {
   const GlobalState = ArtContainer.useContainer()
-  const [value, setValue] = useState("")
   
   const style = css`
     font-family: Roboto;
@@ -19,8 +18,6 @@ export default function ArtSearch(props) {
     position: relative;
     border: none;
     font-size: 1rem;
-    height: min-content;
-    margin-bottom: 15px;
 
     & input:focus {
       box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
@@ -37,7 +34,6 @@ export default function ArtSearch(props) {
       padding-bottom: 10px;
       background-color: #dddddd;
       border: none;
-      height: 50px;
     }
     svg {
       width: 15px;
@@ -46,21 +42,16 @@ export default function ArtSearch(props) {
       top: 50%;
       left: 15px;
     }
-    @media (min-width: 700px) {
-      margin: 0;
-      max-width: 600px; 
-    }
   `
   return (
     <div css={style} className={props.className}>
       <input
-        value={value}
-        className="art-navigation__input--search"
+        value={GlobalState.artSearch}
+        className="art-navigation__input--search h-full"
         type="text"
         placeholder="Search Item No, Title, Artist, Keyword"
         onChange={e => {
-          setValue(e.target.value)
-          GlobalState.handleArtSearch(e.target.value)
+          GlobalState.setArtSearch(e.target.value)
         }}
       ></input>
       <svg viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">

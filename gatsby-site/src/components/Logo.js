@@ -2,7 +2,6 @@ import React from "react"
 
 export default function Logo() {
   return (
-    <div className="logo__wrapper">
       <svg
         viewBox="0 0 279 122"
         fill="none"
@@ -112,6 +111,5 @@ export default function Logo() {
           />
         </g>
       </svg>
-    </div>
   )
 }

@@ -41,7 +41,8 @@ client.connect((err) => {
       let querySortBy = [];
       let queryArtist = [];
       let search = "";
-      let pageNumber = req.body.pageNumber;
+      const pageNumber = req.body.pageNumber;
+      const skipAmount = (25 * pageNumber) - 25;
 
       if (req.body.type === "all") {
         queryType = ["Canvas Giclee", "Gallery Wrap", "Paper Giclee"];
@@ -73,30 +74,54 @@ client.connect((err) => {
           let searchResults;
           if (queryArtist !== null) {
             // if one artist is selected
-            searchResults = artCollection
-              .find({
-                type: { $in: [...queryType] },
-                artist: { $in: [...queryArtist] },
-                $text: { $search: search },
-              })
-              .project({ score: { $meta: "textScore" } })
-              .limit(25 * pageNumber)
-              .skip(25 * pageNumber - 25)
-              .sort({ score: { $meta: "textScore" } })
-              .toArray();
+            if (pageNumber > 1) {
+              searchResults = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  artist: { $in: [...queryArtist] },
+                  $text: { $search: search },
+                })
+                .project({ score: { $meta: "textScore" } })
+                .sort({ score: { $meta: "textScore" } })
+                .skip(skipAmount)
+                .limit(25)
+                .toArray();
+            } else {
+              searchResults = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  artist: { $in: [...queryArtist] },
+                  $text: { $search: search },
+                })
+                .project({ score: { $meta: "textScore" } })
+                .sort({ score: { $meta: "textScore" } })
+                .limit(25)
+                .toArray();
+            }
           } else {
             // if all artists is selected
-            searchResults = artCollection
-              .find({
-                type: { $in: [...queryType] },
-                // artist: { $in: [...queryArtist] },
-                $text: { $search: search },
-              })
-              .project({ score: { $meta: "textScore" } })
-              .limit(25 * pageNumber)
-              .skip(25 * pageNumber - 25)
-              .sort({ score: { $meta: "textScore" } })
-              .toArray();
+            if (pageNumber > 1) {
+              searchResults = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  $text: { $search: search },
+                })
+                .project({ score: { $meta: "textScore" } })
+                .sort({ score: { $meta: "textScore" } })
+                .skip(skipAmount)
+                .limit(25)
+                .toArray();
+            } else {
+              searchResults = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  $text: { $search: search },
+                })
+                .project({ score: { $meta: "textScore" } })
+                .sort({ score: { $meta: "textScore" } })
+                .limit(25)
+                .toArray();
+            }
           }
           resolve(searchResults);
         }
@@ -104,67 +129,109 @@ client.connect((err) => {
           //if all artists is selected
           if (req.body.category === "all") {
             // if all categories is selected
-            const data = artCollection
-              .find({
-                type: { $in: [...queryType] },
-              })
-              .limit(25 * pageNumber)
-              .skip(25 * pageNumber - 25)
-              .sort(querySortBy)
-              .toArray();
-            resolve(data);
+            if (pageNumber > 1) {
+              // subsequent results
+              const data = artCollection
+                .find({
+                  category: { $in: [...queryCategory] },
+                  type: { $in: [...queryType] },
+                })
+                .hint("RecentlyAdded")
+                .skip(skipAmount)
+                .limit(25)
+                .toArray();
+              resolve(data);
+            } else {
+              //initial 25 results
+              const data = artCollection
+                .find({
+                  category: { $in: [...queryCategory] },
+                  type: { $in: [...queryType] },
+                })
+                .hint("RecentlyAdded")
+                .limit(25)
+                .toArray();
+              resolve(data);
+            }
           } else {
             // if a particular category is selected
-            const data = artCollection
-              .find({
-                type: { $in: [...queryType] },
-                tags: { $in: [...queryCategory] },
-              })
-              // .batchSize(25);
-            // const getData = async () => {
-            //   let arr = [];
-            //   if (cursor.hasNext()) {
-            //     for (let i = 0; i < pageNumber * 25; i++) {
-            //       arr.push(cursor.next());
-            //     }
-            //   } else {
-            //     return arr;
-            //   }
-            // };
-            // const data = await getData()
-            .limit(25 * pageNumber)
-            .sort(querySortBy)
-            .skip(25 * pageNumber - 25)
-            .toArray();
-            resolve(data);
+            if (pageNumber > 1) {
+              // subsequent results
+              const data = artCollection
+                .find({
+                  category: { $in: [...queryCategory] },
+                  type: { $in: [...queryType] },
+                })
+                .hint("CategoryRecentlyAdded")
+                .skip(skipAmount)
+                .limit(25)
+                .toArray();
+              resolve(data);
+            } else {
+              //initial 25 results
+              const data = artCollection
+                .find({
+                  category: { $in: [...queryCategory] },
+                  type: { $in: [...queryType] },
+                })
+                .hint("CategoryRecentlyAdded")
+                .limit(25)
+                .toArray();
+              resolve(data);
+            }
           }
         } else {
           //if one artist is selected
           if (req.body.category === "all") {
             // if all cateorgies is selected
-            const data = artCollection
-              .find({
-                type: { $in: [...queryType] },
-                artist: { $in: [...queryArtist] },
-              })
-              .limit(25 * pageNumber)
-              .skip(25 * pageNumber - 25)
-              .sort(querySortBy)
-              .toArray();
-            resolve(data);
+            if (pageNumber > 1) {
+              const data = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  artist: { $in: [...queryArtist] },
+                })
+                .hint("RecentlyAdded")
+                .skip(skipAmount)
+                .limit(25)
+                .toArray();
+              resolve(data);
+            } else {
+              const data = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  artist: { $in: [...queryArtist] },
+                })
+                .hint("RecentlyAdded")
+                .limit(25)
+                .toArray();
+              resolve(data);
+            }
           } else {
             //if one particular category is selected
-            const data = artCollection
-              .find({
-                type: { $in: [...queryType] },
-                tags: { $in: [...queryCategory] },
-                artist: { $in: [...queryArtist] },
-              })
-              .limit(25 * pageNumber)
-              .skip(25 * pageNumber - 25)
-              .sort(querySortBy)
-              .toArray();
-            resolve(data);
+            if (pageNumber > 1) {
+              const data = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  category: { $in: [...queryCategory] },
+                  artist: { $in: [...queryArtist] },
+                })
+                .hint("RecentlyAdded")
+                .skip(skipAmount)
+                .limit(25)
+                .toArray();
+              resolve(data);
+            } else {
+              const data = artCollection
+                .find({
+                  type: { $in: [...queryType] },
+                  category: { $in: [...queryCategory] },
+                  artist: { $in: [...queryArtist] },
+                })
+                .hint("RecentlyAdded")
+                .limit(25)
+                .toArray();
+              resolve(data);
+            }
           }
         }
       });
@@ -173,7 +240,6 @@ client.connect((err) => {
           "Access-Control-Allow-Origin": "*",
         });
         console.log("POST request made at /art");
-        // console.log(data);
         res.json(data);
       });
     } catch (err) {
