@@ -6,25 +6,25 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 //Standard Frames
-import NineNineOne from "../images/frames/991-web-600x300px.png"
-import EightTwoThreeThree from "../images/frames/8233-web-600x300px.png"
+import NineNineOne from "../images/frames/991.png"
+import EightTwoThreeThree from "../images/frames/8233.png"
 // import FourOneNine from "../images/frames/419-web-600x300px.png"
 import SixHundred from "../images/frames/600-web-600x300px.png"
-import Barnwood from "../images/frames/GBW-web-600x300px.png"
-import BrownBarnwood from "../images/frames/BBW-web-600x300px.png"
-import EightTwoThreeFive from "../images/frames/8235-web-600x300px.png"
-import OneEighty from "../images/frames/180-web-600x300px.png"
-import NineHundred from "../images/frames/900-web-600x300px.png"
-import EightTwoThreeFour from "../images/frames/8234-web-600x300px.png"
-import NineZeroOne from "../images/frames/901-web-600x300px.png"
-import SevenHundred from "../images/frames/700-web-600x300px.png"
-import FourTwoFive from "../images/frames/425-web-600x300px.png"
+import Barnwood from "../images/frames/GBW.png"
+import BrownBarnwood from "../images/frames/BBW.png"
+import EightTwoThreeFive from "../images/frames/8235.png"
+import OneEighty from "../images/frames/180.png"
+import NineHundred from "../images/frames/900.png"
+import EightTwoThreeFour from "../images/frames/8234.png"
+import NineZeroOne from "../images/frames/901.png"
+import SevenHundred from "../images/frames/700.png"
+import FourTwoFive from "../images/frames/425.png"
 
 //Decor Frames
 // import TenTen from "../images/frames/1010-web-600x300px.png"
-import EightTwoZeroSix from "../images/frames/8206-web-600x300px.png"
+import EightTwoZeroSix from "../images/frames/8206.png"
 import ThreeZeroTwoFive from "../images/frames/3025-web-600x300px.png"
-import EightTwoSevenFour from "../images/frames/8274-web-600x300px.png"
+import EightTwoSevenFour from "../images/frames/8274.png"
 import EightTwoZeroFive from "../images/frames/8205-web-600x300px.png"
 // import NineEightFour from "../images/frames/984-web-600x300px.png"
 import EightTwoZeroSeven from "../images/frames/8207-web-600x300px.png"
@@ -149,7 +149,8 @@ const style = css`
 
   & .frames {
     display: grid;
-    grid-gap: 25px;
+    grid-column-gap: 25px;
+    grid-row-gap: 125px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin-top: 25px;
   }
