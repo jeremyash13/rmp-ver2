@@ -32,8 +32,8 @@ export default function ArtCategories() {
   `
 
   return (
-    <div css={style} className="text-2xl text-light-gray">
-      <div className="flex space-x-10 w-max-content mx-auto mb-6">
+    <div css={style} className="text-lg sm:text-lg text-light-gray">
+      <div className="flex space-x-4 sm:space-x-10 w-max-content mx-auto mb-6">
         <li
           className={allActive ? "active" : ""}
           onClick={() => {
@@ -65,7 +65,7 @@ export default function ArtCategories() {
           WESTERN
         </li>
       </div>
-      <div className="flex space-x-10 w-max-content mx-auto">
+      <div className="flex space-x-4 sm:space-x-10 w-max-content mx-auto">
         <li
           className={wildlifeActive ? "active" : ""}
           onClick={() => {

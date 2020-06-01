@@ -26,12 +26,6 @@ const ArtistsPage = () => (
   <Layout>
     <SEO title="Artists" />
     <div css={style} className="artists-page-wrapper">
-      {/* <Artist
-        img={MitchellMansanarez}
-        id="mitchellmansanarez"
-        name="Mitchell Mansanarez"
-        category="Western, Wildlife, Landscape"
-      /> */}
       <Artist
         img={DallenLambson}
         id="dallenlambson"
@@ -62,6 +56,12 @@ const ArtistsPage = () => (
         name="Travis Sylvester"
         category="Wildlife"
       />
+      {/* <Artist
+        img={MitchellMansanarez}
+        id="mitchellmansanarez"
+        name="Mitchell Mansanarez"
+        category="Western, Wildlife, Landscape"
+      /> */}
     </div>
   </Layout>
 )

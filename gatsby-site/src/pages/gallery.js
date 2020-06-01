@@ -24,8 +24,8 @@ const artPage = () => {
     <Layout>
       <SEO title="Gallery" />
       <div css={style} className="art-page__wrapper">
-        <div className="query-ui mb-6 flex flex-col lg:flex-row">
-          <ArtSearch className="search-wrapper h-53 mb-4 sm:max-w-lg sm:mx-auto lg:mr-auto lg:mb-0 lg:ml-6 lg:max-w-screen-sm" />
+        <div className="query-ui px-5 sm:px-0 mb-6 flex flex-col lg:flex-row">
+          <ArtSearch className="search-wrapper h-53 mb-4 sm:max-w-450 sm:mx-auto lg:mr-auto lg:mb-0 lg:ml-6 lg:max-w-screen-sm" />
           <div className="flex flex-col sm:flex-row sm:max-w-md sm:mx-auto lg:ml-auto lg:mr-6">
             <DropDownMenuType className="drop-down-wrapper ml-0 mb-4 sm:w-48 sm:mr-2 lg:ml-6 sm:mb-0 lg:mr-6" />
             <DropDownMenuArtist className="drop-down-wrapper sm:w-48 sm:ml-2" />

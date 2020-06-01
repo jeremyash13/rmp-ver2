@@ -31,7 +31,7 @@ export default function QuickView(props) {
               src={item.src}
               alt={`${item.title}`}
               className="quick-view-img mx-auto max-h-xs"
-              style={{filter: 'drop-shadow(1px 5px 5px #000000c7)'}}
+              style={{filter: 'drop-shadow(3px 5px 8px rgba(0,0,0,.9))'}}
             ></img>
           </div>
 

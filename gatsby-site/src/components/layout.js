@@ -121,8 +121,8 @@ const Layout = ({ children }) => {
       <Navbar />
       <main css={mainStyle}>
         {isIE && <BrowserNotSupportedDesktop />}
-        {isSafari && <BrowserNotSupportedDesktop />}
-        {isMobileSafari && <BrowserNotSupportedMobile />}
+        {/* {isSafari && <BrowserNotSupportedDesktop />}
+        {isMobileSafari && <BrowserNotSupportedMobile />} */}
         {children}
       </main>
       <Footer />

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import ArtContainer from "../state/ArtContainer"
+import useSearchArt from "../hooks/useSearchArt"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -13,44 +14,8 @@ let editItem = undefined
 
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
-  const [localFetchedArt, setLocalFetchedArt] = useState([])
-  const [loading, setLoading] = useState(true)
-
   const [showEditView, setShowEditView] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-    let query = {
-      type: "all",
-      category: "all",
-      sortBy: "artist",
-      artist: "all",
-      search: GlobalState.artSearch,
-    }
-    const fetchArt = async () => {
-      const controller = new AbortController()
-      const signal = controller.signal
-      try {
-        controller.abort()
-        const url = GlobalState.galleryUrl
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(query),
-        })
-        return response.json()
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    fetchArt().then(json => {
-      setLoading(false)
-      return setLocalFetchedArt(json)
-    })
-  }, [GlobalState.refreshFetchedArt, GlobalState.artSearch])
+  const { loading, art, error, hasMore } = useSearchArt(1000)
 
   const mainStyle = css`
     background-color: #eae9e9;
@@ -273,6 +238,7 @@ export const ArtManagement = () => {
     left: 50%;
     top: 50%;
   `
+  
   return (
     <div css={wrapperStyle} className="art-management-wrapper">
       {GlobalState.showToast && <Toast message="Update Successful" />}
@@ -291,14 +257,14 @@ export const ArtManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {localFetchedArt.map(item => {
+            {art.map(item => {
               return (
                 <tr
                   key={item._id}
                   className="entry-wrapper"
                   onClick={() => {
                     setShowEditView(true)
-                    editItem = localFetchedArt.indexOf(item)
+                    editItem = art.indexOf(item)
                   }}
                 >
                   <td className="title">
@@ -324,7 +290,7 @@ export const ArtManagement = () => {
       )}
       {showEditView && (
         <EditView
-          editItem={localFetchedArt[editItem]}
+          editItem={art[editItem]}
           closeHandler={() => setShowEditView(false)}
           refreshFetchedArtHandler={() => {
             GlobalState.setRefreshFetchedArt(prevState => prevState + 1)

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import ArtContainer from "../state/ArtContainer"
 
-export default function useSearchArt() {
+export default function useSearchArt(limitResults) {
+
   const GlobalState = ArtContainer.useContainer()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -20,6 +21,7 @@ export default function useSearchArt() {
       artist: GlobalState.artist,
       search: GlobalState.artSearch,
       pageNumber: GlobalState.pageNumber,
+      limitResults: limitResults || 25,
     }
 
     let cancel

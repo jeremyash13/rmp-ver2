@@ -40,7 +40,7 @@ export default function ArtView() {
   const style = css`
     padding: 35px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(273px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: max-content;
     grid-column-gap: 25px;
     grid-row-gap: 100px;
@@ -93,14 +93,14 @@ export default function ArtView() {
       position: relative;
       &:hover {
         & .img {
-          filter: drop-shadow(3px 5px 4px rgba(0,0,0,.65)) brightness(1.15)
+          filter: drop-shadow(3px 5px 8px rgba(0,0,0,.9)) brightness(1.15)
             opacity(0.7);
         }
       }
     }
     .img {
       transition: filter 250ms ease-out;
-      filter: drop-shadow(3px 5px 4px rgba(0,0,0,.65));
+      filter: drop-shadow(3px 5px 8px rgba(0,0,0,.9));
       max-height: 300px;
     }
     .art-view__img-details {
@@ -124,7 +124,7 @@ export default function ArtView() {
       color: var(--text-light-gray);
     }
 
-    @media (max-width: 600px) {
+    @media (min-width: 600px) {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       .img-wrapper {
         display: flex;

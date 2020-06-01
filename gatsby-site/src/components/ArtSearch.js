@@ -20,7 +20,7 @@ export default function ArtSearch(props) {
     font-size: 1rem;
 
     & input:focus {
-      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 4px rgba(0, 125, 255, 0.2);
     }
     & input::placeholder {
       font-style: italic;

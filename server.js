@@ -43,6 +43,7 @@ client.connect((err) => {
       let search = "";
       const pageNumber = req.body.pageNumber;
       const skipAmount = (25 * pageNumber) - 25;
+      let limitResults = req.body.limitResults;
 
       if (req.body.type === "all") {
         queryType = ["Canvas Giclee", "Gallery Wrap", "Paper Giclee"];
@@ -84,7 +85,7 @@ client.connect((err) => {
                 .project({ score: { $meta: "textScore" } })
                 .sort({ score: { $meta: "textScore" } })
                 .skip(skipAmount)
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
             } else {
               searchResults = artCollection
@@ -95,7 +96,7 @@ client.connect((err) => {
                 })
                 .project({ score: { $meta: "textScore" } })
                 .sort({ score: { $meta: "textScore" } })
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
             }
           } else {
@@ -109,7 +110,7 @@ client.connect((err) => {
                 .project({ score: { $meta: "textScore" } })
                 .sort({ score: { $meta: "textScore" } })
                 .skip(skipAmount)
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
             } else {
               searchResults = artCollection
@@ -119,7 +120,7 @@ client.connect((err) => {
                 })
                 .project({ score: { $meta: "textScore" } })
                 .sort({ score: { $meta: "textScore" } })
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
             }
           }
@@ -138,7 +139,7 @@ client.connect((err) => {
                 })
                 .hint("RecentlyAdded")
                 .skip(skipAmount)
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             } else {
@@ -149,7 +150,7 @@ client.connect((err) => {
                   type: { $in: [...queryType] },
                 })
                 .hint("RecentlyAdded")
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             }
@@ -164,7 +165,7 @@ client.connect((err) => {
                 })
                 .hint("CategoryRecentlyAdded")
                 .skip(skipAmount)
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             } else {
@@ -175,7 +176,7 @@ client.connect((err) => {
                   type: { $in: [...queryType] },
                 })
                 .hint("CategoryRecentlyAdded")
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             }
@@ -192,7 +193,7 @@ client.connect((err) => {
                 })
                 .hint("RecentlyAdded")
                 .skip(skipAmount)
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             } else {
@@ -202,7 +203,7 @@ client.connect((err) => {
                   artist: { $in: [...queryArtist] },
                 })
                 .hint("RecentlyAdded")
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             }
@@ -217,7 +218,7 @@ client.connect((err) => {
                 })
                 .hint("RecentlyAdded")
                 .skip(skipAmount)
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             } else {
@@ -228,7 +229,7 @@ client.connect((err) => {
                   artist: { $in: [...queryArtist] },
                 })
                 .hint("RecentlyAdded")
-                .limit(25)
+                .limit(limitResults)
                 .toArray();
               resolve(data);
             }

@@ -17,6 +17,7 @@ module.exports = {
         "min-content": "min-content",
       },
       maxWidth: {
+        "450": "450px",
         "600": "600px",
       },
       height: {
