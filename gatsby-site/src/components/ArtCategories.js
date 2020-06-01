@@ -32,7 +32,7 @@ export default function ArtCategories() {
   `
 
   return (
-    <div css={style} className="text-2xl text-light-gray">
+    <div css={style} className="text-lg lg:text-xl text-light-gray mb-6">
       <div className="flex space-x-10 w-max-content mx-auto mb-6">
         <li
           className={allActive ? "active" : ""}

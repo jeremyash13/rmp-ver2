@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React from "react"
 
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
@@ -20,7 +20,8 @@ export default function ArtSearch(props) {
     font-size: 1rem;
 
     & input:focus {
-      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+      ${'' /* box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3); */}
+      box-shadow: inset 0 0 4px rgba(0, 125, 255, 0.35);
     }
     & input::placeholder {
       font-style: italic;

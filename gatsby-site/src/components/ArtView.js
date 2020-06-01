@@ -38,7 +38,6 @@ export default function ArtView() {
   const { loading, art, error, hasMore } = useSearchArt()
 
   const style = css`
-    padding: 35px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(273px, 1fr));
     grid-auto-rows: max-content;
@@ -93,14 +92,14 @@ export default function ArtView() {
       position: relative;
       &:hover {
         & .img {
-          filter: drop-shadow(3px 5px 4px rgba(0,0,0,.65)) brightness(1.15)
+          filter: drop-shadow(3px 5px 4px rgba(0, 0, 0, 0.65)) brightness(1.15)
             opacity(0.7);
         }
       }
     }
     .img {
       transition: filter 250ms ease-out;
-      filter: drop-shadow(3px 5px 4px rgba(0,0,0,.65));
+      filter: drop-shadow(3px 5px 4px rgba(0, 0, 0, 0.65));
       max-height: 300px;
     }
     .art-view__img-details {

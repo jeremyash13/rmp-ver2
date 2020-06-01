@@ -11,6 +11,7 @@ module.exports = {
       },
       inset: {
         "1/2": "50%",
+        "5": "5px",
       },
       width: {
         "max-content": "max-content",
