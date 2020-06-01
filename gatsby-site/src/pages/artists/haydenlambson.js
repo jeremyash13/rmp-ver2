@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
-import HaydenLambson from "../../images/artists/HaydenLambson.jpg"
+import HaydenLambson from "../../images/artists/HaydenLambsonNew.jpg"
 
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"

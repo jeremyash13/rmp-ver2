@@ -6,7 +6,7 @@ import { jsx, css } from "@emotion/core"
 import DallenLambson from "../images/artists/DallenLambson.jpeg"
 import ClarkKelleyPrice from "../images/artists/ClarkKelleyPrice.jpg"
 import ManuelMansanarez from "../images/artists/ManuelMansanarez.jpg"
-import HaydenLambson from "../images/artists/HaydenLambson.jpg"
+import HaydenLambson from "../images/artists/HaydenLambsonNew.jpg"
 import TravisSylvester from "../images/artists/TravisSylvester.jpg"
 
 import Layout from "../components/layout"

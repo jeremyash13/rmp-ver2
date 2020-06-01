@@ -44,7 +44,7 @@ const Dashboard = () => {
           <AddNewEntryButton
             clickHandler={() => setShowingNewEntryView(true)}
           />
-          <ArtSearch />
+          <ArtSearch className="ml-auto max-w-screen-sm"/>
         </div>
         <ArtManagement />
       </div>
