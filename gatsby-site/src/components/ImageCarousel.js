@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { jsx, css } from "@emotion/core"
-import SunriseSerenity from "../images/webp/sunrise-serenity.webp"
-import BoardMeeting from "../images/webp/board meeting.webp"
-import PlaceOfRest from "../images/webp/place of rest.webp"
+import SunriseSerenityWebP from "../images/webp/sunrise-serenity.webp"
+import BoardMeetingWebP from "../images/webp/board meeting.webp"
+import PlaceOfRestWebP from "../images/webp/place of rest.webp"
+
+import SunriseSerenityJPG from "../images/jpg/sunrise-serenity.jpg"
+import BoardMeetingJPG from "../images/jpg/board meeting.jpg"
+import PlaceOfRestJPG from "../images/jpg/place of rest.jpg"
+
+
+
+
 
 /** @jsx jsx */
 
@@ -81,7 +89,10 @@ const slideOne = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <img src={SunriseSerenity} alt="Sunrise Serenity by Mitchell Mansanarez"></img>
+      <picture>
+        <source srcset={SunriseSerenityWebP} type="image/webp" />
+        <img src={SunriseSerenityJPG} alt="Sunrise Serenity by Mitchell Mansanarez"></img>
+      </picture>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           I have had the pleasure of working with Rocky Mountain Publishing for
@@ -107,7 +118,10 @@ const slideTwo = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <img src={BoardMeeting} alt="Board Meeting by Mitchell Mansanarez"></img>
+      <picture>
+        <source srcset={BoardMeetingWebP} type="image/webp" />
+        <img src={BoardMeetingJPG} alt="Board Meeting by Mitchell Mansanarez"></img>
+      </picture>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           We couldn't imagine C-A-L Ranch Stores without Rocky Mountain
@@ -134,7 +148,10 @@ const slideThree = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <img src={PlaceOfRest} alt="Place of Rest by Dallen Lambson"></img>
+      <picture>
+        <source srcset={PlaceOfRestWebP} type="image/webp" />
+        <img src={PlaceOfRestJPG} alt="Place of Rest by Dallen Lambson"></img>
+      </picture>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           Rocky Mountain Publishing has been a great asset to use here at Ashley
