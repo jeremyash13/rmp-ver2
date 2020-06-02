@@ -1,4 +1,3 @@
-
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 
@@ -22,7 +21,7 @@ import FourTwoFive from "../images/frames/425.png"
 
 //Decor Frames
 // import TenTen from "../images/frames/1010-web-600x300px.png"
-import EightTwoZeroSix from "../images/frames/8206.png"
+import EightTwoZeroSix from "../images/frames/8234.png"
 import ThreeZeroTwoFive from "../images/frames/3025-web-600x300px.png"
 import EightTwoSevenFour from "../images/frames/8274.png"
 import EightTwoZeroFive from "../images/frames/8205-web-600x300px.png"
@@ -52,7 +51,8 @@ const standardFrames = [
     element: <img src={Barnwood} alt=""></img>,
   },
   {
-    name: "#Brown Barnwood",
+    name1: "#Brown",
+    name2: "Barnwood",
     element: <img src={BrownBarnwood} alt=""></img>,
   },
   {
@@ -147,18 +147,44 @@ const style = css`
     margin-top: 50px;
   }
 
-  & .frames {
+  & .standard-frames {
     display: grid;
     grid-column-gap: 25px;
     grid-row-gap: 125px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     margin-top: 25px;
   }
+  & .decor-frames {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-column-gap: 25px;
+    grid-row-gap: 125px;
+    margin-top: 25px;
+  }
+  @media (min-width: 600px) {
+    & .standard-frames {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    & .decor-frames {
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+  }
+  @media (min-width: 900px) {
+    & .decor-frames {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+  }
 
-  & .frame-wrapper {
+  & .decor-frame-wrapper img {
+    margin: 0 auto;
+  }
+
+  & .standard-frame-wrapper,
+  & .decor-frame-wrapper {
     position: relative;
   }
-  & .frame-wrapper div {
+  & .standard-frame-wrapper div,
+  & .decor-frame-wrapper div {
     filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.5));
   }
 `
@@ -188,16 +214,27 @@ const FramesPage = () => (
           both glued and v-nailed to ensure durability. All artwork comes with
           hanging system installed.
         </p>
-        <div className="frames">
-          {standardFrames.map(item => (
-            <div className="frame-wrapper">
-              <h2>{item.name}</h2>
-              <div>{item.element}</div>
-            </div>
-          ))}
+        <div className="standard-frames">
+          {standardFrames.map(item => {
+            if (!(item.name1 === "#Brown")) {
+              return (
+                <div className="standard-frame-wrapper">
+                  <h2>{item.name}</h2>
+                  <div>{item.element}</div>
+                </div>
+              )
+            } else {
+              return (
+                <div className="standard-frame-wrapper">
+                  <h2>{item.name1}<br/>{item.name2}</h2>
+                  <div>{item.element}</div>
+                </div>
+              )
+            }
+          })}
         </div>
       </div>
-      <div className="standard-wrapper">
+      <div className="decor-wrapper">
         <h1>DÉCOR LINE</h1>
         <p>
           Our Décor line is designed to provide an elegant art piece that will
@@ -206,9 +243,9 @@ const FramesPage = () => (
           a 4” profile. All frame corners are both glued and v-nailed to ensure
           durability. All artwork comes with hanging system installed.
         </p>
-        <div className="frames">
+        <div className="decor-frames">
           {decorFrames.map(item => (
-            <div className="frame-wrapper">
+            <div className="decor-frame-wrapper">
               <h2>{item.name}</h2>
               <div>{item.element}</div>
             </div>
