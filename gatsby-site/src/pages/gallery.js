@@ -17,6 +17,10 @@ const artPage = () => {
       font-size: 1rem;
       padding: 0.7em;
       width: 100%;
+      & div {
+        width: 12px;
+        height: 12px;
+      }
     }
   `
 

@@ -32,6 +32,7 @@ const style = css`
     height: 100%;
   }
   .testimonial-wrapper {
+    display: none;
     font-size: 0.9rem;
     line-height: 15px;
     position: absolute;
@@ -75,6 +76,11 @@ const style = css`
     transform: translateX(-50%);
     bottom: -25px;
     left: 50%;
+  }
+  @media (min-width: 400px) {
+    .testimonial-wrapper {
+      display: block;
+    }
   }
   @media (min-width: 700px) {
     .testimonial-wrapper {

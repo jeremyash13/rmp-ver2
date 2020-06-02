@@ -23,6 +23,8 @@ module.exports = {
       height: {
         "53": "53px",
         "11/12": "91.666667%",
+        "max-content": "max-content",
+        "min-content": "min-content",
       },
       maxHeight: {
         "xs": "20rem",

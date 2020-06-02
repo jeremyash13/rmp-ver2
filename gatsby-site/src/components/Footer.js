@@ -11,87 +11,50 @@ export const Footer = () => {
   const { isAuthenticated, login, logout } = useAuth()
   const style = css`
     margin-top: auto;
-    .footer-wrapper {
-      padding: 25px;
-    }
-    ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    li {
-      font-family: Roboto;
-      font-weight: 300;
-      font-size: 14px;
-      flex-grow: 1;
+    
     }
     a {
       text-decoration: none;
-      color: var(--text-light-gray);
     }
-    .copyright {
-      flex-grow: 50;
-    }
-    .admin-login {
-      color: var(--text-light-gray);
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .facebook-logo {
-      width: 10px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .instagram-logo {
-      width: 10px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
+    
   `
   return (
     <footer css={style}>
-      <div className="footer-wrapper">
-        <ul>
-          <li className="copyright">
-            © Rocky Mountain Publishing, inc. All rights reserved.
-          </li>
-          <li>
-            {!isAuthenticated() && (
-              <span className="admin-login" onClick={login}>
-                Admin Login
-              </span>
-            )}
-            {isAuthenticated() && (
-              <>
-                <Link to="/admin/dashboard" className="admin-login">
-                  Admin Dashboard
-                </Link>
-                <span
-                  style={{ marginLeft: "15px" }}
-                  className="admin-login"
-                  onClick={logout}
-                >
-                  Logout
-                </span>
-              </>
-            )}
-          </li>
-          <li className="facebook-logo">
-            <a href="https://www.facebook.com/rockymountainpublishing">
-              <FacebookLogo />
-            </a>
-          </li>
-          <li className="instagram-logo">
-            <a href="https://www.instagram.com/rocky_mountain_publishing">
-              <InstagramLogo />
-            </a>
-          </li>
-        </ul>
+      <div className="footer-wrapper font-roboto text-xs p-4 flex">
+        <div className="flex space-x-1">
+          <span className="copyright mr-10">
+            © Rocky Mountain Publishing, inc.
+            <br />
+            All rights reserved.
+          </span>
+          <a href="https://www.facebook.com/rockymountainpublishing" className="">
+            <FacebookLogo />
+          </a>
+          <a href="https://www.instagram.com/rocky_mountain_publishing" className="">
+            <InstagramLogo />
+          </a>
+        </div>
+        {!isAuthenticated() && (
+          <span className="admin-login cursor-pointer" onClick={login}>
+            Login
+          </span>
+        )}
+        {isAuthenticated() && (
+          <div className="flex space-x-2 ml-auto">
+            <Link
+              to="/admin/dashboard"
+              className="admin-login w-20 rounded h-max-content px-2 py-1 text-center hover:bg-blackish hover:text-white transition-colors duration-200 text-blackish border border-blackish"
+            >
+              Dashboard
+            </Link>
+            <span
+              className="admin-login w-20 rounded h-max-content px-2 py-1 text-center text-blackish border border-blackish hover:bg-blackish cursor-pointer hover:text-white transition-colors duration-200"
+              onClick={logout}
+            >
+              Logout
+            </span>
+          </div>
+        )}
       </div>
     </footer>
   )
