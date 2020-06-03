@@ -63,9 +63,9 @@ export default function Artist(props) {
     <div css={style} className="artist-wrapper">
       <div className="artist-image-wrapper">
         <Link to={`/artists/${props.id}`}>
-          <div className="view-bio-button">View Biography</div>
+          <div className="view-bio-button shadow-lg">View Biography</div>
           <div className="artist-hover-element"></div>
-          <img src={props.img} alt={`${props.name}`}></img>
+          <img src={props.img} alt={`${props.name}`} className="mb-4"></img>
         </Link>
       </div>
       <div className="artist-footer">

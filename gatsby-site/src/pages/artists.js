@@ -8,6 +8,7 @@ import ClarkKelleyPrice from "../images/artists/ClarkKelleyPrice.jpg"
 import ManuelMansanarez from "../images/artists/ManuelMansanarez.jpg"
 import HaydenLambson from "../images/artists/HaydenLambsonNew.jpg"
 import TravisSylvester from "../images/artists/TravisSylvester.jpg"
+import DanBallard from "../images/artists/DanBallard.jpg"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -56,11 +57,17 @@ const ArtistsPage = () => (
         name="Travis Sylvester"
         category="Wildlife"
       />
+      <Artist
+        img={DanBallard}
+        id="danballard"
+        name="Dan Ballard"
+        category="Landscape Photography"
+      />
       {/* <Artist
         img={MitchellMansanarez}
         id="mitchellmansanarez"
         name="Mitchell Mansanarez"
-        category="Western, Wildlife, Landscape"
+        category="Western, Wildlife, Landscape Photography"
       /> */}
     </div>
   </Layout>
