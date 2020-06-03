@@ -257,14 +257,14 @@ export const ArtManagement = () => {
             </div>
           ) : (
             <tbody>
-              {localFetchedArt.map(item => {
+              {art.map(item => {
                 return (
                   <tr
                     key={item._id}
                     className="entry-wrapper"
                     onClick={() => {
                       setShowEditView(true)
-                      editItem = localFetchedArt.indexOf(item)
+                      editItem = art.indexOf(item)
                     }}
                   >
                     <td className="title">
@@ -291,7 +291,7 @@ export const ArtManagement = () => {
             </tbody>
           )}
         </table>
-      {localFetchedArt.length === 0 && loading === false && (
+      {art.length === 0 && loading === false && (
         <div className="w-max-content mx-auto text-4xl">NO RESULTS...</div>
       )}
       {showEditView && (
