@@ -242,11 +242,6 @@ export const ArtManagement = () => {
   return (
     <div css={wrapperStyle} className="art-management-wrapper">
       {GlobalState.showToast && <Toast message="Update Successful" />}
-      {loading ? (
-        <div css={loaderStyle}>
-          <ClipLoader loading={true} />
-        </div>
-      ) : (
         <table css={mainStyle} id="art-management">
           <thead>
             <tr>
@@ -256,37 +251,48 @@ export const ArtManagement = () => {
               <th>Type</th>
             </tr>
           </thead>
-          <tbody>
-            {art.map(item => {
-              return (
-                <tr
-                  key={item._id}
-                  className="entry-wrapper"
-                  onClick={() => {
-                    setShowEditView(true)
-                    editItem = art.indexOf(item)
-                  }}
-                >
-                  <td className="title">
-                    {item.title}
-                    <EditHover />
-                  </td>
-                  <td className="artist">{item.artist}</td>
-                  <td className="sku-wrapper">
-                    {item.options.map(i => (
-                      <div className="sku-item" key={i.code + i.size + i.price}>
-                        <div className="sku-code">{i.code}</div>
-                        <div className="size">{i.size}</div>
-                        <div className="price">{i.price}</div>
-                      </div>
-                    ))}
-                  </td>
-                  <td className="type">{item.type}</td>
-                </tr>
-              )
-            })}
-          </tbody>
+          {loading ? (
+            <div css={loaderStyle}>
+              <ClipLoader loading={true} />
+            </div>
+          ) : (
+            <tbody>
+              {localFetchedArt.map(item => {
+                return (
+                  <tr
+                    key={item._id}
+                    className="entry-wrapper"
+                    onClick={() => {
+                      setShowEditView(true)
+                      editItem = localFetchedArt.indexOf(item)
+                    }}
+                  >
+                    <td className="title">
+                      {item.title}
+                      <EditHover />
+                    </td>
+                    <td className="artist">{item.artist}</td>
+                    <td className="sku-wrapper">
+                      {item.options.map(i => (
+                        <div
+                          className="sku-item"
+                          key={i.code + i.size + i.price}
+                        >
+                          <div className="sku-code">{i.code}</div>
+                          <div className="size">{i.size}</div>
+                          <div className="price">{i.price}</div>
+                        </div>
+                      ))}
+                    </td>
+                    <td className="type">{item.type}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          )}
         </table>
+      {localFetchedArt.length === 0 && loading === false && (
+        <div className="w-max-content mx-auto text-4xl">NO RESULTS...</div>
       )}
       {showEditView && (
         <EditView

@@ -13,6 +13,7 @@ import AddOption from "../AddOption"
 import EditableTextArea from "../EditableTextArea"
 import ImagePlaceholder from "../../images/img-placeholder.jpg"
 import TypeDropDown from "../TypeDropDown"
+import CategoryDropDown from "../CategoryDropDown"
 import RemoveOption from "../RemoveOption"
 import { object } from "prop-types"
 
@@ -440,6 +441,15 @@ export default function EditView(props) {
               value={type}
               changeHandler={val => {
                 setType(val)
+              }}
+            />
+          </div>
+          <div className="category-wrapper mr-auto ml-6">
+            <CategoryDropDown
+              className="shadow-md"
+              value={category}
+              changeHandler={val => {
+                setCategory(val)
               }}
             />
           </div>

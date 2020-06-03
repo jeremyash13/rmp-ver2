@@ -38,7 +38,6 @@ export default function ArtView() {
   const { loading, art, error, hasMore } = useSearchArt()
 
   const style = css`
-    padding: 35px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: max-content;
