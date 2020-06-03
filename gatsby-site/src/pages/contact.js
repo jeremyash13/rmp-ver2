@@ -1,4 +1,3 @@
-
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 
@@ -112,49 +111,39 @@ const style = css`
   .zone-4-wrapper {
     background-color: var(--zone-4);
   }
-  @media (min-width: 800px) {
-    .contact-section {
-      flex-direction: row;
-      & p {
-        margin-left: initial;
-        margin-right: initial;
-      }
-      & div {
-        margin-top: initial;
-      }
-    }
-  }
 `
 
 const contactPage = () => (
   <Layout>
     <SEO title="Contact Us" />
     <div css={style} className="contact-page-wrapper">
-      <div className="dealer-text">
-        <h1>CONTACT US TO FIND A DEALER NEAR YOU</h1>
-      </div>
-      <div className="contact-section">
-        <div>
-          <h1>CUSTOMER SERVICE & SALES</h1>
-          <p>Office - (208) 785-6291</p>
-          <p>Toll Free - (800) 987-7782</p>
-          <p>Fax - (208) 785-1287</p>
-          <p>Email - rmpublishing@qwestoffice.net</p>
+      <div className="flex flex-col md:flex-row">
+        <div className="dealer-text">
+          <h1>CONTACT US TO FIND A DEALER NEAR YOU</h1>
         </div>
-        <div>
-          <h1>HOURS OF OPERATION</h1>
-          <p>
-            Monday - Friday 8:00 a.m. to 5:00 p.m. (Mountain Standard Time)
-            (Excluding Holidays)
-          </p>
-        </div>
-        <div>
-          <h1>ADDRESS</h1>
-          <p>
-            Rocky Mountain Publishing
-            <br />
-            479 Emerald Ave. Blackfoot, ID 83221
-          </p>
+        <div className="contact-section">
+          <div className="md:w-1/3">
+            <h1>HOURS OF OPERATION</h1>
+            <p>
+              Monday - Friday 8:00 a.m. to 5:00 p.m. (Mountain Standard Time)
+              (Excluding Holidays)
+            </p>
+          </div>
+          <div className="md:w-1/3">
+            <h1>CUSTOMER SERVICE & SALES</h1>
+            <p>Office - (208) 785-6291</p>
+            <p>Toll Free - (800) 987-7782</p>
+            <p>Fax - (208) 785-1287</p>
+            <p>Email - rmpublishing@qwestoffice.net</p>
+          </div>
+          <div className="md:w-1/3">
+            <h1>ADDRESS</h1>
+            <p>
+              Rocky Mountain Publishing
+              <br />
+              479 Emerald Ave. Blackfoot, ID 83221
+            </p>
+          </div>
         </div>
       </div>
       <div>
