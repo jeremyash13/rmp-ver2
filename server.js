@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
+const sharp = require("sharp");
 
 const BUCKET_NAME = process.env.BUCKET_NAME;
 const IAM_USER_KEY = process.env.IAM_USER_KEY;
@@ -42,7 +43,7 @@ client.connect((err) => {
       let queryArtist = [];
       let search = "";
       const pageNumber = req.body.pageNumber;
-      const skipAmount = (25 * pageNumber) - 25;
+      const skipAmount = 25 * pageNumber - 25;
       let limitResults = req.body.limitResults;
 
       if (req.body.type === "all") {
@@ -307,8 +308,24 @@ client.connect((err) => {
   });
   app.post("/s3", upload.single("file"), async (req, res) => {
     console.log("POST request made at /s3");
-    console.log(req.file);
     try {
+      //img compression
+      let imgBuffer;
+      let newKey;
+
+      if (req.body.name.includes(".png")) {
+        newKey = req.body.name.replace(".png", "");
+        imgBuffer = await sharp(req.file.buffer)
+        .toFormat("png")
+        .toBuffer();
+      }
+      if (req.body.name.includes(".jpg")) {
+        newKey = req.body.name.replace(".jpg", "");
+        imgBuffer = await sharp(req.file.buffer)
+        .toFormat("jpg", { quality: 70 })
+        .toBuffer();
+      }
+
       let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,
         secretAccessKey: IAM_USER_SECRET,
@@ -316,22 +333,23 @@ client.connect((err) => {
       });
       const params = {
         Bucket: BUCKET_NAME,
-        Body: req.file.buffer,
-        Key: req.body.name,
-        ContentType: "image/jpeg",
+        Body: imgBuffer,
+        Key: newKey,
+        ContentType: "image/jpg",
       };
       s3bucket.upload(params, function (err, data) {
         if (err) {
           console.log("error in callback");
           console.log(err);
         }
-        console.log("success");
+        console.log("upload success");
         console.log(data);
         res.json({
           msg: "image successfully uploaded to AWS S3",
           location: data.Location,
         });
       });
+      
     } catch (err) {
       res.json({ msg: err });
       console.log(err);
