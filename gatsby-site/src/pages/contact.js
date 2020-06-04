@@ -10,56 +10,6 @@ const style = css`
   max-width: 1268px;
   margin: 0 auto;
   color: var(--text-black);
-
-  & h1 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    max-width: 300px;
-    margin-top: 50px;
-  }
-  & h2 {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-top: 50px;
-  }
-
-  & p {
-    font-size: 1rem;
-    font-weight: 300;
-  }
-  .contact-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    & h1 {
-      width: 250px;
-      text-align: center;
-      margin: 0 auto;
-      margin-bottom: 25px;
-    }
-    & p {
-      max-width: 400px;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    & div {
-      margin-top: 50px;
-    }
-  }
-  & .subtext {
-    text-align: center;
-    width: 300px;
-    margin: 0 auto;
-  }
-  & .dealer-text {
-    text-align: center;
-    max-width: 300px;
-    margin: 0 auto;
-    & h1 {
-      margin-top: 0;
-    }
-  }
   & .zone-map {
     margin: 0 auto;
     display: block;
@@ -117,28 +67,35 @@ const contactPage = () => (
   <Layout>
     <SEO title="Contact Us" />
     <div css={style} className="contact-page-wrapper">
-      <div className="flex flex-col md:flex-row">
-        <div className="dealer-text">
-          <h1>CONTACT US TO FIND A DEALER NEAR YOU</h1>
+      <div className="flex flex-col">
+        <div className="dealer-text mb-10">
+          <h1 className="text-base text-center md:text-2xl">
+            CONTACT US TO FIND A DEALER NEAR YOU
+          </h1>
         </div>
-        <div className="contact-section">
-          <div className="md:w-1/3">
-            <h1>HOURS OF OPERATION</h1>
-            <p>
+        <div className="contact-section flex flex-col md:flex-row">
+          <div className="mb-10 px-4 md:w-1/3">
+            <h1 className="text-base text-center md:text-2xl">HOURS OF OPERATION</h1>
+            <p className="text-center">
               Monday - Friday 8:00 a.m. to 5:00 p.m. (Mountain Standard Time)
               (Excluding Holidays)
             </p>
           </div>
-          <div className="md:w-1/3">
-            <h1>CUSTOMER SERVICE & SALES</h1>
-            <p>Office - (208) 785-6291</p>
-            <p>Toll Free - (800) 987-7782</p>
-            <p>Fax - (208) 785-1287</p>
-            <p>Email - rmpublishing@qwestoffice.net</p>
+          <div className="mb-10 px-4 md:w-1/3">
+            <h1 className="text-base text-center md:text-2xl">CUSTOMER SERVICE & SALES</h1>
+            <p className="text-center">
+              Office - (208) 785-6291
+              <br />
+              Toll Free - (800) 987-7782
+              <br />
+              Fax - (208) 785-1287
+              <br />
+              Email - rmpublishing@qwestoffice.net
+            </p>
           </div>
-          <div className="md:w-1/3">
-            <h1>ADDRESS</h1>
-            <p>
+          <div className="mb-10 px-4 md:w-1/3">
+            <h1 className="text-base text-center md:text-2xl">ADDRESS</h1>
+            <p className="text-center">
               Rocky Mountain Publishing
               <br />
               479 Emerald Ave. Blackfoot, ID 83221

@@ -42,8 +42,10 @@ module.exports = {
       colors: {
         'blackish': '#2E2E2E',
         'dark-gray': '#565656',
+        'light-light-gray': '#dddddd',
         'light-gray': '#848484',
         'off-white': '#f5f5f5',
+        'mint-green': '#59c9a0',
         'zone-1': '#d55b54',
         'zone-2': '#ccdce3',
         'zone-3': '#9cb88c',

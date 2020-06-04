@@ -15,7 +15,6 @@ import ImagePlaceholder from "../../images/img-placeholder.jpg"
 import TypeDropDown from "../TypeDropDown"
 import CategoryDropDown from "../CategoryDropDown"
 import RemoveOption from "../RemoveOption"
-import { object } from "prop-types"
 
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()

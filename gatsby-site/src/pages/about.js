@@ -1,4 +1,3 @@
-
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 
@@ -48,7 +47,7 @@ const aboutPage = () => (
         </strong>
       </p>
       <h3>Quality</h3>
-      <div className="flex mb-16">
+      <div className="flex flex-col md:flex-row mb-16">
         <div className="max-w-3xl pr-6">
           <p>
             Our gallery level quality all starts with the nationally renowned
@@ -73,7 +72,7 @@ const aboutPage = () => (
             the same canvas that our artists are producing their originals on.
           </p>
         </div>
-        <div className="w-56">
+        <div className="w-56 flex-shrink-0 mx-auto">
           <Player autoPlay={true} muted={true} loop>
             <source src="https://rmp-images.s3-us-west-2.amazonaws.com/Molding-360P-cropped.m4v" />
             <ControlBar disabled></ControlBar>
@@ -89,7 +88,7 @@ const aboutPage = () => (
           100% exclusive to RMP.
         </p>
       </div>
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <div className="max-w-3xl pr-6">
           <h3>Value</h3>
           <p>
@@ -112,7 +111,7 @@ const aboutPage = () => (
             us and we can help.
           </p>
         </div>
-        <div className="w-64 mt-16">
+        <div className="w-64 flex-shrink-0 mx-auto md:mt-16">
           <Player autoPlay={true} muted={true} loop>
             <source src="https://rmp-images.s3-us-west-2.amazonaws.com/Printing-360p.m4v" />
             <ControlBar disabled></ControlBar>

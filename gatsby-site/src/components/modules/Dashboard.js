@@ -9,11 +9,14 @@ import { jsx, css } from "@emotion/core"
 import AddNewEntryButton from "../AddNewEntryButton"
 import EditView from "./EditView"
 import ArtContainer from "../state/ArtContainer"
+import TopSellersButton from "../TopSellersButton"
+import TopSellersView from "./TopSellersView"
 
 const Dashboard = () => {
   const GlobalState = ArtContainer.useContainer()
 
   const [showingNewEntryView, setShowingNewEntryView] = useState(false)
+  const [topSellersView, setTopSellersView] = useState(false)
 
   const style = css`
     max-width: 1268px;
@@ -44,7 +47,8 @@ const Dashboard = () => {
           <AddNewEntryButton
             clickHandler={() => setShowingNewEntryView(true)}
           />
-          <ArtSearch className="ml-auto max-w-screen-sm"/>
+          <TopSellersButton onClick={() => setTopSellersView(true)} />
+          <ArtSearch className="ml-auto max-w-450" />
         </div>
         <ArtManagement />
       </div>
@@ -53,10 +57,11 @@ const Dashboard = () => {
           editItem={null}
           closeHandler={() => setShowingNewEntryView(false)}
           refreshFetchedArtHandler={() => {
-            GlobalState.setRefreshFetchedArt(GlobalState.refreshFetchedArt + 1)
+            GlobalState.setRefreshArt(prevState => prevState + 1)
           }}
         />
       )}
+      {topSellersView && <TopSellersView />}
     </Layout>
   )
 }

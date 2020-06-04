@@ -299,7 +299,7 @@ export const ArtManagement = () => {
           editItem={art[editItem]}
           closeHandler={() => setShowEditView(false)}
           refreshFetchedArtHandler={() => {
-            GlobalState.setRefreshFetchedArt(prevState => prevState + 1)
+            GlobalState.setRefreshArt(prevState => prevState + 1)
           }}
         />
       )}

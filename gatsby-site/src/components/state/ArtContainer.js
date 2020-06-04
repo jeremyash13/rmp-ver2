@@ -22,7 +22,7 @@ const useArtGlobal = () => {
     tags: [''],
     age: ""
   }])
-  const [refreshFetchedArt, setRefreshFetchedArt] = useState(0)
+  const [refreshArt, setRefreshArt] = useState(0)
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
@@ -145,8 +145,8 @@ const useArtGlobal = () => {
     /////////////////////////
     loading,
     setLoading,
-    refreshFetchedArt,
-    setRefreshFetchedArt,
+    refreshArt,
+    setRefreshArt,
   }
 }
 

@@ -54,6 +54,7 @@ export default function useSearchArt(limitResults) {
     GlobalState.artist,
     GlobalState.artSearch,
     GlobalState.pageNumber,
+    GlobalState.refreshArt,
   ])
   return {
     loading,
