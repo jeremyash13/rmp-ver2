@@ -248,6 +248,42 @@ client.connect((err) => {
       console.log(err);
     }
   });
+  app.get("/topsellers", async (req, res) => {
+    try {
+      const artCollection = client.db("rmp").collection("art");
+      const getTopSellers = async () => {
+        const cursor = artCollection
+          .find({
+            topSeller: true,
+          })
+          .toArray();
+        return cursor;
+      };
+      getTopSellers().then((data) => {
+        res.json(data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  });
+  app.post("/topsellers", async (req, res) => {
+    try {
+      const artCollection = client.db("rmp").collection("art");
+      const getTopSellers = async () => {
+        const cursor = artCollection
+          .find({
+            topSeller: true,
+          })
+          .toArray();
+        return cursor;
+      };
+      getTopSellers().then((data) => {
+        res.json(data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  });
   app.post("/edit", async (req, res) => {
     try {
       const artCollection = client.db("rmp").collection("art");
@@ -315,15 +351,13 @@ client.connect((err) => {
 
       if (req.body.name.includes(".png")) {
         newKey = req.body.name.replace(".png", "");
-        imgBuffer = await sharp(req.file.buffer)
-        .toFormat("png")
-        .toBuffer();
+        imgBuffer = await sharp(req.file.buffer).toFormat("png").toBuffer();
       }
       if (req.body.name.includes(".jpg")) {
         newKey = req.body.name.replace(".jpg", "");
         imgBuffer = await sharp(req.file.buffer)
-        .toFormat("jpg", { quality: 70 })
-        .toBuffer();
+          .toFormat("jpg", { quality: 70 })
+          .toBuffer();
       }
 
       let s3bucket = new AWS.S3({
@@ -349,7 +383,6 @@ client.connect((err) => {
           location: data.Location,
         });
       });
-      
     } catch (err) {
       res.json({ msg: err });
       console.log(err);

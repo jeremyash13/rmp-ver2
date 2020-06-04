@@ -16,7 +16,7 @@ const Dashboard = () => {
   const GlobalState = ArtContainer.useContainer()
 
   const [showingNewEntryView, setShowingNewEntryView] = useState(false)
-  const [topSellersView, setTopSellersView] = useState(false)
+  const [showingTopSellersView, setShowingTopSellersView] = useState(false)
 
   const style = css`
     max-width: 1268px;
@@ -47,7 +47,11 @@ const Dashboard = () => {
           <AddNewEntryButton
             clickHandler={() => setShowingNewEntryView(true)}
           />
-          <TopSellersButton onClick={() => setTopSellersView(true)} />
+          <TopSellersButton
+            clickHandler={() => {
+              setShowingTopSellersView(true)
+            }}
+          />
           <ArtSearch className="ml-auto max-w-450" />
         </div>
         <ArtManagement />
@@ -61,7 +65,9 @@ const Dashboard = () => {
           }}
         />
       )}
-      {topSellersView && <TopSellersView />}
+      {showingTopSellersView && (
+        <TopSellersView closeHandler={() => setShowingTopSellersView(false)} />
+      )}
     </Layout>
   )
 }
