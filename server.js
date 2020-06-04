@@ -266,18 +266,16 @@ client.connect((err) => {
       console.log(err);
     }
   });
-  app.post("/topsellers", async (req, res) => {
+  app.get("/allart", async (req, res) => {
     try {
       const artCollection = client.db("rmp").collection("art");
-      const getTopSellers = async () => {
+      const getArt = async () => {
         const cursor = artCollection
-          .find({
-            topSeller: true,
-          })
+          .find({})
           .toArray();
         return cursor;
       };
-      getTopSellers().then((data) => {
+      getArt().then((data) => {
         res.json(data);
       });
     } catch (err) {

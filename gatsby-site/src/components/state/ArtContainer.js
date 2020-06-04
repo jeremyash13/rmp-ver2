@@ -31,12 +31,14 @@ const useArtGlobal = () => {
   const [editUrl] = useState("http://localhost:3000/edit")
   const [s3Url] = useState("http://localhost:3000/s3")
   const [topSellerUrl] = useState("http://localhost:3000/topsellers")
+  const [allArtUrl] = useState("http://localhost:3000/allart")
   
   // const [deleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
   // const [galleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
   // const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
   // const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
   // const [topSellerUrl] = useState("https://rmp-server.herokuapp.com/topsellers")
+  // const [allArtUrl] = useState("https://rmp-server.herokuapp.com/allart")
 
   const handleType = value => {
     //controls state for "type"
@@ -121,6 +123,7 @@ const useArtGlobal = () => {
     editUrl,
     s3Url,
     topSellerUrl,
+    allArtUrl,
     /////////////////////////
     type,
     category,
