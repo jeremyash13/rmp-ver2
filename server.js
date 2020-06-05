@@ -248,6 +248,36 @@ client.connect((err) => {
       console.log(err);
     }
   });
+  app.post("/addtopseller", async (req, res) => {
+    try {
+      console.log("POST request @ /addtopseller");
+      const artCollection = client.db("rmp").collection("art");
+      artCollection.updateOne(
+        {
+          _id: ObjectId(req.body._id),
+        },
+        { $set: { topSeller: true } }
+      );
+      res.json({message: "success"})
+    } catch (err) {
+      console.log(err);
+    }
+  });
+  app.post("/removetopseller", async (req, res) => {
+    try {
+      console.log("POST request @ /removetopseller");
+      const artCollection = client.db("rmp").collection("art");
+      artCollection.updateOne(
+        {
+          _id: ObjectId(req.body._id),
+        },
+        { $set: { topSeller: false } }
+      );
+      res.json({message: "success"})
+    } catch (err) {
+      console.log(err);
+    }
+  });
   app.get("/topsellers", async (req, res) => {
     try {
       const artCollection = client.db("rmp").collection("art");
@@ -270,9 +300,7 @@ client.connect((err) => {
     try {
       const artCollection = client.db("rmp").collection("art");
       const getArt = async () => {
-        const cursor = artCollection
-          .find({})
-          .toArray();
+        const cursor = artCollection.find({}).toArray();
         return cursor;
       };
       getArt().then((data) => {
