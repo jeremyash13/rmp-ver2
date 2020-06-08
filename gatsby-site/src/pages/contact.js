@@ -133,7 +133,7 @@ const contactPage = () => (
             <span className="text-main">$27.00</span>
           </div>
         </div>
-        <p className="subtext">
+        <p className="subtext text-center max-w-xs mx-auto">
           Price includes up to 3 pieces per box; Charges start over after 3
           pieces.
         </p>
@@ -158,7 +158,7 @@ const contactPage = () => (
             <span className="text-main">$31.50</span>
           </div>
         </div>
-        <p className="subtext">
+        <p className="subtext text-center max-w-xs mx-auto">
           Price includes up to 3 pieces per box; Charges start over after 3
           pieces.
         </p>
@@ -191,7 +191,7 @@ const contactPage = () => (
             <span className="text-secondary">+ $5.00 (3rd piece)</span>
           </div>
         </div>
-        <p className="subtext">
+        <p className="subtext text-center max-w-xs mx-auto">
           Larger sized pieces fit three to a box; after three, the charges start
           over.
         </p>
@@ -224,7 +224,7 @@ const contactPage = () => (
             <span className="text-secondary">+ $10.00 (3rd piece)</span>
           </div>
         </div>
-        <p className="subtext">
+        <p className="subtext text-center max-w-xs mx-auto">
           Larger sized pieces fit three to a box; after three, the charges start
           over. **Some DÉCOR pieces can only ship TWO to a box**
         </p>
