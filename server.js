@@ -41,6 +41,7 @@ client.connect((err) => {
       let queryCategory = [];
       let querySortBy = [];
       let queryArtist = [];
+      let topSellers;
       let search = "";
       const pageNumber = req.body.pageNumber;
       const skipAmount = 25 * pageNumber - 25;
@@ -55,6 +56,10 @@ client.connect((err) => {
         queryArtist = null;
       } else {
         queryArtist = [req.body.artist];
+      }
+      
+      if(req.body.category === "topSellers") {
+        topSellers = true
       }
 
       if (req.body.category === "all") {
@@ -126,6 +131,33 @@ client.connect((err) => {
             }
           }
           resolve(searchResults);
+        }
+        if (topSellers) {
+          if (pageNumber > 1) {
+            // subsequent results
+            const data = artCollection
+              .find({
+                topSeller: true,
+                category: { $in: [...queryCategory] },
+                type: { $in: [...queryType] },
+              })
+              .hint("RecentlyAdded")
+              .skip(skipAmount)
+              .limit(limitResults)
+              .toArray();
+            resolve(data);
+          } else {
+            //initial 25 results
+            const data = artCollection
+              .find({
+                topSeller: true,
+                type: { $in: [...queryType] },
+              })
+              .hint("RecentlyAdded")
+              .limit(limitResults)
+              .toArray();
+            resolve(data);
+          }
         }
         if (queryArtist === null) {
           //if all artists is selected
@@ -258,7 +290,7 @@ client.connect((err) => {
         },
         { $set: { topSeller: true } }
       );
-      res.json({message: "success"})
+      res.json({ message: "success" });
     } catch (err) {
       console.log(err);
     }
@@ -273,7 +305,7 @@ client.connect((err) => {
         },
         { $set: { topSeller: false } }
       );
-      res.json({message: "success"})
+      res.json({ message: "success" });
     } catch (err) {
       console.log(err);
     }
@@ -296,16 +328,34 @@ client.connect((err) => {
       console.log(err);
     }
   });
-  app.get("/allart", async (req, res) => {
+  app.post("/allart", async (req, res) => {
     try {
-      const artCollection = client.db("rmp").collection("art");
-      const getArt = async () => {
-        const cursor = artCollection.find({}).toArray();
-        return cursor;
-      };
-      getArt().then((data) => {
-        res.json(data);
-      });
+      if (req.body.text === "") {
+        const artCollection = client.db("rmp").collection("art");
+        const getArt = async () => {
+          const cursor = artCollection.find({}).toArray();
+          return cursor;
+        };
+        getArt().then((data) => {
+          res.json(data);
+        });
+      } else {
+        let search = req.body.text;
+        const artCollection = client.db("rmp").collection("art");
+        const getArt = async () => {
+          const cursor = artCollection
+            .find({
+              $text: { $search: search },
+            })
+            .project({ score: { $meta: "textScore" } })
+            .sort({ score: { $meta: "textScore" } })
+            .toArray();
+          return cursor;
+        };
+        getArt().then((data) => {
+          res.json(data);
+        });
+      }
     } catch (err) {
       console.log(err);
     }

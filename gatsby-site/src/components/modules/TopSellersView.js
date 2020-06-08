@@ -31,13 +31,17 @@ export default function TopSellersView(props) {
         console.log(err)
       })
   }
-  const fetchAllArt = () => {
+  const fetchAllArt = (searchText) => {
+    const text = searchText || ""
     const url = GlobalState.allArtUrl
     setAllArtLoading(true)
 
     axios({
-      method: "GET",
       url: url,
+      method: "POST",
+      data: {
+        text: text
+      },
     })
       .then(json => {
         setAllArt(json.data)
@@ -79,13 +83,12 @@ export default function TopSellersView(props) {
         console.log(err)
       })
   }
-  const filterAllArt = () => {
-    const search = searchValue
-
-  }
 
   useEffect(() => {
-    fetchAllArt()
+    fetchAllArt(searchValue)
+  }, [searchValue])
+
+  useEffect(() => {
     fetchTopSellers()
   }, [])
 
@@ -95,9 +98,9 @@ export default function TopSellersView(props) {
         <QuickViewClose clickHandler={props.closeHandler} />
       </div>
       <div className="flex">
-        <div className="mr-auto">
+        <div className="mr-auto max-w-4xl">
           <h2 className="text-blackish font-roboto">TOP SELLERS</h2>
-          <div className="flex flex-col">
+          <div className="flex flex-row flex-wrap justify-between">
             {topSellingArtLoading ? (
               <div className="">
                 <ClipLoader loading={true} />

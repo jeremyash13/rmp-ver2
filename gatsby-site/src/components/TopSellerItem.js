@@ -7,8 +7,8 @@ export default function TopSellerItem({ item, removeItemHandler }) {
       <div className="mr-auto">
         {item.title} ({item.type})
       </div>
-      <div className="bg-red-300 h-max-content my-auto p-1 cursor-pointer" onClick={() => removeItemHandler(item)}>
-        <QuickViewClose className="w-3" />
+      <div className="bg-red-500 px-1 text-white text-2xl h-max-content ml-4 cursor-pointer" onClick={() => removeItemHandler(item)}>
+        ×
       </div>
     </div>
   )

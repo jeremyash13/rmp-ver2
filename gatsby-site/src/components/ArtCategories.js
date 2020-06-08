@@ -13,6 +13,7 @@ export default function ArtCategories() {
   const [westernActive, setWesternActive] = useState(false)
   const [wildlifeActive, setWildlifeActive] = useState(false)
   const [patrioticActive, setPatrioticActive] = useState(false)
+  const [topSellersActive, setTopSellersActive] = useState(false)
 
   const clearActive = () => {
     setAllActive(false)
@@ -20,6 +21,7 @@ export default function ArtCategories() {
     setWesternActive(false)
     setWildlifeActive(false)
     setPatrioticActive(false)
+    setTopSellersActive(false)
   }
 
   const style = css`
@@ -85,6 +87,16 @@ export default function ArtCategories() {
           }}
         >
           PATRIOTIC
+        </li>
+        <li
+          className={topSellersActive ? "active" : ""}
+          onClick={() => {
+            GlobalState.handleCategory("topSellers")
+            clearActive()
+            setTopSellersActive(true)
+          }}
+        >
+          TOP SELLERS
         </li>
       </div>
     </div>

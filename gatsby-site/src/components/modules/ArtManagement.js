@@ -15,7 +15,6 @@ let editItem = undefined
 export const ArtManagement = () => {
   const GlobalState = ArtContainer.useContainer()
   const [showEditView, setShowEditView] = useState(false)
-  const [overflowState, setOverflowState] = useState("overflow-auto")
   const { loading, art, error, hasMore } = useSearchArt(1000)
 
   const mainStyle = css`
@@ -241,7 +240,7 @@ export const ArtManagement = () => {
   `
   
   return (
-    <div css={wrapperStyle} className={`art-management-wrapper h-screen ${overflowState}`}>
+    <div css={wrapperStyle} className="art-management-wrapper">
       {GlobalState.showToast && <Toast message="Update Successful" />}
         <table css={mainStyle} id="art-management">
           <thead>

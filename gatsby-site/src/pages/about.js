@@ -74,7 +74,8 @@ const aboutPage = () => (
         </div>
         <div className="w-56 flex-shrink-0 mx-auto">
           <Player autoPlay={true} muted={true} loop>
-            <source src="https://rmp-images.s3-us-west-2.amazonaws.com/Molding-360P-cropped.m4v" />
+            <source src="https://rmp-images.s3-us-west-2.amazonaws.com/Molding+Stain-cropped-720p.m4v" />
+            {/* <source src="https://rmp-images.s3-us-west-2.amazonaws.com/Molding-360P-cropped.m4v" /> */}
             <ControlBar disabled></ControlBar>
           </Player>
         </div>

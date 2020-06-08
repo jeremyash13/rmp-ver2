@@ -1,18 +1,23 @@
-import React, {useState} from "react"
+import React from "react"
 
-export default function TopSellersSearch({searchHandler, value}) {
+export default function TopSellersSearch({ searchHandler, value }) {
   return (
-    <div>
+    <div className="relative mb-4">
       <input
         value={value}
-        className="art-navigation__input--search h-full border-b border-blackish"
+        className="art-navigation__input--search h-full border-b border-blackish w-full py-px px-6"
         type="text"
         placeholder="Search names"
         onChange={e => {
           searchHandler(e.target.value)
         }}
       ></input>
-      <svg viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4">
+      <svg
+        viewBox="0 0 23 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-3 absolute transform -translate-y-1/2 top-1/2 left-0"
+      >
         <line
           y1="-1.5"
           x2="11.1409"
