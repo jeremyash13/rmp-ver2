@@ -19,7 +19,6 @@
     "gatsby-plugin-sharp": "^2.3.5",
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-sharp": "^2.3.7",
-    "lodash": "^4.17.15",
     "nanoid": "^2.1.11",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -35,7 +34,8 @@
     "sharp": "^0.24.1",
     "typeface-roboto": "0.0.75",
     "typeface-sorts-mill-goudy": "0.0.72",
-    "unstated-next": "^1.1.0"
+    "unstated-next": "^1.1.0",
+    "video-react": "^0.14.1"
   },
   "devDependencies": {
     "babel-plugin-emotion": "^10.0.33",

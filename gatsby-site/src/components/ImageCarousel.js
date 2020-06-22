@@ -195,7 +195,7 @@ export default function ImageCarousel() {
       } else {
         setI(i + 1)
       }
-    }, 10000)
+    }, 30000)
     return () => {
       clearInterval(myInterval)
     }
