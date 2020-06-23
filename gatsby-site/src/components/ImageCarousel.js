@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { jsx, css } from "@emotion/core"
-import SunriseSerenityWebP from "../images/webp/sunrise-serenity.webp"
-import BoardMeetingWebP from "../images/webp/board meeting.webp"
-import PlaceOfRestWebP from "../images/webp/place of rest.webp"
 
-import SunriseSerenityJPG from "../images/jpg/sunrise-serenity.jpg"
-import BoardMeetingJPG from "../images/jpg/board meeting.jpg"
-import PlaceOfRestJPG from "../images/jpg/place of rest.jpg"
+import SunriseSerenityJPG from "../images/jpg/Sunrise Serenity 4K.jpg"
+import BoardMeetingJPG from "../images/jpg/Board Meeting 4K.jpg"
+import PlaceOfRestJPG from "../images/jpg/Place of Rest 4K.jpg"
 
 
 
@@ -95,10 +92,7 @@ const slideOne = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <picture>
-        <source srcset={SunriseSerenityWebP} type="image/webp" />
         <img src={SunriseSerenityJPG} alt="Sunrise Serenity by Mitchell Mansanarez"></img>
-      </picture>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           I have had the pleasure of working with Rocky Mountain Publishing for
@@ -124,10 +118,7 @@ const slideTwo = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <picture>
-        <source srcset={BoardMeetingWebP} type="image/webp" />
         <img src={BoardMeetingJPG} alt="Board Meeting by Mitchell Mansanarez"></img>
-      </picture>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           We couldn't imagine C-A-L Ranch Stores without Rocky Mountain
@@ -154,10 +145,7 @@ const slideThree = () => {
   return (
     <>
       <div className="dark-overlay"></div>
-      <picture>
-        <source srcset={PlaceOfRestWebP} type="image/webp" />
         <img src={PlaceOfRestJPG} alt="Place of Rest by Dallen Lambson"></img>
-      </picture>
       <div className="testimonial-wrapper">
         <div className="testimonial-body">
           Rocky Mountain Publishing has been a great asset to use here at Ashley
@@ -195,7 +183,7 @@ export default function ImageCarousel() {
       } else {
         setI(i + 1)
       }
-    }, 30000)
+    }, 10000)
     return () => {
       clearInterval(myInterval)
     }
