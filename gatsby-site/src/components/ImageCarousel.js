@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { jsx, css } from "@emotion/core"
 
-import SunriseSerenityJPG from "../images/jpg/Sunrise Serenity 4K.jpg"
-import BoardMeetingJPG from "../images/jpg/Board Meeting 4K.jpg"
-import PlaceOfRestJPG from "../images/jpg/Place of Rest 4K.jpg"
+import SunriseSerenityJPG from "../images/jpg/Sunrise Serenity.jpg"
+import BoardMeetingJPG from "../images/jpg/Board Meeting.jpg"
+import PlaceOfRestJPG from "../images/jpg/Place of Rest.jpg"
 
 
 
@@ -15,6 +15,7 @@ const style = css`
   display: flex;
   max-height: calc(100vh - 200px);
   position: relative;
+  background-color: black;
 
   img {
     margin: 0 auto;
@@ -27,6 +28,7 @@ const style = css`
     position: absolute;
     width: 100%;
     height: 100%;
+    margin: 0 auto;
   }
   .testimonial-wrapper {
     display: none;
