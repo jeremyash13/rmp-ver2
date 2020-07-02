@@ -3,10 +3,8 @@ import { jsx, css } from "@emotion/core"
 
 export default function SaveAndCloseButton(props) {
   const style = css`
-    background-color: #dddddd;
     color: var(--text-black);
     font-weight: 300;
-    border: none;
     padding: 10px;
     svg {
       margin-right: 5px;
@@ -28,7 +26,7 @@ export default function SaveAndCloseButton(props) {
     }
   `
   return (
-    <button css={style} onClick={props.clickHandler} className="flex items-center shadow-md">
+    <button css={style} onClick={props.clickHandler} className="flex items-center rounded bg-light-light-gray border-b-2 border-gray-500">
       <svg viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 9.5L11.5 20L30 1.5" stroke="white" strokeWidth="3" />
       </svg>

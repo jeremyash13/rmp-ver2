@@ -7,7 +7,7 @@ export default function TopSellersSearch({ searchHandler, value }) {
         value={value}
         className="art-navigation__input--search h-full border-b border-blackish w-full py-px px-6"
         type="text"
-        placeholder="Search names"
+        placeholder="Search"
         onChange={e => {
           searchHandler(e.target.value)
         }}

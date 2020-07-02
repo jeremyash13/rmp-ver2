@@ -6,13 +6,9 @@ export default function RemoveOption(props) {
     width: 25px;
     &:hover {
       cursor: pointer;
-      & svg rect {
-        fill: #df5656;
-        transition: fill 250ms ease-in-out;
-      }
       & svg path {
         stroke: white;
-        transition: stroke 250ms ease-in-out;
+        transition: stroke 200ms ease-in-out;
       }
     }
   `
@@ -20,7 +16,7 @@ export default function RemoveOption(props) {
   return (
     <div
       css={style}
-      className="remove-option-wrapper shadow-md"
+      className="remove-option-wrapper cursor-pointer bg-light-light-gray rounded border-b-2 border-gray-500 hover:bg-error-red transition-colors duration-200 ease-in-out"
       onClick={props.clickHandler}
     >
       <svg
@@ -28,7 +24,6 @@ export default function RemoveOption(props) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="43" height="43" fill="#e7e6e6" />
         <path d="M8 22H35.5" stroke="#565656" strokeWidth="4" />
       </svg>
     </div>

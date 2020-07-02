@@ -8,14 +8,9 @@ export default function AddOption(props) {
     width: 25px;
     margin-right: 10px;
     &:hover {
-      cursor: pointer;
-      & svg rect {
-        fill: #59c9a0;
-        transition: fill 250ms ease-in-out;
-      }
       & svg path {
         stroke: white;
-        transition: stroke 250ms ease-in-out;
+        transition: stroke 200ms ease-in-out;
       }
     }
   `
@@ -23,11 +18,10 @@ export default function AddOption(props) {
   return (
     <div
       css={style}
-      className="add-option-wrapper shadow-md"
+      className="add-option-wrapper cursor-pointer bg-light-light-gray rounded border-b-2 border-gray-500 hover:bg-mint-green transition-colors duration-200 ease-in-out"
       onClick={props.clickHandler}
     >
       <svg viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="43" height="43" fill="#e7e6e6" />
         <path
           d="M22.5667 8L22.5667 34M10 20.5667H36"
           stroke="#565656"

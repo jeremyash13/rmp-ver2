@@ -114,7 +114,8 @@ export default function EditView(props) {
       box-shadow: 0 35px 40px -25px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
-      padding-top: 25px;
+      padding: 30px;
+      padding-top: 40px;
     }
     .buttons-wrapper {
       display: flex;
@@ -139,15 +140,12 @@ export default function EditView(props) {
       }
     }
     #change-photo-input-wrapper {
-      background-color: white;
       font-weight: 300;
       position: absolute;
       padding: 10px;
       transform: translate(-50%, -50%);
       top: 50%;
       left: 50%;
-      box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
-      visibility: hidden;
       z-index: 1;
       &:hover {
         cursor: pointer;
@@ -256,16 +254,8 @@ export default function EditView(props) {
       }
     }
     input {
-      border: none;
       padding: 4px;
-      border: solid 2px rgba(17, 153, 229, 0);
       text-align: center;
-      background-color: #eae9e9;
-
-      &:focus {
-        box-shadow: inset 0 0 15px rgba(17, 153, 229, 0.25);
-        border: solid 2px rgba(17, 153, 229, 0.5);
-      }
     }
 
     @media (min-width: 794px) {
@@ -311,21 +301,36 @@ export default function EditView(props) {
       }}
     >
       <div className="inner-container">
-        <div className="buttons-wrapper">
-          <DeleteEntryButton
-            clickHandler={() => {
-              if (!loading) {
-                deleteHandler()
-              }
-            }}
-          />
-          <SaveAndCloseButton
-            clickHandler={() => {
-              if (!loading) {
-                saveHandler()
-              }
-            }}
-          />
+        <div className="type-age-wrapper">
+          <div className="type-wrapper">
+            <TypeDropDown
+              className=""
+              value={type}
+              changeHandler={val => {
+                setType(val)
+              }}
+            />
+          </div>
+          <div className="category-wrapper mr-auto ml-6">
+            <CategoryDropDown
+              className=""
+              value={category}
+              changeHandler={val => {
+                setCategory(val)
+              }}
+            />
+          </div>
+          <div className="age-wrapper">
+            <EditableTextInput
+              isReadOnly={true}
+              className="age"
+              value={age.toLocaleDateString()}
+              placeholder="MM/DD/YYYY"
+              changeHandler={val => {
+                setAge(val)
+              }}
+            />
+          </div>
         </div>
         <div className="quick-view-details">
           <QuickViewClose
@@ -353,7 +358,7 @@ export default function EditView(props) {
           <div className="info-wrapper">
             <div className="heading-wrapper">
               <EditableTextInput
-                className="title shadow-md"
+                className="title"
                 value={title}
                 placeholder="Title"
                 changeHandler={val => {
@@ -362,7 +367,7 @@ export default function EditView(props) {
               />
               <span className="by">by</span>
               <EditableTextInput
-                className="artist shadow-md"
+                className="artist"
                 value={artist}
                 placeholder="Artist"
                 changeHandler={val => {
@@ -380,7 +385,7 @@ export default function EditView(props) {
               {options.map(option => (
                 <div className="option" key={options.indexOf(option)}>
                   <EditableTextInput
-                    className="option-sku shadow-md"
+                    className="option-sku"
                     value={option.code}
                     changeHandler={val => {
                       tempOptions[options.indexOf(option)].code = val
@@ -388,7 +393,7 @@ export default function EditView(props) {
                     }}
                   />
                   <EditableTextInput
-                    className="option-size shadow-md"
+                    className="option-size"
                     value={option.size}
                     changeHandler={val => {
                       tempOptions[options.indexOf(option)].size = val
@@ -396,7 +401,7 @@ export default function EditView(props) {
                     }}
                   />
                   <EditableTextInput
-                    className="option-price shadow-md"
+                    className="option-price"
                     value={option.price}
                     changeHandler={val => {
                       tempOptions[options.indexOf(option)].price = val
@@ -433,36 +438,21 @@ export default function EditView(props) {
           />
         </div>
 
-        <div className="type-age-wrapper">
-          <div className="type-wrapper">
-            <TypeDropDown
-              className="shadow-md"
-              value={type}
-              changeHandler={val => {
-                setType(val)
-              }}
-            />
-          </div>
-          <div className="category-wrapper mr-auto ml-6">
-            <CategoryDropDown
-              className="shadow-md"
-              value={category}
-              changeHandler={val => {
-                setCategory(val)
-              }}
-            />
-          </div>
-          <div className="age-wrapper">
-            <EditableTextInput
-              isReadOnly={true}
-              className="age shadow-md"
-              value={age.toLocaleDateString()}
-              placeholder="MM/DD/YYYY"
-              changeHandler={val => {
-                setAge(val)
-              }}
-            />
-          </div>
+        <div className="buttons-wrapper">
+          <DeleteEntryButton
+            clickHandler={() => {
+              if (!loading) {
+                deleteHandler()
+              }
+            }}
+          />
+          <SaveAndCloseButton
+            clickHandler={() => {
+              if (!loading) {
+                saveHandler()
+              }
+            }}
+          />
         </div>
       </div>
     </div>

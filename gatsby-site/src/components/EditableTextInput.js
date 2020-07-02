@@ -21,7 +21,7 @@ export default function EditableTextInput(props) {
       <input
         css={style}
         type="text"
-        className={props.className}
+        className={`${props.className} bg-light-light-gray rounded border-b-2 border-gray-500 outline-none focus:border-blue-200`}
         value={props.value}
         placeholder={props.placeholder}
         onChange={e => {

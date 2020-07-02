@@ -6,7 +6,10 @@ import { css, jsx } from "@emotion/core"
 export default function TypeDropDown(props) {
   const style = css`
     & div {
-      background-color: #dddddd;
+      background-color: #dddddd;  
+    }
+    & div[id="select"] {
+      border-bottom: solid 2px #A0AEC0;
     }
   `
   return (
