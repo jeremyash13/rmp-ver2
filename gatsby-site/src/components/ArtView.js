@@ -7,7 +7,7 @@ import useSearchArt from "./hooks/useSearchArt"
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
-import ClipLoader from "react-spinners/ClipLoader"
+import Loader from "react-loader-spinner"
 
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
@@ -44,6 +44,7 @@ export default function ArtView() {
     grid-column-gap: 25px;
     grid-row-gap: 100px;
     min-height: 100vh;
+    position: relative;
 
     .no-results {
       margin: 0 auto;
@@ -92,14 +93,14 @@ export default function ArtView() {
       position: relative;
       &:hover {
         & .img {
-          filter: drop-shadow(3px 5px 8px rgba(0,0,0,.9)) brightness(1.15)
+          filter: drop-shadow(3px 5px 8px rgba(0, 0, 0, 0.9)) brightness(1.15)
             opacity(0.7);
         }
       }
     }
     .img {
       transition: filter 250ms ease-out;
-      filter: drop-shadow(3px 5px 8px rgba(0,0,0,.9));
+      filter: drop-shadow(3px 5px 8px rgba(0, 0, 0, 0.9));
       max-height: 300px;
     }
     .art-view__img-details {
@@ -108,6 +109,7 @@ export default function ArtView() {
       text-align: center;
       margin-left: auto;
       margin-right: auto;
+      margin-top: 25px;
     }
     .title {
       font-family: Sorts Mill Goudy;
@@ -129,12 +131,11 @@ export default function ArtView() {
         display: flex;
         max-height: initial;
         justify-content: center;
+        margin: auto 0;
       }
     }
   `
-  const loaderStyle = css`
-    margin: 0 auto;
-  `
+
   return (
     <div css={style} className="art-view-wrapper">
       {GlobalState.showingQuickView && <QuickView />}
@@ -142,9 +143,9 @@ export default function ArtView() {
         <div className="no-results">NO RESULTS...</div>
       )}
       {loading && art.length === 0 && (
-        <div css={loaderStyle} className="w-full relative">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
-            <ClipLoader loading={true} />
+        <div className="w-full">
+          <div className="mx-auto">
+            <Loader type="ThreeDots" color="#848484" height={20} width={20} />
           </div>
         </div>
       )}
@@ -216,9 +217,9 @@ export default function ArtView() {
         }
       })}
       {loading && art.length > 1 && (
-        <div css={loaderStyle} className="w-full h-full relative">
-          <div className="absolute top-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <ClipLoader loading={true} />
+        <div className="w-full absolute bottom-0 transform translate-y-50px">
+          <div className="mx-auto">
+            <Loader type="ThreeDots" color="#848484" height={20} width={20} />
           </div>
         </div>
       )}

@@ -28,6 +28,7 @@
     "react-helmet": "^5.2.1",
     "react-icons": "^3.10.0",
     "react-intersection-observer": "^8.26.2",
+    "react-loader-spinner": "^3.1.14",
     "react-responsive-navbar": "^1.0.11",
     "react-spinners": "^0.8.3",
     "react-use-auth": "^0.5.3",
