@@ -7,7 +7,7 @@ export default function MobileNavMenu(props) {
   const style = css`
     position: fixed;
     background-color: white;
-    z-index: 15;
+    z-index: 100;
     width: 100%;
     height: 100%;
     top: 0;

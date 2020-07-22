@@ -16,7 +16,7 @@ import { Footer } from "./Footer"
 import MobileNavMenu from "./MobileNavMenu"
 import Logo from "./Logo"
 
-import { isIE, isSafari, isMobileSafari } from "react-device-detect"
+import { isIE } from "react-device-detect"
 
 /** @jsx jsx */
 
@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
     position: fixed;
     top: 25px;
     left: 15px;
-    z-index: 25;
+    z-index: 125;
     &:hover {
       cursor: pointer;
     }
