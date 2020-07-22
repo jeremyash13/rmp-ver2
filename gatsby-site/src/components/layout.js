@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
     position: fixed;
     top: 25px;
     left: 15px;
-    z-index: 125;
+    z-index: 25;
     &:hover {
       cursor: pointer;
     }

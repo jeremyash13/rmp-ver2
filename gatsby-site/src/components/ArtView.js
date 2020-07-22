@@ -60,7 +60,7 @@ export default function ArtView() {
     }
     .img-hover-element {
       position: absolute;
-      z-index: 20;
+      z-index: 10;
       top: 0;
       bottom: 0;
       left: 0;
