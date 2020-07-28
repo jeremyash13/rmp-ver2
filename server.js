@@ -34,6 +34,42 @@ client.connect((err) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
+  app.get("/frames", async (req, res) => {
+    try {
+      const artCollection = client.db("rmp").collection("frames");
+      const getFrames = async () => {
+        const cursor = artCollection.find({}).toArray();
+        return cursor;
+      };
+      getFrames().then((data) => {
+        res.json(data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  app.post("/frames", async (req, res) => {
+    try {
+      const artCollection = client.db("rmp").collection("frames");
+
+      const { title, line, src } = req.body;
+
+      artCollection
+        .insertOne({
+          title: title,
+          line: line,
+          src: src,
+        })
+        .then(() => {
+          console.log("POST request made at /frames");
+          res.json({ msg: "entry successfully added" });
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
   app.post("/gallery", async (req, res) => {
     try {
       const artCollection = client.db("rmp").collection("art");
@@ -57,9 +93,9 @@ client.connect((err) => {
       } else {
         queryArtist = [req.body.artist];
       }
-      
-      if(req.body.category === "topSellers") {
-        topSellers = true
+
+      if (req.body.category === "topSellers") {
+        topSellers = true;
       }
 
       if (req.body.category === "all") {
@@ -280,6 +316,7 @@ client.connect((err) => {
       console.log(err);
     }
   });
+
   app.post("/addtopseller", async (req, res) => {
     try {
       console.log("POST request @ /addtopseller");
@@ -360,6 +397,7 @@ client.connect((err) => {
       console.log(err);
     }
   });
+
   app.post("/edit", async (req, res) => {
     try {
       const artCollection = client.db("rmp").collection("art");

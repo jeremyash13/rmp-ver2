@@ -11,12 +11,15 @@ import EditView from "./EditView"
 import ArtContainer from "../state/ArtContainer"
 import TopSellersButton from "../TopSellersButton"
 import TopSellersView from "./TopSellersView"
+import EditFramesButton from "../EditFramesButton"
+import EditFramesView from "./EditFramesView"
 
 const Dashboard = () => {
   const GlobalState = ArtContainer.useContainer()
 
   const [showingNewEntryView, setShowingNewEntryView] = useState(false)
   const [showingTopSellersView, setShowingTopSellersView] = useState(false)
+  const [showingEditFramesView, setShowingEditFramesView] = useState(false)
 
   const style = css`
     max-width: 1268px;
@@ -44,6 +47,9 @@ const Dashboard = () => {
       <div css={style} className="page-wrapper">
         <div className="page-header">
           <h1>Art Database</h1>
+          <ArtSearch className="ml-auto max-w-450" />
+        </div>
+        <div className="flex">
           <AddNewEntryButton
             clickHandler={() => setShowingNewEntryView(true)}
           />
@@ -52,7 +58,9 @@ const Dashboard = () => {
               setShowingTopSellersView(true)
             }}
           />
-          <ArtSearch className="ml-auto max-w-450" />
+          <EditFramesButton clickHandler={() => {
+            setShowingEditFramesView(true)
+          }}/>
         </div>
         <ArtManagement />
       </div>
@@ -67,6 +75,9 @@ const Dashboard = () => {
       )}
       {showingTopSellersView && (
         <TopSellersView closeHandler={() => setShowingTopSellersView(false)} />
+      )}
+      {showingEditFramesView && (
+        <EditFramesView closeHandler={() => setShowingEditFramesView(false)}/>
       )}
     </Layout>
   )

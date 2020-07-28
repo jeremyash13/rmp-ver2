@@ -5,13 +5,10 @@ import { jsx, css } from "@emotion/core"
 
 export default function AddNewEntryButton(props) {
   const style = css`
-    width: 215px;
-    height: 50px;
     background-color: #dddddd;
     display: flex;
     color: var(--text-black);
     font-weight: 300;
-    margin-right: 25px;
 
     .content-wrapper {
       display: flex;
@@ -35,7 +32,7 @@ export default function AddNewEntryButton(props) {
     }
   `
   return (
-    <div css={style} onClick={props.clickHandler}>
+    <div css={style} onClick={props.clickHandler} className="px-3 py-2 mr-4">
       <div className="content-wrapper">
         <span>Add New Entry</span>
         <svg viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
