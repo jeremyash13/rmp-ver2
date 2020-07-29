@@ -26,25 +26,27 @@ const useArtGlobal = () => {
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const [deleteUrl] = useState("http://localhost:3000/delete")
-  const [galleryUrl] = useState("http://localhost:3000/gallery")
-  const [editUrl] = useState("http://localhost:3000/edit")
-  const [s3Url] = useState("http://localhost:3000/s3")
-  const [topSellerUrl] = useState("http://localhost:3000/topsellers")
-  const [allArtUrl] = useState("http://localhost:3000/allart")
-  const [removeTopSellerUrl] = useState("http://localhost:3000/removetopseller")
-  const [addTopSellerUrl] = useState("http://localhost:3000/addtopseller")
-  const [getFramesUrl] = useState("http://localhost:3000/frames")
+  // const [deleteUrl] = useState("http://localhost:3000/delete")
+  // const [galleryUrl] = useState("http://localhost:3000/gallery")
+  // const [editUrl] = useState("http://localhost:3000/edit")
+  // const [s3Url] = useState("http://localhost:3000/s3")
+  // const [topSellerUrl] = useState("http://localhost:3000/topsellers")
+  // const [allArtUrl] = useState("http://localhost:3000/allart")
+  // const [removeTopSellerUrl] = useState("http://localhost:3000/removetopseller")
+  // const [addTopSellerUrl] = useState("http://localhost:3000/addtopseller")
+  // const [getFramesUrl] = useState("http://localhost:3000/frames")
+  // const [deleteFramesUrl] = useState("http://localhost:3000/deleteframe")
   
-  // const [deleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
-  // const [galleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
-  // const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
-  // const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
-  // const [topSellerUrl] = useState("https://rmp-server.herokuapp.com/topsellers")
-  // const [allArtUrl] = useState("https://rmp-server.herokuapp.com/allart")
-  // const [removeTopSellerUrl] = useState("https://rmp-server.herokuapp.com/removetopseller")
-  // const [addTopSellerUrl] = useState("https://rmp-server.herokuapp.com/addtopseller")
-  // const [getFramesUrl] = useState("https://rmp-server.herokuapp.com/frames")
+  const [deleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
+  const [galleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
+  const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
+  const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
+  const [topSellerUrl] = useState("https://rmp-server.herokuapp.com/topsellers")
+  const [allArtUrl] = useState("https://rmp-server.herokuapp.com/allart")
+  const [removeTopSellerUrl] = useState("https://rmp-server.herokuapp.com/removetopseller")
+  const [addTopSellerUrl] = useState("https://rmp-server.herokuapp.com/addtopseller")
+  const [getFramesUrl] = useState("https://rmp-server.herokuapp.com/frames")
+  const [deleteFramesUrl] = useState("https://rmp-server.herokuapp.com/deleteframe")
 
   const handleType = value => {
     //controls state for "type"
@@ -136,6 +138,7 @@ const useArtGlobal = () => {
     removeTopSellerUrl,
     addTopSellerUrl,
     getFramesUrl,
+    deleteFramesUrl,
     /////////////////////////
     type,
     category,

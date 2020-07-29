@@ -2,15 +2,18 @@ import React, { useState } from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import ArtContainer from "./state/ArtContainer"
 import axios from "axios"
+import Loader from "react-loader-spinner"
 
-export default function AddNewFrameForm() {
+export default function AddNewFrameForm({ refreshFramesHandler }) {
   const GlobalState = ArtContainer.useContainer()
   const url = GlobalState.getFramesUrl
   const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState(null)
-  const [selectValue, setSelectValue] = useState(null)
+  const [selectValue, setSelectValue] = useState("standard")
+  const [uploading, setUploading] = useState(false)
 
   const uploadImage = async () => {
+    setUploading(true)
     const s3Url = GlobalState.s3Url
 
     const formData = new FormData()
@@ -26,7 +29,7 @@ export default function AddNewFrameForm() {
   }
 
   return (
-    <div className="w-1/2">
+    <div>
       <Formik
         initialValues={{
           title: "",
@@ -34,36 +37,53 @@ export default function AddNewFrameForm() {
           src: "",
         }}
         onSubmit={async values => {
-          await uploadImage().then(async location => {
-            // submit new entry to database
-
-            await new Promise((resolve, reject) => {
-              const newValues = {
-                title: values.title,
-                line: selectValue,
-                src: location,
-              }
-              axios
-                .post(url, newValues)
-                .then(json => {
-                  resolve(json)
-                  console.log(json)
-                })
-                .catch(err => {
-                  console.log(err)
-                })
+          if (values.title !== "") {
+            await uploadImage().then(async location => {
+              // submit new entry to database
+              await new Promise((resolve, reject) => {
+                const newValues = {
+                  title: values.title,
+                  line: selectValue,
+                  src: location,
+                }
+                axios
+                  .post(url, newValues)
+                  .then(json => {
+                    resolve(json)
+                  })
+                  .catch(err => {
+                    console.log(err)
+                  })
+              }).then(() => {
+                setUploading(false)
+                refreshFramesHandler()
+              })
             })
-          })
+          } else {
+            alert("Please fill out all fields.")
+          }
         }}
       >
-        <Form enctype="multipart/form-data">
+        <Form enctype="multipart/form-data" className="relative">
+          {uploading && (
+            <div className="absolute inset-0 bg-light-light-gray rounded flex">
+              <div className="m-auto">
+                <Loader
+                  type="ThreeDots"
+                  color="#848484"
+                  height={40}
+                  width={40}
+                />
+              </div>
+            </div>
+          )}
           <div className="flex flex-col">
             <label htmlFor="title">Title</label>
             <Field
               id="title"
               name="title"
               placeholder=""
-              className="bg-light-light-gray rounded px-4 py-2"
+              className="bg-light-light-gray rounded px-4 py-2 mb-4"
             />
           </div>
 
@@ -73,7 +93,7 @@ export default function AddNewFrameForm() {
               id="line"
               name="line"
               type="select"
-              className="bg-light-light-gray rounded px-4 py-2"
+              className="bg-light-light-gray rounded px-4 py-2 font-roboto"
               onChange={e => setSelectValue(e.target.value)}
             >
               <option value="standard">Standard</option>
@@ -86,7 +106,7 @@ export default function AddNewFrameForm() {
               name="file"
               type="file"
               accept="image/png"
-              className="bg-light-light-gray rounded px-4 py-2"
+              className="bg-light-light-gray rounded px-4 py-2 mr-4"
               encType="multipart/form-data"
               onChange={e => {
                 setFile(e.target.files[0])
@@ -95,7 +115,7 @@ export default function AddNewFrameForm() {
             />
             <button
               type="submit"
-              className="hover:bg-mint-green hover:text-white rounded px-4 py-2 border border-blackish hover:border-transparent"
+              className="hover:bg-mint-green hover:text-white outline-none rounded px-4 py-2 border border-blackish hover:border-transparent"
             >
               Submit
             </button>

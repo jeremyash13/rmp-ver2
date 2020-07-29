@@ -69,6 +69,22 @@ client.connect((err) => {
       console.log(err);
     }
   });
+  app.post("/deleteframe", async (req, res) => {
+    try {
+      const collection = client.db("rmp").collection("frames");
+
+      const { id } = req.body;
+
+      collection
+        .deleteOne({ _id: ObjectId(id.toString()) })
+        .then(() => {
+          console.log("POST request made at /deleteframe");
+          res.json({ msg: "entry successfully deleted" });
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  });
 
   app.post("/gallery", async (req, res) => {
     try {
