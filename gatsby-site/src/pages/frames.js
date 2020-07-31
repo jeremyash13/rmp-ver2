@@ -3,7 +3,7 @@ import axios from "axios"
 import ArtContainer from "../components/state/ArtContainer"
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
-
+import Loader from "react-loader-spinner"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -81,29 +81,40 @@ const StandardFrames = () => {
   const GlobalState = ArtContainer.useContainer()
   const url = GlobalState.getFramesUrl
   const [standardFrames, setStandardFrames] = useState([])
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
+    setLoading(true)
     axios.get(url).then(json => {
       const frames = json.data.filter(item => {
         if (item.line.toLowerCase() === "standard") {
           return item
         }
       })
+      setLoading(false)
       setStandardFrames(frames)
     })
   }, [])
 
   return (
     <div className="standard-frames">
-      {standardFrames.map(item => {
-        return (
-          <div className="standard-frame-wrapper">
-            <h2>{`#${item.title}`}</h2>
-            <div className="">
-              <img src={item.src} />
-            </div>
+      {loading ? (
+        <div className="flex">
+          <div className="m-auto">
+            <Loader type="ThreeDots" color="#848484" height={40} width={40} />
           </div>
-        )
-      })}
+        </div>
+      ) : (
+        standardFrames.map(item => {
+          return (
+            <div className="standard-frame-wrapper">
+              <h2>{`#${item.title}`}</h2>
+              <div className="">
+                <img src={item.src} />
+              </div>
+            </div>
+          )
+        })
+      )}
     </div>
   )
 }
@@ -111,29 +122,40 @@ const DecorFrames = () => {
   const GlobalState = ArtContainer.useContainer()
   const url = GlobalState.getFramesUrl
   const [decorFrames, setDecorFrames] = useState([])
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
+    setLoading(true)
     axios.get(url).then(json => {
       const frames = json.data.filter(item => {
         if (item.line.toLowerCase() === "decor") {
           return item
         }
       })
+      setLoading(false)
       setDecorFrames(frames)
     })
   }, [])
 
   return (
     <div className="decor-frames">
-      {decorFrames.map(item => {
-        return (
-          <div className="decor-frame-wrapper">
-            <h2>{`#${item.title}`}</h2>
-            <div className="">
-              <img src={item.src} />
-            </div>
+      {loading ? (
+        <div className="flex">
+          <div className="m-auto">
+            <Loader type="ThreeDots" color="#848484" height={40} width={40} />
           </div>
-        )
-      })}
+        </div>
+      ) : (
+        decorFrames.map(item => {
+          return (
+            <div className="decor-frame-wrapper">
+              <h2>{`#${item.title}`}</h2>
+              <div className="">
+                <img src={item.src} />
+              </div>
+            </div>
+          )
+        })
+      )}
     </div>
   )
 }
