@@ -31,7 +31,7 @@ export default function TopSellersView(props) {
         console.log(err)
       })
   }
-  const fetchAllArt = (searchText) => {
+  const fetchAllArt = searchText => {
     const text = searchText || ""
     const url = GlobalState.allArtUrl
     setAllArtLoading(true)
@@ -40,7 +40,7 @@ export default function TopSellersView(props) {
       url: url,
       method: "POST",
       data: {
-        text: text
+        text: text,
       },
     })
       .then(json => {
@@ -93,31 +93,50 @@ export default function TopSellersView(props) {
   }, [])
 
   return (
-    <div className="bg-white w-full h-screen p-4 fixed z-30 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div className="w-8 ml-auto cursor-pointer">
-        <QuickViewClose clickHandler={props.closeHandler} />
-      </div>
-      <div className="flex">
-        <div className="mr-auto max-w-4xl">
-          <h2 className="text-blackish font-roboto">TOP SELLERS</h2>
-          <div className="flex flex-row flex-wrap justify-between">
-            {topSellingArtLoading ? (
-              <div className="">
-                <ClipLoader loading={true} />
-              </div>
-            ) : (
-              topSellingArt.map(item => (
-                <TopSellerItem
-                  removeItemHandler={removeItem => {
-                    removeTopSeller(removeItem)
-                  }}
-                  item={item}
-                />
-              ))
-            )}
+    <div className="">
+      <div className="">
+        <div className="">
+          <div className="">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Artist</th>
+                  <th>SKU's</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topSellingArtLoading ? (
+                  <div className="">
+                    <ClipLoader loading={true} />
+                  </div>
+                ) : (
+                  topSellingArt.map(item => (
+                    <tr>
+                      <td>{item.title}</td>
+                      <td>{item.artist}</td>
+                      <td className="flex">
+                        {item.options.map(i => (
+                          <div
+                            className=""
+                            key={i.code + i.size + i.price}
+                          >
+                            <div className="sku-code">{i.code}</div>
+                            <div className="size">{i.size}</div>
+                            <div className="price">{i.price}</div>
+                          </div>
+                        ))}
+                      </td>
+                      <td>{item.type}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="h-screen w-1/3">
+        {/* <div className="h-screen w-1/3">
         <TopSellersSearch value={searchValue} searchHandler={(val) => {setSearchValue(val)}}/>
           <div className="h-full overflow-auto">
             {allArtLoading ? (
@@ -135,7 +154,7 @@ export default function TopSellersView(props) {
               ))
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

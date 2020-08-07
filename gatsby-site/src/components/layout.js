@@ -18,6 +18,9 @@ import Logo from "./Logo"
 
 import { isIE } from "react-device-detect"
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css"
+
 /** @jsx jsx */
 
 const Layout = ({ children }) => {

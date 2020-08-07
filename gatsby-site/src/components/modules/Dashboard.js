@@ -13,13 +13,16 @@ import TopSellersButton from "../TopSellersButton"
 import TopSellersView from "./TopSellersView"
 import EditFramesButton from "../EditFramesButton"
 import EditFramesView from "./EditFramesView"
+import { Nav, NavItem, NavLink } from "shards-react"
 
 const Dashboard = () => {
   const GlobalState = ArtContainer.useContainer()
 
   const [showingNewEntryView, setShowingNewEntryView] = useState(false)
   const [showingTopSellersView, setShowingTopSellersView] = useState(false)
-  const [showingEditFramesView, setShowingEditFramesView] = useState(false)
+  const [showingFramesView, setShowingFramesView] = useState(false)
+
+  const [showingArtDatabaseView, setShowingArtDatabaseView] = useState(true)
 
   const style = css`
     max-width: 1268px;
@@ -41,15 +44,35 @@ const Dashboard = () => {
     }
   `
 
+  const switchView = tab => {
+    switch (tab) {
+      case 1:
+        setShowingArtDatabaseView(true)
+        setShowingTopSellersView(false)
+        setShowingFramesView(false)
+        break
+      case 2:
+        setShowingArtDatabaseView(false)
+        setShowingTopSellersView(true)
+        setShowingFramesView(false)
+        break
+      case 3:
+        setShowingArtDatabaseView(false)
+        setShowingTopSellersView(false)
+        setShowingFramesView(true)
+        break
+    }
+  }
+
   return (
     <Layout>
       <SEO title="Admin Dashboard" />
       <div css={style} className="page-wrapper">
         <div className="page-header">
-          <h1>Art Database</h1>
+          {/* <h1>Art Database</h1> */}
           <ArtSearch className="ml-auto max-w-450" />
         </div>
-        <div className="flex">
+        {/* <div className="flex">
           <AddNewEntryButton
             clickHandler={() => setShowingNewEntryView(true)}
           />
@@ -61,9 +84,55 @@ const Dashboard = () => {
           <EditFramesButton clickHandler={() => {
             setShowingEditFramesView(true)
           }}/>
-        </div>
-        <ArtManagement />
+        </div> */}
+        <Nav tabs>
+          <NavItem>
+            <NavLink
+              active={showingArtDatabaseView}
+              className="cursor-pointer"
+              onClick={() => {
+                switchView(1)
+              }}
+            >
+              Art Database
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              active={showingTopSellersView}
+              className="cursor-pointer"
+              onClick={() => {
+                switchView(2)
+              }}
+            >
+              Top Sellers
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              active={showingFramesView}
+              className="cursor-pointer"
+              onClick={() => {
+                switchView(3)
+              }}
+            >
+              Frames
+            </NavLink>
+          </NavItem>
+        </Nav>
+        {showingArtDatabaseView && <ArtManagement />}
+        {showingTopSellersView && (
+          <TopSellersView
+            closeHandler={() => setShowingTopSellersView(false)}
+          />
+        )}
+        {showingFramesView && (
+          <EditFramesView
+            closeHandler={() => setShowingFramesView(false)}
+          />
+        )}
       </div>
+
       {showingNewEntryView && (
         <EditView
           editItem={null}
@@ -72,12 +141,6 @@ const Dashboard = () => {
             GlobalState.setRefreshArt(prevState => prevState + 1)
           }}
         />
-      )}
-      {showingTopSellersView && (
-        <TopSellersView closeHandler={() => setShowingTopSellersView(false)} />
-      )}
-      {showingEditFramesView && (
-        <EditFramesView closeHandler={() => setShowingEditFramesView(false)}/>
       )}
     </Layout>
   )
