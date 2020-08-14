@@ -6,6 +6,7 @@ import AllArtItem from "../AllArtItem"
 import axios from "axios"
 import ArtContainer from "../state/ArtContainer"
 import TopSellersSearch from "../TopSellersSearch"
+import { AutoSizer, Table, Column } from "react-virtualized"
 
 export default function TopSellersView(props) {
   const [topSellingArt, setTopSellingArt] = useState([])
@@ -93,69 +94,29 @@ export default function TopSellersView(props) {
   }, [])
 
   return (
-    <div className="">
-      <div className="">
-        <div className="">
-          <div className="">
-            <table>
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Artist</th>
-                  <th>SKU's</th>
-                  <th>Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                {topSellingArtLoading ? (
-                  <div className="">
-                    <ClipLoader loading={true} />
-                  </div>
-                ) : (
-                  topSellingArt.map(item => (
-                    <tr>
-                      <td>{item.title}</td>
-                      <td>{item.artist}</td>
-                      <td className="flex">
-                        {item.options.map(i => (
-                          <div
-                            className=""
-                            key={i.code + i.size + i.price}
-                          >
-                            <div className="sku-code">{i.code}</div>
-                            <div className="size">{i.size}</div>
-                            <div className="price">{i.price}</div>
-                          </div>
-                        ))}
-                      </td>
-                      <td>{item.type}</td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
+    <div className="min-vh-100 pt-12">
+      {topSellingArtLoading ? (
+        <div className="w-max-content mx-auto">
+          <ClipLoader loading={true} />
         </div>
-        {/* <div className="h-screen w-1/3">
-        <TopSellersSearch value={searchValue} searchHandler={(val) => {setSearchValue(val)}}/>
-          <div className="h-full overflow-auto">
-            {allArtLoading ? (
-              <div className="">
-                <ClipLoader loading={true} />
-              </div>
-            ) : (
-              allArt.map(item => (
-                <AllArtItem
-                  addItemHandler={addItem => {
-                    addTopSeller(addItem)
-                  }}
-                  item={item}
-                />
-              ))
-            )}
-          </div>
-        </div> */}
-      </div>
+      ) : (
+        <AutoSizer>
+          {({ width, height }) => (
+            <Table
+              width={width}
+              height={height}
+              headerHeight={40}
+              rowHeight={60}
+              rowCount={topSellingArt.length}
+              rowGetter={({ index }) => topSellingArt[index]}
+            >
+              <Column label="Title" dataKey="title" width={300} />
+              <Column label="Artist" dataKey="artist" width={300} />
+              <Column label="Type" dataKey="type" width={300} />
+            </Table>
+          )}
+        </AutoSizer>
+      )}
     </div>
   )
 }

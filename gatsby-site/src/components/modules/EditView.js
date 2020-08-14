@@ -19,7 +19,7 @@ import RemoveOption from "../RemoveOption"
 export default function EditView(props) {
   const GlobalState = ArtContainer.useContainer()
 
-  // if "Add New Entry" is clicked:
+  // if "Create Entry" is clicked:
   let editItem = props.editItem || {
     _id: null,
     title: "",

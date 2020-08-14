@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Layout from "../layout"
-import { ArtManagement } from "./ArtManagement"
+import { ArtDatabaseView } from "./ArtDatabaseView"
 import SEO from "../../components/seo"
 import ArtSearch from "../ArtSearch"
 
@@ -9,11 +9,9 @@ import { jsx, css } from "@emotion/core"
 import AddNewEntryButton from "../AddNewEntryButton"
 import EditView from "./EditView"
 import ArtContainer from "../state/ArtContainer"
-import TopSellersButton from "../TopSellersButton"
 import TopSellersView from "./TopSellersView"
-import EditFramesButton from "../EditFramesButton"
 import EditFramesView from "./EditFramesView"
-import { Nav, NavItem, NavLink } from "shards-react"
+import { Nav, NavItem, NavLink, Fade } from "shards-react"
 
 const Dashboard = () => {
   const GlobalState = ArtContainer.useContainer()
@@ -69,22 +67,8 @@ const Dashboard = () => {
       <SEO title="Admin Dashboard" />
       <div css={style} className="page-wrapper">
         <div className="page-header">
-          {/* <h1>Art Database</h1> */}
           <ArtSearch className="ml-auto max-w-450" />
         </div>
-        {/* <div className="flex">
-          <AddNewEntryButton
-            clickHandler={() => setShowingNewEntryView(true)}
-          />
-          <TopSellersButton
-            clickHandler={() => {
-              setShowingTopSellersView(true)
-            }}
-          />
-          <EditFramesButton clickHandler={() => {
-            setShowingEditFramesView(true)
-          }}/>
-        </div> */}
         <Nav tabs>
           <NavItem>
             <NavLink
@@ -120,16 +104,21 @@ const Dashboard = () => {
             </NavLink>
           </NavItem>
         </Nav>
-        {showingArtDatabaseView && <ArtManagement />}
+        {showingArtDatabaseView && (
+          <Fade in={true}>
+            <AddNewEntryButton
+              clickHandler={() => setShowingNewEntryView(true)}
+            />
+          </Fade>
+        )}
+        {showingArtDatabaseView && <ArtDatabaseView />}
         {showingTopSellersView && (
           <TopSellersView
             closeHandler={() => setShowingTopSellersView(false)}
           />
         )}
         {showingFramesView && (
-          <EditFramesView
-            closeHandler={() => setShowingFramesView(false)}
-          />
+          <EditFramesView closeHandler={() => setShowingFramesView(false)} />
         )}
       </div>
 

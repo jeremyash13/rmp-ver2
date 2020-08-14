@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import ArtContainer from "../state/ArtContainer"
 import useSearchArt from "../hooks/useSearchArt"
-
+import { Table, Column, AutoSizer } from "react-virtualized"
+import "react-virtualized/styles.css"
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
@@ -12,7 +13,7 @@ import ClipLoader from "react-spinners/ClipLoader"
 
 let editItem = undefined
 
-export const ArtManagement = () => {
+export const ArtDatabaseView = () => {
   const GlobalState = ArtContainer.useContainer()
   const [showEditView, setShowEditView] = useState(false)
   const { loading, art, error, hasMore } = useSearchArt(1000)
@@ -238,65 +239,43 @@ export const ArtManagement = () => {
     left: 50%;
     top: 50%;
   `
-  
+
   return (
-    <div css={wrapperStyle} className="art-management-wrapper">
+    <div css={wrapperStyle} className="art-management-wrapper pt-10">
       {GlobalState.showToast && <Toast message="Update Successful" />}
-        <table css={mainStyle} id="art-management">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th className="th-artist">Artist</th>
-              <th>SKU's</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          {loading ? (
-            <div css={loaderStyle}>
-              <ClipLoader loading={true} />
-            </div>
-          ) : (
-            <tbody>
-              {art.map(item => {
-                return (
-                  <tr
-                    key={item._id}
-                    className="entry-wrapper"
-                    onClick={() => {
-                      setShowEditView(true)
-                      editItem = art.indexOf(item)
-                    }}
-                  >
-                    <td className="title">
-                      {item.title}
-                      <EditHover />
-                    </td>
-                    <td className="artist">{item.artist}</td>
-                    <td className="sku-wrapper">
-                      {item.options.map(i => (
-                        <div
-                          className="sku-item"
-                          key={i.code + i.size + i.price}
-                        >
-                          <div className="sku-code">{i.code}</div>
-                          <div className="size">{i.size}</div>
-                          <div className="price">{i.price}</div>
-                        </div>
-                      ))}
-                    </td>
-                    <td className="type">{item.type}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
+      {loading ? (
+        <div className="w-max-content mx-auto">
+          <ClipLoader loading={true} />
+        </div>
+      ) : (
+        <AutoSizer>
+          {({ width, height }) => (
+            <Table
+              width={width}
+              height={height}
+              headerHeight={40}
+              rowHeight={60}
+              rowCount={art.length}
+              rowGetter={({ index }) => art[index]}
+              onRowClick={(e) => {
+                editItem = e.rowData
+                setShowEditView(true)
+              }}
+            >
+              <Column label="Title" dataKey="title" width={300} />
+              <Column label="Artist" dataKey="artist" width={300} />
+              <Column label="Type" dataKey="type" width={300} />
+            </Table>
           )}
-        </table>
+        </AutoSizer>
+      )}
+
       {art.length === 0 && loading === false && (
         <div className="w-max-content mx-auto text-4xl">NO RESULTS...</div>
       )}
       {showEditView && (
         <EditView
-          editItem={art[editItem]}
+          editItem={editItem}
           closeHandler={() => setShowEditView(false)}
           refreshFetchedArtHandler={() => {
             GlobalState.setRefreshArt(prevState => prevState + 1)
@@ -305,4 +284,70 @@ export const ArtManagement = () => {
       )}
     </div>
   )
+}
+{
+  /* <div css={wrapperStyle} className="art-management-wrapper">
+  {GlobalState.showToast && <Toast message="Update Successful" />}
+    <table css={mainStyle} id="art-management">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th className="th-artist">Artist</th>
+          <th>SKU's</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      {loading ? (
+        <div css={loaderStyle}>
+          <ClipLoader loading={true} />
+        </div>
+      ) : (
+        <tbody>
+          {art.map(item => {
+            return (
+              <tr
+                key={item._id}
+                className="entry-wrapper"
+                onClick={() => {
+                  setShowEditView(true)
+                  editItem = art.indexOf(item)
+                }}
+              >
+                <td className="title">
+                  {item.title}
+                  <EditHover />
+                </td>
+                <td className="artist">{item.artist}</td>
+                <td className="sku-wrapper">
+                  {item.options.map(i => (
+                    <div
+                      className="sku-item"
+                      key={i.code + i.size + i.price}
+                    >
+                      <div className="sku-code">{i.code}</div>
+                      <div className="size">{i.size}</div>
+                      <div className="price">{i.price}</div>
+                    </div>
+                  ))}
+                </td>
+                <td className="type">{item.type}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      )}
+    </table>
+  {art.length === 0 && loading === false && (
+    <div className="w-max-content mx-auto text-4xl">NO RESULTS...</div>
+  )}
+  {showEditView && (
+    <EditView
+      editItem={art[editItem]}
+      closeHandler={() => setShowEditView(false)}
+      refreshFetchedArtHandler={() => {
+        GlobalState.setRefreshArt(prevState => prevState + 1)
+      }}
+    />
+  )}
+</div> */
 }
