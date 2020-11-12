@@ -1,22 +1,23 @@
 import { Link } from "gatsby"
 import Logo from "./Logo"
+import GoldLine from "../images/nav-bkg-line-gold-2.png"
+import "../css/navbar.css"
 
 import { jsx, css } from "@emotion/core"
 /** @jsx jsx */
 
 const style = css`
   display: none;
-  background-color: white;
+  background-color: var(--bg-dark-blue);
   .logo-wrapper {
-    max-width: 150px;
+    margin: 0 0 0 35px;
   }
   a {
-    color: var(--text-light-gray);
+    color: var(--gold-1);
     text-decoration: none;
   }
   & ul {
     height: 100px;
-    font-family: Roboto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -24,6 +25,7 @@ const style = css`
     padding: 0 25px;
     & li {
       margin: 0 5px;
+      text-align: center;
       & a:hover {
         color: var(--text-black);
       }
@@ -35,30 +37,42 @@ const style = css`
 `
 export const Navbar = props => {
   return (
-    <nav css={style} className={props.className}>
+    <nav css={style} className={`${props.className} main-nav`}>
       <ul className="text-xs lg:text-sm">
         <li className="flex-shrink-0">
-          <Link to="/">HOME</Link>
+          <Link to="/">Home</Link>
         </li>
         <li className="flex-shrink-0">
-          <Link to="/gallery/">GALLERY</Link>
+          <Link to="/gallery/">Gallery</Link>
         </li>
         <li className="nav__link--exclusive-artists flex-shrink-0">
-          <Link to="/artists/">EXCLUSIVE ARTISTS</Link>
+          <Link to="/artists/">
+            Exclusive
+            <br />
+            Artists
+          </Link>
         </li>
         <li className="logo-wrapper">
           <Logo />
         </li>
         <li className="flex-shrink-0">
-          <Link to="/frames/">FRAMING</Link>
+          <Link to="/frames/">Framing</Link>
         </li>
         <li className="flex-shrink-0">
-          <Link to="/contact/">CONTACT/SHIPPING</Link>
+          <Link to="/contact/">
+            Contact/
+            <br />
+            Shipping
+          </Link>
         </li>
         <li className="flex-shrink-0">
-          <Link to="/about/">ABOUT US</Link>
+          <Link to="/about/">About Us</Link>
         </li>
       </ul>
+      <img
+        src={GoldLine}
+        className="absolute left-1/2 transform -translate-x-1/2"
+      ></img>
     </nav>
   )
 }
