@@ -6,7 +6,7 @@ import { jsx, css } from "@emotion/core"
 
 export default function CTA({ children }) {
   const wrapperStyle = css`
-    background-color: white;
+    background-color: transparent;
     padding-top: 25px;
   `
 
