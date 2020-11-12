@@ -4,24 +4,26 @@ import { jsx, css } from "@emotion/core"
 import SunriseSerenityJPG from "../images/jpg/Sunrise Serenity.jpg"
 import BoardMeetingJPG from "../images/jpg/Board Meeting.jpg"
 import PlaceOfRestJPG from "../images/jpg/Place of Rest.jpg"
-
-
-
-
+import { AnimateOnChange } from "react-animation"
 
 /** @jsx jsx */
 
 const style = css`
   display: flex;
-  max-height: calc(100vh - 200px);
+  flex-direction: column;
   position: relative;
-  background-color: black;
 
   img {
     margin: 0 auto;
     object-fit: cover;
     object-position: 0 65%;
     width: 100%;
+  }
+  .carousel-wrapper {
+    height: calc(100vh - 200px);
+    position: relative;
+    box-shadow: 0 5px 40px 6px rgba(0, 0, 0, 0.4),
+      0 0 15px 0px rgba(0, 0, 0, 0.4);
   }
   .dark-overlay {
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
@@ -33,6 +35,9 @@ const style = css`
   .testimonial-wrapper {
     display: none;
     font-size: 0.9rem;
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    text-shadow: 0 0 4px black;
     line-height: 15px;
     position: absolute;
     padding-left: 25px;
@@ -40,41 +45,30 @@ const style = css`
     transform: translateX(-50%);
     bottom: 0;
     left: 50%;
-    color: white;
+    color: var(--gold-2);
     font-weight: 300;
-    border-left: solid 1px white;
+    border-left-width: 2px; 
+    border-left-style: solid; 
+    border-image-source: linear-gradient(to bottom, rgba(255,190,92,1) 0%, rgba(82,57,19,1) 100%);
+    border-image-slice: 1;
     max-width: 1268px;
     min-width: 380px;
     & .testimonial-footer {
       margin-top: 25px;
     }
   }
-  .active {
-    background-color: white;
-  }
-  .inactive {
-    background-color: var(--text-light-gray);
-  }
-  .indicators {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    & div {
-      display: inline-block;
-      margin-right: 10px;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-    }
-  }
   .slide-title-text {
-    color: var(----text-light-gray);
-    font-size: .9rem;
-    position: absolute;
-    transform: translateX(-50%);
-    bottom: -25px;
-    left: 50%;
+    color: var(--bg-dark-blue);
+    font-size: 1rem;
+    margin: 0 auto;
+    font-weight: 500;
+    font-family: "Cinzel", serif;
+    margin-bottom: 1rem;
+    & .slide-artist {
+      font-family: "Arapey", serif;
+      font-weight: 500;
+      font-style: italic;
+    }
   }
   @media (min-width: 400px) {
     .testimonial-wrapper {
@@ -88,95 +82,54 @@ const style = css`
       min-width: 600px;
     }
   }
+
+  @keyframes custom-slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes custom-slide-out {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 `
-
-const slideOne = () => {
-  return (
-    <>
-      <div className="dark-overlay"></div>
-        <img src={SunriseSerenityJPG} alt="Sunrise Serenity by Mitchell Mansanarez"></img>
-      <div className="testimonial-wrapper">
-        <div className="testimonial-body">
-          I have had the pleasure of working with Rocky Mountain Publishing for
-          the past 7 years. This is a family owned and operated company that
-          offers an American made, top quality, market relevant product. The RMP
-          team has been a true partner at every level with first class service
-          and support, and a work ethic second to none.
-        </div>
-        <div className="testimonial-footer">
-          - Scott Dockstader, Sportsman's Warehouse
-        </div>
-      </div>
-      <div className="indicators">
-        <div className="active"></div>
-        <div className="inactive"></div>
-        <div className="inactive"></div>
-      </div>
-      {/* <span className="slide-title-text">"Sunrise Serenity" by Mitchell Mansanarez</span> */}
-    </>
-  )
-}
-const slideTwo = () => {
-  return (
-    <>
-      <div className="dark-overlay"></div>
-        <img src={BoardMeetingJPG} alt="Board Meeting by Mitchell Mansanarez"></img>
-      <div className="testimonial-wrapper">
-        <div className="testimonial-body">
-          We couldn't imagine C-A-L Ranch Stores without Rocky Mountain
-          Publishing's artwork. A major part of the unique C-A-L Ranch customer
-          experience is having those paintings on the wall. Nothing speaks more
-          to our customer than farm and ranch tradition, and local scenery and
-          landscape, both of which Rocky Mountain Publishing provides in their
-          artwork. Rocky Mountain knows our customers, so they are experts in
-          putting together store assortments that are specific to the local
-          region.
-        </div>
-        <div className="testimonial-footer">- C-A-L Ranch Stores</div>
-      </div>
-      <div className="indicators">
-        <div className="inactive"></div>
-        <div className="active"></div>
-        <div className="inactive"></div>
-      </div>
-      {/* <span className="slide-title-text">"Board Meeting" by Mitchell Mansanarez</span> */}
-    </>
-  )
-}
-const slideThree = () => {
-  return (
-    <>
-      <div className="dark-overlay"></div>
-        <img src={PlaceOfRestJPG} alt="Place of Rest by Dallen Lambson"></img>
-      <div className="testimonial-wrapper">
-        <div className="testimonial-body">
-          Rocky Mountain Publishing has been a great asset to use here at Ashley
-          Furniture HomeStore in Idaho Falls. When the trend of gallery wrapped
-          art started ramping up we worked closely with Rocky Mountain
-          Publishing to have them print us some of their art on canvas. They
-          were willing to take the risk by investing in new equipment to print
-          on the canvas, and it has been phenomenal for our art sales especially
-          the larger 36x72 prints as well as the 29x72's. We highly recommend
-          Rocky Mountain Publishing for their excellent quality and service.
-        </div>
-        <div className="testimonial-footer">
-          - Paul Landon, Ashley HomeStore
-        </div>
-      </div>
-      <div className="indicators">
-        <div className="inactive"></div>
-        <div className="inactive"></div>
-        <div className="active"></div>
-      </div>
-      {/* <span className="slide-title-text">"Place of Rest" by Dallen Lambson</span> */}
-    </>
-  )
-}
-
-const slides = [slideOne(), slideTwo(), slideThree()]
 
 export default function ImageCarousel() {
   const [i, setI] = useState(0)
+  const [slide] = useState([
+    {
+      title: "Sunrise Serenity",
+      artist: "Mitchell Mansanarez",
+      image: SunriseSerenityJPG,
+      testimonialBody:
+        "I have had the pleasure of working with Rocky Mountain Publishing for the past 7 years. This is a family owned and operated company that offers an American made, top quality, market relevant product. The RMP team has been a true partner at every level with first class service and support, and a work ethic second to none.",
+      testimonialFooter: "- Scott Dockstader, Sportsman's Warehouse",
+    },
+    {
+      title: "Board Meeting",
+      artist: "Mitchell Mansanarez",
+      image: BoardMeetingJPG,
+      testimonialBody:
+        "We couldn't imagine C-A-L Ranch Stores without Rocky Mountain Publishing's artwork. A major part of the unique C-A-L Ranch customer experience is having those paintings on the wall. Nothing speaks more to our customer than farm and ranch tradition, and local scenery and landscape, both of which Rocky Mountain Publishing provides in their artwork. Rocky Mountain knows our customers, so they are experts in putting together store assortments that are",
+      testimonialFooter: "- C-A-L Ranch Stores",
+    },
+    {
+      title: "Place of Rest",
+      artist: "Dallen Lambson",
+      image: PlaceOfRestJPG,
+      testimonialBody:
+        "Rocky Mountain Publishing has been a great asset to use here at Ashley Furniture HomeStore in Idaho Falls. When the trend of gallery wrapped art started ramping up we worked closely with Rocky Mountain Publishing to have them print us some of their art on canvas. They were willing to take the risk by investing in new equipment to print on the canvas, and it has been phenomenal for our art sales especially the larger 36x72 prints as well as the 29x72's. We highly recommend Rocky Mountain Publishing for their excellent quality and service.",
+      testimonialFooter: "- Paul Landon, Ashley HomeStore",
+    },
+  ])
 
   useEffect(() => {
     const myInterval = setInterval(() => {
@@ -185,15 +138,38 @@ export default function ImageCarousel() {
       } else {
         setI(i + 1)
       }
-    }, 10000)
+    }, 15000) // 15 seconds
     return () => {
       clearInterval(myInterval)
     }
   })
-
   return (
     <div className="image-carousel" css={style}>
-      {slides[i]}
+      <AnimateOnChange animation="fade">
+        <div className="slide-title-text text-center">
+          {slide[i].title}
+          <br />
+          <span className="slide-artist">{slide[i].artist}</span>
+        </div>
+      </AnimateOnChange>
+      <AnimateOnChange
+        animationIn="custom-slide-in 500ms ease-out forwards"
+        animationOut="custom-slide-out 500ms ease-out forwards"
+      >
+        <div className="carousel-wrapper">
+          <div className="dark-overlay"></div>
+          <img
+            src={slide[i].image}
+            alt={`${slide[i].title} by ${slide[i].artist}`}
+          ></img>
+          <div className="testimonial-wrapper">
+            <div className="testimonial-body">{slide[i].testimonialBody}</div>
+            <div className="testimonial-footer">
+              {slide[i].testimonialFooter}
+            </div>
+          </div>
+        </div>
+      </AnimateOnChange>
     </div>
   )
 }
