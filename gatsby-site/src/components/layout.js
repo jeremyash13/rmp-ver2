@@ -27,7 +27,9 @@ const Layout = ({ children }) => {
   const [mobileMenu, setMobileMenu] = useState(false)
 
   const mainStyle = css`
-    background-color: var(--bg-off-white);
+    background-color: var(--bg-dark-blue);
+    padding-top: 1rem;
+    padding-bottom: 4rem;
     font-family: "Roboto";
     margin-top: 15px;
     @media (min-width: 700px) {
@@ -124,8 +126,6 @@ const Layout = ({ children }) => {
       <Navbar />
       <main css={mainStyle}>
         {isIE && <BrowserNotSupportedDesktop />}
-        {/* {isSafari && <BrowserNotSupportedDesktop />}
-        {isMobileSafari && <BrowserNotSupportedMobile />} */}
         {children}
       </main>
       <Footer />
