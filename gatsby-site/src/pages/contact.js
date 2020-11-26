@@ -124,7 +124,7 @@ const contactPage = () => (
         </div>
       </div>
       <div>
-        <h1 className="md:text-xl">DROP SHIPPING</h1>
+        <h1 className="text-xl">DROP SHIPPING</h1>
         <p>
           Rocky Mountain Publishing offers this service to your customers who
           would prefer to have their artwork delivered direct to their doorstep.
@@ -134,7 +134,7 @@ const contactPage = () => (
         <img src={ZoneMap} className="zone-map" alt=""></img>
       </div>
       <div>
-        <h1 className="md:text-xl">7x10's & 8x10's</h1>
+        <h1 className="text-xl">7x10's & 8x10's</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
             <span className="text-title">Zone 1</span>
@@ -159,7 +159,7 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h1 className="md:text-xl">10x20's & 11x15's</h1>
+        <h1 className="text-xl">10x20's & 11x15's</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
             <span className="text-title">Zone 1</span>
@@ -184,7 +184,7 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h1 className="md:text-xl">16x20's & (up to) 20x24's</h1>
+        <h1 className="text-xl">16x20's & (up to) 20x24's</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
             <span className="text-title">Zone 1</span>
@@ -217,7 +217,7 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h1 className="md:text-xl">Anything Over 20x24</h1>
+        <h1 className="text-xl">Anything Over 20x24</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
             <span className="text-title">Zone 1</span>
@@ -250,7 +250,7 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h1 className="md:text-xl">WHOLESALE ORDERS</h1>
+        <h1 className="text-xl">WHOLESALE ORDERS</h1>
         <p>
           At Rocky Mountain Publishing, we strive to keep our turnaround time
           the quickest possible; we ship within two weeks of receiving your

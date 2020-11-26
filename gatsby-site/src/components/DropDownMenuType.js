@@ -12,7 +12,7 @@ export const DropDownMenuType = props => {
   const [value, setValue] = useState("Type: ALL")
   const style = css`
     height: 53px;
-
+    font-family: "Sorts Mill Goudy", serif;
     & div {
       background-color: #2f2921;
       border: none;

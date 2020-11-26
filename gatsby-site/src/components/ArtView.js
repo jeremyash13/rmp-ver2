@@ -50,6 +50,7 @@ export default function ArtView() {
     .no-results {
       margin: 0 auto;
       font-size: 2rem;
+      color: var(--gold-text-2);
     }
     .art-view-wrapper {
       position: relative;
@@ -114,6 +115,7 @@ export default function ArtView() {
       margin-left: auto;
       margin-right: auto;
       margin-top: 25px;
+      max-width: 100%;
     }
     .title {
       font-family: Sorts Mill Goudy;
@@ -129,11 +131,15 @@ export default function ArtView() {
       color: var(--gold-text-2);
     }
 
+    @media (min-width: 750px) {
+      .img-wrapper {
+        max-height: 230px;
+      }
+    }
     @media (min-width: 600px) {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       .img-wrapper {
         display: flex;
-        max-height: 230px;
         justify-content: center;
         margin: auto 0;
       }
@@ -185,7 +191,7 @@ export default function ArtView() {
                 <img src={item.src} className="img"></img>
               </div>
               <div className="art-view__img-details">
-                <span className="title">{item.title}</span>
+                <span className="title truncate">{item.title}</span>
                 <span className="by">by</span>
                 <span className="artist">{item.artist}</span>
               </div>
@@ -217,7 +223,7 @@ export default function ArtView() {
                 <img src={item.src} className="img"></img>
               </div>
               <div className="art-view__img-details">
-                <span className="title">{item.title}</span>
+                <span className="title truncate">{item.title}</span>
                 <span className="by">by</span>
                 <span className="artist">{item.artist}</span>
               </div>

@@ -39,6 +39,7 @@ html {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-dark-blue);
 }
 .call-to-action-texture {
   background-image: var(--bg-gold-texture);

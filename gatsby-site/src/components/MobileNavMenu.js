@@ -6,8 +6,8 @@ import { jsx, css } from "@emotion/core"
 export default function MobileNavMenu(props) {
   const style = css`
     position: fixed;
-    background-color: white;
-    z-index: 15;
+    background-color: var(--bg-dark-blue);
+    z-index: 30;
     width: 100%;
     height: 100%;
     top: 0;
@@ -25,9 +25,9 @@ export default function MobileNavMenu(props) {
     a {
       padding: 25px;
       text-decoration: none;
-      color: var(--text-black);
+      color: var(--gold-text-2);
       &:visited {
-        color: var(--text-black);
+        color: var(--gold-text-2);
       }
     }
     @media (min-width: 700px) {

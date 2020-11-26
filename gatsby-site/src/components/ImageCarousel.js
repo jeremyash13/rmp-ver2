@@ -19,9 +19,9 @@ const style = css`
     object-fit: cover;
     object-position: 0 65%;
     width: 100%;
+    max-height: calc(100vh - 225px);
   }
   .carousel-wrapper {
-    height: calc(100vh - 225px);
     position: relative;
     box-shadow: 0 5px 40px 6px rgba(0, 0, 0, 0.4),
       0 0 15px 0px rgba(0, 0, 0, 0.4);
@@ -38,7 +38,7 @@ const style = css`
     font-size: 0.9rem;
     font-family: "Rosarivo", serif;
     text-shadow: 0 0 4px black;
-    line-height: 15px;
+    line-height: 20px;
     position: absolute;
     padding-left: 25px;
     margin-bottom: 25px;

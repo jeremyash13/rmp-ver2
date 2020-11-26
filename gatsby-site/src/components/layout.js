@@ -18,7 +18,7 @@ import Logo from "./Logo"
 
 import { isIE } from "react-device-detect"
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css"
 import "shards-ui/dist/css/shards.min.css"
 
 /** @jsx jsx */
@@ -28,7 +28,6 @@ const Layout = ({ children }) => {
 
   const mainStyle = css`
     background-color: var(--bg-dark-blue);
-    ${'' /* padding-bottom: 4rem; */}
     font-family: Rosarivo, serif;
     margin-top: 15px;
     position: relative;
@@ -36,16 +35,31 @@ const Layout = ({ children }) => {
       margin-top: 0;
     }
   `
-  const buttonStyle = css`
-    background-color: rgba(255, 255, 255, 0);
+  const xButtonStyle = css`
     font-family: "Roboto";
     border: none;
     font-size: 3rem;
-    color: var(--text-black);
+    color: var(--gold-text-2);
     position: fixed;
-    top: 25px;
+    top: -20px;
     left: 15px;
-    z-index: 25;
+    z-index: 40;
+    &:hover {
+      cursor: pointer;
+    }
+    @media (min-width: 700px) {
+      display: none;
+    }
+  `
+  const hamburgerButtonStyle = css`
+    font-family: "Roboto";
+    border: none;
+    font-size: 3rem;
+    color: var(--gold-text-2);
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    z-index: 40;
     &:hover {
       cursor: pointer;
     }
@@ -111,14 +125,26 @@ const Layout = ({ children }) => {
   }
   return (
     <>
-      <button
-        css={buttonStyle}
-        onClick={() => {
-          setMobileMenu(!mobileMenu)
-        }}
-      >
-        {mobileMenu ? "×" : "≡"}
-      </button>
+      {mobileMenu && (
+        <button
+          css={xButtonStyle}
+          onClick={() => {
+            setMobileMenu(!mobileMenu)
+          }}
+        >
+          ×
+        </button>
+      )}
+      {!mobileMenu && (
+        <button
+          css={hamburgerButtonStyle}
+          onClick={() => {
+            setMobileMenu(!mobileMenu)
+          }}
+        >
+          ≡
+        </button>
+      )}
       <div css={mobileLogoStyle}>
         <Logo />
       </div>

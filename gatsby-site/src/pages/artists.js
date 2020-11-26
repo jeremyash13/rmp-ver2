@@ -26,6 +26,9 @@ const style = css`
   position: relative;
   z-index: 20;
   background-image: var(--bg-soft-gold-texture);
+  background-repeat: repeat-y;
+  background-size: fit;
+  background-position-x: center;
 
 `
 const ArtistsPage = () => (
