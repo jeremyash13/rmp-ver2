@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Rfdd, RfddOption } from "react-free-dropdown"
+import Icon from "../images/svg/dropdown-icon.svg"
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
@@ -10,18 +11,33 @@ export const DropDownMenuType = props => {
   const GlobalState = ArtContainer.useContainer()
   const [value, setValue] = useState("Type: ALL")
   const style = css`
+    height: 53px;
+
     & div {
-      background-color: #dddddd;
+      background-color: #2f2921;
+      border: none;
+    }
+    & .mySelect {
+      color: var(--gold-text-2);
+
+      &:hover {
+        color: var(--gold-2);
+      }
+    }
+    & .rfdd-option:hover {
+      box-shadow: 0 0 10px 100px #3e3529 inset;
     }
   `
   const optionStyle = {
     fontSize: "1rem",
+    color: "var(--gold-text-2)",
   }
 
   return (
     <Rfdd
       className={props.className}
       selectClassName="mySelect"
+      icon={Icon}
       css={style}
       value={value}
       onChange={optionValue => {
@@ -30,14 +46,18 @@ export const DropDownMenuType = props => {
       }}
       listStyle="max-height: 300px"
     >
-      <RfddOption value="ALL" style={optionStyle}>All</RfddOption>
+      <RfddOption value="ALL" style={optionStyle}>
+        All
+      </RfddOption>
       <RfddOption value="Canvas Giclee" style={optionStyle}>
         Canvas Giclee
       </RfddOption>
       <RfddOption value="Paper Giclee" style={optionStyle}>
         Paper Giclee
       </RfddOption>
-      <RfddOption value="Gallery Wrap" style={optionStyle}>Gallery Wrap</RfddOption>
+      <RfddOption value="Gallery Wrap" style={optionStyle}>
+        Gallery Wrap
+      </RfddOption>
     </Rfdd>
   )
 }

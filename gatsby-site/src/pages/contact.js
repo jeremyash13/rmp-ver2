@@ -9,7 +9,19 @@ const style = css`
   padding: 50px;
   max-width: 1268px;
   margin: 0 auto;
-  color: var(--text-black);
+  color: var(--gold-text-2);
+  background-image: var(--bg-soft-gold-texture);
+  background-repeat: repeat-y;
+  background-size: fit;
+  background-position-x: center;
+
+  & h1,
+  & h2 {
+    color: var(--gold-text);
+    font-family: "Sorts Mill Goudy", serif;
+    letter-spacing: 0.1rem;
+  }
+
   & .zone-map {
     margin: 0 auto;
     display: block;
@@ -45,21 +57,25 @@ const style = css`
     & .text-main {
       font-size: 1.2rem;
     }
-    & .text-secondary {
+    & . {
       font-size: 1rem;
     }
   }
   .zone-1-wrapper {
     background-color: var(--zone-1);
+    color: var(--bg-dark-blue);
   }
   .zone-2-wrapper {
     background-color: var(--zone-2);
+    color: var(--bg-dark-blue);
   }
   .zone-3-wrapper {
     background-color: var(--zone-3);
+    color: var(--bg-dark-blue);
   }
   .zone-4-wrapper {
     background-color: var(--zone-4);
+    color: var(--bg-dark-blue);
   }
 `
 
@@ -69,20 +85,24 @@ const contactPage = () => (
     <div css={style} className="contact-page-wrapper">
       <div className="flex flex-col">
         <div className="dealer-text mb-10">
-          <h1 className="text-base text-center md:text-2xl">
+          <h1 className="text-base text-center md:text-xl">
             CONTACT US TO FIND A DEALER NEAR YOU
           </h1>
         </div>
         <div className="contact-section flex flex-col md:flex-row">
           <div className="mb-10 px-4 md:w-1/3">
-            <h1 className="text-base text-center md:text-2xl">HOURS OF OPERATION</h1>
+            <h1 className="text-base text-center md:text-xl">
+              HOURS OF OPERATION
+            </h1>
             <p className="text-center">
               Monday - Friday 8:00 a.m. to 5:00 p.m. (Mountain Standard Time)
               (Excluding Holidays)
             </p>
           </div>
           <div className="mb-10 px-4 md:w-1/3">
-            <h1 className="text-base text-center md:text-2xl">CUSTOMER SERVICE & SALES</h1>
+            <h1 className="text-base text-center md:text-xl">
+              CUSTOMER SERVICE & SALES
+            </h1>
             <p className="text-center">
               Office - (208) 785-6291
               <br />
@@ -94,7 +114,7 @@ const contactPage = () => (
             </p>
           </div>
           <div className="mb-10 px-4 md:w-1/3">
-            <h1 className="text-base text-center md:text-2xl">ADDRESS</h1>
+            <h1 className="text-base text-center md:text-xl">ADDRESS</h1>
             <p className="text-center">
               Rocky Mountain Publishing
               <br />
@@ -104,7 +124,7 @@ const contactPage = () => (
         </div>
       </div>
       <div>
-        <h1>DROP SHIPPING</h1>
+        <h1 className="md:text-xl">DROP SHIPPING</h1>
         <p>
           Rocky Mountain Publishing offers this service to your customers who
           would prefer to have their artwork delivered direct to their doorstep.
@@ -114,22 +134,22 @@ const contactPage = () => (
         <img src={ZoneMap} className="zone-map" alt=""></img>
       </div>
       <div>
-        <h2>7x10's & 8x10's</h2>
+        <h1 className="md:text-xl">7x10's & 8x10's</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
-            <span className="text-title">ZONE 1</span>
+            <span className="text-title">Zone 1</span>
             <span className="text-main">$15.00</span>
           </div>
           <div className="zone-2-wrapper">
-            <span className="text-title">ZONE 2</span>
+            <span className="text-title">Zone 2</span>
             <span className="text-main">$20.00</span>
           </div>
           <div className="zone-3-wrapper">
-            <span className="text-title">ZONE 3</span>
+            <span className="text-title">Zone 3</span>
             <span className="text-main">$25.00</span>
           </div>
           <div className="zone-4-wrapper">
-            <span className="text-title">ZONE 4</span>
+            <span className="text-title">Zone 4</span>
             <span className="text-main">$27.00</span>
           </div>
         </div>
@@ -139,22 +159,22 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h2>10x20's & 11x15's</h2>
+        <h1 className="md:text-xl">10x20's & 11x15's</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
-            <span className="text-title">ZONE 1</span>
+            <span className="text-title">Zone 1</span>
             <span className="text-main">$20.50</span>
           </div>
           <div className="zone-2-wrapper">
-            <span className="text-title">ZONE 2</span>
+            <span className="text-title">Zone 2</span>
             <span className="text-main">$25.50</span>
           </div>
           <div className="zone-3-wrapper">
-            <span className="text-title">ZONE 3</span>
+            <span className="text-title">Zone 3</span>
             <span className="text-main">$29.50</span>
           </div>
           <div className="zone-4-wrapper">
-            <span className="text-title">ZONE 4</span>
+            <span className="text-title">Zone 4</span>
             <span className="text-main">$31.50</span>
           </div>
         </div>
@@ -164,31 +184,31 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h2>16x20's & UP TO 20x24's</h2>
+        <h1 className="md:text-xl">16x20's & (up to) 20x24's</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
-            <span className="text-title">ZONE 1</span>
+            <span className="text-title">Zone 1</span>
             <span className="text-main">$23.00 (1st piece)</span>
-            <span className="text-secondary">+ $5.00 (2nd piece)</span>
-            <span className="text-secondary">+ $5.00 (3rd piece)</span>
+            <span className="">+ $5.00 (2nd piece)</span>
+            <span className="">+ $5.00 (3rd piece)</span>
           </div>
           <div className="zone-2-wrapper">
-            <span className="text-title">ZONE 2</span>
+            <span className="text-title">Zone 2</span>
             <span className="text-main">$34.00 (1st piece)</span>
-            <span className="text-secondary">+ $5.00 (2nd piece)</span>
-            <span className="text-secondary">+ $5.00 (3rd piece)</span>
+            <span className="">+ $5.00 (2nd piece)</span>
+            <span className="">+ $5.00 (3rd piece)</span>
           </div>
           <div className="zone-3-wrapper">
-            <span className="text-title">ZONE 3</span>
+            <span className="text-title">Zone 3</span>
             <span className="text-main">$46.00 (1st piece)</span>
-            <span className="text-secondary">+ $5.00 (2nd piece)</span>
-            <span className="text-secondary">+ $5.00 (3rd piece)</span>
+            <span className="">+ $5.00 (2nd piece)</span>
+            <span className="">+ $5.00 (3rd piece)</span>
           </div>
           <div className="zone-4-wrapper">
-            <span className="text-title">ZONE 4</span>
+            <span className="text-title">Zone 4</span>
             <span className="text-main">$51.00 (1st piece)</span>
-            <span className="text-secondary">+ $5.00 (2nd piece)</span>
-            <span className="text-secondary">+ $5.00 (3rd piece)</span>
+            <span className="">+ $5.00 (2nd piece)</span>
+            <span className="">+ $5.00 (3rd piece)</span>
           </div>
         </div>
         <p className="subtext text-center max-w-xs mx-auto">
@@ -197,31 +217,31 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h2>ANYTHING OVER 20x24</h2>
+        <h1 className="md:text-xl">Anything Over 20x24</h1>
         <div className="zones-wrapper">
           <div className="zone-1-wrapper">
-            <span className="text-title">ZONE 1</span>
+            <span className="text-title">Zone 1</span>
             <span className="text-main">$52.00 (1st piece)</span>
-            <span className="text-secondary">+ $5.00 (2nd piece)</span>
-            <span className="text-secondary">+ $5.00 (3rd piece)</span>
+            <span className="">+ $5.00 (2nd piece)</span>
+            <span className="">+ $5.00 (3rd piece)</span>
           </div>
           <div className="zone-2-wrapper">
-            <span className="text-title">ZONE 2</span>
+            <span className="text-title">Zone 2</span>
             <span className="text-main">$64.00 (1st piece)</span>
-            <span className="text-secondary">+ $5.00 (2nd piece)</span>
-            <span className="text-secondary">+ $5.00 (3rd piece)</span>
+            <span className="">+ $5.00 (2nd piece)</span>
+            <span className="">+ $5.00 (3rd piece)</span>
           </div>
           <div className="zone-3-wrapper">
-            <span className="text-title">ZONE 3</span>
+            <span className="text-title">Zone 3</span>
             <span className="text-main">$77.00 (1st piece)</span>
-            <span className="text-secondary">+ $5.00 (2nd piece)</span>
-            <span className="text-secondary">+ $5.00 (3rd piece)</span>
+            <span className="">+ $5.00 (2nd piece)</span>
+            <span className="">+ $5.00 (3rd piece)</span>
           </div>
           <div className="zone-4-wrapper">
-            <span className="text-title">ZONE 4</span>
+            <span className="text-title">Zone 4</span>
             <span className="text-main">$80.00 (1st piece)</span>
-            <span className="text-secondary">+ $10.00 (2nd piece)</span>
-            <span className="text-secondary">+ $10.00 (3rd piece)</span>
+            <span className="">+ $10.00 (2nd piece)</span>
+            <span className="">+ $10.00 (3rd piece)</span>
           </div>
         </div>
         <p className="subtext text-center max-w-xs mx-auto">
@@ -230,7 +250,7 @@ const contactPage = () => (
         </p>
       </div>
       <div>
-        <h1>WHOLESALE ORDERS</h1>
+        <h1 className="md:text-xl">WHOLESALE ORDERS</h1>
         <p>
           At Rocky Mountain Publishing, we strive to keep our turnaround time
           the quickest possible; we ship within two weeks of receiving your

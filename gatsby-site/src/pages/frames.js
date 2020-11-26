@@ -11,16 +11,27 @@ const style = css`
   padding: 25px;
   max-width: 1268px;
   margin: 0 auto;
-  font-family: Roboto;
-  color: var(--text-black);
+  margin-top: 2px;
+  font-family: Rosarivo, serif;
+  color: var(--gold-text-2);
+  position: relative;
+  z-index: 20;
+  background-image: var(--bg-soft-gold-texture);
+  background-repeat: repeat-y;
+  background-size: fit;
+  background-position-x: center;
 
   & h1 {
+    font-family: Sorts Mill Goudy, serif;
     font-size: 1.2rem;
-    font-weight: 400;
+    letter-spacing: 0.1rem;
+    color: var(--gold-text);
   }
   & h2 {
+    color: var(--gold-text);
+    font-family: inherit;
     font-size: 1rem;
-    font-weight: 400;
+    letter-spacing: 0.025rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -33,6 +44,11 @@ const style = css`
   & .standard-wrapper,
   & .decor-wrapper {
     margin-top: 50px;
+  }
+  
+  & .intro-wrapper {
+    padding: 0 5rem;
+    text-align: center;
   }
 
   & .standard-frames {
@@ -100,7 +116,12 @@ const StandardFrames = () => {
       {loading ? (
         <div className="flex">
           <div className="m-auto">
-            <Loader type="ThreeDots" color="#848484" height={40} width={40} />
+            <Loader
+              type="ThreeDots"
+              color="var(--gold-text-2)"
+              height={40}
+              width={40}
+            />
           </div>
         </div>
       ) : (
@@ -141,7 +162,12 @@ const DecorFrames = () => {
       {loading ? (
         <div className="flex">
           <div className="m-auto">
-            <Loader type="ThreeDots" color="#848484" height={40} width={40} />
+            <Loader
+              type="ThreeDots"
+              color="var(--gold-text-2)"
+              height={40}
+              width={40}
+            />
           </div>
         </div>
       ) : (
@@ -165,7 +191,6 @@ const FramesPage = () => (
     <SEO title="Frames" />
     <div css={style} className="frames-page__wrapper">
       <div className="intro-wrapper">
-        <h1>FRAMING</h1>
         <p>
           Rocky Mountain Publishing takes pride in our commitment to quality and
           service. Therefore, offering our customers great pricing for gallery

@@ -28,10 +28,10 @@ const Layout = ({ children }) => {
 
   const mainStyle = css`
     background-color: var(--bg-dark-blue);
-    padding-top: 1rem;
-    padding-bottom: 4rem;
-    font-family: "Roboto";
+    ${'' /* padding-bottom: 4rem; */}
+    font-family: Rosarivo, serif;
     margin-top: 15px;
+    position: relative;
     @media (min-width: 700px) {
       margin-top: 0;
     }

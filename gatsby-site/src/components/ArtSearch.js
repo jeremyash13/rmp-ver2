@@ -8,23 +8,25 @@ import ArtContainer from "./state/ArtContainer"
 
 export default function ArtSearch(props) {
   const GlobalState = ArtContainer.useContainer()
-  
+
   const style = css`
     font-family: Roboto;
     font-weight: 300;
     font-size: 1rem;
-    color: #393939;
+    color: var(--gold-text);
     width: 100%;
     position: relative;
     border: none;
     font-size: 1rem;
 
     & input:focus {
-      box-shadow: inset 0 0 4px rgba(0, 125, 255, 0.35);
+      ${"" /* box-shadow: inset 0 0 4px var(--gold-2); */}
+      ${"" /* background-color: var(--gold-text); */}
     }
     & input::placeholder {
       font-style: italic;
       font-weight: 200;
+      color: var(--gold-2);
     }
 
     input {
@@ -32,8 +34,12 @@ export default function ArtSearch(props) {
       padding-left: 40px;
       padding-top: 10px;
       padding-bottom: 10px;
-      background-color: #dddddd;
-      border: none;
+      background-color: #2f2921;
+      border: solid 1px #40362a;
+      transition: border .3s ease-in-out;
+      &:focus {
+        border: solid 1px var(--gold-text-2);
+      }
     }
     svg {
       width: 15px;
@@ -60,12 +66,12 @@ export default function ArtSearch(props) {
           x2="11.1409"
           y2="-1.5"
           transform="matrix(0.702103 0.712076 -0.702103 0.712076 12.6036 15.109)"
-          stroke="#393939"
+          stroke="var(--gold-text-2)"
           strokeWidth="3"
         />
         <path
           d="M15.7729 9.10545C15.7729 13.0663 12.6106 16.2531 8.73937 16.2531C4.86813 16.2531 1.70587 13.0663 1.70587 9.10545C1.70587 5.14459 4.86813 1.95784 8.73937 1.95784C12.6106 1.95784 15.7729 5.14459 15.7729 9.10545Z"
-          stroke="#393939"
+          stroke="var(--gold-text-2)"
           strokeWidth="2"
         />
       </svg>

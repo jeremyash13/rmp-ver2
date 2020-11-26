@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 
 export default function Artist(props) {
   const style = css`
-    color: var(--text-black);
+    color: var(--gold-text-2);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

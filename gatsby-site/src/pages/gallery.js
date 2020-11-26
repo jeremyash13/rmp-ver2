@@ -13,6 +13,10 @@ import ArtView from "../components/ArtView"
 
 const artPage = () => {
   const style = css`
+    background-image: var(--bg-soft-gold-texture);
+    background-repeat: repeat-y;
+    background-size: fit;
+    background-position-x: center;
     .mySelect {
       font-size: 1rem;
       padding: 0.7em;

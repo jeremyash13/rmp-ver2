@@ -25,8 +25,16 @@ export default function ArtCategories() {
   }
 
   const style = css`
+    color: var(--gold-text-2);
+    font-family: "Sorts Mill Goudy";
     & .active {
-      color: var(--text-black);
+      color: var(--gold-text);
+      border-bottom: solid 1px var(--gold-text);
+      transition: border 1s ease-in-out;
+    }
+    & li {
+      border-bottom: solid 1px transparent;
+      padding: 0 7px;
     }
     & li:hover {
       cursor: pointer;
@@ -34,7 +42,10 @@ export default function ArtCategories() {
   `
 
   return (
-    <div css={style} className="text-lg lg:text-xl text-light-gray mb-6">
+    <div
+      css={style}
+      className="text-lg lg:text-xl text-light-gray mb-20 z-20 relative"
+    >
       <div className="flex space-x-10 w-max-content mx-auto mb-6">
         <li
           className={allActive ? "active" : ""}
@@ -44,7 +55,7 @@ export default function ArtCategories() {
             setAllActive(true)
           }}
         >
-          ALL
+          All
         </li>
         <li
           className={landscapeActive ? "active" : ""}
@@ -54,7 +65,7 @@ export default function ArtCategories() {
             setLandscapeActive(true)
           }}
         >
-          LANDSCAPE
+          Landscape
         </li>
         <li
           className={westernActive ? "active" : ""}
@@ -64,7 +75,7 @@ export default function ArtCategories() {
             setWesternActive(true)
           }}
         >
-          WESTERN
+          Western
         </li>
       </div>
       <div className="flex space-x-4 sm:space-x-10 w-max-content mx-auto">
@@ -76,7 +87,7 @@ export default function ArtCategories() {
             setWildlifeActive(true)
           }}
         >
-          WILDLIFE
+          Wildlife
         </li>
         <li
           className={patrioticActive ? "active" : ""}
@@ -86,7 +97,7 @@ export default function ArtCategories() {
             setPatrioticActive(true)
           }}
         >
-          PATRIOTIC
+          Patriotic
         </li>
         <li
           className={topSellersActive ? "active" : ""}
@@ -96,7 +107,7 @@ export default function ArtCategories() {
             setTopSellersActive(true)
           }}
         >
-          TOP SELLERS
+          Top Sellers
         </li>
       </div>
     </div>

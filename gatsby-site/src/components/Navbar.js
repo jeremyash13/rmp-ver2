@@ -15,6 +15,7 @@ const style = css`
   a {
     color: var(--gold-1);
     text-decoration: none;
+    transition: color .15s ease-in-out;
   }
   & ul {
     height: 100px;
@@ -22,12 +23,13 @@ const style = css`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 25px;
+    padding: 0 85px;
     & li {
       margin: 0 5px;
       text-align: center;
       & a:hover {
-        color: var(--text-black);
+        text-decoration: none;
+        color: var(--gold-2);
       }
     }
   }
@@ -71,7 +73,7 @@ export const Navbar = props => {
       </ul>
       <img
         src={GoldLine}
-        className="absolute left-1/2 transform -translate-x-1/2"
+        className="absolute left-1/2 transform -translate-x-1/2 z-10"
       ></img>
     </nav>
   )

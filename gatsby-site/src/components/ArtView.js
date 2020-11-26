@@ -45,6 +45,7 @@ export default function ArtView() {
     grid-row-gap: 100px;
     min-height: 100vh;
     position: relative;
+    font-family: 'Rosarivo', serif;
 
     .no-results {
       margin: 0 auto;
@@ -68,14 +69,16 @@ export default function ArtView() {
       &:hover {
         cursor: pointer;
         & .quick-view-button {
-          display: block;
+          opacity: 1;
         }
       }
     }
     .quick-view-button {
-      display: none;
+      opacity: 0;
+      color: var(--gold-2);
+      border: solid 1px var(--gold-2);
       box-shadow: 0 10px 10px -7px rgba(0, 0, 0, 0.8);
-      background-color: white;
+      background-color: var(--bg-dark-blue);
       padding: 10px;
       font-weight: 300;
       position: absolute;
@@ -84,6 +87,7 @@ export default function ArtView() {
       left: 50%;
       min-width: 107px;
       text-align: center;
+      transition: opacity 0.25s ease-in-out;
     }
     .img-wrapper {
       max-height: 300px;
@@ -114,22 +118,22 @@ export default function ArtView() {
     .title {
       font-family: Sorts Mill Goudy;
       font-size: 1.5rem;
-      color: var(--text-dark);
+      color: var(--gold-text);
     }
     .by {
       font-weight: 300;
-      color: var(--text-light-gray);
+      color: var(--gold-text-2);
     }
     .artist {
       font-weight: 300;
-      color: var(--text-light-gray);
+      color: var(--gold-text-2);
     }
 
     @media (min-width: 600px) {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       .img-wrapper {
         display: flex;
-        max-height: initial;
+        max-height: 230px;
         justify-content: center;
         margin: auto 0;
       }
@@ -145,7 +149,12 @@ export default function ArtView() {
       {loading && art.length === 0 && (
         <div className="w-full">
           <div className="mx-auto">
-            <Loader type="ThreeDots" color="#848484" height={20} width={20} />
+            <Loader
+              type="ThreeDots"
+              color="var(--gold-text-2)"
+              height={20}
+              width={20}
+            />
           </div>
         </div>
       )}
@@ -219,7 +228,12 @@ export default function ArtView() {
       {loading && art.length > 1 && (
         <div className="w-full absolute bottom-0 transform translate-y-50px">
           <div className="mx-auto">
-            <Loader type="ThreeDots" color="#848484" height={20} width={20} />
+            <Loader
+              type="ThreeDots"
+              color="var(--gold-text-2)"
+              height={20}
+              width={20}
+            />
           </div>
         </div>
       )}

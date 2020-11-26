@@ -18,34 +18,48 @@ import CSS from "../components/videoplayer.css"
 const style = css`
   max-width: 1268px;
   margin: 0 auto;
-  color: var(--text-black);
+  color: var(--gold-text-2);
   font-weight: 300;
   letter-spacing: 0.075rem;
   line-height: 1.75rem;
+  background-image: var(--bg-soft-gold-texture);
+  background-repeat: repeat-y;
+  background-size: fit;
+  background-position-x: center;
+  & h3 {
+    color: var(--gold-text);
+    font-family: Sorts Mill Goudy, serif;
+  }
+  & .intro-wrapper {
+    padding: 0 3rem;
+    text-align: center;
+  }
 `
 
 const aboutPage = () => (
   <Layout>
     <SEO title="About Us" />
     <div css={style} className="about-page-wrapper pt-12 px-10">
-      <p className=" max-w-5xl">
-        Rocky Mountain Publishing was founded in 1994 by Mitch Mansanarez. Since
-        our beginnings, we have always had one main goal and that is to produce
-        gallery quality artwork for production prices. We currently publish the
-        works of many outstanding artists. Many of which are exclusive to our
-        company such as Clark Kelley Price, Hayden Lambson, Dallen Lambson,
-        Manuel Mansanarez, Mitchell Mansanarez, Dan Ballard and Travis
-        Sylvester. Due to our nationally renowned team of exclusive artists and
-        beautiful framing options, we are one of the strongest suppliers of
-        Western, Wildlife and Photography art in the industry.
-      </p>
-      <p className="mb-16 max-w-5xl">
-        There are three main aspects that has allowed RMP to excel in the wall
-        decor industry:{" "}
-        <strong className="font-medium">
-          Quality, Exclusivity, and value.
-        </strong>
-      </p>
+      <div className="intro-wrapper">
+        <p className=" max-w-5xl">
+          Rocky Mountain Publishing was founded in 1994 by Mitch Mansanarez.
+          Since our beginnings, we have always had one main goal and that is to
+          produce gallery quality artwork for production prices. We currently
+          publish the works of many outstanding artists. Many of which are
+          exclusive to our company such as Clark Kelley Price, Hayden Lambson,
+          Dallen Lambson, Manuel Mansanarez, Mitchell Mansanarez, Dan Ballard
+          and Travis Sylvester. Due to our nationally renowned team of exclusive
+          artists and beautiful framing options, we are one of the strongest
+          suppliers of Western, Wildlife and Photography art in the industry.
+        </p>
+        <p className="mb-16 max-w-5xl">
+          There are three main aspects that has allowed RMP to excel in the wall
+          decor industry:{" "}
+          <strong className="font-medium">
+            Quality, Exclusivity, and value.
+          </strong>
+        </p>
+      </div>
       <h3>Quality</h3>
       <div className="flex flex-col md:flex-row mb-16">
         <div className="max-w-3xl pr-6">

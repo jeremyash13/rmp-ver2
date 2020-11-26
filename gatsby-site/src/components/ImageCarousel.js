@@ -12,6 +12,7 @@ const style = css`
   display: flex;
   flex-direction: column;
   position: relative;
+  padding-top: 1rem;
 
   img {
     margin: 0 auto;
@@ -20,7 +21,7 @@ const style = css`
     width: 100%;
   }
   .carousel-wrapper {
-    height: calc(100vh - 200px);
+    height: calc(100vh - 225px);
     position: relative;
     box-shadow: 0 5px 40px 6px rgba(0, 0, 0, 0.4),
       0 0 15px 0px rgba(0, 0, 0, 0.4);
@@ -35,8 +36,7 @@ const style = css`
   .testimonial-wrapper {
     display: none;
     font-size: 0.9rem;
-    font-family: "EB Garamond", serif;
-    font-weight: 600;
+    font-family: "Rosarivo", serif;
     text-shadow: 0 0 4px black;
     line-height: 15px;
     position: absolute;
