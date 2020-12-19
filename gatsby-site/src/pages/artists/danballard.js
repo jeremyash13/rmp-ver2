@@ -5,16 +5,20 @@ import DanBallard from "../../images/artists/DanBallard.jpg"
 
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
-import ArtistBioNav from "../../components/ArtistBioNav"
 
 const style = css`
   padding: 25px;
   min-height: 100vh;
+  margin-top: 75px;
   & p {
-    color: var(--text-black);
+    color: var(--gold-text-2);
     font-weight: 300;
     letter-spacing: 0.075rem;
     line-height: 1.75rem;
+  }
+  & h3 {
+    color: var(--gold-text-2);
+    font-family: "Rosarivo", serif;
   }
 
   ${"" /* & .img-wrapper {
@@ -37,12 +41,11 @@ const DanBallardPage = () => (
   <Layout>
     <SEO title="Dan Ballard" />
     <div css={style} className="artist-page-wrapper">
-      <ArtistBioNav artist="Dan Ballard" />
       <div className="body-wrapper">
         <div className="img-wrapper mb-10 mr-10 max-w-xs float-left">
           <img src={DanBallard} alt="Dan Ballard"></img>
         </div>
-        <h3 className="font-semibold text-2xl leading-tight">
+        <h3 className="font-semibold text-2xl">
           Internationally Known Travel and Landscape Photographer
         </h3>
         <p>

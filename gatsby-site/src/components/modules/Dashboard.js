@@ -38,7 +38,12 @@ const Dashboard = () => {
       display: flex;
       flex-direction: row;
       margin: 0 auto;
-      background-color: #f5f5f5;
+    }
+    .active {
+      color: red;
+    }
+    .nav-item a {
+      background-color: red;
     }
   `
 
@@ -73,7 +78,7 @@ const Dashboard = () => {
           <NavItem>
             <NavLink
               active={showingArtDatabaseView}
-              className="cursor-pointer"
+              className="cursor-pointer nav-item"
               onClick={() => {
                 switchView(1)
               }}

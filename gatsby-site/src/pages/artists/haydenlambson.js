@@ -2,17 +2,16 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
-import HaydenLambson from "../../images/artists/HaydenLambsonNew.jpg"
+import HaydenLambson from "../../images/artists/HaydenLambson 640x640.jpg"
 
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
-import ArtistBioNav from "../../components/ArtistBioNav"
 
 const style = css`
   padding: 25px;
-
+  margin-top: 75px;
   & p {
-    color: var(--text-black);
+    color: var(--gold-text-2);
     font-weight: 300;
     letter-spacing: 0.075rem;
     line-height: 1.75rem;
@@ -20,7 +19,7 @@ const style = css`
 
   & .img-wrapper {
     float: left;
-    margin-right: 50px;
+    margin-right: 25px;
     width: 400px;
     height: 400px;
   }
@@ -38,7 +37,6 @@ const HaydenLambsonPage = () => (
   <Layout>
     <SEO title="Hayden Lambson" />
     <div css={style} className="artist-page-wrapper">
-      <ArtistBioNav artist="Hayden Lambson" />
       <div className="body-wrapper">
         <div className="img-wrapper">
           <img src={HaydenLambson} alt="Hayden Lambson"></img>

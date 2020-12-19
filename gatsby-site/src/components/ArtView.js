@@ -8,6 +8,7 @@ import useSearchArt from "./hooks/useSearchArt"
 import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
 import Loader from "react-loader-spinner"
+import { animations } from "react-animation"
 
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
@@ -59,6 +60,7 @@ export default function ArtView() {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      animation: ${animations.fadeInUp}
     }
     .img-hover-element {
       position: absolute;

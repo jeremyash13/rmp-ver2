@@ -34,6 +34,9 @@ const style = css`
     padding: 0 3rem;
     text-align: center;
   }
+  & .font-medium {
+    font-weight: 800;
+  }
 `
 
 const aboutPage = () => (
@@ -56,7 +59,7 @@ const aboutPage = () => (
           There are three main aspects that has allowed RMP to excel in the wall
           decor industry:{" "}
           <strong className="font-medium">
-            Quality, Exclusivity, and value.
+            Quality, Exclusivity, and Value.
           </strong>
         </p>
       </div>

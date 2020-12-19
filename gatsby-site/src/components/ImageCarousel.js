@@ -47,9 +47,13 @@ const style = css`
     left: 50%;
     color: var(--gold-2);
     font-weight: 300;
-    border-left-width: 2px; 
-    border-left-style: solid; 
-    border-image-source: linear-gradient(to bottom, rgba(255,190,92,1) 0%, rgba(82,57,19,1) 100%);
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-image-source: linear-gradient(
+      to bottom,
+      rgba(255, 190, 92, 1) 0%,
+      rgba(82, 57, 19, 1) 100%
+    );
     border-image-slice: 1;
     max-width: 1268px;
     min-width: 380px;
@@ -106,14 +110,6 @@ export default function ImageCarousel() {
   const [i, setI] = useState(0)
   const [slide] = useState([
     {
-      title: "Sunrise Serenity",
-      artist: "Mitchell Mansanarez",
-      image: SunriseSerenityJPG,
-      testimonialBody:
-        "I have had the pleasure of working with Rocky Mountain Publishing for the past 7 years. This is a family owned and operated company that offers an American made, top quality, market relevant product. The RMP team has been a true partner at every level with first class service and support, and a work ethic second to none.",
-      testimonialFooter: "- Scott Dockstader, Sportsman's Warehouse",
-    },
-    {
       title: "Board Meeting",
       artist: "Mitchell Mansanarez",
       image: BoardMeetingJPG,
@@ -129,6 +125,14 @@ export default function ImageCarousel() {
         "Rocky Mountain Publishing has been a great asset to use here at Ashley Furniture HomeStore in Idaho Falls. When the trend of gallery wrapped art started ramping up we worked closely with Rocky Mountain Publishing to have them print us some of their art on canvas. They were willing to take the risk by investing in new equipment to print on the canvas, and it has been phenomenal for our art sales especially the larger 36x72 prints as well as the 29x72's. We highly recommend Rocky Mountain Publishing for their excellent quality and service.",
       testimonialFooter: "- Paul Landon, Ashley HomeStore",
     },
+    {
+      title: "Sunrise Serenity",
+      artist: "Mitchell Mansanarez",
+      image: SunriseSerenityJPG,
+      testimonialBody:
+        "I have had the pleasure of working with Rocky Mountain Publishing for the past 7 years. This is a family owned and operated company that offers an American made, top quality, market relevant product. The RMP team has been a true partner at every level with first class service and support, and a work ethic second to none.",
+      testimonialFooter: "- Scott Dockstader, Sportsman's Warehouse",
+    },
   ])
 
   useEffect(() => {
@@ -142,7 +146,7 @@ export default function ImageCarousel() {
     return () => {
       clearInterval(myInterval)
     }
-  })
+  },[])
   return (
     <div className="image-carousel" css={style}>
       <AnimateOnChange animation="fade">

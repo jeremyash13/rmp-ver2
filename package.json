@@ -26,7 +26,7 @@
     "install-client-dependancies": "cd ./gatsby-site && npm i",
     "build-prod": "cd ./gatsby-site && npm run build",
     "server": "nodemon server.js",
-    "client": "cd ./gatsby-site && gatsby develop"
+    "client": "cd ./gatsby-site && gatsby develop -H 0.0.0.0"
   },
   "author": "",
   "license": "ISC"

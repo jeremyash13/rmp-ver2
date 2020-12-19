@@ -40,12 +40,16 @@ const style = css`
   & p {
     font-weight: 300;
   }
+  & .frame-label {
+    max-width: 110px;
+    line-height: 1.25rem;
+  }
   & .intro-wrapper,
   & .standard-wrapper,
   & .decor-wrapper {
     margin-top: 50px;
   }
-  
+
   & .intro-wrapper {
     padding: 0 5rem;
     text-align: center;
@@ -128,7 +132,7 @@ const StandardFrames = () => {
         standardFrames.map(item => {
           return (
             <div className="standard-frame-wrapper">
-              <h2>{`#${item.title}`}</h2>
+              <h2 className="frame-label">{`#${item.title}`}</h2>
               <div className="">
                 <img src={item.src} />
               </div>
@@ -174,7 +178,7 @@ const DecorFrames = () => {
         decorFrames.map(item => {
           return (
             <div className="decor-frame-wrapper">
-              <h2>{`#${item.title}`}</h2>
+              <h2 className="frame-label">{`#${item.title}`}</h2>
               <div className="">
                 <img src={item.src} />
               </div>

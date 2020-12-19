@@ -20,11 +20,13 @@ export default function Artist(props) {
       position: relative;
       width: 80%;
       margin: 0 auto;
+      margin-bottom: 2rem;
       &:hover {
         cursor: pointer;
       }
       &:hover .artist-hover-element {
-        background-color: rgba(255, 255, 255, 0.35);
+        background-color: var(--bg-dark-blue);
+        opacity: .35;
       }
       &:hover .view-bio-button {
         display: block;
@@ -33,7 +35,8 @@ export default function Artist(props) {
     .view-bio-button {
       display: none;
       position: absolute;
-      background-color: white;
+      color: var(--gold-2);
+      background-color: var(--bg-dark-blue);
       transform: translate(-50%, -50%);
       font-weight: 300;
       min-width: 142px;
@@ -42,13 +45,15 @@ export default function Artist(props) {
       padding: 10px;
       z-index: 11;
       text-align: center;
+      border: solid 1px var(--gold-2);
+      font-family: "Rosarivo", serif;
     }
     .artist-hover-element {
       position: absolute;
       width: 100%;
       height: 100%;
       z-index: 10;
-      transition: background-color 250ms ease-out;
+      transition: background-color 250ms ease-out, opacity 250ms ease-out;
     }
     .artist-footer {
       text-align: center;
@@ -65,7 +70,7 @@ export default function Artist(props) {
         <Link to={`/artists/${props.id}`}>
           <div className="view-bio-button shadow-lg">View Biography</div>
           <div className="artist-hover-element"></div>
-          <img src={props.img} alt={`${props.name}`} className="mb-4"></img>
+          <img src={props.img} alt={`${props.name}`} className=""></img>
         </Link>
       </div>
       <div className="artist-footer">

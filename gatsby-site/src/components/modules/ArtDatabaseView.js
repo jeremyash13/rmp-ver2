@@ -20,7 +20,6 @@ export const ArtDatabaseView = () => {
 
   const mainStyle = css`
     background-color: #eae9e9;
-    color: var(--text-black);
     margin-top: 25px;
     .entry-wrapper {
       position: relative;
@@ -65,6 +64,11 @@ export const ArtDatabaseView = () => {
   `
   const wrapperStyle = css`
     min-height: 100vh;
+    color: var(--gold-text-2);
+
+    .table-header {
+      color: var(--gold-text);
+    }
   `
   const editStyle = css`
     width: 100%;
@@ -257,7 +261,8 @@ export const ArtDatabaseView = () => {
               rowHeight={60}
               rowCount={art.length}
               rowGetter={({ index }) => art[index]}
-              onRowClick={(e) => {
+              headerClassName="table-header"
+              onRowClick={e => {
                 editItem = e.rowData
                 setShowEditView(true)
               }}

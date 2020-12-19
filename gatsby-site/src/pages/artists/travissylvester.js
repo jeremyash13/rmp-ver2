@@ -6,13 +6,12 @@ import TravisSylvester from "../../images/artists/TravisSylvester.jpg"
 
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
-import ArtistBioNav from "../../components/ArtistBioNav"
 
 const style = css`
   padding: 25px;
-
+  margin-top: 75px;
   & p {
-    color: var(--text-black);
+    color: var(--gold-text-2);
     font-weight: 300;
     letter-spacing: 0.075rem;
     line-height: 1.75rem;
@@ -20,9 +19,9 @@ const style = css`
 
   & .img-wrapper {
     float: left;
-    margin-right: 50px;
+    margin-right: 25px;
     width: 400px;
-    height: 450px;
+    max-height: 450px;
   }
   & img {
     box-shadow: 0 20px 20px -13px rgba(0, 0, 0, 0.6);
@@ -38,7 +37,6 @@ const TravisSylvesterPage = () => (
   <Layout>
     <SEO title="Travis Sylvester" />
     <div css={style} className="artist-page-wrapper">
-      <ArtistBioNav artist="Travis Sylvester" />
       <div className="body-wrapper">
         <div className="img-wrapper">
           <img src={TravisSylvester} alt="Travis Sylvester"></img>
