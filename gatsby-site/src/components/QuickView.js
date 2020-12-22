@@ -1,6 +1,6 @@
 import ArtContainer from "./state/ArtContainer"
 import QuickViewClose from "./QuickViewClose"
-import { animations } from "react-animation"
+// import { animations } from "react-animation"
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
@@ -12,7 +12,7 @@ const style = css`
   background-position-x: center;
   color: var(--gold-text);
   position: relative;
-  animation: ${animations.fadeIn};
+  ${'' /* animation: ${animations.fadeIn}; */}
 
   & .art-title {
     line-height: 2.5rem;

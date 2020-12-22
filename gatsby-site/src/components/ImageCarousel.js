@@ -4,7 +4,7 @@ import { jsx, css } from "@emotion/core"
 import SunriseSerenityJPG from "../images/jpg/Sunrise Serenity.jpg"
 import BoardMeetingJPG from "../images/jpg/Board Meeting.jpg"
 import PlaceOfRestJPG from "../images/jpg/Place of Rest.jpg"
-import { AnimateOnChange } from "react-animation"
+// import { AnimateOnChange } from "react-animation"
 
 /** @jsx jsx */
 
@@ -149,17 +149,17 @@ export default function ImageCarousel() {
   },[])
   return (
     <div className="image-carousel" css={style}>
-      <AnimateOnChange animation="fade">
+      {/* <AnimateOnChange animation="fade"> */}
         <div className="slide-title-text text-center">
           {slide[i].title}
           <br />
           <span className="slide-artist">{slide[i].artist}</span>
         </div>
-      </AnimateOnChange>
-      <AnimateOnChange
-        animationIn="custom-slide-in 500ms ease-out forwards"
-        animationOut="custom-slide-out 500ms ease-out forwards"
-      >
+      {/* </AnimateOnChange> */}
+      {/* <AnimateOnChange
+        // animationIn="custom-slide-in 500ms ease-out forwards"
+        // animationOut="custom-slide-out 500ms ease-out forwards"
+      > */}
         <div className="carousel-wrapper">
           <div className="dark-overlay"></div>
           <img
@@ -173,7 +173,7 @@ export default function ImageCarousel() {
             </div>
           </div>
         </div>
-      </AnimateOnChange>
+      {/* </AnimateOnChange> */}
     </div>
   )
 }

@@ -8,7 +8,7 @@ import useSearchArt from "./hooks/useSearchArt"
 import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
 import Loader from "react-loader-spinner"
-import { animations } from "react-animation"
+// import { animations } from "react-animation"
 
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
@@ -60,7 +60,7 @@ export default function ArtView() {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      animation: ${animations.fadeInUp}
+      ${'' /* animation: ${animations.fadeInUp} */}
     }
     .img-hover-element {
       position: absolute;
@@ -151,9 +151,11 @@ export default function ArtView() {
   return (
     <div css={style} className="art-view-wrapper">
       {GlobalState.showingQuickView && <QuickView />}
+
       {art.length === 0 && loading === false && (
         <div className="no-results">NO RESULTS...</div>
       )}
+
       {loading && art.length === 0 && (
         <div className="w-full">
           <div className="mx-auto">
@@ -166,6 +168,7 @@ export default function ArtView() {
           </div>
         </div>
       )}
+
       {art.map((item, idx) => {
         if (idx === art.length - 1) {
           return (
@@ -233,6 +236,7 @@ export default function ArtView() {
           )
         }
       })}
+
       {loading && art.length > 1 && (
         <div className="w-full absolute bottom-0 transform translate-y-50px">
           <div className="mx-auto">
@@ -245,6 +249,7 @@ export default function ArtView() {
           </div>
         </div>
       )}
+
     </div>
   )
 }
