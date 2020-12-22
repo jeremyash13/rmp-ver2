@@ -5,31 +5,39 @@ import { jsx, css } from "@emotion/core"
 
 export default function EditableTextInput(props) {
   const style = css`
-    width: 100%;
-    height: 100%;
-    &::placeholder {
-      color: var(--text-dark);
-      font-family: Roboto;
-      font-weight: 300;
-      font-size: 0.8rem;
+    color: var(--gold-text);
+    font-family: Rosarivo, serif;
+    display: flex;
+    input {
+      width: 100%;
+      height: 100%;
+      color: var(--gold-text-2);
+      background: var(--dark-brown);
+      &::placeholder {
+        color: var(--text-dark);
+        font-family: Roboto;
+        font-weight: 300;
+        font-size: 0.8rem;
+      }
     }
   `
 
   return (
     <>
       {props.children}
-      <input
-        css={style}
-        type="text"
-        className={`${props.className} bg-light-light-gray rounded border-b-2 border-gray-500 outline-none focus:border-blue-200`}
-        value={props.value}
-        placeholder={props.placeholder}
-        onChange={e => {
-          if (!props.isReadOnly) {
-            props.changeHandler(e.target.value)
-          }
-        }}
-      ></input>
+      <div css={style}>
+        <input
+          type="text"
+          className={`${props.className} bg-light-light-gray outline-none`}
+          value={props.value}
+          placeholder={props.placeholder}
+          onChange={e => {
+            if (!props.isReadOnly) {
+              props.changeHandler(e.target.value)
+            }
+          }}
+        ></input>
+      </div>
     </>
   )
 }

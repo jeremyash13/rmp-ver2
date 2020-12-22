@@ -33,7 +33,7 @@ export default function EditView(props) {
     age: new Date(),
   }
   editItem.age = new Date(editItem.age)
-  
+
   const [objId, setObjId] = useState(editItem._id)
   const [title, setTitle] = useState(editItem.title)
   const [artist, setArtist] = useState(editItem.artist)
@@ -43,7 +43,6 @@ export default function EditView(props) {
   const [options, setOptions] = useState(editItem.options)
   const [tags, setTags] = useState(editItem.tags.join(", "))
   const [age, setAge] = useState(editItem.age)
-
 
   const [loading, setLoading] = useState(false)
   const tempOptions = [...options]
@@ -103,10 +102,15 @@ export default function EditView(props) {
     top: 0;
     left: 0;
     font-family: Roboto;
+    z-index: 20;
     .inner-container {
       width: 100%;
       height: 100%;
-      background-color: white;
+      background-color: var(--bg-dark-blue);
+      background-image: var(--bg-soft-gold-texture);
+      background-repeat: repeat-y;
+      background-size: fit;
+      background-position-x: center;
       position: absolute;
       transform: translate(-50%, -50%);
       top: 50%;
@@ -116,6 +120,16 @@ export default function EditView(props) {
       flex-direction: column;
       padding: 30px;
       padding-top: 40px;
+    }
+    .soften-overlay {
+      background-color: var(--bg-dark-blue);
+      position: absolute;
+      opacity: 0.5;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
     }
     .buttons-wrapper {
       display: flex;
@@ -206,13 +220,8 @@ export default function EditView(props) {
       &-sku,
       &-size,
       &-price {
-        color: var(--text-dark);
-        max-width: 30%;
-      }
-
-      &-sku,
-      &-size {
-        margin-right: 10px;
+        max-width: 70%;
+        margin: 0 auto;
       }
     }
     .options-buttons-wrapper {
@@ -301,6 +310,7 @@ export default function EditView(props) {
       }}
     >
       <div className="inner-container">
+        <div className="soften-overlay"></div>
         <div className="type-age-wrapper">
           <div className="type-wrapper">
             <TypeDropDown
@@ -429,7 +439,6 @@ export default function EditView(props) {
         </div>
 
         <div className="tags-wrapper">
-          <span>Tags</span>
           <EditableTextArea
             value={tags}
             changeHandler={val => {

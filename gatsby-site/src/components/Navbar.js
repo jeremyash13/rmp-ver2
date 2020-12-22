@@ -11,6 +11,7 @@ const style = css`
   background-color: var(--bg-dark-blue);
   .logo-wrapper {
     margin: 0 0 0 35px;
+    padding-bottom: 10px;
   }
   a {
     color: var(--gold-1);
@@ -23,7 +24,8 @@ const style = css`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 85px;
+    padding: 0 1rem;
+    padding-top: 15px;
     & li {
       margin: 0 5px;
       text-align: center;
@@ -35,6 +37,9 @@ const style = css`
   }
   @media (min-width: 700px) {
     display: block;
+  }
+  @media (min-width: 850px) {
+    padding: 0 2rem;
   }
 `
 export const Navbar = props => {

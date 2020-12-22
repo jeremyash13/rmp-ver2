@@ -4,11 +4,16 @@ import React from "react"
 import { jsx, css } from "@emotion/core"
 
 export default function AddNewEntryButton(props) {
-  const style = {
+  const style = css`
+    color: var(--gold-text-2);
+    margin-bottom: 2rem;
+    &:hover {
+      color: var(--gold-text)
+    }
+  `
 
-  }
   return (
-    <div onClick={props.clickHandler} style={style} className="mt-2 flex text-sm font-medium w-max-content text-gray-500 hover:text-blackish cursor-pointer transition-colors duration-500 ease-out">
+    <div onClick={props.clickHandler} css={style} className="mt-2 flex text-sm font-medium w-max-content cursor-pointer transition-colors duration-500 ease-out">
       <div className="w-2 mr-2 my-auto">
         <svg viewBox="0 0 19 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path

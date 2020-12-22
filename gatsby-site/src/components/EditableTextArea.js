@@ -7,8 +7,11 @@ export default function EditableTextArea(props) {
   const style = css`
     width: 100%;
     margin: 0 auto;
+    color: var(--gold-text);
+    font-family: Rosarivo, serif;
     textarea {
-      color: var(--text-dark);
+      color: var(--gold-text-2);
+      background: var(--dark-brown);
       font-weight: 300;
       width: 100%;
       height: 100%;
@@ -18,8 +21,9 @@ export default function EditableTextArea(props) {
   `
   return (
     <div css={style}>
+    Tags
       <textarea
-      className="bg-light-light-gray rounded border-b-2 border-gray-500 outline-none focus:border-blue-200"
+        className="outline-none"
         value={props.value}
         onChange={e => {
           props.changeHandler(e.target.value)

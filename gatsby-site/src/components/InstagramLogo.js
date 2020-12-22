@@ -21,9 +21,9 @@ export default function InstagramLogo() {
             y2="32"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#FFE5BC" />
-            <stop offset="0.5" stopColor="#F4B758" />
-            <stop offset="1" stopColor="#895B14" />
+            <stop stopColor="#FFD18B" />
+            <stop offset="0.5" stopColor="#AC8A55" />
+            <stop offset="1" stopColor="#4D320A" />
           </linearGradient>
         </defs>
       </svg>

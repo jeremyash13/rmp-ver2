@@ -26,7 +26,7 @@ export default function SaveAndCloseButton(props) {
     }
   `
   return (
-    <button css={style} onClick={props.clickHandler} className="flex items-center rounded bg-light-light-gray border-b-2 border-gray-500">
+    <button css={style} onClick={props.clickHandler} className="flex items-center bg-light-light-gray">
       <svg viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 9.5L11.5 20L30 1.5" stroke="white" strokeWidth="3" />
       </svg>

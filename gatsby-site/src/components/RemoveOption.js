@@ -16,7 +16,7 @@ export default function RemoveOption(props) {
   return (
     <div
       css={style}
-      className="remove-option-wrapper cursor-pointer bg-light-light-gray rounded border-b-2 border-gray-500 hover:bg-error-red transition-colors duration-200 ease-in-out"
+      className="remove-option-wrapper cursor-pointer bg-light-light-gray hover:bg-error-red transition-colors duration-200 ease-in-out"
       onClick={props.clickHandler}
     >
       <svg

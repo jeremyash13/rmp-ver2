@@ -3,6 +3,7 @@ import ArtContainer from "../state/ArtContainer"
 import useSearchArt from "../hooks/useSearchArt"
 import { Table, Column, AutoSizer } from "react-virtualized"
 import "react-virtualized/styles.css"
+
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
 
@@ -10,13 +11,15 @@ import EditHover from "../EditHover"
 import EditView from "./EditView"
 import Toast from "../Toast"
 import ClipLoader from "react-spinners/ClipLoader"
+import AddNewEntryButton from "../AddNewEntryButton"
 
 let editItem = undefined
 
-export const ArtDatabaseView = () => {
+export const ArtDatabaseView = ({ newEntryClickHandler }) => {
   const GlobalState = ArtContainer.useContainer()
   const [showEditView, setShowEditView] = useState(false)
   const { loading, art, error, hasMore } = useSearchArt(1000)
+  const [showNewEntryView, setShowNewEntryView] = useState(false)
 
   const mainStyle = css`
     background-color: #eae9e9;
@@ -68,6 +71,8 @@ export const ArtDatabaseView = () => {
 
     .table-header {
       color: var(--gold-text);
+      font-family: "Rosarivo", serif;
+      letter-spacing: 0.08rem;
     }
   `
   const editStyle = css`
@@ -245,8 +250,9 @@ export const ArtDatabaseView = () => {
   `
 
   return (
-    <div css={wrapperStyle} className="art-management-wrapper pt-10">
+    <div css={wrapperStyle} className="art-management-wrapper">
       {GlobalState.showToast && <Toast message="Update Successful" />}
+      <AddNewEntryButton clickHandler={() => setShowNewEntryView(true)} />
       {loading ? (
         <div className="w-max-content mx-auto">
           <ClipLoader loading={true} />
@@ -283,7 +289,16 @@ export const ArtDatabaseView = () => {
           editItem={editItem}
           closeHandler={() => setShowEditView(false)}
           refreshFetchedArtHandler={() => {
-            GlobalState.setRefreshArt(prevState => prevState + 1)
+            GlobalState.setRefreshArt(prevState => prevState++)
+          }}
+        />
+      )}
+      {showNewEntryView && (
+        <EditView
+          editItem={null}
+          closeHandler={() => setShowNewEntryView(false)}
+          refreshFetchedArtHandler={() => {
+            GlobalState.setRefreshArt(prevState => prevState++)
           }}
         />
       )}

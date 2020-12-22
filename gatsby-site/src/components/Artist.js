@@ -18,15 +18,15 @@ export default function Artist(props) {
     }
     .artist-image-wrapper {
       position: relative;
-      width: 80%;
+      ${'' /* width: 80%; */}
       margin: 0 auto;
-      margin-bottom: 2rem;
+      ${'' /* margin-bottom: 2rem; */}
       &:hover {
         cursor: pointer;
       }
       &:hover .artist-hover-element {
         background-color: var(--bg-dark-blue);
-        opacity: .35;
+        opacity: 0.35;
       }
       &:hover .view-bio-button {
         display: block;
@@ -55,6 +55,16 @@ export default function Artist(props) {
       z-index: 10;
       transition: background-color 250ms ease-out, opacity 250ms ease-out;
     }
+    .artist-image-border {
+      margin-bottom: 2rem;
+      padding: 3px;
+      background: linear-gradient(
+        165deg,
+        rgba(255, 235, 235, 1) 0%,
+        rgba(255, 190, 92, 1) 30%,
+        rgba(62, 42, 11, 1) 100%
+      );
+    }
     .artist-footer {
       text-align: center;
       margin: 0 auto;
@@ -66,12 +76,14 @@ export default function Artist(props) {
   `
   return (
     <div css={style} className="artist-wrapper">
-      <div className="artist-image-wrapper">
-        <Link to={`/artists/${props.id}`}>
-          <div className="view-bio-button shadow-lg">View Biography</div>
-          <div className="artist-hover-element"></div>
-          <img src={props.img} alt={`${props.name}`} className=""></img>
-        </Link>
+      <div className="artist-image-border">
+        <div className="artist-image-wrapper">
+          <Link to={`/artists/${props.id}`}>
+            <div className="view-bio-button shadow-lg">View Biography</div>
+            <div className="artist-hover-element"></div>
+            <img src={props.img} alt={`${props.name}`} className=""></img>
+          </Link>
+        </div>
       </div>
       <div className="artist-footer">
         <div className="artist-name">{props.name}</div>

@@ -52,7 +52,7 @@ export default function EditableImage(props) {
   return (
     <div className="editable-image-wrapper">
       {!props.loading && (
-        <label id="change-photo-input-wrapper" className="rounded border-b-2 bg-light-light-gray border-gray-500">
+        <label id="change-photo-input-wrapper" className="bg-light-light-gray">
           Change Photo
           <input
             type="file"

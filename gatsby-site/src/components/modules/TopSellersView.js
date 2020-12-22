@@ -7,8 +7,12 @@ import axios from "axios"
 import ArtContainer from "../state/ArtContainer"
 import TopSellersSearch from "../TopSellersSearch"
 import { AutoSizer, Table, Column } from "react-virtualized"
+import AddNewEntryButton from "../AddNewEntryButton"
 
-export default function TopSellersView(props) {
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core"
+
+export default function TopSellersView({ props, newEntryClickHandler }) {
   const [topSellingArt, setTopSellingArt] = useState([])
   const [allArt, setAllArt] = useState([])
   const [allArtLoading, setAllArtLoading] = useState(true)
@@ -93,8 +97,18 @@ export default function TopSellersView(props) {
     fetchTopSellers()
   }, [])
 
+  const wrapperStyle = css`
+    color: var(--gold-text-2);
+    min-height: 100vh;
+
+    .table-header {
+      color: var(--gold-text);
+    }
+  `
+
   return (
-    <div className="min-vh-100 pt-12">
+    <div css={wrapperStyle} className="">
+      <AddNewEntryButton clickHandler={newEntryClickHandler} />
       {topSellingArtLoading ? (
         <div className="w-max-content mx-auto">
           <ClipLoader loading={true} />
@@ -105,6 +119,7 @@ export default function TopSellersView(props) {
             <Table
               width={width}
               height={height}
+              headerClassName="table-header"
               headerHeight={40}
               rowHeight={60}
               rowCount={topSellingArt.length}

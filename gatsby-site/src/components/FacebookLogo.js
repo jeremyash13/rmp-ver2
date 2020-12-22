@@ -23,9 +23,9 @@ export default function FacebookLogo() {
             y2="32"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#FFE5BC" />
-            <stop offset="0.46875" stopColor="#F4B758" />
-            <stop offset="1" stopColor="#895B14" />
+            <stop stopColor="#FFD18B" />
+            <stop offset="0.46875" stopColor="#AC8A55" />
+            <stop offset="1" stopColor="#4D320A" />
           </linearGradient>
           <clipPath id="clip0">
             <rect width="32" height="32" fill="white" />

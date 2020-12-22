@@ -15,11 +15,12 @@ import { jsx, css } from "@emotion/core"
 import { Footer } from "./Footer"
 import MobileNavMenu from "./MobileNavMenu"
 import Logo from "./Logo"
+import GoldLine from "../images/nav-bkg-line-gold-2.png"
 
 import { isIE } from "react-device-detect"
 
 import "bootstrap/dist/css/bootstrap.min.css"
-import "shards-ui/dist/css/shards.min.css"
+import "../css/forked-shards.css"
 
 /** @jsx jsx */
 
@@ -29,8 +30,8 @@ const Layout = ({ children }) => {
   const mainStyle = css`
     background-color: var(--bg-dark-blue);
     font-family: Rosarivo, serif;
-    margin-top: 15px;
     position: relative;
+
     @media (min-width: 700px) {
       margin-top: 0;
     }
@@ -68,8 +69,19 @@ const Layout = ({ children }) => {
     }
   `
   const mobileLogoStyle = css`
-    max-width: 125px;
-    margin: 15px auto 0 auto;
+    position: relative;
+    .empty-nav-wrapper {
+    }
+    .logo-wrapper {
+      max-width: 125px;
+      margin: 15px auto 15px auto;
+    }
+    .gold-line {
+      position: absolute;
+      bottom: -2px;
+      transform: translateX(-50%), translateY(-50%);
+      z-index: 1;
+    }
     @media (min-width: 700px) {
       display: none;
     }
@@ -145,8 +157,11 @@ const Layout = ({ children }) => {
           ≡
         </button>
       )}
-      <div css={mobileLogoStyle}>
-        <Logo />
+      <div css={mobileLogoStyle} className="empty-nav-wrapper">
+        <div className="logo-wrapper">
+          <Logo />
+        </div>
+        <img src={GoldLine} className="gold-line"></img>
       </div>
       {mobileMenu && <MobileNavMenu />}
       <Navbar />

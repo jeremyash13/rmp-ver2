@@ -11,6 +11,9 @@ import LinkedInLogo from "./LinkedInLogo"
 
 const style = css`
   color: var(--gold-text-2);
+  z-index: 10;
+  position: relative;
+  background-color: var(--bg-dark-blue);
   & a {
     color: var(--gold-text-2);
   }

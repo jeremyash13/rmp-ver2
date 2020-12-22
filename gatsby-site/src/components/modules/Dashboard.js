@@ -6,8 +6,6 @@ import ArtSearch from "../ArtSearch"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import AddNewEntryButton from "../AddNewEntryButton"
-import EditView from "./EditView"
 import ArtContainer from "../state/ArtContainer"
 import TopSellersView from "./TopSellersView"
 import EditFramesView from "./EditFramesView"
@@ -16,16 +14,16 @@ import { Nav, NavItem, NavLink, Fade } from "shards-react"
 const Dashboard = () => {
   const GlobalState = ArtContainer.useContainer()
 
-  const [showingNewEntryView, setShowingNewEntryView] = useState(false)
-  const [showingTopSellersView, setShowingTopSellersView] = useState(false)
-  const [showingFramesView, setShowingFramesView] = useState(false)
-
-  const [showingArtDatabaseView, setShowingArtDatabaseView] = useState(true)
+  const [activeView, setActiveView] = useState("database") // database, topsellers, frames
 
   const style = css`
     max-width: 1268px;
     margin: 0 auto;
     padding-top: 50px;
+    background-image: var(--bg-soft-gold-texture);
+    background-repeat: repeat-y;
+    background-size: fit;
+    background-position-x: center;
     h1 {
       font-weight: 400;
       font-size: 2rem;
@@ -39,31 +37,19 @@ const Dashboard = () => {
       flex-direction: row;
       margin: 0 auto;
     }
-    .active {
-      color: red;
-    }
-    .nav-item a {
-      background-color: red;
+    .special-wrapper {
+      transform: translateY(95%);
+      width: 450px;
     }
   `
-
-  const switchView = tab => {
-    switch (tab) {
-      case 1:
-        setShowingArtDatabaseView(true)
-        setShowingTopSellersView(false)
-        setShowingFramesView(false)
-        break
-      case 2:
-        setShowingArtDatabaseView(false)
-        setShowingTopSellersView(true)
-        setShowingFramesView(false)
-        break
-      case 3:
-        setShowingArtDatabaseView(false)
-        setShowingTopSellersView(false)
-        setShowingFramesView(true)
-        break
+  let MainView = () => {
+    switch (activeView) {
+      case "database":
+        return <ArtDatabaseView />
+      case "topsellers":
+        return <TopSellersView />
+      case "frames":
+        return <EditFramesView />
     }
   }
 
@@ -72,15 +58,17 @@ const Dashboard = () => {
       <SEO title="Admin Dashboard" />
       <div css={style} className="page-wrapper">
         <div className="page-header">
-          <ArtSearch className="ml-auto max-w-450" />
+          <div className="special-wrapper ml-auto">
+            <ArtSearch className="ml-auto max-w-450" />
+          </div>
         </div>
         <Nav tabs>
           <NavItem>
             <NavLink
-              active={showingArtDatabaseView}
-              className="cursor-pointer nav-item"
+              active={activeView === "database" ? true : false}
+              className="cursor-pointer"
               onClick={() => {
-                switchView(1)
+                setActiveView("database")
               }}
             >
               Art Database
@@ -88,10 +76,10 @@ const Dashboard = () => {
           </NavItem>
           <NavItem>
             <NavLink
-              active={showingTopSellersView}
+              active={activeView === "topsellers" ? true : false}
               className="cursor-pointer"
               onClick={() => {
-                switchView(2)
+                setActiveView("topsellers")
               }}
             >
               Top Sellers
@@ -99,43 +87,18 @@ const Dashboard = () => {
           </NavItem>
           <NavItem>
             <NavLink
-              active={showingFramesView}
+              active={activeView === "frames" ? true : false}
               className="cursor-pointer"
               onClick={() => {
-                switchView(3)
+                setActiveView("frames")
               }}
             >
               Frames
             </NavLink>
           </NavItem>
         </Nav>
-        {showingArtDatabaseView && (
-          <Fade in={true}>
-            <AddNewEntryButton
-              clickHandler={() => setShowingNewEntryView(true)}
-            />
-          </Fade>
-        )}
-        {showingArtDatabaseView && <ArtDatabaseView />}
-        {showingTopSellersView && (
-          <TopSellersView
-            closeHandler={() => setShowingTopSellersView(false)}
-          />
-        )}
-        {showingFramesView && (
-          <EditFramesView closeHandler={() => setShowingFramesView(false)} />
-        )}
+        {<MainView />}
       </div>
-
-      {showingNewEntryView && (
-        <EditView
-          editItem={null}
-          closeHandler={() => setShowingNewEntryView(false)}
-          refreshFetchedArtHandler={() => {
-            GlobalState.setRefreshArt(prevState => prevState + 1)
-          }}
-        />
-      )}
     </Layout>
   )
 }

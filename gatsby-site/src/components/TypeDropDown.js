@@ -8,9 +8,6 @@ export default function TypeDropDown(props) {
     & div {
       background-color: #dddddd;  
     }
-    & div[id="select"] {
-      border-bottom: solid 2px #A0AEC0;
-    }
   `
   return (
     <Rfdd

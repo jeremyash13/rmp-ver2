@@ -18,7 +18,7 @@ export default function AddOption(props) {
   return (
     <div
       css={style}
-      className="add-option-wrapper cursor-pointer bg-light-light-gray rounded border-b-2 border-gray-500 hover:bg-mint-green transition-colors duration-200 ease-in-out"
+      className="add-option-wrapper cursor-pointer bg-light-light-gray hover:bg-mint-green transition-colors duration-200 ease-in-out"
       onClick={props.clickHandler}
     >
       <svg viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">

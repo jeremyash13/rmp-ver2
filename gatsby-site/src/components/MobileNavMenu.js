@@ -11,7 +11,11 @@ export default function MobileNavMenu(props) {
     width: 100%;
     height: 100%;
     top: 0;
-    font-family: Roboto;
+    font-family: Rosarivo, serif;
+    background-image: var(--bg-soft-gold-texture);
+    background-repeat: repeat-y;
+    background-size: fit;
+    background-position-x: center;
     .menu__ul {
       padding: 100px 0;
       display: flex;
@@ -23,6 +27,7 @@ export default function MobileNavMenu(props) {
       margin: 0 auto;
     }
     a {
+      font-size: 1.35rem;
       padding: 25px;
       text-decoration: none;
       color: var(--gold-text-2);
@@ -35,27 +40,27 @@ export default function MobileNavMenu(props) {
     }
   `
   return (
-      <nav css={style} className={props.className}>
-        <ul className="menu__ul">
-          <li className="">
-            <Link to="/">HOME</Link>
-          </li>
-          <li className="">
-            <Link to="/gallery/">GALLERY</Link>
-          </li>
-          <li className="">
-            <Link to="/artists/">EXCLUSIVE ARTISTS</Link>
-          </li>
-          <li className="">
-            <Link to="/frames/">FRAMING</Link>
-          </li>
-          <li className="">
-            <Link to="/contact/">CONTACT/SHIPPING</Link>
-          </li>
-          <li className="">
-            <Link to="/about/">ABOUT US</Link>
-          </li>
-        </ul>
-      </nav>
+    <nav css={style} className={props.className}>
+      <ul className="menu__ul">
+        <li className="">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="">
+          <Link to="/gallery/">Gallery</Link>
+        </li>
+        <li className="">
+          <Link to="/artists/">Exclusive Artists</Link>
+        </li>
+        <li className="">
+          <Link to="/frames/">Framing</Link>
+        </li>
+        <li className="">
+          <Link to="/contact/">Contact/Shipping</Link>
+        </li>
+        <li className="">
+          <Link to="/about/">About Us</Link>
+        </li>
+      </ul>
+    </nav>
   )
 }

@@ -23,7 +23,8 @@ const style = css`
   max-width: 1268px;
   margin: 0 auto;
   margin-top: 2px;
-  padding-top: 50px;
+  padding-bottom: 8rem;
+  padding-top: 6rem;
   position: relative;
   z-index: 20;
   background-image: var(--bg-soft-gold-texture);
