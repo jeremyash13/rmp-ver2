@@ -19,6 +19,7 @@
   --dark-brown: #2f2921;
   --bg-gold-texture: url("../images/bgtexture-gold.jpg");
   --bg-soft-gold-texture: url("../images/bgtexture-gold-soft.jpg");
+  /* --gold-line: url("../images/nav-bkg-line-gold-2.png"); */
 }
 @import "../css/index.css";
 @import url("https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&display=swap");

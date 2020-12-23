@@ -16,7 +16,7 @@ const style = css`
   a {
     color: var(--gold-1);
     text-decoration: none;
-    transition: color .15s ease-in-out;
+    transition: color 0.15s ease-in-out;
   }
   & ul {
     height: 100px;

@@ -93,11 +93,10 @@ export default function ArtView() {
       transition: opacity 0.25s ease-in-out;
     }
     .img-wrapper {
-      max-height: 300px;
       margin-bottom: 25px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: auto;
       position: relative;
+      max-width: 100%;
       &:hover {
         & .img {
           filter: drop-shadow(3px 5px 8px rgba(0, 0, 0, 0.9)) brightness(1.15)
@@ -108,7 +107,7 @@ export default function ArtView() {
     .img {
       transition: filter 250ms ease-out;
       filter: drop-shadow(3px 5px 8px rgba(0, 0, 0, 0.9));
-      max-height: 300px;
+      max-height: 230px;
     }
     .art-view__img-details {
       display: flex;
@@ -134,16 +133,14 @@ export default function ArtView() {
     }
 
     @media (min-width: 750px) {
-      .img-wrapper {
-        max-height: 230px;
-      }
+
     }
     @media (min-width: 600px) {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       .img-wrapper {
         display: flex;
         justify-content: center;
-        margin: auto 0;
+        width: max-content;
       }
     }
   `
