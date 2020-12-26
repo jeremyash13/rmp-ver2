@@ -89,7 +89,7 @@ export default function ArtView() {
       transform: translate(-50%, -50%);
       top: 50%;
       left: 50%;
-      min-width: 107px;
+      min-width: 125px;
       text-align: center;
       transition: opacity 0.25s ease-in-out;
     }
