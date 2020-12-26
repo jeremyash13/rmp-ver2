@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { jsx, css } from "@emotion/core"
+import { SwitchTransition, CSSTransition } from "react-transition-group"
+import animations from "../css/animations.css"
 
 import SunriseSerenityJPG from "../images/jpg/Sunrise Serenity.jpg"
 import BoardMeetingJPG from "../images/jpg/Board Meeting.jpg"
 import PlaceOfRestJPG from "../images/jpg/Place of Rest.jpg"
-// import { AnimateOnChange } from "react-animation"
 
 /** @jsx jsx */
 
@@ -105,75 +106,91 @@ const style = css`
     }
   }
 `
+const slideData = [
+  {
+    title: "Board Meeting",
+    artist: "Mitchell Mansanarez",
+    image: BoardMeetingJPG,
+    testimonialBody:
+      "We couldn't imagine C-A-L Ranch Stores without Rocky Mountain Publishing's artwork. A major part of the unique C-A-L Ranch customer experience is having those paintings on the wall. Nothing speaks more to our customer than farm and ranch tradition, and local scenery and landscape, both of which Rocky Mountain Publishing provides in their artwork. Rocky Mountain knows our customers, so they are experts in putting together store assortments that are",
+    testimonialFooter: "- C-A-L Ranch Stores",
+  },
+  {
+    title: "Place of Rest",
+    artist: "Dallen Lambson",
+    image: PlaceOfRestJPG,
+    testimonialBody:
+      "Rocky Mountain Publishing has been a great asset to use here at Ashley Furniture HomeStore in Idaho Falls. When the trend of gallery wrapped art started ramping up we worked closely with Rocky Mountain Publishing to have them print us some of their art on canvas. They were willing to take the risk by investing in new equipment to print on the canvas, and it has been phenomenal for our art sales especially the larger 36x72 prints as well as the 29x72's. We highly recommend Rocky Mountain Publishing for their excellent quality and service.",
+    testimonialFooter: "- Paul Landon, Ashley HomeStore",
+  },
+  {
+    title: "Sunrise Serenity",
+    artist: "Mitchell Mansanarez",
+    image: SunriseSerenityJPG,
+    testimonialBody:
+      "I have had the pleasure of working with Rocky Mountain Publishing for the past 7 years. This is a family owned and operated company that offers an American made, top quality, market relevant product. The RMP team has been a true partner at every level with first class service and support, and a work ethic second to none.",
+    testimonialFooter: "- Scott Dockstader, Sportsman's Warehouse",
+  },
+]
+
+let slideIndex = 0
 
 export default function ImageCarousel() {
-  const [i, setI] = useState(0)
-  const [slide] = useState([
-    {
-      title: "Board Meeting",
-      artist: "Mitchell Mansanarez",
-      image: BoardMeetingJPG,
-      testimonialBody:
-        "We couldn't imagine C-A-L Ranch Stores without Rocky Mountain Publishing's artwork. A major part of the unique C-A-L Ranch customer experience is having those paintings on the wall. Nothing speaks more to our customer than farm and ranch tradition, and local scenery and landscape, both of which Rocky Mountain Publishing provides in their artwork. Rocky Mountain knows our customers, so they are experts in putting together store assortments that are",
-      testimonialFooter: "- C-A-L Ranch Stores",
-    },
-    {
-      title: "Place of Rest",
-      artist: "Dallen Lambson",
-      image: PlaceOfRestJPG,
-      testimonialBody:
-        "Rocky Mountain Publishing has been a great asset to use here at Ashley Furniture HomeStore in Idaho Falls. When the trend of gallery wrapped art started ramping up we worked closely with Rocky Mountain Publishing to have them print us some of their art on canvas. They were willing to take the risk by investing in new equipment to print on the canvas, and it has been phenomenal for our art sales especially the larger 36x72 prints as well as the 29x72's. We highly recommend Rocky Mountain Publishing for their excellent quality and service.",
-      testimonialFooter: "- Paul Landon, Ashley HomeStore",
-    },
-    {
-      title: "Sunrise Serenity",
-      artist: "Mitchell Mansanarez",
-      image: SunriseSerenityJPG,
-      testimonialBody:
-        "I have had the pleasure of working with Rocky Mountain Publishing for the past 7 years. This is a family owned and operated company that offers an American made, top quality, market relevant product. The RMP team has been a true partner at every level with first class service and support, and a work ethic second to none.",
-      testimonialFooter: "- Scott Dockstader, Sportsman's Warehouse",
-    },
-  ])
+  const [currentSlide, setCurrentSlide] = useState(slideData[slideIndex])
 
   useEffect(() => {
     const myInterval = setInterval(() => {
-      if (i === 2) {
-        setI(0)
+      if (slideIndex === 2) {
+        slideIndex = 0
+        setCurrentSlide(slideData[slideIndex])
       } else {
-        setI(i + 1)
+        slideIndex++
+        setCurrentSlide(slideData[slideIndex])
       }
     }, 15000) // 15 seconds
     return () => {
       clearInterval(myInterval)
     }
-  },[])
+  }, [])
+
   return (
     <div className="image-carousel" css={style}>
-      {/* <AnimateOnChange animation="fade"> */}
-        <div className="slide-title-text text-center">
-          {slide[i].title}
-          <br />
-          <span className="slide-artist">{slide[i].artist}</span>
-        </div>
-      {/* </AnimateOnChange> */}
-      {/* <AnimateOnChange
-        // animationIn="custom-slide-in 500ms ease-out forwards"
-        // animationOut="custom-slide-out 500ms ease-out forwards"
-      > */}
-        <div className="carousel-wrapper">
-          <div className="dark-overlay"></div>
-          <img
-            src={slide[i].image}
-            alt={`${slide[i].title} by ${slide[i].artist}`}
-          ></img>
-          <div className="testimonial-wrapper">
-            <div className="testimonial-body">{slide[i].testimonialBody}</div>
-            <div className="testimonial-footer">
-              {slide[i].testimonialFooter}
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={currentSlide.title}
+          timeout={700}
+          classNames="carousel-info"
+        >
+          <div className="slide-title-text text-center">
+            {currentSlide.title}
+            <br />
+            <span className="slide-artist">{currentSlide.artist}</span>
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={currentSlide.title}
+          timeout={500}
+          classNames="carousel"
+        >
+          <div className={"carousel-wrapper"}>
+            <div className="dark-overlay"></div>
+            <img
+              src={currentSlide.image}
+              alt={`${currentSlide.title} by ${currentSlide.artist}`}
+            ></img>
+            <div className="testimonial-wrapper">
+              <div className="testimonial-body">
+                {currentSlide.testimonialBody}
+              </div>
+              <div className="testimonial-footer">
+                {currentSlide.testimonialFooter}
+              </div>
             </div>
           </div>
-        </div>
-      {/* </AnimateOnChange> */}
+        </CSSTransition>
+      </SwitchTransition>
     </div>
   )
 }

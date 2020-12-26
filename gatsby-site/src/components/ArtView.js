@@ -8,6 +8,7 @@ import useSearchArt from "./hooks/useSearchArt"
 import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
 import Loader from "react-loader-spinner"
+import { CSSTransition } from "react-transition-group"
 // import { animations } from "react-animation"
 
 export default function ArtView() {
@@ -147,7 +148,7 @@ export default function ArtView() {
 
   return (
     <div css={style} className="art-view-wrapper">
-      {GlobalState.showingQuickView && <QuickView />}
+      {GlobalState.showingQuickView && <QuickView show={GlobalState.showingQuickView}/>}
 
       {art.length === 0 && loading === false && (
         <div className="no-results">NO RESULTS...</div>

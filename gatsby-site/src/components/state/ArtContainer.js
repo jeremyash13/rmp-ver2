@@ -10,18 +10,33 @@ const useArtGlobal = () => {
   const [pageNumber, setPageNumber] = useState(0)
   const [loading, setLoading] = useState(true)
 
-  const [quickViewItem, setQuickViewItem] = useState({})
-
-  const [fetchedArt, setFetchedArt] = useState([{
-    _id: "",
-    type: "",
+  const [quickViewItem, setQuickViewItem] = useState({
+    src: "",
     title: "",
     artist: "",
-    src: "",
-    options: [{code: '', size: '', price: ''}],
-    tags: [''],
-    age: ""
-  }])
+    type: "",
+    // age:
+    options: [
+      {
+        code: "",
+        size: "",
+        price: "",
+      },
+    ],
+  })
+
+  const [fetchedArt, setFetchedArt] = useState([
+    {
+      _id: "",
+      type: "",
+      title: "",
+      artist: "",
+      src: "",
+      options: [{ code: "", size: "", price: "" }],
+      tags: [""],
+      age: "",
+    },
+  ])
   const [refreshArt, setRefreshArt] = useState(0)
   const [showingQuickView, setShowingQuickView] = useState(false)
   const [showToast, setShowToast] = useState(false)
@@ -36,17 +51,23 @@ const useArtGlobal = () => {
   // const [addTopSellerUrl] = useState("http://localhost:3000/addtopseller")
   // const [getFramesUrl] = useState("http://localhost:3000/frames")
   // const [deleteFramesUrl] = useState("http://localhost:3000/deleteframe")
-  
+
   const [deleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
   const [galleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
   const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
   const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
   const [topSellerUrl] = useState("https://rmp-server.herokuapp.com/topsellers")
   const [allArtUrl] = useState("https://rmp-server.herokuapp.com/allart")
-  const [removeTopSellerUrl] = useState("https://rmp-server.herokuapp.com/removetopseller")
-  const [addTopSellerUrl] = useState("https://rmp-server.herokuapp.com/addtopseller")
+  const [removeTopSellerUrl] = useState(
+    "https://rmp-server.herokuapp.com/removetopseller"
+  )
+  const [addTopSellerUrl] = useState(
+    "https://rmp-server.herokuapp.com/addtopseller"
+  )
   const [getFramesUrl] = useState("https://rmp-server.herokuapp.com/frames")
-  const [deleteFramesUrl] = useState("https://rmp-server.herokuapp.com/deleteframe")
+  const [deleteFramesUrl] = useState(
+    "https://rmp-server.herokuapp.com/deleteframe"
+  )
 
   const handleType = value => {
     //controls state for "type"

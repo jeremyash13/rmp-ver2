@@ -1,0 +1,65 @@
+/*            */
+/* QUICK VIEW */
+/*            */
+.quick-view-enter {
+    opacity: 0 !important;
+    transform: translate(-50%, -45%) !important;
+}
+.quick-view-enter-active {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) !important;
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+.quick-view-exit {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) !important;
+}
+.quick-view-exit-active {
+    opacity: 0 !important;
+    transform: translate(-50%, -45%) !important;
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+
+
+/*               */
+/* CAROUSEL INFO */
+/*               */
+.carousel-info-enter {
+    opacity: 0;
+}
+.carousel-info-enter-active {
+    opacity: 1;
+}
+.carousel-info-exit {
+    opacity: 1;
+}
+.carousel-info-exit-active {
+    opacity: 0;
+}
+.carousel-info-enter-active,
+.carousel-info-exit-active {
+    transition: opacity 700ms ease-in-out;
+}
+
+
+
+/*            */
+/* CAROUSEL   */
+/*            */
+.carousel-enter {
+  transform: translateX(100%);
+}
+.carousel-enter-active {
+  transform: translateX(0);
+}
+.carousel-exit {
+  transform: translateX(0);
+}
+.carousel-exit-active {
+  transform: translateX(-100%);
+}
+.carousel-enter-active,
+.carousel-exit-active {
+  transition: transform 500ms ease-in-out;
+}
