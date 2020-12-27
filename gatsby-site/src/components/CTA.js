@@ -9,8 +9,9 @@ export default function CTA({ children }) {
     background-color: transparent;
     padding-top: 25px;
     padding-bottom: 1rem;
+    display: flex;
   `
-
+  
   const outerStyle = css`
     display: flex;
     position: relative;
@@ -19,6 +20,7 @@ export default function CTA({ children }) {
     width: 200px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
     padding: 2px;
     box-shadow: 0 3px 30px rgba(0, 0, 0, 0.3);
     transition: box-shadow 1s ease-in-out;
