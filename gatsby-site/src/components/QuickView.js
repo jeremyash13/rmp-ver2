@@ -33,6 +33,18 @@ const style = css`
     left: 0;
     z-index: -1;
   }
+  & .quick-view-image-wrapper {
+    margin-right: 1rem;
+  }
+  .quick-view-close-wrapper {
+    top: 15px;
+    right: 15px;
+  }
+  @media (min-width: 768px) {
+    & .quick-view-img-wrapper {
+      margin-bottom: 0;
+    }
+  }
 `
 
 export default function QuickView() {
@@ -65,19 +77,19 @@ export default function QuickView() {
           className="quick-view-inner w-full h-full bg-dark-blue top-1/2 left-1/2 flex flex-col justify-between pt-8 pb-8 px-8 md:w-11/12 md:h-11/12 xl:pt-8"
         >
           <div className="soften-overlay"></div>
-          <div className="quick-view-details mb-6 mx-auto md:max-h-xs md:flex md:my-auto xl:my-auto xl:max-w-screen-xl xxl:w-full">
+          <div className="quick-view-details flex flex-col mb-6 mx-auto my-auto md:flex-row md:max-h-xs md:flex xl:max-w-screen-xl xxl:w-full">
             <QuickViewClose
-              className="quick-view-close-wrapper w-6 absolute right-5 top-5 transform -translate-x-1/2 translate-y-1/2 cursor-pointer"
+              className="quick-view-close-wrapper w-8 absolute right-5 top-5 transform -translate-x-1/2 translate-y-1/2 cursor-pointer"
               clickHandler={() => {
                 setInProp(false)
                 GlobalState.setShowingQuickView(false)
               }}
             />
-            <div className="quick-view-img-wrapper mx-auto mb-8 h-auto max-w-xs md:mr-8 md:max-w-md md:mt-auto xl:max-w-lg xl:mr-12">
+            <div className="quick-view-img-wrapper h-auto mx-auto max-w-xs mb-8 md:pr-8 md:max-w-md md:mt-auto xl:max-w-lg xl:mr-12">
               <img
                 src={item.src}
                 alt={`${item.title}`}
-                className="quick-view-img mx-auto max-h-xs"
+                className="quick-view-img max-h-xs"
                 style={{ filter: "drop-shadow(3px 5px 8px rgba(0,0,0,.9))" }}
               ></img>
             </div>

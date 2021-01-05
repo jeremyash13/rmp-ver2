@@ -2,64 +2,81 @@
 /* QUICK VIEW */
 /*            */
 .quick-view-enter {
-    opacity: 0 !important;
-    transform: translate(-50%, -45%) !important;
+  opacity: 0 !important;
+  transform: translate(-50%, -45%) !important;
 }
 .quick-view-enter-active {
-    opacity: 1 !important;
-    transform: translate(-50%, -50%) !important;
-    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) !important;
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
 .quick-view-exit {
-    opacity: 1 !important;
-    transform: translate(-50%, -50%) !important;
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) !important;
 }
 .quick-view-exit-active {
-    opacity: 0 !important;
-    transform: translate(-50%, -45%) !important;
-    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  opacity: 0 !important;
+  transform: translate(-50%, -45%) !important;
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
-
-
 
 /*               */
 /* CAROUSEL INFO */
 /*               */
 .carousel-info-enter {
-    opacity: 0;
+  opacity: 0;
 }
 .carousel-info-enter-active {
-    opacity: 1;
+  opacity: 1;
 }
 .carousel-info-exit {
-    opacity: 1;
+  opacity: 1;
 }
 .carousel-info-exit-active {
-    opacity: 0;
+  opacity: 0;
 }
 .carousel-info-enter-active,
 .carousel-info-exit-active {
-    transition: opacity 700ms ease-in-out;
+  transition: opacity 1500ms cubic-bezier(0.61, 1, 0.88, 1);
 }
-
-
 
 /*            */
 /* CAROUSEL   */
 /*            */
+
 .carousel-enter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   transform: translateX(100%);
 }
 .carousel-enter-active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   transform: translateX(0);
 }
 .carousel-exit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   transform: translateX(0);
 }
 .carousel-exit-active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   transform: translateX(-100%);
 }
 .carousel-enter-active,
 .carousel-exit-active {
-  transition: transform 500ms ease-in-out;
+  transition: transform 1500ms cubic-bezier(.32,.31,.42,.99);
 }

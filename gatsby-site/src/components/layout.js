@@ -19,7 +19,7 @@ import GoldLine from "../images/nav-bkg-line-gold-2.png"
 
 import { isIE } from "react-device-detect"
 
-import "bootstrap/dist/css/bootstrap.min.css"
+import "../css/forked-bootstrap.css"
 import "../css/forked-shards.css"
 
 /** @jsx jsx */
@@ -35,15 +35,18 @@ const Layout = ({ children }) => {
     @media (min-width: 700px) {
       margin-top: 0;
     }
+    @media (max-width: 1488px) {
+      ${'' /* background-color: #14151a; */}
+    }
   `
   const xButtonStyle = css`
     font-family: "Roboto";
     border: none;
-    font-size: 3rem;
+    font-size: 4rem;
     color: var(--gold-text-2);
     position: fixed;
-    top: -20px;
-    left: 15px;
+    top: 0px;
+    left: 35px;
     z-index: 40;
     &:hover {
       cursor: pointer;
@@ -60,7 +63,7 @@ const Layout = ({ children }) => {
     position: fixed;
     top: 10px;
     left: 15px;
-    z-index: 40;
+    z-index: 30;
     &:hover {
       cursor: pointer;
     }
@@ -78,7 +81,7 @@ const Layout = ({ children }) => {
     }
     .gold-line {
       position: absolute;
-      bottom: -2px;
+      bottom: 0px;
       transform: translateX(-50%), translateY(-50%);
       z-index: 1;
     }

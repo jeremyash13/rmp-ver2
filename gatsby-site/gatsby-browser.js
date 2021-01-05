@@ -14,3 +14,14 @@ export const wrapRootElement = ({ element }) => (
     <ArtContainer.Provider>{element}</ArtContainer.Provider>
   </AuthProvider>
 )
+
+export const onRenderBody = ({ setPostBodyComponents }, pluginOptions) => {
+  setPostBodyComponents([
+    <div
+      key={pluginOptions.key ? pluginOptions.key : "portal-root"}
+      id={pluginOptions.id ? pluginOptions.id : "portal-root"}
+    >
+      {pluginOptions.text}
+    </div>,
+  ])
+}

@@ -5,13 +5,27 @@ import { jsx, css } from "@emotion/core"
 /** @jsx jsx */
 
 export default function CTA({ children }) {
+  const sectionWrapperStyle = css`
+    flex-grow: 100;
+
+    background-image: var(--bg-soft-gold-texture);
+    background-repeat: repeat-y;
+    background-size: fit;
+    background-position-x: center;
+    @media (max-width: 1488px) {
+      background-size: 80vw 100px;
+    }
+  `
   const wrapperStyle = css`
     background-color: transparent;
     padding-top: 25px;
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
     display: flex;
+
+    margin-top: auto;
+    margin-bottom: auto;
   `
-  
+
   const outerStyle = css`
     display: flex;
     position: relative;
@@ -67,10 +81,12 @@ export default function CTA({ children }) {
   `
 
   return (
-    <div css={wrapperStyle}>
-      <div css={outerStyle}>
-        <div css={innerStyle} className="call-to-action-texture">
-          {children}
+    <div css={sectionWrapperStyle} className="section-wrapper">
+      <div css={wrapperStyle}>
+        <div css={outerStyle}>
+          <div css={innerStyle} className="call-to-action-texture">
+            {children}
+          </div>
         </div>
       </div>
     </div>

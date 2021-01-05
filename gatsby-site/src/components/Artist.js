@@ -18,9 +18,7 @@ export default function Artist(props) {
     }
     .artist-image-wrapper {
       position: relative;
-      ${'' /* width: 80%; */}
       margin: 0 auto;
-      ${'' /* margin-bottom: 2rem; */}
       &:hover {
         cursor: pointer;
       }
@@ -57,10 +55,10 @@ export default function Artist(props) {
     }
     .artist-image-border {
       margin-bottom: 2rem;
-      padding: 3px;
+      padding: 5px;
       background: linear-gradient(
         165deg,
-        rgba(255, 235, 235, 1) 0%,
+        rgba(255, 225, 179, 1) 0%,
         rgba(255, 190, 92, 1) 30%,
         rgba(62, 42, 11, 1) 100%
       );

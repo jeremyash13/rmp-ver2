@@ -22,20 +22,30 @@ const style = css`
   font-weight: 300;
   letter-spacing: 0.075rem;
   line-height: 1.75rem;
+
   background-image: var(--bg-soft-gold-texture);
   background-repeat: repeat-y;
   background-size: fit;
   background-position-x: center;
+  @media (max-width: 1488px) {
+      background-size: 80vw 100px;
+    }
+
   & h3 {
     color: var(--gold-text);
     font-family: Sorts Mill Goudy, serif;
   }
   & .intro-wrapper {
-    padding: 0 3rem;
+    padding: 0;
     text-align: center;
   }
   & .font-medium {
     font-weight: 800;
+  }
+  @media (min-width: 800px) {
+    & .intro-wrapper {
+      padding: 0 3rem;
+    }
   }
 `
 

@@ -10,10 +10,17 @@ import CTA from "../components/CTA"
 import { css, jsx } from "@emotion/core"
 
 const style = css`
-  background-image: var(--bg-gold-texture);
+  ${'' /* background-image: var(--bg-gold-texture);
   background-repeat: repeat-y;
   background-size: fit;
-  background-position-x: center;
+  background-position-x: center; */}
+  min-height: calc(100vh - 170px);
+  @media (max-width: 1488px) {
+    background-size: 80vw 100px;
+  }
+
+  display: flex;
+  flex-direction: column;
 `
 
 const IndexPage = () => (

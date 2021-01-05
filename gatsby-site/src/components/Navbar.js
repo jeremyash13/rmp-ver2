@@ -78,7 +78,7 @@ export const Navbar = props => {
       </ul>
       <img
         src={GoldLine}
-        className="absolute left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute left-1/2 transform -translate-x-1/2 z-30"
       ></img>
     </nav>
   )

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { jsx, css } from "@emotion/core"
-import { SwitchTransition, CSSTransition } from "react-transition-group"
+import {
+  SwitchTransition,
+  CSSTransition,
+  TransitionGroup,
+} from "react-transition-group"
 import animations from "../css/animations.css"
 
 import SunriseSerenityJPG from "../images/jpg/Sunrise Serenity.jpg"
@@ -15,17 +19,39 @@ const style = css`
   position: relative;
   padding-top: 1rem;
 
+  background-image: var(--bg-gold-texture);
+  background-repeat: repeat-y;
+  background-size: fit;
+  background-position-x: center;
+  @media (max-width: 1488px) {
+    background-size: 80vw 100px;
+  }
+
+  .stage {
+    position: relative;
+    height: calc(100vh - 225px);
+  }
+
   img {
     margin: 0 auto;
     object-fit: cover;
     object-position: 0 65%;
     width: 100%;
-    max-height: calc(100vh - 225px);
+    ${"" /* max-height: calc(100vh - 225px); */}
   }
   .carousel-wrapper {
-    position: relative;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
     box-shadow: 0 5px 40px 6px rgba(0, 0, 0, 0.4),
       0 0 15px 0px rgba(0, 0, 0, 0.4);
+  }
+  .carousel-content {
+    position: relative;
+    height: 100%;
   }
   .dark-overlay {
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
@@ -75,6 +101,7 @@ const style = css`
       font-style: italic;
     }
   }
+
   @media (min-width: 400px) {
     .testimonial-wrapper {
       display: block;
@@ -87,22 +114,9 @@ const style = css`
       min-width: 600px;
     }
   }
-
-  @keyframes custom-slide-in {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes custom-slide-out {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
+  @media (max-width: 1038px) {
+    .stage {
+      height: calc(100vw * 0.65);
     }
   }
 `
@@ -136,7 +150,7 @@ const slideData = [
 let slideIndex = 0
 
 export default function ImageCarousel() {
-  const [currentSlide, setCurrentSlide] = useState(slideData[slideIndex])
+  const [currentSlide, setCurrentSlide] = useState(slideData[0])
 
   useEffect(() => {
     const myInterval = setInterval(() => {
@@ -158,7 +172,7 @@ export default function ImageCarousel() {
       <SwitchTransition mode="out-in">
         <CSSTransition
           key={currentSlide.title}
-          timeout={700}
+          timeout={1500}
           classNames="carousel-info"
         >
           <div className="slide-title-text text-center">
@@ -168,29 +182,31 @@ export default function ImageCarousel() {
           </div>
         </CSSTransition>
       </SwitchTransition>
-      <SwitchTransition mode="out-in">
+      <TransitionGroup className="stage">
         <CSSTransition
           key={currentSlide.title}
-          timeout={500}
+          timeout={2000}
           classNames="carousel"
         >
           <div className={"carousel-wrapper"}>
-            <div className="dark-overlay"></div>
-            <img
-              src={currentSlide.image}
-              alt={`${currentSlide.title} by ${currentSlide.artist}`}
-            ></img>
-            <div className="testimonial-wrapper">
-              <div className="testimonial-body">
-                {currentSlide.testimonialBody}
-              </div>
-              <div className="testimonial-footer">
-                {currentSlide.testimonialFooter}
+            <div className="carousel-content">
+              <div className="dark-overlay"></div>
+              <img
+                src={currentSlide.image}
+                alt={`${currentSlide.title} by ${currentSlide.artist}`}
+              ></img>
+              <div className="testimonial-wrapper">
+                <div className="testimonial-body">
+                  {currentSlide.testimonialBody}
+                </div>
+                <div className="testimonial-footer">
+                  {currentSlide.testimonialFooter}
+                </div>
               </div>
             </div>
           </div>
         </CSSTransition>
-      </SwitchTransition>
+      </TransitionGroup>
     </div>
   )
 }

@@ -11,15 +11,18 @@ const style = css`
   padding: 25px;
   max-width: 1268px;
   margin: 0 auto;
-  margin-top: 2px;
   font-family: Rosarivo, serif;
   color: var(--gold-text-2);
   position: relative;
   z-index: 20;
+  
   background-image: var(--bg-soft-gold-texture);
   background-repeat: repeat-y;
   background-size: fit;
   background-position-x: center;
+  @media (max-width: 1488px) {
+      background-size: 80vw 100px;
+    }
 
   & h1 {
     font-family: Sorts Mill Goudy, serif;
@@ -80,6 +83,11 @@ const style = css`
   @media (min-width: 900px) {
     & .decor-frames {
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+  }
+  @media (max-width: 800px) {
+    & .intro-wrapper {
+      padding: 0 1rem;
     }
   }
 

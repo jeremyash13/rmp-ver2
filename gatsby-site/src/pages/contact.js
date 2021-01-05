@@ -10,10 +10,14 @@ const style = css`
   max-width: 1268px;
   margin: 0 auto;
   color: var(--gold-text-2);
+
   background-image: var(--bg-soft-gold-texture);
   background-repeat: repeat-y;
   background-size: fit;
   background-position-x: center;
+  @media (max-width: 1488px) {
+    background-size: 80vw 100px;
+  }
 
   & h1,
   & h2 {

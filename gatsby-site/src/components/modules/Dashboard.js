@@ -42,12 +42,12 @@ const Dashboard = () => {
       width: 450px;
     }
   `
-  let MainView = () => {
+  let View = () => {
     switch (activeView) {
       case "database":
         return <ArtDatabaseView />
       case "topsellers":
-        return <TopSellersView />
+        return <TopSellersView newEntryClickHandler={() => {}}/>
       case "frames":
         return <EditFramesView />
     }
@@ -97,7 +97,7 @@ const Dashboard = () => {
             </NavLink>
           </NavItem>
         </Nav>
-        {<MainView />}
+        {<View />}
       </div>
     </Layout>
   )

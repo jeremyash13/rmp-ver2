@@ -25,9 +25,9 @@ export default function LinkedInLogo() {
             y2="34.5"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopSolor="#FFD18B" />
-            <stop offset="0.510417" stopSolor="#AC8A55" />
-            <stop offset="1" stopSolor="#4D320A" />
+            <stop stopColor="#FFD18B" />
+            <stop offset="0.510417" stopColor="#AC8A55" />
+            <stop offset="1" stopColor="#4D320A" />
           </linearGradient>
         </defs>
       </svg>
