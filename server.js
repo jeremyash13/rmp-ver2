@@ -381,7 +381,7 @@ client.connect((err) => {
       console.log(err);
     }
   });
-  app.post("/allart", async (req, res) => {
+  app.post("/autocomplete", async (req, res) => {
     try {
       if (req.body.text === "") {
         const artCollection = client.db("rmp").collection("art");
@@ -402,6 +402,7 @@ client.connect((err) => {
             })
             .project({ score: { $meta: "textScore" } })
             .sort({ score: { $meta: "textScore" } })
+            .limit(5)
             .toArray();
           return cursor;
         };
