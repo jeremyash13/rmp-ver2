@@ -190,7 +190,6 @@ client.connect((err) => {
             const data = artCollection
               .find({
                 topSeller: true,
-                category: { $in: [...queryCategory] },
                 type: { $in: [...queryType] },
               })
               .hint("RecentlyAdded")
@@ -383,16 +382,7 @@ client.connect((err) => {
   });
   app.post("/autocomplete", async (req, res) => {
     try {
-      if (req.body.text === "") {
-        const artCollection = client.db("rmp").collection("art");
-        const getArt = async () => {
-          const cursor = artCollection.find({}).toArray();
-          return cursor;
-        };
-        getArt().then((data) => {
-          res.json(data);
-        });
-      } else {
+      
         let search = req.body.text;
         const artCollection = client.db("rmp").collection("art");
         const getArt = async () => {
@@ -405,11 +395,10 @@ client.connect((err) => {
             .limit(5)
             .toArray();
           return cursor;
-        };
+        }
         getArt().then((data) => {
           res.json(data);
         });
-      }
     } catch (err) {
       console.log(err);
     }
