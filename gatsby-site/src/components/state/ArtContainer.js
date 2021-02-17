@@ -46,7 +46,7 @@ const useArtGlobal = () => {
   // const [editUrl] = useState("http://localhost:3000/edit")
   // const [s3Url] = useState("http://localhost:3000/s3")
   // const [topSellerUrl] = useState("http://localhost:3000/topsellers")
-  // const [allArtUrl] = useState("http://localhost:3000/allart")
+  // const [autoCompleteUrl] = useState("http://localhost:3000/autocomplete")
   // const [removeTopSellerUrl] = useState("http://localhost:3000/removetopseller")
   // const [addTopSellerUrl] = useState("http://localhost:3000/addtopseller")
   // const [getFramesUrl] = useState("http://localhost:3000/frames")
@@ -57,7 +57,9 @@ const useArtGlobal = () => {
   const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
   const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
   const [topSellerUrl] = useState("https://rmp-server.herokuapp.com/topsellers")
-  const [allArtUrl] = useState("https://rmp-server.herokuapp.com/allart")
+  const [autoCompleteUrl] = useState(
+    "https://rmp-server.herokuapp.com/autocomplete"
+  )
   const [removeTopSellerUrl] = useState(
     "https://rmp-server.herokuapp.com/removetopseller"
   )
@@ -155,7 +157,7 @@ const useArtGlobal = () => {
     editUrl,
     s3Url,
     topSellerUrl,
-    allArtUrl,
+    autoCompleteUrl,
     removeTopSellerUrl,
     addTopSellerUrl,
     getFramesUrl,

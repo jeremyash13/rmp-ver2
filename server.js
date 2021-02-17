@@ -75,12 +75,10 @@ client.connect((err) => {
 
       const { id } = req.body;
 
-      collection
-        .deleteOne({ _id: ObjectId(id.toString()) })
-        .then(() => {
-          console.log("POST request made at /deleteframe");
-          res.json({ msg: "entry successfully deleted" });
-        });
+      collection.deleteOne({ _id: ObjectId(id.toString()) }).then(() => {
+        console.log("POST request made at /deleteframe");
+        res.json({ msg: "entry successfully deleted" });
+      });
     } catch (err) {
       console.log(err);
     }
@@ -370,6 +368,7 @@ client.connect((err) => {
           .find({
             topSeller: true,
           })
+          .hint("RecentlyAdded")
           .toArray();
         return cursor;
       };
@@ -382,23 +381,22 @@ client.connect((err) => {
   });
   app.post("/autocomplete", async (req, res) => {
     try {
-      
-        let search = req.body.text;
-        const artCollection = client.db("rmp").collection("art");
-        const getArt = async () => {
-          const cursor = artCollection
-            .find({
-              $text: { $search: search },
-            })
-            .project({ score: { $meta: "textScore" } })
-            .sort({ score: { $meta: "textScore" } })
-            .limit(5)
-            .toArray();
-          return cursor;
-        }
-        getArt().then((data) => {
-          res.json(data);
-        });
+      let search = req.body.text;
+      const artCollection = client.db("rmp").collection("art");
+      const getArt = async () => {
+        const cursor = artCollection
+          .find({
+            $text: { $search: search },
+          })
+          .project({ score: { $meta: "textScore" } })
+          .sort({ score: { $meta: "textScore" } })
+          .limit(5)
+          .toArray();
+        return cursor;
+      };
+      getArt().then((data) => {
+        res.json(data);
+      });
     } catch (err) {
       console.log(err);
     }

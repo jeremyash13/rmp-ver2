@@ -8,7 +8,7 @@ import ArtSearch from "../ArtSearch"
 import { jsx, css } from "@emotion/core"
 import ArtContainer from "../state/ArtContainer"
 import TopSellersView from "./TopSellersView"
-import EditFramesView from "./EditFramesView"
+import FramesView from "./FramesView"
 import { Nav, NavItem, NavLink, Fade } from "shards-react"
 
 const Dashboard = () => {
@@ -20,6 +20,7 @@ const Dashboard = () => {
     max-width: 1268px;
     margin: 0 auto;
     padding-top: 50px;
+    padding-bottom: 150px;
     background-image: var(--bg-soft-gold-texture);
     background-repeat: repeat-y;
     background-size: fit;
@@ -41,15 +42,50 @@ const Dashboard = () => {
       transform: translateY(95%);
       width: 450px;
     }
+    .ReactVirtualized__Grid__innerScrollContainer {
+      margin-right: 10px;
+    }
+    .ReactVirtualized__Table__row [title="standard"],
+    .ReactVirtualized__Table__row [title="decor"] {
+      text-transform: capitalize;
+    }
+    .ReactVirtualized__Table__headerRow {
+      background-color: #262626;
+      padding: 2rem 0.75rem 1.75rem 1rem;
+      border-bottom: solid 4px var(--gold-text);
+      border-radius: 8px 8px 0 0;
+    }
+    .ReactVirtualized__Table__headerRow,
+    .ReactVirtualized__Table__row {
+      justify-content: space-between;
+    }
+    .ReactVirtualized__Table__headerColumn {
+      display: flex;
+    }
+    .ReactVirtualized__Table__headerTruncatedText {
+      margin: auto 0;
+    }
+
+    .ReactVirtualized__Table__row:nth-child(odd) {
+      background-color: #1e1f22;
+    }
+
+    .ReactVirtualized__Table__row:nth-child(even) {
+      background-color: #262626;
+    }
+
+    .ReactVirtualized__Table__row:hover {
+      background-color: #3c3c3c;
+    }
   `
   let View = () => {
     switch (activeView) {
       case "database":
         return <ArtDatabaseView />
       case "topsellers":
-        return <TopSellersView newEntryClickHandler={() => {}}/>
+        return <TopSellersView />
       case "frames":
-        return <EditFramesView />
+        return <FramesView />
     }
   }
 

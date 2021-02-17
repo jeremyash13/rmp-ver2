@@ -61,6 +61,7 @@ module.exports = {
 
         // REDESIGN
         "dark-blue": "#15161b",
+        "gold-text": "#c19051"
       },
       translate: {
         "50px": "50px",

@@ -17,6 +17,7 @@
   --gold-text: #c19051;
   --gold-text-2: #81643e;
   --dark-brown: #2f2921;
+  --dark-brown-2: #2d2620;
   --bg-gold-texture: url("../images/bgtexture-gold.jpg");
   --bg-soft-gold-texture: url("../images/bgtexture-gold-soft.jpg");
   /* --gold-line: url("../images/nav-bkg-line-gold-2.png"); */
@@ -26,6 +27,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rosarivo&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap");
+
+*:focus {
+  outline: none;
+}
 
 html {
   font-family: sans-serif;
@@ -42,13 +47,9 @@ html {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-dark-blue);
+  overflow-x: hidden;
 }
-.call-to-action-texture {
-  background-image: var(--bg-gold-texture);
-  background-repeat: repeat-y;
-  background-position-x: center;
-  background-size: 150%;
-}
+
 main {
 }
 ul,
@@ -63,6 +64,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
 }
+
 article,
 aside,
 details,
@@ -443,6 +445,9 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+}
+p:last-child {
+  margin-bottom: 0;
 }
 figure {
   margin-left: 0;

@@ -68,6 +68,11 @@ export default function CTA({ children }) {
   `
   const innerStyle = css`
     width: 100%;
+    background-image: var(--bg-soft-gold-texture);
+    background-repeat: repeat-y;
+    background-position-x: center;
+    background-size: 100%;
+
     & a {
       display: block;
       padding: 20px 0 15px 0;

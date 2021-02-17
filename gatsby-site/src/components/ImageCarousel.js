@@ -185,7 +185,7 @@ export default function ImageCarousel() {
       <TransitionGroup className="stage">
         <CSSTransition
           key={currentSlide.title}
-          timeout={2000}
+          timeout={3000}
           classNames="carousel"
         >
           <div className={"carousel-wrapper"}>

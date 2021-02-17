@@ -9,7 +9,6 @@ import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
 import Loader from "react-loader-spinner"
 import { CSSTransition } from "react-transition-group"
-// import { animations } from "react-animation"
 
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()

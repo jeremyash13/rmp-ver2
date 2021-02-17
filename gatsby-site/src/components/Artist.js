@@ -25,6 +25,7 @@ export default function Artist(props) {
       &:hover .artist-hover-element {
         background-color: var(--bg-dark-blue);
         opacity: 0.35;
+        box-shadow: inset 0 0 8px 4px rgba(0, 0, 0, 0.4);
       }
       &:hover .view-bio-button {
         display: block;
@@ -52,10 +53,12 @@ export default function Artist(props) {
       height: 100%;
       z-index: 10;
       transition: background-color 250ms ease-out, opacity 250ms ease-out;
+      box-shadow: inset 0 0 8px 4px rgba(0, 0, 0, 0.4);
     }
     .artist-image-border {
       margin-bottom: 2rem;
       padding: 5px;
+      box-shadow: 0 13px 30px -10px rgba(0, 0, 0, 1);
       background: linear-gradient(
         165deg,
         rgba(255, 225, 179, 1) 0%,

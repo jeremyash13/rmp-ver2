@@ -40,9 +40,10 @@
   transition: opacity 1500ms cubic-bezier(0.61, 1, 0.88, 1);
 }
 
-/*            */
-/* CAROUSEL   */
-/*            */
+
+/*                 */
+/* CAROUSEL IMAGES */
+/*                 */
 
 .carousel-enter {
   position: absolute;
@@ -78,5 +79,35 @@
 }
 .carousel-enter-active,
 .carousel-exit-active {
-  transition: transform 1500ms cubic-bezier(.32,.31,.42,.99);
+  transition: transform 3000ms cubic-bezier(0.25, 1, 0.5, 1);
+  /* transition: transform 1500ms cubic-bezier(0.32, 0.31, 0.42, 0.99); */
+}
+
+
+
+/*               */
+/*  Top Sellers  */
+/*               */
+
+.top-sellers-autocomplete-enter,
+.top-sellers-autocomplete-appear {
+  opacity: 0;
+  transform: translateY(-20%);
+}
+.top-sellers-autocomplete-enter-active,
+.top-sellers-autocomplete-appear-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.top-sellers-autocomplete-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.top-sellers-autocomplete-exit-active {
+  opacity: 0;
+  transform: translateY(-20%);
+}
+.top-sellers-autocomplete-enter-active,
+.top-sellers-autocomplete-exit-active {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
