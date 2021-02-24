@@ -77,7 +77,7 @@ export default function QuickView() {
           className="quick-view-inner w-full h-full bg-dark-blue top-1/2 left-1/2 flex flex-col justify-between pt-8 pb-8 px-8 md:w-11/12 md:h-11/12 xl:pt-8"
         >
           <div className="soften-overlay"></div>
-          <div className="quick-view-details flex flex-col mb-6 mx-auto my-auto md:flex-row md:max-h-xs md:flex xl:max-w-screen-xl xxl:w-full">
+          <div className="quick-view-details flex flex-col mx-auto my-auto md:flex-row md:max-h-xs md:flex xl:max-w-screen-xl xxl:w-full">
             <QuickViewClose
               className="quick-view-close-wrapper w-8 absolute right-5 top-5 transform -translate-x-1/2 translate-y-1/2 cursor-pointer"
               clickHandler={() => {
