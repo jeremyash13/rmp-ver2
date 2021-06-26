@@ -4,26 +4,103 @@ import axios from "axios"
 import ArtContainer from "../state/ArtContainer"
 import { AutoSizer, Table, Column } from "react-virtualized"
 import AddNewEntryButton from "../AddNewEntryButton"
-import EditableImage from "../EditableImage"
 import GoldLine from "../../images/nav-bkg-line-gold-2.png"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
-import FrameImgUpload from "../FrameImgUpload"
 
-const CreateEntryModal = (
-  {
-    // selectedItem,
-    // setSelectedItem,
-    // addFrame,
-    setShowCreateEntryModal,
-  }
-) => {
+let fileData
+const isBrowser = typeof window !== "undefined"
+if (isBrowser) {
+  fileData = new FormData()
+}
+
+const CreateEntryModal = ({
+  refreshFramesHandler,
+  setShowCreateEntryModal,
+}) => {
   const GlobalState = ArtContainer.useContainer()
 
-  // useEffect(() => {
+  const [titleInput, setTitleInput] = useState("")
+  const [lineInput, setLineInput] = useState("standard")
+  const [imgSrc, setImgSrc] = useState("")
+  const [isFormValid, setIsFormValid] = useState(true)
 
-  // }, [])
+  const handleTextInput = e => {
+    const inputValue = e.target.value
+
+    // Text Input Validation
+    const regExp = /\W/g // test for any special character
+    if (regExp.test(inputValue)) {
+      setIsFormValid(false)
+    } else {
+      setIsFormValid(true)
+    }
+    setTitleInput(inputValue)
+  }
+
+  const addFrameToDB = async href => {
+    const url = GlobalState.getFramesUrl
+    const newFrame = {
+      title: titleInput,
+      line: lineInput,
+      src: href,
+    }
+    axios.post(url, newFrame)
+  }
+
+  const formSubmit = async () => {
+    uploadImgToS3(fileData).then(href => {
+      addFrameToDB(href).then(() => {
+        refreshFramesHandler()
+      })
+    })
+  }
+
+  const uploadImgToS3 = async fileData => {
+    const url = GlobalState.s3Url
+    const response = await axios.post(url, fileData)
+    const location = response.data.location
+    return location
+  }
+
+  const inputChange = e => {
+    const file = e.target.files[0]
+    const fileName = e.target.files[0].name
+
+    // S3 data
+    fileData.set("file", file)
+    fileData.set("name", fileName)
+  }
+
+  const ValidationPopUp = () => {
+    const style = css`
+      #pointer {
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid var(--bg-dark-blue);
+
+        transform: translateX(50px);
+      }
+      #content {
+        background-color: var(--bg-dark-blue);
+        color: white;
+        ${"" /* color: var(--gold-text); */}
+        font-size: .825rem;
+        border-radius: 4px;
+        width: max-content;
+        padding: 0.25rem 0.5rem;
+      }
+    `
+    return (
+      <div css={style} className="">
+        <div id="pointer"></div>
+        <div id="content">Special characters are not allowed.</div>
+      </div>
+    )
+  }
 
   return createPortal(
     <div css={modalStyle} className="overlay-wrapper">
@@ -32,14 +109,60 @@ const CreateEntryModal = (
           <div className="content-wrapper">
             <h3>Create Frame Entry</h3>
             <img src={GoldLine} className="gold-line"></img>
-            <div>
-              <FrameImgUpload />
-            </div>
+
+            <form action="" className="flex flex-col px-10 my-auto">
+              <input
+                type="file"
+                id="change-photo-input"
+                accept=".jpg, .jpeg, .png"
+                onChange={e => {
+                  inputChange(e)
+                }}
+                className="text-white font-sorts-mill mx-auto mb-10"
+              ></input>
+
+              <div id="details" className="flex mx-auto space-x-24">
+                <div className="flex flex-col">
+                  <label for="title" className="text-white">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={titleInput}
+                    onChange={e => handleTextInput(e)}
+                    className="px-1"
+                  ></input>
+                </div>
+
+                {/* {!isFormValid && <ValidationPopUp />} */}
+                <div className="flex flex-col">
+                  <label for="dropdown" className="text-white">
+                    Line
+                  </label>
+                  <select
+                    name="dropdown"
+                    id="frame-line-dropdown"
+                    value={lineInput}
+                    onChange={e => setLineInput(e.target.value)}
+                  >
+                    <option value="standard">Standard</option>
+                    <option value="decor">Decor</option>
+                  </select>
+                </div>
+              </div>
+              <p className="mx-auto mt-2 mb-0 text-white text-sm">
+                * Please do not include special characters in the title *
+              </p>
+              <p className="mx-auto mt-2 mb-0 text-white text-sm">
+                * For example: ! @ # $ *
+              </p>
+            </form>
             <div className="buttons-wrapper">
               <button
-                // disabled={selectedItem.title ? false : true}
+                disabled={titleInput.length < 1 === true ? true : false}
                 onClick={() => {
-                  // addTopSeller(selectedItem)
+                  formSubmit()
                   setShowCreateEntryModal(false)
                 }}
               >
@@ -70,30 +193,17 @@ export default function FramesView() {
       src: "",
     },
   ])
+
   const [framesLoading, setFramesLoading] = useState(false)
-  const [showCreateEntryModal, setShowCreateEntryModal] = useState(true)
+  const [showCreateEntryModal, setShowCreateEntryModal] = useState(false)
+  const [showRemoveModal, setShowRemoveModal] = useState(false)
+  const [refreshFrames, setRefreshFrames] = useState(0)
+
+  const [selectedItem, setSelectedItem] = useState({})
 
   useEffect(() => {
     fetchFrames()
-  }, [])
-
-  const deleteFrame = id => {
-    const deleteFrameUrl = GlobalState.deleteFramesUrl
-    axios({
-      method: "POST",
-      url: deleteFrameUrl,
-      data: id,
-    })
-      // .post(deleteFrameUrl, {
-      //   id: id,
-      // })
-      .then(json => {
-        console.log(json.data.msg)
-      })
-      .then(() => {
-        fetchFrames()
-      })
-  }
+  }, [refreshFrames])
 
   const fetchFrames = () => {
     const url = GlobalState.getFramesUrl
@@ -118,11 +228,59 @@ export default function FramesView() {
         console.log(err)
       })
   }
+
+  const RemoveModal = () => {
+    const GlobalState = ArtContainer.useContainer()
+
+    const deleteFrame = async id => {
+      const url = GlobalState.deleteFramesUrl
+      const response = await axios
+        .post(url, {
+          id: id,
+        })
+        .then(() => {
+          // fetchFrames()
+        })
+    }
+
+    return createPortal(
+      <div css={modalStyle} className="overlay-wrapper">
+        <div className="gold-border">
+          <div className="remove-modal-wrapper">
+            <div className="content-wrapper">
+              <h3>Remove Frame?</h3>
+              <img src={GoldLine} className="gold-line"></img>
+
+              <div className="buttons-wrapper">
+                <button
+                  onClick={() => {
+                    deleteFrame(selectedItem._id)
+                    setShowRemoveModal(false)
+                  }}
+                >
+                  Remove
+                </button>
+                <button
+                  onClick={() => {
+                    setShowRemoveModal(false)
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>,
+      document.getElementById("portal-root")
+    )
+  }
+
   return (
     <div css={viewStyle}>
       <AddNewEntryButton
         clickHandler={() => {
-          // setShowCreateEntryModal(true)
+          setShowCreateEntryModal(true)
         }}
       />
       {false ? (
@@ -141,8 +299,8 @@ export default function FramesView() {
               rowCount={frames.length}
               rowGetter={({ index }) => frames[index]}
               onRowClick={e => {
-                // setSelectedItem(e.rowData)
-                // setShowRemoveModal(true)
+                setSelectedItem(e.rowData)
+                setShowRemoveModal(true)
               }}
             >
               <Column label="Title" dataKey="title" width={300} />
@@ -152,8 +310,14 @@ export default function FramesView() {
         </AutoSizer>
       )}
       {showCreateEntryModal && (
-        <CreateEntryModal setShowCreateEntryModal={setShowCreateEntryModal} />
+        <CreateEntryModal
+          setShowCreateEntryModal={setShowCreateEntryModal}
+          refreshFramesHandler={() => {
+            setRefreshFrames(prevState => prevState + 1)
+          }}
+        />
       )}
+      {showRemoveModal && <RemoveModal />}
     </div>
   )
 }
@@ -196,6 +360,7 @@ const modalStyle = css`
   .remove-modal-wrapper {
     padding: 2rem;
     background: linear-gradient(165deg, rgba(68,61,52,1) 0%, rgba(21,22,27,1) 100%);
+    height: 250px;
   }
 
   .entry-modal-wrapper {
