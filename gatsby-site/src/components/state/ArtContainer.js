@@ -52,24 +52,42 @@ const useArtGlobal = () => {
   // const [getFramesUrl] = useState("http://localhost:3000/frames")
   // const [deleteFramesUrl] = useState("http://localhost:3000/deleteframe")
 
-  const [deleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
-  const [galleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
-  const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
-  const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
-  const [topSellerUrl] = useState("https://rmp-server.herokuapp.com/topsellers")
+  const [deleteUrl] = useState("http://api.rockymountainpublishing.net/delete")
+  const [galleryUrl] = useState("http://api.rockymountainpublishing.net/gallery")
+  const [editUrl] = useState("http://api.rockymountainpublishing.net/edit")
+  const [s3Url] = useState("http://api.rockymountainpublishing.net/s3")
+  const [topSellerUrl] = useState("http://api.rockymountainpublishing.net/topsellers")
   const [autoCompleteUrl] = useState(
-    "https://rmp-server.herokuapp.com/autocomplete"
+    "http://api.rockymountainpublishing.net/autocomplete"
   )
   const [removeTopSellerUrl] = useState(
-    "https://rmp-server.herokuapp.com/removetopseller"
+    "http://api.rockymountainpublishing.net/removetopseller"
   )
   const [addTopSellerUrl] = useState(
-    "https://rmp-server.herokuapp.com/addtopseller"
+    "http://api.rockymountainpublishing.net/addtopseller"
   )
-  const [getFramesUrl] = useState("https://rmp-server.herokuapp.com/frames")
+  const [getFramesUrl] = useState("http://api.rockymountainpublishing.net/frames")
   const [deleteFramesUrl] = useState(
-    "https://rmp-server.herokuapp.com/deleteframe"
+    "http://api.rockymountainpublishing.net/deleteframe"
   )
+  // const [deleteUrl] = useState("https://rmp-server.herokuapp.com/delete")
+  // const [galleryUrl] = useState("https://rmp-server.herokuapp.com/gallery")
+  // const [editUrl] = useState("https://rmp-server.herokuapp.com/edit")
+  // const [s3Url] = useState("https://rmp-server.herokuapp.com/s3")
+  // const [topSellerUrl] = useState("https://rmp-server.herokuapp.com/topsellers")
+  // const [autoCompleteUrl] = useState(
+  //   "https://rmp-server.herokuapp.com/autocomplete"
+  // )
+  // const [removeTopSellerUrl] = useState(
+  //   "https://rmp-server.herokuapp.com/removetopseller"
+  // )
+  // const [addTopSellerUrl] = useState(
+  //   "https://rmp-server.herokuapp.com/addtopseller"
+  // )
+  // const [getFramesUrl] = useState("https://rmp-server.herokuapp.com/frames")
+  // const [deleteFramesUrl] = useState(
+  //   "https://rmp-server.herokuapp.com/deleteframe"
+  // )
 
   const handleType = value => {
     //controls state for "type"
