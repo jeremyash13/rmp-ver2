@@ -32,13 +32,25 @@ const style = css`
     max-width: 1268px;
     margin: 0 auto;
   }
+
+  .artist-image-border {
+      margin-bottom: 2rem;
+      padding: 5px;
+      box-shadow: 0 13px 30px -10px rgba(0, 0, 0, 1);
+      background: linear-gradient(
+        165deg,
+        rgba(255, 225, 179, 1) 0%,
+        rgba(255, 190, 92, 1) 30%,
+        rgba(62, 42, 11, 1) 100%
+      );
+    }
 `
 const TravisSylvesterPage = () => (
   <Layout>
     <SEO title="Travis Sylvester" />
     <div css={style} className="artist-page-wrapper">
       <div className="body-wrapper">
-        <div className="img-wrapper">
+        <div className="img-wrapper artist-image-border">
           <img src={TravisSylvester} alt="Travis Sylvester"></img>
         </div>
         <p>

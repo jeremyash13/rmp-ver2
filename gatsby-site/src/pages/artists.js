@@ -9,6 +9,7 @@ import ManuelMansanarez from "../images/artists/ManuelMansanarez 200x200.jpg"
 import HaydenLambson from "../images/artists/HaydenLambson 640x640.jpg"
 import TravisSylvester from "../images/artists/TravisSylvester 190x190.jpg"
 import DanBallard from "../images/artists/DanBallard 270x270.jpg"
+import JoelPilcher from "../images/artists/JoelPilcher 750x750.jpg"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -75,6 +76,12 @@ const ArtistsPage = () => (
         id="danballard"
         name="Dan Ballard"
         category="Landscape Photography"
+      />
+      <Artist
+        img={JoelPilcher}
+        id="joelpilcher"
+        name="Joel Pilcher"
+        category="Wildlife"
       />
       {/* <Artist
         img={MitchellMansanarez}
