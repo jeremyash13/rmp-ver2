@@ -70,6 +70,9 @@ export default function Artist(props) {
       text-align: center;
       margin: 0 auto;
     }
+    .artist-name {
+      color: var(--gold-text);
+    }
     .artist-category {
       font-weight: 300;
       font-style: italic;

@@ -9,7 +9,7 @@ import ArtContainer from "./state/ArtContainer"
 
 export const DropDownMenuArtist = props => {
   const GlobalState = ArtContainer.useContainer()
-  const [value, setValue] = useState("Artist: ALL")
+  const [value, setValue] = useState(`Artist: ${GlobalState.artist}`)
   const style = css`
     height: 53px;
     font-family: "Sorts Mill Goudy", serif;
@@ -57,6 +57,9 @@ export const DropDownMenuArtist = props => {
       </RfddOption>
       <RfddOption value="Hayden Lambson" style={optionStyle}>
         Hayden Lambson
+      </RfddOption>
+      <RfddOption value="Joel Pilcher" style={optionStyle}>
+        Joel Pilcher
       </RfddOption>
       <RfddOption value="Manuel Mansanarez" style={optionStyle}>
         Manuel Mansanarez

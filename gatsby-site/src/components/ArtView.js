@@ -17,7 +17,7 @@ export default function ArtView() {
 
   useEffect(() => {
     //clear search on componentDidMount
-    GlobalState.setArtSearch("")
+    // GlobalState.setArtSearch("")
   }, [])
 
   useEffect(() => {

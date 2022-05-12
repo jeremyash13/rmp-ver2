@@ -71,6 +71,13 @@ const useArtGlobal = () => {
     "https://api.rockymountainpublishing.net/deleteframe"
   )
 
+  const resetArtFilteringToDefault = () => {
+    setArtist("all")
+    setCategory("all")
+    setType("all")
+    setArtSearch("")
+  }
+
   const handleType = value => {
     //controls state for "type"
     switch (value) {
@@ -126,6 +133,9 @@ const useArtGlobal = () => {
       case "Hayden Lambson":
         setArtist("Hayden Lambson")
         break
+      case "Joel Pilcher":
+        setArtist("Joel Pilcher")
+        break
       case "Manuel Mansanarez":
         setArtist("Manuel Mansanarez")
         break
@@ -169,6 +179,7 @@ const useArtGlobal = () => {
     artist,
     artSearch,
     setArtSearch,
+    resetArtFilteringToDefault,
     /////////////////////////
     handleSortBy,
     handleType,

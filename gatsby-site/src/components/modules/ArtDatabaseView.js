@@ -18,8 +18,12 @@ let editItem = undefined
 export const ArtDatabaseView = ({ newEntryClickHandler }) => {
   const GlobalState = ArtContainer.useContainer()
   const [showEditView, setShowEditView] = useState(false)
-  const { loading, art, error, hasMore } = useSearchArt(1000)
+  const { loading, art, error, hasMore, resetArtFilter } = useSearchArt(1000)
   const [showNewEntryView, setShowNewEntryView] = useState(false)
+
+  useEffect(() => {
+    resetArtFilter()
+  }, [])
 
   const mainStyle = css`
     background-color: #eae9e9;

@@ -8,22 +8,6 @@ import { css, jsx } from "@emotion/core"
 export default function ArtCategories() {
   const GlobalState = ArtContainer.useContainer()
 
-  const [allActive, setAllActive] = useState(true)
-  const [landscapeActive, setLandscapeActive] = useState(false)
-  const [westernActive, setWesternActive] = useState(false)
-  const [wildlifeActive, setWildlifeActive] = useState(false)
-  const [patrioticActive, setPatrioticActive] = useState(false)
-  const [topSellersActive, setTopSellersActive] = useState(false)
-
-  const clearActive = () => {
-    setAllActive(false)
-    setLandscapeActive(false)
-    setWesternActive(false)
-    setWildlifeActive(false)
-    setPatrioticActive(false)
-    setTopSellersActive(false)
-  }
-
   const style = css`
     color: var(--gold-text-2);
     font-family: "Sorts Mill Goudy";
@@ -48,31 +32,25 @@ export default function ArtCategories() {
     >
       <div className="flex space-x-10 w-max-content mx-auto mb-6">
         <li
-          className={allActive ? "active" : ""}
+          className={GlobalState.category === "all" ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("all")
-            clearActive()
-            setAllActive(true)
           }}
         >
           All
         </li>
         <li
-          className={landscapeActive ? "active" : ""}
+          className={GlobalState.category === "landscape" ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("landscape")
-            clearActive()
-            setLandscapeActive(true)
           }}
         >
           Landscape
         </li>
         <li
-          className={westernActive ? "active" : ""}
+          className={GlobalState.category === "western" ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("western")
-            clearActive()
-            setWesternActive(true)
           }}
         >
           Western
@@ -80,31 +58,25 @@ export default function ArtCategories() {
       </div>
       <div className="flex space-x-4 sm:space-x-10 w-max-content mx-auto">
         <li
-          className={wildlifeActive ? "active" : ""}
+          className={GlobalState.category === "wildlife" ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("wildlife")
-            clearActive()
-            setWildlifeActive(true)
           }}
         >
           Wildlife
         </li>
         <li
-          className={patrioticActive ? "active" : ""}
+          className={GlobalState.category === "patriotic" ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("patriotic")
-            clearActive()
-            setPatrioticActive(true)
           }}
         >
           Patriotic
         </li>
         <li
-          className={topSellersActive ? "active" : ""}
+          className={GlobalState.category === "topSellers" ? "active" : ""}
           onClick={() => {
             GlobalState.handleCategory("topSellers")
-            clearActive()
-            setTopSellersActive(true)
           }}
         >
           Top Sellers

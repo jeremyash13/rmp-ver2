@@ -3,12 +3,15 @@ import axios from "axios"
 import ArtContainer from "../state/ArtContainer"
 
 export default function useSearchArt(limitResults) {
-
   const GlobalState = ArtContainer.useContainer()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [art, setArt] = useState([])
   const [hasMore, setHasMore] = useState(true)
+
+  const resetArtFilter = () => {
+    GlobalState.resetArtFilteringToDefault()
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -46,7 +49,10 @@ export default function useSearchArt(limitResults) {
         setError(true)
       })
 
-    return () => cancel()
+    return () => {
+      // component unmount
+      cancel()
+    }
   }, [
     GlobalState.type,
     GlobalState.category,
@@ -61,5 +67,6 @@ export default function useSearchArt(limitResults) {
     art,
     error,
     hasMore,
+    resetArtFilter,
   }
 }

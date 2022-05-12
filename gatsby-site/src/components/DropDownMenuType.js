@@ -9,7 +9,7 @@ import ArtContainer from "./state/ArtContainer"
 
 export const DropDownMenuType = props => {
   const GlobalState = ArtContainer.useContainer()
-  const [value, setValue] = useState("Type: ALL")
+  const [value, setValue] = useState(`Type: ${GlobalState.type}`)
   const style = css`
     height: 53px;
     font-family: "Sorts Mill Goudy", serif;
