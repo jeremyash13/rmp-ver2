@@ -6,7 +6,7 @@
   "author": "Jeremy Ashcraft",
   "dependencies": {
     "@emotion/core": "^10.0.28",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "formik": "^2.1.4",
     "framer-motion": "^6.3.3",
     "gatsby": "^2.18.12",
