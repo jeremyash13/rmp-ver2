@@ -24,13 +24,6 @@ client.connect((err) => {
   if (err) {
     console.log(err);
   }
-  // app.options("*", cors());
-  // app.use(
-  //   cors({
-  //     origin: "*",
-  //     methods: "GET,PUT,POST,DELETE",
-  //   })
-  // );
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
