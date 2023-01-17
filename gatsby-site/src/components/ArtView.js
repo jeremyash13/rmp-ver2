@@ -9,6 +9,7 @@ import { css, jsx, Global } from "@emotion/core"
 import QuickView from "./QuickView"
 import Loader from "react-loader-spinner"
 import { CSSTransition } from "react-transition-group"
+import { motion } from "framer-motion/dist/framer-motion"
 
 export default function ArtView() {
   const GlobalState = ArtContainer.useContainer()
@@ -46,7 +47,7 @@ export default function ArtView() {
     grid-row-gap: 100px;
     min-height: 100vh;
     position: relative;
-    font-family: 'Rosarivo', serif;
+    font-family: "Rosarivo", serif;
 
     .no-results {
       margin: 0 auto;
@@ -60,7 +61,7 @@ export default function ArtView() {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      ${'' /* animation: ${animations.fadeInUp} */}
+      ${"" /* animation: ${animations.fadeInUp} */}
     }
     .img-hover-element {
       position: absolute;
@@ -133,7 +134,6 @@ export default function ArtView() {
     }
 
     @media (min-width: 750px) {
-
     }
     @media (min-width: 600px) {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -145,9 +145,21 @@ export default function ArtView() {
     }
   `
 
+  const itemAnimationStates = {
+    hidden: { opacity: 0, y: 15, scale: 1 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+  }
+
   return (
     <div css={style} className="art-view-wrapper">
-      {GlobalState.showingQuickView && <QuickView show={GlobalState.showingQuickView}/>}
+      {GlobalState.showingQuickView && (
+        <QuickView show={GlobalState.showingQuickView} />
+      )}
 
       {art.length === 0 && loading === false && (
         <div className="no-results">NO RESULTS...</div>
@@ -168,68 +180,83 @@ export default function ArtView() {
 
       {art.map((item, idx) => {
         if (idx === art.length - 1) {
+          //attach ref/intersection observer to final item in list
           return (
-            <div ref={ref} key={item._id} className="art-entry">
-              <div className="img-wrapper">
-                <div
-                  className="img-hover-element"
-                  id={art.indexOf(item)}
-                  onClick={e => {
-                    GlobalState.setQuickViewItem(art[e.target.id])
-                    GlobalState.setShowingQuickView(true)
-                  }}
-                >
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={itemAnimationStates}
+              key={item._id}
+            >
+              <div ref={ref} className="art-entry">
+                <div className="img-wrapper">
                   <div
-                    className="quick-view-button"
+                    className="img-hover-element"
                     id={art.indexOf(item)}
                     onClick={e => {
                       GlobalState.setQuickViewItem(art[e.target.id])
                       GlobalState.setShowingQuickView(true)
                     }}
                   >
-                    Quick View
+                    <div
+                      className="quick-view-button"
+                      id={art.indexOf(item)}
+                      onClick={e => {
+                        GlobalState.setQuickViewItem(art[e.target.id])
+                        GlobalState.setShowingQuickView(true)
+                      }}
+                    >
+                      Quick View
+                    </div>
                   </div>
+                  <img src={item.src} className="img"></img>
                 </div>
-                <img src={item.src} className="img"></img>
+                <div className="art-view__img-details">
+                  <span className="title truncate">{item.title}</span>
+                  <span className="by">by</span>
+                  <span className="artist">{item.artist}</span>
+                </div>
               </div>
-              <div className="art-view__img-details">
-                <span className="title truncate">{item.title}</span>
-                <span className="by">by</span>
-                <span className="artist">{item.artist}</span>
-              </div>
-            </div>
+            </motion.div>
           )
         } else {
           return (
-            <div key={item._id} className="art-entry">
-              <div className="img-wrapper">
-                <div
-                  className="img-hover-element"
-                  id={art.indexOf(item)}
-                  onClick={e => {
-                    GlobalState.setQuickViewItem(art[e.target.id])
-                    GlobalState.setShowingQuickView(true)
-                  }}
-                >
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={itemAnimationStates}
+              key={item._id}
+            >
+              <div className="art-entry">
+                <div className="img-wrapper">
                   <div
-                    className="quick-view-button"
+                    className="img-hover-element"
                     id={art.indexOf(item)}
                     onClick={e => {
                       GlobalState.setQuickViewItem(art[e.target.id])
                       GlobalState.setShowingQuickView(true)
                     }}
                   >
-                    Quick View
+                    <div
+                      className="quick-view-button"
+                      id={art.indexOf(item)}
+                      onClick={e => {
+                        GlobalState.setQuickViewItem(art[e.target.id])
+                        GlobalState.setShowingQuickView(true)
+                      }}
+                    >
+                      Quick View
+                    </div>
                   </div>
+                  <img src={item.src} className="img"></img>
                 </div>
-                <img src={item.src} className="img"></img>
+                <div className="art-view__img-details">
+                  <span className="title truncate">{item.title}</span>
+                  <span className="by">by</span>
+                  <span className="artist">{item.artist}</span>
+                </div>
               </div>
-              <div className="art-view__img-details">
-                <span className="title truncate">{item.title}</span>
-                <span className="by">by</span>
-                <span className="artist">{item.artist}</span>
-              </div>
-            </div>
+            </motion.div>
           )
         }
       })}
@@ -246,7 +273,6 @@ export default function ArtView() {
           </div>
         </div>
       )}
-
     </div>
   )
 }

@@ -24,13 +24,14 @@ client.connect((err) => {
   if (err) {
     console.log(err);
   }
-  app.options("*", cors());
-  app.use(
-    cors({
-      origin: "*",
-      methods: "GET,PUT,POST,DELETE",
-    })
-  );
+  // app.options("*", cors());
+  // app.use(
+  //   cors({
+  //     origin: "*",
+  //     methods: "GET,PUT,POST,DELETE",
+  //   })
+  // );
+  app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
@@ -405,17 +406,8 @@ client.connect((err) => {
   app.post("/edit", async (req, res) => {
     try {
       const artCollection = client.db("rmp").collection("art");
-      const {
-        _id,
-        title,
-        artist,
-        src,
-        category,
-        type,
-        options,
-        tags,
-        age,
-      } = req.body;
+      const { _id, title, artist, src, category, type, options, tags, age } =
+        req.body;
       if (_id) {
         // if objectId is truthy -> update respective document, else -> create new document
         artCollection
