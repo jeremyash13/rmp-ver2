@@ -24,7 +24,12 @@ client.connect((err) => {
   if (err) {
     console.log(err);
   }
-  app.use(cors());
+  // app.use(cors());
+  app.use(cors({
+    origin: 'https://www.rockymountainpublishing.net',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
+  }));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
