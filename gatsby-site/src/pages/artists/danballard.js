@@ -57,12 +57,11 @@ const DanBallardPage = () => (
         <div className="img-wrapper artist-image-border mb-10 mr-10 max-w-xs float-left">
           <img src={DanBallard} alt="Dan Ballard"></img>
         </div>
-        <h3 className="font-semibold text-2xl">
-          Internationally Known Travel and Landscape Photographer
-        </h3>
         <p>
-          Dan Ballard is a pro landscape photographer, avid traveler and
-          educator. He has been to over 60 countries across the globe in search
+        <strong style={{fontSize: '1.5rem'}}>Dan Ballard</strong>
+        <br/><br/>
+          Dan Ballard is an internationally known travel and landscape photographer, avid traveler, and
+          an educator. He has been to over 60 countries across the globe in search
           of a great image or a memorable experience.
         </p>
         <p>

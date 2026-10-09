@@ -54,6 +54,8 @@ const ClarkKelleyPricePage = () => (
           <img src={ClarkKelleyPrice} alt="Clark Kelley Price"></img>
         </div>
         <p>
+        <strong style={{fontSize: '1.5rem'}}>Clark Kelley Price</strong>
+        <br/><br/>
           Clark Kelley Price was born in Idaho Falls, Idaho in 1945. As a child
           he loved to draw and even his earliest artistic efforts told stories.
           His parents recognized his talent and encouraged him to use it. He

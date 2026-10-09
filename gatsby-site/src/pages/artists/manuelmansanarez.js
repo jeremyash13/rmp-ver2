@@ -55,6 +55,8 @@ const ManuelMansanarezPage = () => (
           <img src={ManuelMansanarez} alt="Manuel Manzanarez"></img>
         </div>
         <p>
+        <strong style={{fontSize: '1.5rem'}}>Manuel Mansanarez</strong>
+        <br/><br/>
           Manuel Mansanarez was born June 4, 1937 in the small mining town of
           Columbia, Utah. He was raised in the west, and became interested in
           art at a young age. He pursued the study of art in high school, and

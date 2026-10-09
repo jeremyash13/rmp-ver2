@@ -54,6 +54,8 @@ const HaydenLambsonPage = () => (
           <img src={HaydenLambson} alt="Hayden Lambson"></img>
         </div>
         <p>
+        <strong style={{fontSize: '1.5rem'}}>Hayden Lambson</strong>
+        <br/><br/>
           On August 27, 1948 Hayden was born in the small town of Ramah, New
           Mexico. Not nearly as well known as other great metropolitans, but it
           did have plenty of prairie dogs. There, untainted by museums, studios,

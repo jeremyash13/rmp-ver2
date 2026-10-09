@@ -54,6 +54,8 @@ const TravisSylvesterPage = () => (
           <img src={TravisSylvester} alt="Travis Sylvester"></img>
         </div>
         <p>
+        <strong style={{fontSize: '1.5rem'}}>Travis Sylvester</strong>
+        <br/><br/>
           Travis Sylvester is an artist out of the Salt Lake City area. His love
           and appreciation for the amazing colors and markings of trout can be
           seen in his artwork.

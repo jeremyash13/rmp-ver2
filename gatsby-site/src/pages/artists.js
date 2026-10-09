@@ -10,6 +10,13 @@ import HaydenLambson from "../images/artists/HaydenLambson 640x640.jpg"
 import TravisSylvester from "../images/artists/TravisSylvester 190x190.jpg"
 import DanBallard from "../images/artists/DanBallard 270x270.jpg"
 import JoelPilcher from "../images/artists/JoelPilcher 750x750.jpg"
+import SummerJackman from "../images/artists/SummerJackman 750x750.jpg"
+import MarkMckenna from "../images/artists/MarkMckenna 620x620.jpg"
+import MickeyShannon from "../images/artists/MickeyShannon 600x600.jpg"
+import RyanSmith from "../images/artists/RyanSmith 600x600.jpg"
+import TeriJames from "../images/artists/TeriJames 285x285.jpg"
+import ZackClothier from "../images/artists/ZackClothier 396x396.jpg"
+import JasonLoftus from "../images/artists/JasonLoftus 440x440.jpg"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -41,22 +48,34 @@ const ArtistsPage = () => (
   <Layout>
     <SEO title="Artists" />
     <div css={style} className="artists-page-wrapper">
+    <Artist
+        img={DanBallard}
+        id="danballard"
+        name="Dan Ballard"
+        category="Landscape Photography"
+      />
+      <Artist
+        img={ZackClothier}
+        id="zackclothier"
+        name="Zack Clothier"
+        category="Wildlife, Landscape Photography"
+      />
+    <Artist
+      img={SummerJackman}
+      id="summerjackman"
+      name="Summer Jackman"
+      category="Western, Wildlife, Landscape Photography"
+    />
+    <Artist
+      img={TeriJames}
+      id="terijames"
+      name="Teri James"
+      category="Western"
+    />
       <Artist
         img={DallenLambson}
         id="dallenlambson"
         name="Dallen Lambson"
-        category="Wildlife"
-      />
-      <Artist
-        img={ClarkKelleyPrice}
-        id="clarkkelleyprice"
-        name="Clark Kelley Price"
-        category="Western"
-      />
-      <Artist
-        img={ManuelMansanarez}
-        id="manuelmansanarez"
-        name="Manuel Mansanarez"
         category="Wildlife"
       />
       <Artist
@@ -66,21 +85,51 @@ const ArtistsPage = () => (
         category="Wildlife"
       />
       <Artist
-        img={TravisSylvester}
-        id="travissylvester"
-        name="Travis Sylvester"
+        img={JasonLoftus}
+        id="jasonloftus"
+        name="Jason Loftus"
         category="Wildlife"
       />
       <Artist
-        img={DanBallard}
-        id="danballard"
-        name="Dan Ballard"
-        category="Landscape Photography"
+        img={ManuelMansanarez}
+        id="manuelmansanarez"
+        name="Manuel Mansanarez"
+        category="Wildlife"
+      />
+      <Artist
+        img={MarkMckenna}
+        id="markmckenna"
+        name="Mark Mckenna"
+        category="Western, Wildlife"
       />
       <Artist
         img={JoelPilcher}
         id="joelpilcher"
         name="Joel Pilcher"
+        category="Wildlife"
+      />
+      <Artist
+        img={ClarkKelleyPrice}
+        id="clarkkelleyprice"
+        name="Clark Kelley Price"
+        category="Western"
+      />
+      <Artist
+        img={MickeyShannon}
+        id="mickeyshannon"
+        name="Mickey Shannon"
+        category="Landscape Photography"
+      />
+      <Artist
+        img={RyanSmith}
+        id="ryansmith"
+        name="Ryan Smith"
+        category="Landscape Photography"
+      />
+      <Artist
+        img={TravisSylvester}
+        id="travissylvester"
+        name="Travis Sylvester"
         category="Wildlife"
       />
       {/* <Artist

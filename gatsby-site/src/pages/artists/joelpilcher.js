@@ -55,6 +55,8 @@ const JoelPilcherPage = () => (
           <img src={JoelPilcher} alt="Joel Pilcher"></img>
         </div>
         <p>
+        <strong style={{fontSize: '1.5rem'}}>Joel Pilcher</strong>
+        <br/><br/>
         From an early age, Joel Pilcher knew he wanted to one day become a professional wildlife artist. Born and raised in the Rocky Mountains, his love for the outdoors fueled his imagination and drove his passion to, someday, create artistic works that celebrate the wild as he saw it. After a successful career as a freelance graphic artist and creative brand and marketing specialist, Joel set out on the artistic adventure he had been dreaming about since he was a kid. His stunning portfolio of artistry celebrates Joel’s careful attention to detail, timeless aesthetics, and mastery of bringing wildlife art to our lives in a unique style unlike any other.
         </p>
       </div>

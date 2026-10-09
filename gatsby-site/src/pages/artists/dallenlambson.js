@@ -54,6 +54,8 @@ const DallenLambsonPage = () => (
           <img src={DallenLambson} alt="Dallen Lambson"></img>
         </div>
         <p>
+        <strong style={{fontSize: '1.5rem'}}>Dallen Lambson</strong>
+        <br/><br/>
           Dallen Lambson was born March 4, 1977 to Hayden and Cheryl Lambson in
           Pocatello Idaho. He was the third of eight children and has always
           felt blessed to grow up in a large family. Dallen has always
