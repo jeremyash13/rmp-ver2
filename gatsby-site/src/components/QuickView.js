@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group"
 import { useState, useEffect } from "react"
 // import animations from "../css/animations.css"
 
-import { motion, AnimatePresence } from "framer-motion/dist/framer-motion"
+// import { motion, AnimatePresence } from "framer-motion/dist/framer-motion"
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
@@ -35,24 +35,24 @@ const style = css`
     left: 0;
     z-index: -1;
   }
-  & .quick-view-image-wrapper {
-    margin-right: 1rem;
-  }
-  .quick-view-close-wrapper {
-    top: 15px;
-    right: 15px;
-  }
-  @media (min-width: 768px) {
-    & .quick-view-img-wrapper {
-      margin-bottom: 0;
-    }
-  }
 `
+  // & .quick-view-image-wrapper {
+  //   margin-right: 1rem;
+  // }
+  // .quick-view-close-wrapper {
+  //   top: 15px;
+  //   right: 15px;
+  // }
+  // @media (min-width: 768px) {
+  //   & .quick-view-img-wrapper {
+  //     margin-bottom: 0;
+  //   }
+  // }
 
-const animationStates = {
-  hidden: { y: "100%", x: "-50%" },
-  visible: { y: "-50%", x: "-50%" },
-}
+// const animationStates = {
+//   hidden: { y: "100%", x: "-50%" },
+//   visible: { y: "-50%", x: "-50%" },
+// }
 
 export default function QuickView() {
   const GlobalState = ArtContainer.useContainer()
@@ -69,18 +69,16 @@ export default function QuickView() {
       className="quick-view-outer fixed inset-0 z-30 bg-black bg-opacity-75"
       onClick={e => {
         if (e.target.classList.contains("quick-view-outer")) {
+          setInProp(false)
           GlobalState.setShowingQuickView(false)
         }
       }}
     >
-      <motion.div
-        key="modal"
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        variants={animationStates}
-        style={{ width: '100%', height: '100%' }}
-        // style={{ top: "50%", left: "50%", position: "fixed", width: '100%', height: '100%' }}
+      <CSSTransition
+        in={inProp}
+        timeout={300}
+        unmountOnExit
+        classNames="quick-view"
       >
         <div
           css={style}
@@ -91,6 +89,7 @@ export default function QuickView() {
             <QuickViewClose
               className="quick-view-close-wrapper w-8 absolute right-5 top-5 transform -translate-x-1/2 translate-y-1/2 cursor-pointer"
               clickHandler={() => {
+                setInProp(false)
                 GlobalState.setShowingQuickView(false)
               }}
             />
@@ -99,9 +98,7 @@ export default function QuickView() {
                 src={item.src}
                 alt={`${item.title}`}
                 className="quick-view-img max-h-xs md:max-h-md"
-                style={{
-                  filter: "drop-shadow(3px 5px 8px rgba(0,0,0,.9))",
-                }}
+                style={{ filter: "drop-shadow(3px 5px 8px rgba(0,0,0,.9))" }}
               ></img>
             </div>
 
@@ -134,25 +131,28 @@ export default function QuickView() {
             <div className="age">{new Date(item.age).toLocaleDateString()}</div>
           </div>
         </div>
-      </motion.div>
+      </CSSTransition>
     </div>
   )
+
   // return (
   //   <div
   //     id="outer-overlay"
   //     className="quick-view-outer fixed inset-0 z-30 bg-black bg-opacity-75"
   //     onClick={e => {
   //       if (e.target.classList.contains("quick-view-outer")) {
-  //         setInProp(false)
   //         GlobalState.setShowingQuickView(false)
   //       }
   //     }}
   //   >
-  //     <CSSTransition
-  //       in={inProp}
-  //       timeout={300}
-  //       unmountOnExit
-  //       classNames="quick-view"
+  //     <motion.div
+  //       key="modal"
+  //       initial="hidden"
+  //       animate="visible"
+  //       exit="hidden"
+  //       variants={animationStates}
+  //       // style={{ width: '100%', height: '100%' }}
+  //       style={{ top: "50%", left: "50%", position: "fixed", width: '100%', height: '100%' }}
   //     >
   //       <div
   //         css={style}
@@ -163,7 +163,6 @@ export default function QuickView() {
   //           <QuickViewClose
   //             className="quick-view-close-wrapper w-8 absolute right-5 top-5 transform -translate-x-1/2 translate-y-1/2 cursor-pointer"
   //             clickHandler={() => {
-  //               setInProp(false)
   //               GlobalState.setShowingQuickView(false)
   //             }}
   //           />
@@ -172,7 +171,9 @@ export default function QuickView() {
   //               src={item.src}
   //               alt={`${item.title}`}
   //               className="quick-view-img max-h-xs md:max-h-md"
-  //               style={{ filter: "drop-shadow(3px 5px 8px rgba(0,0,0,.9))" }}
+  //               style={{
+  //                 filter: "drop-shadow(3px 5px 8px rgba(0,0,0,.9))",
+  //               }}
   //             ></img>
   //           </div>
 
@@ -205,7 +206,8 @@ export default function QuickView() {
   //           <div className="age">{new Date(item.age).toLocaleDateString()}</div>
   //         </div>
   //       </div>
-  //     </CSSTransition>
+  //     </motion.div>
   //   </div>
   // )
+  
 }

@@ -16,6 +16,8 @@ const BUCKET_NAME = process.env.BUCKET_NAME;
 const IAM_USER_KEY = process.env.IAM_USER_KEY;
 const IAM_USER_SECRET = process.env.IAM_USER_SECRET;
 
+const allowedOrigins = ['https://www.rockymountainpublishing.net','http://localhost:8000'];
+
 const client = new MongoClient(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -26,7 +28,7 @@ client.connect((err) => {
   }
   // app.use(cors());
   app.use(cors({
-    origin: 'https://www.rockymountainpublishing.net',
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type']
   }));
